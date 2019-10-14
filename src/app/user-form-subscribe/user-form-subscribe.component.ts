@@ -67,8 +67,6 @@ export class UserFormSubscribeComponent implements OnInit {
 
   onSubmit(formGroup: FormGroup) {
 
-    //console.log('Data submitted by the user: ', this.formGroup.getRawValue());
-
     this.newParticular = this.formGroup.getRawValue();
     console.log("New user: ", this.newParticular);
     this.particularService.createParticular(this.newParticular).subscribe(particular => {

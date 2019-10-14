@@ -34,12 +34,8 @@ export class ParticularService {
   }
 
   createParticular(newParticular: Particular): Observable<Particular> {
-    //console.log("In the service fucntion: ", newParticular);
     const new_particular = JSON.stringify(newParticular);
     const dataAsJSON = JSON.parse(new_particular);
-    //console.log("HERE the data as JSON:", new_particular);
-
-
     return this.http.post<Particular>('http://localhost:3000/create-particular', dataAsJSON, httpOptions);
   }
 }
