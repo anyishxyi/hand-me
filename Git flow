@@ -1,0 +1,21 @@
+Nous avons trois projets.
+Du coup :
+Partant de master créer 3 branches develop :
+ -develop_mobile(branche protected) pas de merge sans passer par une MR
+ -develop_backend(branche protected)pas de merge sans passer par une MR
+ -develop_front(branche protected)pas de merge sans passer par une MR
+ 
+ ensuite pour chaque projet :
+ on part de la branche develop correspondante puis on crée la feature comme suit :
+ -feature/nom_de_la_fonctonnalité
+ 
+ pour les commits :
+ lorsqu'il s'agit d'un dévelopment : 
+    "dev(fonctionnalité) : travail effectué"
+lorsu'il s'agit d'un fix :
+    "fix(nom_fichier_manipulé) : correction apportée"
+    
+    Avant de faire une merge-request:
+Toujours faire un git pull de la branche develop concernée puis se positionner sur la branche courante et faire rebase sur develop. avant de soumettre la merge-request
+
+Merciiiiiiiiiii...go work team
