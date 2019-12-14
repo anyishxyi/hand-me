@@ -12,7 +12,6 @@ HandMe website is a fork of [vue-element-admin](https://github.com/PanJiaChen/vu
 
 ```bash
 # clone the project
-git clone git@github.com:ownesthq/dashboard.git
 git clone -b develop_front git@gitlab.com:n19l/master_gpe.git
 
 # enter the project directory
