@@ -12,11 +12,6 @@
             </router-link>
           </el-col>
           <el-col :span="4" class="text-center">
-            <router-link class="pan-btn pink-btn" to="/excel/export-excel">
-              Excel
-            </router-link>
-          </el-col>
-          <el-col :span="4" class="text-center">
             <router-link class="pan-btn green-btn" to="/table/complex-table">
               Table
             </router-link>
@@ -85,7 +80,7 @@
             <span>hover text</span>
           </div>
           <div class="component-item">
-            <mallki class-name="mallki-text" text="vue-element-admin" />
+            <!-- <mallki class-name="mallki-text" text="vue-element-admin" /> -->
           </div>
         </el-card>
       </el-col>
@@ -107,18 +102,18 @@
 </template>
 
 <script>
-import PanThumb from '@/components/PanThumb'
-import MdInput from '@/components/MDinput'
-import Mallki from '@/components/TextHoverEffect/Mallki'
+// import PanThumb from '@/components/PanThumb'
+// import MdInput from '@/components/MDinput'
+// import Mallki from '@/components/TextHoverEffect/Mallki'
 import DropdownMenu from '@/components/Share/DropdownMenu'
 import waves from '@/directive/waves/index.js' // 水波纹指令
 
 export default {
   name: 'ComponentMixinDemo',
   components: {
-    PanThumb,
-    MdInput,
-    Mallki,
+    // PanThumb,
+    // MdInput,
+    // Mallki,
     DropdownMenu
   },
   directives: {

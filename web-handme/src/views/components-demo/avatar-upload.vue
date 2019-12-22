@@ -25,12 +25,9 @@
 </template>
 
 <script>
-import ImageCropper from '@/components/ImageCropper'
-import PanThumb from '@/components/PanThumb'
 
 export default {
   name: 'AvatarUploadDemo',
-  components: { ImageCropper, PanThumb },
   data() {
     return {
       imagecropperShow: false,

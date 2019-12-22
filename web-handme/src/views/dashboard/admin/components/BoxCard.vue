@@ -4,8 +4,8 @@
       <img src="https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png">
     </div>
     <div style="position:relative;">
-      <pan-thumb :image="avatar" class="panThumb" />
-      <mallki class-name="mallki-text" text="vue-element-admin" />
+      <!-- <pan-thumb :image="avatar" class="panThumb" /> -->
+      <!-- <mallki class-name="mallki-text" text="vue-element-admin" /> -->
       <div style="padding-top:35px;" class="progress-item">
         <span>Vue</span>
         <el-progress :percentage="70" />
@@ -28,11 +28,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import PanThumb from '@/components/PanThumb'
-import Mallki from '@/components/TextHoverEffect/Mallki'
+// import PanThumb from '@/components/PanThumb'
+// import Mallki from '@/components/TextHoverEffect/Mallki'
 
 export default {
-  components: { PanThumb, Mallki },
+  // components: { PanThumb, Mallki },
 
   filters: {
     statusFilter(status) {
@@ -89,21 +89,6 @@ export default {
     right: 0px;
     font-size: 20px;
     font-weight: bold;
-  }
-  .panThumb {
-    z-index: 100;
-    height: 70px!important;
-    width: 70px!important;
-    position: absolute!important;
-    top: -45px;
-    left: 0px;
-    border: 5px solid #ffffff;
-    background-color: #fff;
-    margin: auto;
-    box-shadow: none!important;
-    /deep/ .pan-info {
-      box-shadow: none!important;
-    }
   }
   .progress-item {
     margin-bottom: 10px;
