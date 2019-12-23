@@ -12,7 +12,6 @@
 
 <script>
 import { AppMain, Navbar, TagsView } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
 export default {
@@ -22,7 +21,6 @@ export default {
     Navbar,
     TagsView
   },
-  mixins: [ResizeMixin],
   computed: {
     ...mapState({
       device: state => state.app.device,
