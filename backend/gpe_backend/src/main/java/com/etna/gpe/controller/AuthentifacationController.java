@@ -16,13 +16,14 @@ public class AuthentifacationController {
 
     @Autowired
     ParticularService particularService;
+    
     @Autowired
     OrganizationService organizationService;
 
     @GetMapping("/login_organization")
     OrganizationDto loginOrganization(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
         return
-                organizationService.getParticularByEmailAndPassword(email, password);
+                organizationService.getOrganizationByEmailAndPassword(email, password);
     }
 
     @GetMapping("/login_particular")

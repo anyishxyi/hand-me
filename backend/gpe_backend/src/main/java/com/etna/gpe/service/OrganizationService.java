@@ -35,12 +35,12 @@ public class OrganizationService {
 
 
     public OrganizationDto getOrganizationByEmail(@NonNull String email) {
-        Organization organization = organizationRepository.getOrganizationByEmail(email);
+        Organization organization = organizationRepository.getOrganizationByOrganizationEmail(email);
         return organization != null ? new OrganizationDto(organization) : new OrganizationDto();
     }
 
-    public OrganizationDto getParticularByEmailAndPassword(@NonNull String email, @NonNull String password) {
-		Organization organization = organizationRepository.getOrganizationByEmailAndPassword(email, password);
+    public OrganizationDto getOrganizationByEmailAndPassword(@NonNull String email, @NonNull String password) {
+		Organization organization = organizationRepository.getOrganizationByOrganizationEmailAndOrganizationPassword(email, password);
 		return organization != null ? new OrganizationDto(organization) : new OrganizationDto();
     }
 

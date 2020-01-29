@@ -35,12 +35,12 @@ public class ParticularService {
 
 
     public ParticularDto getParticularByEmail(@NonNull String email) {
-        Particular particular = particularRepository.getParticularByEmail(email);
+        Particular particular = particularRepository.findParticularByParticularEmail(email);
         return particular != null ? new ParticularDto(particular) : new ParticularDto();
     }
 
     public ParticularDto getParticularByEmailAndPassword(@NonNull String email, @NonNull String password) {
-        Particular particular = particularRepository.getParticularByEmailAndPassword(email, password);
+        Particular particular = particularRepository.findParticularByparticularEmailAndParticularPassword(email, password);
         return particular != null ? new ParticularDto(particular) : new ParticularDto();
     }
 
