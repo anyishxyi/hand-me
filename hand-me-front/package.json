@@ -18,6 +18,12 @@
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
