@@ -3,9 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
+  },
+  "contributors": [
+    {
+      "name": "Jean-Paul NGALULA",
+      "email": "jeanpaulngalula07@gmail.com"
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "core-js": "^3.4.4",
