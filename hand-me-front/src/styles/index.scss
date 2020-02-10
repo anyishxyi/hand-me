@@ -1,7 +1,10 @@
 #app {
-  .main-container {
+  .app-container {
     min-height: 100%;
     position: relative;
+    margin: 0px;
   }
 
 }
+
+body { margin: 0; }

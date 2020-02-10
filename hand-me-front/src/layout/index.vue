@@ -1,6 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <div class="main-container">
+    <div class="app-container">
       <!-- <div :class="{'fixed-header':fixedHeader}">
         <navbar />
       </div> -->
