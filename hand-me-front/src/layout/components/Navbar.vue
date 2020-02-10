@@ -1,11 +1,11 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" :style="{ 'background': transparent }">
     <!-- <svg-icon icon-class="handme" /> -->
     <div class="right-menu">
-      <el-button type="text">Accueil</el-button>
-      <el-button type="text">Evenements</el-button>
-      <el-button type="text">Inscription</el-button>
-      <el-button type="primary">Connexion</el-button>
+      <el-button type="text" @click="onhome">Accueil</el-button>
+      <el-button type="text" @click="onEvents">Evenements</el-button>
+      <el-button type="text" @click="onSignUp">Inscription</el-button>
+      <el-button type="primary" @click="onLogin">Connexion</el-button>
     </div>
   </div>
 </template>
@@ -61,6 +61,9 @@ export default {
     },
     onSignUp() {
 
+    },
+    onhome() {
+
     }
   }
 }
@@ -71,7 +74,7 @@ export default {
   height: 60px;
   overflow: hidden;
   position: relative;
-  background: transparent !important;
+  // background: transparent !important;
   // box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .right-menu {

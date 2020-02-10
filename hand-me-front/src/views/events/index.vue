@@ -1,12 +1,12 @@
 <template>
   <div class="app-container home-page">
     <div class="banner">
-      <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
-      <p>
-        <el-input placeholder="Recherchez un évènement..." v-model="search" class="input-with-select">
+      <div class="right-content">
+        <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
+        <el-input placeholder="Recherchez un évènement..." v-model="search">
           <el-button slot="append" icon="el-icon-search"></el-button>
         </el-input>
-      </p>
+      </div>
     </div>
     <div></div>
     <div></div>
@@ -218,31 +218,21 @@ export default {
       background-color: #490D40;
       background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
       background-size: cover;
-      height: 570px;
+      height: 720px;
       margin-top: -60px;
 
-      .heading {
+      .right-content {
+        width: 60%;
+        padding-left: 50px;
+        .heading {
           color: white;
-          text-align: center;
           padding-top: 200px;
-      }
+          font-size: 60px;
+        }
 
-      p {
+        p {
           text-align: center;
-          padding: 20px 60px;
-
-          .btn {
-            background-color: transparent;
-            color: white;
-            border: 1px solid white;
-            padding: 10px;
-            font-size: 1.2em;
-
-              &:hover {
-                color: #C57ED3;
-                border-color: #C57ED3;
-              }
-          }
+        }
       }
     }
   }
