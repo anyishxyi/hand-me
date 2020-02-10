@@ -1,6 +1,13 @@
 <template>
   <div class="app-container home-page">
-    <div class="banner"></div>
+    <div class="banner">
+      <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
+      <p>
+        <el-input placeholder="Recherchez un évènement..." v-model="search" class="input-with-select">
+          <el-button slot="append" icon="el-icon-search"></el-button>
+        </el-input>
+      </p>
+    </div>
     <div></div>
     <div></div>
     <div></div>
@@ -197,12 +204,46 @@ Privacy
 
 <script>
 export default {
-
+  data(){
+    return {
+      search: ''
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   .home-page {
+    .banner {
+      background-color: #490D40;
+      background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
+      background-size: cover;
+      height: 570px;
+      margin-top: -60px;
 
+      .heading {
+          color: white;
+          text-align: center;
+          padding-top: 200px;
+      }
+
+      p {
+          text-align: center;
+          padding: 20px 60px;
+
+          .btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 10px;
+            font-size: 1.2em;
+
+              &:hover {
+                color: #C57ED3;
+                border-color: #C57ED3;
+              }
+          }
+      }
+    }
   }
 </style>

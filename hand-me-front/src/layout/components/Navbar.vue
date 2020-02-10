@@ -72,35 +72,7 @@ export default {
   overflow: hidden;
   position: relative;
   background: transparent !important;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
-
-  .change-orga {
-    line-height: 60px;
-    color: #fff;
-    cursor: pointer;
-
-    .el-input__inner {
-      background: transparent;
-    }
-  }
-
-  .hamburger-container {
-    line-height: 60px;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-    transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
-
-    &:hover {
-      background: rgba(0, 0, 0, .025)
-    }
-  }
-
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
-  }
+  // box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .right-menu {
     float: right;
