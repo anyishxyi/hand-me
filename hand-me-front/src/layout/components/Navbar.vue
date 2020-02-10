@@ -1,18 +1,36 @@
 <template>
   <div class="navbar">
-    <!-- <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
+    <!-- <svg-icon icon-class="handme" /> -->
     <div class="right-menu">
-      <!-- <search id="header-search" class="right-menu-item" /> -->
-      <!-- <lang-select class="right-menu-item lang hover-effect" /> -->
-      <!-- <span class="right-menu-item hover-effect"><svg-icon icon-class="logout" @click="openLogout" /></!-->
+      <el-button type="text">Accueil</el-button>
+      <el-button type="text">Evenements</el-button>
+      <el-button type="text">Inscription</el-button>
+      <el-button type="primary">Connexion</el-button>
     </div>
   </div>
 </template>
 
 <script>
+const OFFSET = 60
+
 export default {
   data() {
-    return {}
+    return {
+      showNavbar: true,
+      lastScrollPosition: 0,
+      scrollValue: 0
+    }
+  },
+  mounted () {
+    this.lastScrollPosition = window.pageYOffset
+    window.addEventListener('scroll', this.onScroll)
+    const viewportMeta = document.createElement('meta')
+    viewportMeta.name = 'viewport'
+    viewportMeta.content = 'width=device-width, initial-scale=1'
+    document.head.appendChild(viewportMeta)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.onScroll)
   },
   async created() {
     await this.init()
@@ -22,7 +40,26 @@ export default {
       // eslint-disable-next-line no-console
       console.log('navbar')
     },
+    onScroll () {
+      if (window.pageYOffset < 0) {
+        console.log('<0')
+        return
+      }
+      if (Math.abs(window.pageYOffset - this.lastScrollPosition) < OFFSET) {
+        return
+      }
+      this.showNavbar = window.pageYOffset < this.lastScrollPosition
+      this.lastScrollPosition = window.pageYOffset
+    },
     openLogout() {
+    },
+    onLogin() {
+
+    },
+    onEvents() {
+
+    },
+    onSignUp() {
 
     }
   }
@@ -34,7 +71,7 @@ export default {
   height: 60px;
   overflow: hidden;
   position: relative;
-  background: #33333D;
+  background: transparent !important;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .change-orga {
