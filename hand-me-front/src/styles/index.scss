@@ -1,10 +1,20 @@
-#app {
-  .app-container {
-    min-height: 100%;
-    position: relative;
-    margin: 0px;
-  }
-
+@import './variables.scss';
+@import './element-ui.scss';
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900&display=swap');
+html {
+  height: 100%;
+  box-sizing: border-box;
 }
 
-body { margin: 0; }
+body {
+  margin: 0;
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Lato', Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+#app {
+  height: 100%;
+}
