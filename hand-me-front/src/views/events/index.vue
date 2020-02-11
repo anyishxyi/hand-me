@@ -13,9 +13,30 @@
       <div class="subject">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius
       </div>
-      <div class="content"></div>
+      <div class="content">
+        <el-card>
+          <!-- <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"> -->
+          <div style="padding: 14px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+          </div>
+        </el-card>
+        <el-card class="middle-card">
+          <!-- <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"> -->
+          <div style="padding: 14px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+          </div>
+        </el-card>
+        <el-card>
+          <!-- <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"> -->
+          <div style="padding: 14px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+          </div>
+        </el-card>
+      </div>
     </div>
-    <div></div>
+    <div class="counter">
+
+    </div>
     <div></div>
     <div></div>
     <div></div>
@@ -69,6 +90,21 @@ export default {
         padding-right: 10%;
         padding-top: 5%;
         padding-bottom: 5%;
+      }
+      .content {
+        display: flex;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 5%;
+
+        .middle-card {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+      }
+      .content > el-card {
+        flex: 1; /*grow*/
+        padding: 10px;
       }
     }
   }
