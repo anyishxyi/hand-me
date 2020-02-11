@@ -35,17 +35,17 @@
       </div>
     </div>
     <div class="counter">
-      <div class="counter-content">
+      <div >
         <count-to :start-val="0" :end-val="users" class="count" separator=" " />
         <p>Membres</p>
       </div>
-      <div class="middle-card counter-content">
+      <div class="middle-card">
         <count-to :start-val="0" :end-val="organisateurs" class="count" separator=" " />
         <p>Organisateurs</p>
       </div>
-      <div class="counter-content">
+      <div >
         <count-to :start-val="0" :end-val="events" class="count" separator=" " />
-        <p>events</p>
+        <p>Evènements</p>
       </div>
     </div>
     <div></div>
@@ -128,22 +128,23 @@ export default {
     .counter {
       background-color: #4370F3;
       text-align: center;
+      color: white;
       display: flex;
       padding-left: 10%;
       padding-right: 10%;
-      padding-bottom: 5%;
+      // padding-bottom: 5%;
       justify-content: center;
       align-items: center;
 
       .count {
-        font-size: 3em;
-        font-weight: 900;
+        font-size: 40px;
+        font-weight: Medium;
       }
 
       .count + p {
         margin-top: 0.2em;
         font-size: 0.9em;
-        color: #292F3C;
+        color: white;
         margin-bottom: 2em;
       }
 
