@@ -15,19 +15,19 @@
       </div>
       <div class="content">
         <el-card>
-          <!-- <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"> -->
+          <svg-icon icon-class="Icon_calendar" />
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card class="middle-card">
-          <!-- <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"> -->
+          <svg-icon icon-class="Icon_localisation" />
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card>
-          <!-- <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image"> -->
+          <svg-icon icon-class="Icon_people" />
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
@@ -35,7 +35,18 @@
       </div>
     </div>
     <div class="counter">
-
+      <div class="counter-content">
+        <count-to :start-val="0" :end-val="users" class="count" separator=" " />
+        <p>Membres</p>
+      </div>
+      <div class="middle-card counter-content">
+        <count-to :start-val="0" :end-val="organisateurs" class="count" separator=" " />
+        <p>Organisateurs</p>
+      </div>
+      <div class="counter-content">
+        <count-to :start-val="0" :end-val="events" class="count" separator=" " />
+        <p>events</p>
+      </div>
     </div>
     <div></div>
     <div></div>
@@ -45,10 +56,16 @@
 </template>
 
 <script>
+import countTo from 'vue-count-to'
+
 export default {
+  components: { countTo },
   data(){
     return {
-      search: ''
+      search: '',
+      users: 6000,
+      organisateurs: 300,
+      events: 980
     }
   }
 }
@@ -96,16 +113,49 @@ export default {
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 5%;
-
-        .middle-card {
-          margin-left: 20px;
-          margin-right: 20px;
-        }
       }
       .content > el-card {
         flex: 1; /*grow*/
         padding: 10px;
       }
+    }
+
+    .middle-card {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .counter {
+      background-color: #4370F3;
+      text-align: center;
+      display: flex;
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-bottom: 5%;
+      justify-content: center;
+      align-items: center;
+
+      .count {
+        font-size: 3em;
+        font-weight: 900;
+      }
+
+      .count + p {
+        margin-top: 0.2em;
+        font-size: 0.9em;
+        color: #292F3C;
+        margin-bottom: 2em;
+      }
+
+      .counter-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .counter > div {
+      flex: 1; /*grow*/
+      padding: 10px;
     }
   }
 </style>

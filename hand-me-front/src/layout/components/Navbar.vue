@@ -1,5 +1,6 @@
 <template>
-  <div class="navbar" :style="{ 'background': transparent }">
+  <div class="navbar">
+  <!-- <div class="navbar" :style="{ 'background': transparent }"> -->
     <!-- <svg-icon icon-class="handme" /> -->
     <div class="right-menu">
       <el-button type="text" @click="onhome">Accueil</el-button>
