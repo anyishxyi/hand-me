@@ -3,10 +3,26 @@
   <!-- <div class="navbar" :style="{ 'background': transparent }"> -->
     <!-- <svg-icon icon-class="handme" /> -->
     <div class="right-menu">
-      <el-button type="text" @click="onhome">Accueil</el-button>
-      <el-button type="text" @click="onEvents">Evenements</el-button>
-      <el-button type="text" @click="onSignUp">Inscription</el-button>
-      <el-button type="primary" @click="onLogin">Connexion</el-button>
+      <el-button type="text" @click="onhome">
+        <router-link :to="{path: '/home'}">
+          Accueil
+        </router-link>
+      </el-button>
+      <el-button type="text" @click="onEvents">
+        <router-link :to="{path: '/events'}">
+          Evenements
+        </router-link>
+      </el-button>
+      <el-button type="text">
+        <router-link :to="{path: '/register'}">
+          Inscription
+        </router-link>
+      </el-button>
+      <el-button type="primary">
+        <router-link :to="{path: '/login'}">
+          Connexion
+        </router-link>
+      </el-button>
     </div>
   </div>
 </template>
