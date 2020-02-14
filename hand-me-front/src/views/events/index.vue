@@ -43,10 +43,7 @@
         <count-to :start-val="0" :end-val="organisateurs" class="count" separator=" " />
         <p>Organisateurs</p>
       </div>
-      <div >
-        <count-to :start-val="0" :end-val="events" class="count" separator=" " />
-        <p>Evènements</p>
-      </div>
+
     </div>
     <div></div>
     <div></div>
@@ -146,12 +143,6 @@ export default {
         font-size: 0.9em;
         color: white;
         margin-bottom: 2em;
-      }
-
-      .counter-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
       }
     }
     .counter > div {
