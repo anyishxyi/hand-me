@@ -23,11 +23,6 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path: '/401',
-    component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/events'),
-    hidden: true
-  },
-  {
     path: '',
     component: Layout,
     redirect: 'home',
@@ -35,27 +30,31 @@ export const constantRoutes = [
       {
         path: 'home',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/home'),
-        name: 'events',
+        name: 'home',
         // meta: { title: 'events', icon: 'home', affix: true }
       },
       {
         path: '/login',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/login'),
+        name: 'login',
         hidden: true
       },
       {
         path: '/register',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
+        name: 'register',
         hidden: true
       },
       {
         path: '/profile',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/user/profile'),
+        name: 'profile',
         hidden: true
       },
       {
         path: '/events',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/events'),
+        name: 'events',
         hidden: true
       }
     ]
