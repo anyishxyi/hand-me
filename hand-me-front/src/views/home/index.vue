@@ -124,7 +124,9 @@
         </div> <!-- end event -->
       </div>
       <div class="btn_all_events">
-        <el-button type="primary">VOIR TOUS LES EVENEMENTS</el-button>
+        <el-button type="primary">
+          <router-link :to="{path: '/events'}">VOIR TOUS LES EVENEMENTS</router-link>
+        </el-button>
       </div>
     </div>
     <div class="commentaries"></div>
