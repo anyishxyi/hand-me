@@ -9,11 +9,11 @@
       </div>
     </div>
     <div class="category">
-      <div class="header">Lorem ipsum dolor sit amet</div>
-      <div class="subject">
+      <div class="cat_header">Lorem ipsum dolor sit amet</div>
+      <div class="cat_subject">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius
       </div>
-      <div class="content">
+      <div class="cat_content">
         <el-card>
           <svg-icon class="icon-size" icon-class="calendar" />
           <div style="padding: 14px;">
@@ -48,24 +48,80 @@
         <p>Evènements</p>
       </div>
     </div>
-    <div class="maps"></div>
+    <div class="maps">
+      <div class="title">Vos évènements à proximité</div>
+    </div>
     <div class="events_overview">
       <div class="events">
-        <el-card class="event">
-          <div style="padding: 14px;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
-          </div>
-        </el-card>
-        <el-card class="event">
-          <div style="padding: 14px;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
-          </div>
-        </el-card>
-        <el-card class="event">
-          <div style="padding: 14px;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
-          </div>
-        </el-card>
+        <div class="event">
+          <div class="container">
+            <div class="city-title">event</div>
+            <hr />
+            <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
+            <div class="city-weather-description" id="city-weather-description">
+              sunny
+            </div>
+            <div class="content">
+              <div class="nav-info clearfix" id="offices">
+                <div class="one-half">
+                  <div class="info" id="offices">
+                    <div class="company-name">Mintel Group Ltd</div>
+                    <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
+                    <div class="phone">+1 123 654 987 36</div>
+                  </div> <!-- end info -->
+                </div> <!-- end one-half -->
+                <div class="one-half">
+                </div> <!-- end one-half -->
+              </div> <!-- end nav-info #offices-->
+            </div> <!-- end content -->
+          </div> <!-- end container -->
+        </div> <!-- end event -->
+        <div class="event">
+          <div class="container">
+            <div class="city-title">event</div>
+            <hr />
+            <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
+            <div class="city-weather-description" id="city-weather-description">
+              sunny
+            </div>
+            <div class="content">
+              <div class="nav-info clearfix" id="offices">
+                <div class="one-half">
+                  <div class="info" id="offices">
+                    <div class="company-name">Mintel Group Ltd</div>
+                    <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
+                    <div class="phone">+1 123 654 987 36</div>
+                  </div> <!-- end info -->
+                </div> <!-- end one-half -->
+                <div class="one-half">
+                </div> <!-- end one-half -->
+              </div> <!-- end nav-info #offices-->
+            </div> <!-- end content -->
+          </div> <!-- end container -->
+        </div> <!-- end event -->
+        <div class="event">
+          <div class="container">
+            <div class="city-title">event</div>
+            <hr />
+            <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
+            <div class="city-weather-description" id="city-weather-description">
+              sunny
+            </div>
+            <div class="content">
+              <div class="nav-info clearfix" id="offices">
+                <div class="one-half">
+                  <div class="info" id="offices">
+                    <div class="company-name">Mintel Group Ltd</div>
+                    <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
+                    <div class="phone">+1 123 654 987 36</div>
+                  </div> <!-- end info -->
+                </div> <!-- end one-half -->
+                <div class="one-half">
+                </div> <!-- end one-half -->
+              </div> <!-- end nav-info #offices-->
+            </div> <!-- end content -->
+          </div> <!-- end container -->
+        </div> <!-- end event -->
       </div>
       <div class="btn_all_events">
         <el-button type="primary">VOIR TOUS LES EVENEMENTS</el-button>
@@ -117,25 +173,25 @@ export default {
     }
     .category {
       text-align: center;
-      .header {
+      .cat_header {
         font-size: 37px;
         font-weight: 600;
         padding-top: 5%;
       }
-      .subject {
+      .cat_subject {
         font-weight: 200;
         padding-left: 10%;
         padding-right: 10%;
         padding-top: 5%;
         padding-bottom: 5%;
       }
-      .content {
+      .cat_content {
         display: flex;
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 5%;
       }
-      .content > el-card {
+      .cat_content > el-card {
         flex: 1; /*grow*/
         padding: 10px;
       }
@@ -188,7 +244,11 @@ export default {
     .maps {
       background: url('~@/icons/png/maps.png') no-repeat center center;
       background-size: cover;
-      height: 400px;
+      height: 450px;
+      .title {
+        background: transparent !important;
+        align-items: center;
+      }
     }
 
     .events_overview {
@@ -205,7 +265,7 @@ export default {
         }
       }
 
-      .events  > el-card {
+      .events  > .event {
         flex: 1; /*grow*/
       }
 
@@ -221,5 +281,129 @@ export default {
 
     }
 
+  }
+
+  // spefics cards
+
+  .event {
+    box-sizing: border-box;
+    font: 13px "Open Sans", Arial;
+    padding: 40px 0;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 360px;
+    height: 480px;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chicago.jpg');
+    border-radius: 2px;
+    position: relative
+
+  }
+
+  .city-title, .city-weather-temperature, .city-weather-description, img.city-weather-icon {
+    font-family: 'Intro';
+    text-align: center;
+    margin:auto;
+    display: block;
+  }
+
+  .city-title {
+    font-size: 26px;
+    padding-top: 24px;
+  }
+
+  hr {
+    border-top: 1px solid #A3A3A3;
+    border-bottom: 1px solid #626165;
+    width: 112px;
+  }
+
+  .city-weather-temperature {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .city-weather-description {
+    width: 120px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .content {
+    position: absolute;
+    bottom: 0px;
+    z-index: 9999;
+  }
+
+  .nav-info {
+    background: rgba(255,255,240, 0.65);
+
+    .info {
+      margin-top: 20px;
+      margin-bottom: 24px;
+
+      .company-name {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-bottom: 3px;
+      }
+
+      .address {
+        line-height: 16px;
+        margin-bottom: 6px;
+      }
+
+      .phone {
+        color:  #C4A865;
+        font-weight: bold;
+      }
+    }
+
+    img {
+      margin-top: 28px;
+      margin-right: 8px;
+    }
+  }
+
+  .one-half {
+    width: 180px;
+    float: left;
+    padding-left: 20px;
+  }
+
+  .clearfix:before,
+    .clearfix:after,
+    .row:before,
+    .row:after {
+      content: '\0020';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .row:after,
+    .clearfix:after {
+      clear: both; }
+    .row,
+    .clearfix {
+      zoom: 1; }
+
+
+  .clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  .hide {
+    display: none;
   }
 </style>
