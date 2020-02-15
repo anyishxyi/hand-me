@@ -49,7 +49,28 @@
       </div>
     </div>
     <div class="maps"></div>
-    <div class="events-overview"></div>
+    <div class="events_overview">
+      <div class="events">
+        <el-card class="event">
+          <div style="padding: 14px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+          </div>
+        </el-card>
+        <el-card class="event">
+          <div style="padding: 14px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+          </div>
+        </el-card>
+        <el-card class="event">
+          <div style="padding: 14px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+          </div>
+        </el-card>
+      </div>
+      <div class="btn_all_events">
+        <el-button type="primary">VOIR TOUS LES EVENEMENTS</el-button>
+      </div>
+    </div>
     <div class="commentaries"></div>
     <div></div>
   </div>
@@ -170,8 +191,30 @@ export default {
       height: 400px;
     }
 
-    .events-overview {
+    .events_overview {
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-top: 5%;
+      padding-bottom: 5%;
 
+      .events  {
+        display: flex;
+        .event {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+
+      .events  > el-card {
+        flex: 1; /*grow*/
+      }
+
+      .btn_all_events {
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     .commentaries {
