@@ -15,19 +15,19 @@
       </div>
       <div class="content">
         <el-card>
-          <svg-icon icon-class="Icon_calendar" />
+          <svg-icon class="icon-size" icon-class="calendar" />
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card class="middle-card">
-          <svg-icon icon-class="Icon_localisation" />
+          <svg-icon class="icon-size" icon-class="localisation" />
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card>
-          <svg-icon icon-class="Icon_people" />
+          <svg-icon class="icon-size" icon-class="people" />
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
@@ -48,9 +48,9 @@
         <p>Evènements</p>
       </div>
     </div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="maps"></div>
+    <div class="events-overview"></div>
+    <div class="commentaries"></div>
     <div></div>
   </div>
 </template>
@@ -74,7 +74,7 @@ export default {
 <style lang="scss" scoped>
   .home-page {
     .banner {
-      background-color: #490D40;
+      // background-color: #490D40;
       background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
       background-size: cover;
       height: 720px;
@@ -158,5 +158,25 @@ export default {
       flex: 1; /*grow*/
       padding: 10px;
     }
+
+    .icon-size {
+      font-size: 38px;
+      display: block;
+    }
+
+    .maps {
+      background: url('~@/icons/png/maps.png') no-repeat center center;
+      background-size: cover;
+      height: 400px;
+    }
+
+    .events-overview {
+
+    }
+
+    .commentaries {
+
+    }
+
   }
 </style>
