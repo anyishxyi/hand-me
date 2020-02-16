@@ -41,8 +41,8 @@ export const constantRoutes = [
       },
       {
         path: '/register',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
-        name: 'register',
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/registerForm'),
+        name: 'registerForm',
         hidden: true
       },
       {
