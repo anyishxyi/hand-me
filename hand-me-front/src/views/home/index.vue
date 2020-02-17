@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="category">
-      <div class="cat_header">Lorem ipsum dolor sit amet</div>
+      <div class="cat_header separator">Lorem ipsum dolor sit amet</div>
       <div class="cat_subject">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius
       </div>
@@ -130,7 +130,7 @@
       </div>
     </div>
     <div class="commentaries">
-      <div class="com_header">Ce qu'ils en pensent</div>
+      <div class="com_header separator"> Ce qu'ils en pensent </div>
       <div class="com_content">
         <div>
           <div class="photo"></div>
@@ -357,7 +357,56 @@ export default {
 
   }
 
-  // spefics cards
+
+  .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid #4370F3;
+    max-width: 10%;
+  }
+  .separator::before {
+    margin-right: 20px;
+  }
+  .separator::after {
+    margin-left: 20px;
+  }
+
+  /*
+   * HR
+   */
+
+// hr {
+//   height: 1px;
+//   background: white;
+//   border: none;
+//   outline: none;
+//   // margin: 3em 3em 5em;
+//   position: relative;
+//   width: 50%;
+//   // margin: 3em auto;
+
+//   &:before {
+
+//     content: attr(data-symbol);
+//     position: absolute;
+//     top: 0;
+//     left: 50%;
+//     background: black;
+//     color: white;
+//     padding: 0.5em 3em;
+//     // @include transform(translate(-50%, -50%));
+//   }
+// }
+
+  /*
+  * spefics cards
+  */
 
   .event {
     box-sizing: border-box;
