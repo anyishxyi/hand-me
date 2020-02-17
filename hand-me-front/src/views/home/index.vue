@@ -129,7 +129,32 @@
         </el-button>
       </div>
     </div>
-    <div class="commentaries"></div>
+    <div class="commentaries">
+      <div class="com_header">Ce qu'ils en pensent</div>
+      <div class="com_content">
+        <div>
+          <div class="photo"></div>
+          <div class="name">Pauline</div>
+          <div class="role">DESIGNER</div>
+          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
+I can make endless updates with whatever layout I desire!"</div>
+        </div>
+        <div>
+          <div class="photo"></div>
+          <div class="name">Josie</div>
+          <div class="role">PHOTOGRAPHER</div>
+          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
+I can make endless updates with whatever layout I desire!"</div>
+        </div>
+        <div>
+          <div class="photo"></div>
+          <div class="name">Paul</div>
+          <div class="role">BLOGER</div>
+          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
+I can make endless updates with whatever layout I desire!"</div>
+        </div>
+      </div>
+    </div>
     <div></div>
   </div>
 </template>
@@ -258,6 +283,7 @@ export default {
       padding-right: 10%;
       padding-top: 5%;
       padding-bottom: 5%;
+      background-color: white;
 
       .events  {
         display: flex;
@@ -280,7 +306,53 @@ export default {
     }
 
     .commentaries {
+      background-color: #F4F6FC;
+      text-align: center;
 
+      .com_header {
+        font-size: 30px;
+        font-weight: 600;
+        padding-top: 5%;
+        padding-bottom: 5%;
+      }
+
+      .com_content {
+        display: flex;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 5%;
+
+        div {
+          .photo {
+
+          }
+
+          .name {
+            color: #4370F3;
+            font-size: 24px;
+            font-weight: Medium;
+          }
+
+          .role {
+            color: #7E829B;
+            font-size: 14px;
+            font-weight: Medium;
+          }
+
+          .comment {
+            padding-top: 25px;
+            color: #444040;
+            // font-size: 40px;
+            font-weight: Medium;
+            line-height: 1.8;
+          }
+        }
+      }
+
+      .com_content > div {
+        flex: 1; /*grow*/
+        padding: 10px;
+      }
     }
 
   }
