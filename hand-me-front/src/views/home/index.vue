@@ -15,19 +15,19 @@
       </div>
       <div class="cat_content">
         <el-card>
-          <svg-icon class="icon-size" icon-class="calendar" />
+          <el-image :src="calendar" class="icon-class" lazy></el-image>
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card class="middle-card">
-          <svg-icon class="icon-size" icon-class="localisation" />
+          <el-image :src="people" class="icon-class" lazy></el-image>
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card>
-          <svg-icon class="icon-size" icon-class="people" />
+          <el-image :src="localisation" class="icon-class" lazy></el-image>
           <div style="padding: 14px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
@@ -56,7 +56,6 @@
         <div class="event">
           <div class="container">
             <div class="city-title">event</div>
-            <hr />
             <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
             <div class="city-weather-description" id="city-weather-description">
               sunny
@@ -172,6 +171,10 @@ const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
 const img3 = require('@/icons/png/User3.png')
 
+const calendar = require('@/icons/png/calendar.png')
+const people = require('@/icons/png/team.png')
+const localisation = require('@/icons/png/pin.png')
+
 export default {
   components: { countTo },
   data(){
@@ -182,7 +185,10 @@ export default {
       events: 980,
       img1,
       img2,
-      img3
+      img3,
+      calendar,
+      people,
+      localisation
     }
   }
 }
@@ -277,14 +283,14 @@ export default {
     }
 
     .icon-size {
-      font-size: 38px;
-      display: block;
+      // font-size: 38px;
+      // display: block;
     }
 
     .maps {
       background: url('~@/icons/png/maps.png') no-repeat center center;
       background-size: cover;
-      height: 450px;
+      height: 600px;
       .title {
         background: transparent !important;
         align-items: center;
@@ -540,5 +546,10 @@ export default {
 
   .hide {
     display: none;
+  }
+
+  .icon-class {
+    width: 30px;
+    height: 30px;
   }
 </style>
