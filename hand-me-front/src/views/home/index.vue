@@ -133,21 +133,27 @@
       <div class="com_header separator"> Ce qu'ils en pensent </div>
       <div class="com_content">
         <div>
-          <div class="photo"></div>
+          <div class="photo">
+            <el-image :src="img1" lazy />
+          </div>
           <div class="name">Pauline</div>
           <div class="role">DESIGNER</div>
           <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
 I can make endless updates with whatever layout I desire!"</div>
         </div>
         <div>
-          <div class="photo"></div>
+          <div class="photo">
+            <el-image :src="img2" lazy />
+          </div>
           <div class="name">Josie</div>
           <div class="role">PHOTOGRAPHER</div>
           <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
 I can make endless updates with whatever layout I desire!"</div>
         </div>
         <div>
-          <div class="photo"></div>
+          <div class="photo">
+            <el-image :src="img3" lazy />
+          </div>
           <div class="name">Paul</div>
           <div class="role">BLOGER</div>
           <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
@@ -162,6 +168,10 @@ I can make endless updates with whatever layout I desire!"</div>
 <script>
 import countTo from 'vue-count-to'
 
+const img1 = require('@/icons/png/User1.png')
+const img2 = require('@/icons/png/User2.png')
+const img3 = require('@/icons/png/User3.png')
+
 export default {
   components: { countTo },
   data(){
@@ -169,7 +179,10 @@ export default {
       search: '',
       users: 6000,
       organisateurs: 300,
-      events: 980
+      events: 980,
+      img1,
+      img2,
+      img3
     }
   }
 }
@@ -356,7 +369,6 @@ export default {
     }
 
   }
-
 
   .separator {
     display: flex;
