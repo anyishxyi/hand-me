@@ -6,11 +6,14 @@
       </div> -->
       <navbar />
       <app-main />
+      <footer />
     </div>
   </div>
 </template>
 <script>
-import { AppMain, Navbar } from './components'
+// import { AppMain, Navbar } from './components'
+/* eslint-disable vue/no-unused-components */
+import { AppMain, Navbar, Footer } from './components'
 
 import { mapState } from 'vuex'
 
@@ -18,7 +21,8 @@ export default {
   name: 'Layout',
   components: {
     AppMain,
-    Navbar
+    Navbar,
+    Footer
   },
   computed: {
     ...mapState({

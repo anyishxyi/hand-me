@@ -31,6 +31,7 @@
 const OFFSET = 60
 
 export default {
+  name: 'Navbar',
   data() {
     return {
       showNavbar: true,
