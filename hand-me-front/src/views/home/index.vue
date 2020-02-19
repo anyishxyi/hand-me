@@ -1,11 +1,13 @@
 <template>
   <div class="app-container home-page">
     <div class="banner">
-      <div class="right-content">
+      <div class="left_content">
         <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
-        <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
-          <el-button type="primary">Connexion</el-button>
-        </el-input>
+        <div class="search_bar">
+          <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
+          <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
+          </el-input>
+        </div>
       </div>
     </div>
     <div class="category">
@@ -16,19 +18,19 @@
       <div class="cat_content">
         <el-card>
           <el-image :src="calendar" class="icon-class" lazy></el-image>
-          <div style="padding: 14px;">
+          <div class="details">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card class="middle-card">
           <el-image :src="people" class="icon-class" lazy></el-image>
-          <div style="padding: 14px;">
+          <div class="details">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
         <el-card>
           <el-image :src="localisation" class="icon-class" lazy></el-image>
-          <div style="padding: 14px;">
+          <div class="details">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
           </div>
         </el-card>
@@ -67,14 +69,14 @@
                     <div class="company-name">Mintel Group Ltd</div>
                     <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
                     <div class="phone">+1 123 654 987 36</div>
-                  </div> <!-- end info -->
-                </div> <!-- end one-half -->
+                  </div>
+                </div>
                 <div class="one-half">
-                </div> <!-- end one-half -->
-              </div> <!-- end nav-info #offices-->
-            </div> <!-- end content -->
-          </div> <!-- end container -->
-        </div> <!-- end event -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="event">
           <div class="container">
             <div class="city-title">event</div>
@@ -90,14 +92,14 @@
                     <div class="company-name">Mintel Group Ltd</div>
                     <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
                     <div class="phone">+1 123 654 987 36</div>
-                  </div> <!-- end info -->
-                </div> <!-- end one-half -->
+                  </div>
+                </div>
                 <div class="one-half">
-                </div> <!-- end one-half -->
-              </div> <!-- end nav-info #offices-->
-            </div> <!-- end content -->
-          </div> <!-- end container -->
-        </div> <!-- end event -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="event">
           <div class="container">
             <div class="city-title">event</div>
@@ -113,14 +115,14 @@
                     <div class="company-name">Mintel Group Ltd</div>
                     <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
                     <div class="phone">+1 123 654 987 36</div>
-                  </div> <!-- end info -->
-                </div> <!-- end one-half -->
+                  </div>
+                </div>
                 <div class="one-half">
-                </div> <!-- end one-half -->
-              </div> <!-- end nav-info #offices-->
-            </div> <!-- end content -->
-          </div> <!-- end container -->
-        </div> <!-- end event -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="btn_all_events">
         <el-button type="primary">
@@ -203,9 +205,10 @@ export default {
       height: 720px;
       margin-top: -60px;
 
-      .right-content {
+      .left_content {
         width: 60%;
         padding-left: 50px;
+
         .heading {
           color: white;
           padding-top: 200px;
@@ -215,15 +218,26 @@ export default {
         p {
           text-align: center;
         }
+
+        .search_bar {
+          width: 650px;
+        }
+        // el-input {
+        //   .search_btn {
+        //     background-color: #4370F3;
+        //   }
+        // }
       }
     }
     .category {
       text-align: center;
+
       .cat_header {
         font-size: 37px;
         font-weight: 600;
         padding-top: 5%;
       }
+
       .cat_subject {
         font-weight: 200;
         padding-left: 10%;
@@ -231,15 +245,26 @@ export default {
         padding-top: 5%;
         padding-bottom: 5%;
       }
+
       .cat_content {
         display: flex;
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 5%;
+
+
       }
+
       .cat_content > el-card {
         flex: 1; /*grow*/
         padding: 10px;
+      }
+
+      .details {
+        padding: 14px;
+        color: #444040;
+        font-weight: Medium;
+        line-height: 1.5;
       }
     }
 
@@ -280,11 +305,6 @@ export default {
     .counter > div {
       flex: 1; /*grow*/
       padding: 10px;
-    }
-
-    .icon-size {
-      // font-size: 38px;
-      // display: block;
     }
 
     .maps {

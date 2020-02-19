@@ -1,14 +1,12 @@
 <template>
   <div class="navbar">
-  <!-- <div class="navbar" :style="{ 'background': transparent }"> -->
-    <!-- <svg-icon icon-class="handme" /> -->
     <div class="right-menu">
-      <el-button type="text" @click="onhome">
+      <el-button type="text">
         <router-link :to="{path: '/home'}">
           Accueil
         </router-link>
       </el-button>
-      <el-button type="text" @click="onEvents">
+      <el-button type="text">
         <router-link :to="{path: '/events'}">
           Evenements
         </router-link>
@@ -18,7 +16,7 @@
           Inscription
         </router-link>
       </el-button>
-      <el-button type="primary">
+      <el-button type="primary" class="btn_connexion">
         <router-link :to="{path: '/login'}">
           Connexion
         </router-link>
@@ -67,20 +65,6 @@ export default {
       }
       this.showNavbar = window.pageYOffset < this.lastScrollPosition
       this.lastScrollPosition = window.pageYOffset
-    },
-    openLogout() {
-    },
-    onLogin() {
-
-    },
-    onEvents() {
-
-    },
-    onSignUp() {
-
-    },
-    onhome() {
-
     }
   }
 }
@@ -91,14 +75,15 @@ export default {
   height: 60px;
   overflow: hidden;
   position: relative;
-  // background: transparent !important;
-  // box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  background-color: #232020 !important;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .right-menu {
     float: right;
     height: 100%;
     line-height: 60px;
     margin-right: 40px;
+    text-decoration: none;
 
     &:focus {
       outline: none;
@@ -149,6 +134,12 @@ export default {
         }
       }
     }
+  }
+
+  .btn_connexion {
+    // background-color: #4370F3;
+    color: white;
+    text-decoration: none;
   }
 }
 </style>

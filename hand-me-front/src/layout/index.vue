@@ -1,13 +1,11 @@
 <template>
   <div class="app-wrapper">
-    <div class="app-container">
-      <!-- <div :class="{'fixed-header':fixedHeader}">
-        <navbar />
-      </div> -->
+    <!-- <div :class="{'fixed-header':fixedHeader}">
       <navbar />
-      <app-main />
-      <footer />
-    </div>
+    </div> -->
+    <navbar />
+    <app-main />
+    <footer />
   </div>
 </template>
 <script>
