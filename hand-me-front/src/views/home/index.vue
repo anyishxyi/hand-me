@@ -58,56 +58,10 @@
         <div class="event">
           <div class="container">
             <div class="city-title">event</div>
-            <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
+            <!-- <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
             <div class="city-weather-description" id="city-weather-description">
               sunny
-            </div>
-            <div class="content">
-              <div class="nav-info clearfix" id="offices">
-                <div class="one-half">
-                  <div class="info" id="offices">
-                    <div class="company-name">Mintel Group Ltd</div>
-                    <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
-                    <div class="phone">+1 123 654 987 36</div>
-                  </div>
-                </div>
-                <div class="one-half">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="container">
-            <div class="city-title">event</div>
-            <hr />
-            <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
-            <div class="city-weather-description" id="city-weather-description">
-              sunny
-            </div>
-            <div class="content">
-              <div class="nav-info clearfix" id="offices">
-                <div class="one-half">
-                  <div class="info" id="offices">
-                    <div class="company-name">Mintel Group Ltd</div>
-                    <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
-                    <div class="phone">+1 123 654 987 36</div>
-                  </div>
-                </div>
-                <div class="one-half">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="container">
-            <div class="city-title">event</div>
-            <hr />
-            <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
-            <div class="city-weather-description" id="city-weather-description">
-              sunny
-            </div>
+            </div> -->
             <div class="content">
               <div class="nav-info clearfix" id="offices">
                 <div class="one-half">
