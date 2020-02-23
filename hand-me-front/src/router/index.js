@@ -46,6 +46,18 @@ export const constantRoutes = [
         hidden: true
       },
       {
+        path: '/register-particular',
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register-particular'),
+        name: 'registerParticular',
+        hidden: true
+      },
+      {
+        path: '/register-association',
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register-association'),
+        name: 'registerAssociation',
+        hidden: true
+      },
+      {
         path: '/profile',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/user/profile'),
         name: 'profile',

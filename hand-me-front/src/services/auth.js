@@ -14,12 +14,27 @@ export default {
         });
     },
 
-    register: (name, firstName, email, password, phoneNumber, location) => {
+    registerParticular: (name, firstName, email, password, phoneNumber, location) => {
         return axios.post('http://localhost:3000/create-particular',{
             name, 
             firstName, 
             email,
             password, 
+            phoneNumber,
+            location
+        }).then((res)=>{
+            return res;
+        })
+    },
+
+    registerAssociation: (associationName, registerNumber, ownerName, ownerSurname, email, password, phoneNumber, location) => {
+        return axios.post('http://localhost:3000/create-particular',{
+            associationName, 
+            registerNumber, 
+            ownerName,
+            ownerSurname, 
+            email,
+            password,
             phoneNumber,
             location
         }).then((res)=>{
