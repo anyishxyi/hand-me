@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <div class="navbar navbar-default">
+      <div class="navbar navbar-default" v-bind:style='{ backgroundColor: `${navColorOnScroll}` }'>
         <div class="right-menu">
           <el-button type="text">
             <router-link :to="{path: '/home'}">
@@ -172,7 +172,7 @@ export default {
       people,
       localisation,
       events: [],
-      scrollPosition: null
+      navColorOnScroll: 'transparent !important'
     }
   },
   created() {
@@ -199,9 +199,7 @@ export default {
       ]
     },
     updateScroll() {
-      this.scrollPosition = window.scrollY
-      console.log('this.scrollPosition')
-      console.log(this.scrollPosition)
+      this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#4370F3' : 'transparent !important'
     }
   }
 }
