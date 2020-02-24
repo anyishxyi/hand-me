@@ -1,9 +1,6 @@
 <template>
   <div class="app-wrapper">
-    <!-- <div :class="{'fixed-header':fixedHeader}">
-      <navbar />
-    </div> -->
-    <navbar />
+    <!-- <navbar /> -->
     <app-main />
     <footer />
   </div>

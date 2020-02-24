@@ -1,6 +1,30 @@
 <template>
-  <div class="app-container home-page">
+  <div class="home-page">
     <div class="banner">
+      <div class="navbar navbar-default">
+        <div class="right-menu">
+          <el-button type="text">
+            <router-link :to="{path: '/home'}">
+              Accueil
+            </router-link>
+          </el-button>
+          <el-button type="text">
+            <router-link :to="{path: '/events'}">
+              Evenements
+            </router-link>
+          </el-button>
+          <el-button type="text">
+            <router-link :to="{path: '/register'}">
+              Inscription
+            </router-link>
+          </el-button>
+          <el-button type="primary" class="btn_connexion">
+            <router-link :to="{path: '/login'}">
+              Connexion
+            </router-link>
+          </el-button>
+        </div>
+      </div>
       <div class="left_content">
         <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
         <div class="search_bar">
@@ -180,14 +204,16 @@ export default {
       // background-color: #490D40;
       background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
       background-size: cover;
-      height: 720px;
-      margin-top: -60px;
+      height: 780px;
+
+      // position: relative;
+      padding-top: -10px;
 
       .left_content {
         width: 60%;
         padding-left: 50px;
 
-        .heading {
+        .heading { // Font gras
           color: white;
           padding-top: 200px;
           font-size: 60px;
