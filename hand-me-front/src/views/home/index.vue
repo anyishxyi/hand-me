@@ -18,7 +18,7 @@
               Inscription
             </router-link>
           </el-button>
-          <el-button type="primary" class="btn_connexion">
+          <el-button type="primary">
             <router-link :to="{path: '/login'}">
               Connexion
             </router-link>
