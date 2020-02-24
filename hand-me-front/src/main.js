@@ -4,6 +4,8 @@ import App from './App.vue'
 import Element from 'element-ui'
 import './styles/element-variables.scss'
 
+import { GooglePlacesAutocomplete } from 'vue-better-google-places-autocomplete'
+
 import '@/styles/index.scss' // global css
 
 import store from './store'
@@ -15,6 +17,8 @@ require('moment/locale/fr')
 Vue.config.productionTip = false
 
 Vue.prototype.handleEvent = new Vue()
+
+Vue.component('google-places-autocomplete', GooglePlacesAutocomplete)
 
 Vue.use(Element)
 

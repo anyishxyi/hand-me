@@ -29,8 +29,24 @@
         <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
         <div class="search_bar">
           <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
-          <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
+            <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
           </el-input>
+          <!-- <google-places-autocomplete>
+             <div slot="input" slot-scope="{ context, events, actions }">
+              <label for="locationInput">Address Search</label>
+              <input
+                v-model="context.input"
+                @focus="events.inputHasReceivedFocus"
+                @input="events.inputHasChanged"
+                @keydown.enter.prevent="actions.selectItemFromList"
+                @keydown.down.prevent="actions.shiftResultsSelection"
+                @keydown.up.prevent="actions.unshiftResultsSelection"
+                type="search"
+                id="locationInput"
+                placeholder="Type something ..."
+              >
+            </div>
+          </google-places-autocomplete> -->
         </div>
       </div>
     </div>
@@ -172,7 +188,7 @@ export default {
       people,
       localisation,
       events: [],
-      navColorOnScroll: 'transparent !important'
+      navColorOnScroll: 'transparent !important',
     }
   },
   created() {
@@ -180,6 +196,7 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
+    // this.address.focus();
   },
   methods: {
     init() {
@@ -208,19 +225,15 @@ export default {
 <style lang="scss" scoped>
   .home-page {
     .banner {
-      // background-color: #490D40;
       background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
       background-size: cover;
       height: 780px;
-
-      // position: relative;
-      padding-top: -10px;
 
       .left_content {
         width: 60%;
         padding-left: 50px;
 
-        .heading { // Font gras
+        .heading {
           color: white;
           padding-top: 200px;
           font-size: 60px;
@@ -233,11 +246,6 @@ export default {
         .search_bar {
           width: 650px;
         }
-        // el-input {
-        //   .search_btn {
-        //     background-color: #4370F3;
-        //   }
-        // }
       }
     }
     .category {
