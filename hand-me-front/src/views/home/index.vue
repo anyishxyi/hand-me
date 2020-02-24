@@ -38,15 +38,15 @@
     </div>
     <div class="counter">
       <div >
-        <count-to :start-val="0" :end-val="users" class="count" separator=" " />
+        <count-to :start-val="0" :end-val="nb_users" class="count" separator=" " />
         <p>Membres</p>
       </div>
       <div class="middle-card">
-        <count-to :start-val="0" :end-val="organisateurs" class="count" separator=" " />
+        <count-to :start-val="0" :end-val="nb_orga" class="count" separator=" " />
         <p>Organisateurs</p>
       </div>
       <div >
-        <count-to :start-val="0" :end-val="events" class="count" separator=" " />
+        <count-to :start-val="0" :end-val="nb_events" class="count" separator=" " />
         <p>Evènements</p>
       </div>
     </div>
@@ -55,20 +55,15 @@
     </div>
     <div class="events_overview">
       <div class="events">
-        <div class="event">
-          <div class="container">
-            <div class="city-title">event</div>
-            <!-- <div class="city-weather-temperature"  id="city-weather-temperature">-1° C</div>
-            <div class="city-weather-description" id="city-weather-description">
-              sunny
-            </div> -->
+        <div class="event" v-for="event of events" :key="event.id">
+          <div class="container" v-bind:style='{ backgroundImage: `url("${event.img}")` }'>
             <div class="content">
               <div class="nav-info clearfix" id="offices">
                 <div class="one-half">
                   <div class="info" id="offices">
-                    <div class="company-name">Mintel Group Ltd</div>
-                    <div class="address">333 W. Wacker Drive, Suite 1100, event</div>
-                    <div class="phone">+1 123 654 987 36</div>
+                    <div class="event_title">Titre Event</div>
+                    <div class="event_description">court description</div>
+                    <div class="date">+1 123 654 987 36</div>
                   </div>
                 </div>
                 <div class="one-half">
@@ -131,20 +126,49 @@ const calendar = require('@/icons/png/calendar.png')
 const people = require('@/icons/png/team.png')
 const localisation = require('@/icons/png/pin.png')
 
+const event1 = require('@/icons/png/event1.png')
+const event2 = require('@/icons/png/event2.png')
+const event3 = require('@/icons/png/event3.png')
+
 export default {
   components: { countTo },
   data(){
     return {
       search: '',
-      users: 6000,
-      organisateurs: 300,
-      events: 980,
+      nb_users: 6000,
+      nb_orga: 300,
+      nb_events: 980,
       img1,
       img2,
       img3,
+      event1,
+      event2,
+      event3,
       calendar,
       people,
-      localisation
+      localisation,
+      events: []
+    }
+  },
+  created() {
+    this.init()
+  },
+  methods: {
+    init() {
+      this.events = [
+        {
+          id: 0,
+          img: event1
+        },
+        {
+          id: 1,
+          img: event2
+        },
+        {
+          id: 2,
+          img: event3
+        }
+      ]
     }
   }
 }
@@ -280,9 +304,98 @@ export default {
 
       .events  {
         display: flex;
+          // margin-left: 5px;
+          // margin-right: 5px;
         .event {
-          margin-left: 5px;
-          margin-right: 5px;
+          box-sizing: border-box;
+          padding: 40px 0;
+        }
+
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+
+        .container {
+          margin: 0 auto;
+          width: 360px;
+          height: 360px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+          transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+          border-radius: 2px;
+          position: relative
+        }
+
+        .container:hover {
+          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+        .content {
+          position: absolute;
+          bottom: 0px;
+          z-index: 9999;
+        }
+
+        .nav-info {
+          background: rgba(255,255,240, 0.65);
+
+          .info {
+            margin-top: 20px;
+            margin-bottom: 24px;
+
+            .event_title {
+              text-transform: uppercase;
+              font-weight: bold;
+              margin-bottom: 3px;
+            }
+
+            .event_description {
+              line-height: 16px;
+              margin-bottom: 6px;
+            }
+
+            .date {
+              color:  #C4A865;
+              // font-weight: bold;
+            }
+          }
+
+          img {
+            margin-top: 28px;
+            margin-right: 8px;
+          }
+        }
+
+        .one-half {
+          width: 180px;
+          float: left;
+          padding-left: 20px;
+        }
+
+        .clearfix:before,
+          .clearfix:after,
+          .row:before,
+          .row:after {
+            content: '\0020';
+            display: block;
+            overflow: hidden;
+            visibility: hidden;
+            width: 0;
+            height: 0; }
+          .row:after,
+          .clearfix:after {
+            clear: both; }
+          .row,
+          .clearfix {
+            zoom: 1; }
+
+
+        .clear {
+          clear: both;
+          display: block;
+          overflow: hidden;
+          visibility: hidden;
+          width: 0;
+          height: 0;
         }
       }
 
@@ -400,123 +513,6 @@ export default {
   * spefics cards
   */
 
-  .event {
-    box-sizing: border-box;
-    font: 13px "Open Sans", Arial;
-    padding: 40px 0;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  .container {
-    margin: 0 auto;
-    width: 360px;
-    height: 480px;
-    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chicago.jpg');
-    border-radius: 2px;
-    position: relative
-
-  }
-
-  .city-title, .city-weather-temperature, .city-weather-description, img.city-weather-icon {
-    font-family: 'Intro';
-    text-align: center;
-    margin:auto;
-    display: block;
-  }
-
-  .city-title {
-    font-size: 26px;
-    padding-top: 24px;
-  }
-
-  hr {
-    border-top: 1px solid #A3A3A3;
-    border-bottom: 1px solid #626165;
-    width: 112px;
-  }
-
-  .city-weather-temperature {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  .city-weather-description {
-    width: 120px;
-    margin: auto;
-    text-align: center;
-  }
-
-  .content {
-    position: absolute;
-    bottom: 0px;
-    z-index: 9999;
-  }
-
-  .nav-info {
-    background: rgba(255,255,240, 0.65);
-
-    .info {
-      margin-top: 20px;
-      margin-bottom: 24px;
-
-      .company-name {
-        text-transform: uppercase;
-        font-weight: bold;
-        margin-bottom: 3px;
-      }
-
-      .address {
-        line-height: 16px;
-        margin-bottom: 6px;
-      }
-
-      .phone {
-        color:  #C4A865;
-        font-weight: bold;
-      }
-    }
-
-    img {
-      margin-top: 28px;
-      margin-right: 8px;
-    }
-  }
-
-  .one-half {
-    width: 180px;
-    float: left;
-    padding-left: 20px;
-  }
-
-  .clearfix:before,
-    .clearfix:after,
-    .row:before,
-    .row:after {
-      content: '\0020';
-      display: block;
-      overflow: hidden;
-      visibility: hidden;
-      width: 0;
-      height: 0; }
-    .row:after,
-    .clearfix:after {
-      clear: both; }
-    .row,
-    .clearfix {
-      zoom: 1; }
-
-
-  .clear {
-    clear: both;
-    display: block;
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
-    height: 0;
-  }
 
   .hide {
     display: none;
