@@ -171,11 +171,15 @@ export default {
       calendar,
       people,
       localisation,
-      events: []
+      events: [],
+      scrollPosition: null
     }
   },
   created() {
     this.init()
+  },
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll);
   },
   methods: {
     init() {
@@ -193,6 +197,11 @@ export default {
           img: event3
         }
       ]
+    },
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+      console.log('this.scrollPosition')
+      console.log(this.scrollPosition)
     }
   }
 }
