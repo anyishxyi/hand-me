@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <div class="navbar navbar-default" v-bind:style='{ backgroundColor: `${navColorOnScroll}` }'>
+      <div class="navbar navbar-default" :style='{ backgroundColor: `${navColorOnScroll}` }'>
         <div class="right-menu">
           <el-button type="text">
             <router-link :to="{path: '/home'}">
@@ -80,7 +80,7 @@
     <div class="events_overview">
       <div class="events">
         <div class="event" v-for="event of events" :key="event.id">
-          <div class="container" v-bind:style='{ backgroundImage: `url("${event.img}")` }'>
+          <div class="container" :style='{ backgroundImage: `url("${event.img}")` }'>
             <div class="content">
               <div class="nav-info clearfix" id="offices">
                 <div class="one-half">

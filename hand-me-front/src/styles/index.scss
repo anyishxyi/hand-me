@@ -1,6 +1,7 @@
 @import './variables.scss';
 @import './element-ui.scss';
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700,900&display=swap');
+
 html {
   height: 100%;
   box-sizing: border-box;
@@ -22,27 +23,22 @@ body {
 }
 
 h1 {
-  // font-size: 2em;
   margin-block-start: 0px !important;
 }
 
 a:-webkit-any-link{
   text-decoration:none !important;
+  color: white !important;
 }
 
 .navbar {
   height: 60px;
-  // overflow: hidden;
-  // position: relative;
-  // background-color: white;
   border: none;
-  color: white;
   z-index: 100;
   transition: background-color 1s ease 0s;
   top: 0;
   position: fixed;
   width: 100%;
-  // background-color: #232020 !important;
   // box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .right-menu {
@@ -50,7 +46,6 @@ a:-webkit-any-link{
     height: 100%;
     line-height: 60px;
     margin-right: 40px;
-    text-decoration: none;
 
     &:focus {
       outline: none;
@@ -61,7 +56,6 @@ a:-webkit-any-link{
       padding: 0 8px;
       height: 100%;
       font-size: 1.1em;
-      color: white;
       vertical-align: text-bottom;
 
       &.lang {
@@ -101,11 +95,5 @@ a:-webkit-any-link{
         }
       }
     }
-  }
-
-  .btn_connexion {
-    // background-color: #4370F3;
-    color: white;
-    text-decoration: none;
   }
 }
