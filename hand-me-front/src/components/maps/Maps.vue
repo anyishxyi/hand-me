@@ -1,7 +1,6 @@
 <template>
   <GoogleMapLoader
     :mapConfig="mapConfig"
-    apiKey="apiKey"
   >
     <template slot-scope="{ google, map }">
       <GoogleMapMarker
@@ -29,7 +28,6 @@ export default {
 
   data() {
     return {
-      apiKey: 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM',
       markers: [
         {
           id: "a",

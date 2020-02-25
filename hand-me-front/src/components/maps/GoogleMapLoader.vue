@@ -15,8 +15,7 @@ import GoogleMapsApiLoader from "google-maps-api-loader";
 
 export default {
   props: {
-    mapConfig: Object,
-    apiKey: String
+    mapConfig: Object
   },
 
   data() {
@@ -28,7 +27,7 @@ export default {
 
   async mounted() {
     const googleMapApi = await GoogleMapsApiLoader({
-      apiKey: this.apiKey
+      apiKey: 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM'
     });
     this.google = googleMapApi;
     this.initializeMap();
@@ -47,5 +46,6 @@ export default {
 .google-map {
   width: 100%;
   min-height: 100%;
+  height: 700px;
 }
 </style>
