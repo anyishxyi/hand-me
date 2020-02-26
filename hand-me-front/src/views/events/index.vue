@@ -25,20 +25,16 @@
       </div>
     </div>
     <div class="container">
-      <div class="box">
-        <div class="box-row">
-          <div class="box-cell left">
-            <div class="events_filter">
-              Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
-            </div>
-            <div class="events_list">
+      <div class="left">
+        <div class="events_filter">
 
-            </div>
-          </div>
-          <div class="box-cell right">
-            <Maps />
-          </div>
         </div>
+        <div class="events_list">
+
+        </div>
+      </div>
+      <div class="right">
+        <Maps />
       </div>
     </div>
   </div>
@@ -76,26 +72,21 @@ export default {
   height: 100%;
 }
 
-.container .box {
+.container {
   width:100%;
   margin-top:60px;
   display:table;
-}
-.container .box .box-row {
-  display:table-row;
-}
-.container .box .box-cell {
-  display:table-cell;
-}
-.container .box .box-cell.left {
-  text-align:justify;
-  flex: 1 1 auto;
-  width:40%;
-  // height:100%;
-}
-.container .box .box-cell.right {
-  text-align:justify;
-  flex: 1 1 auto;
-  // height:100%;
+
+  .left {
+    text-align:justify;
+    float:left;
+    width:40%;
+  }
+  .right {
+    text-align:justify;
+    float:right;
+    height: 700px;
+    width: 60%;
+  }
 }
 </style>
