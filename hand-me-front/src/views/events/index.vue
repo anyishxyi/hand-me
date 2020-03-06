@@ -1,5 +1,15 @@
 <template>
-  <div class="events-container">
+  <div>
+    <vue-google-autocomplete
+      id="from_address"
+      classname="form-control"
+      placeholder="Start typing"
+      v-on:placechanged="getFromAddress"
+      v-on:error="handleError"
+    >
+    </vue-google-autocomplete>
+  </div>
+  <!-- <div class="events-container">
     <div class="navbar navbar-default shadow">
       <div class="right-menu">
         <el-button type="text">
@@ -79,21 +89,23 @@
         <Maps />
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import Maps from '@/components/maps/Maps'
+// import Maps from '@/components/maps/Maps'
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 export default {
-  components: {
-    Maps
-  },
+  // components: { Maps },
+  components: { VueGoogleAutocomplete },
   data(){
     return {
       dates: '',
       localisation: '',
-      category: ''
+      category: '',
+      from_address:{},
+      to_address:{}
     }
   },
   created() {
@@ -102,6 +114,27 @@ export default {
   methods: {
     init() {
       console.log('events page')
+    },
+    getFromAddress(from_address, placeResultData, id) {
+      this.from_address = from_address;
+      console.log('from_address');
+      console.log(from_address);
+      console.log('placeResultData');
+      console.log(placeResultData);
+      console.log('id');
+      console.log(id);
+    },
+    getToAddress(to_address, placeResultData, id){
+      this.to_address = to_address;
+      console.log('to_address');
+      console.log(to_address);
+      console.log('placeResultData');
+      console.log(placeResultData);
+      console.log('id');
+      console.log(id);
+    },
+    handleError(error){
+      alert(error)
     }
   }
 }
