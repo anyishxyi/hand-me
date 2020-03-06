@@ -46,9 +46,9 @@
               class="dates"
               v-model="dates"
               type="daterange"
-              range-separator="To"
-              start-placeholder="Start date"
-              end-placeholder="End date">
+              range-separator="A"
+              start-placeholder="Date départ"
+              end-placeholder="Date fin">
             </el-date-picker>
           </div>
         </div>

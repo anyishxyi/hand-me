@@ -3,6 +3,7 @@ import App from './App.vue'
 
 import Element from 'element-ui'
 import './styles/element-variables.scss'
+import locale from 'element-ui/lib/locale/lang/fr'
 
 import { GooglePlacesAutocomplete } from 'vue-better-google-places-autocomplete'
 
@@ -20,7 +21,7 @@ Vue.prototype.handleEvent = new Vue()
 
 Vue.component('google-places-autocomplete', GooglePlacesAutocomplete)
 
-Vue.use(Element)
+Vue.use(Element, { locale })
 
 Vue.use(require('vue-moment'), {
   moment
