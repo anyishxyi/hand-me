@@ -28,9 +28,6 @@
       <div class="left_content">
         <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
         <div class="search_bar">
-          <!-- <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
-            <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
-          </el-input> -->
           <Places
             class="localisation"
             id="from_address"

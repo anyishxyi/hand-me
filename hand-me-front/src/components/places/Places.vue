@@ -11,7 +11,9 @@
     @change="onChange"
     @keypress="onKeyPress"
     @keyup="onKeyUp"
-  />
+  >
+    <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
+  </el-input>
 </template>
 
 <script>
