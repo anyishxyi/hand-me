@@ -28,17 +28,18 @@
       <div class="left_content">
         <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
         <div class="search_bar">
-          <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
+          <!-- <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
             <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
-            <vue-google-autocomplete
-              id="from_address"
-              classname="form-control"
-              placeholder="Start typing"
-              v-on:placechanged="getAddress"
-              v-on:error="handleError"
-            >
-            </vue-google-autocomplete>
-          </el-input>
+          </el-input> -->
+          <Places
+            class="localisation"
+            id="from_address"
+            classname="form-control"
+            placeholder="Start typing"
+            :placechanged="getAddress"
+            :error="handleError"
+          >
+          </Places>
         </div>
       </div>
     </div>
@@ -149,7 +150,8 @@ I can make endless updates with whatever layout I desire!"</div>
 
 <script>
 import countTo from 'vue-count-to'
-import VueGoogleAutocomplete from 'vue-google-autocomplete'
+// import VueGoogleAutocomplete from 'vue-google-autocomplete'
+import Places from '@/components/places/Places'
 
 const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
@@ -164,7 +166,7 @@ const event2 = require('@/icons/png/event2.png')
 const event3 = require('@/icons/png/event3.png')
 
 export default {
-  components: { countTo, VueGoogleAutocomplete },
+  components: { countTo, Places },
   data(){
     return {
       search: '',

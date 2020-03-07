@@ -1,15 +1,5 @@
 <template>
-  <div>
-    <Places
-      id="from_address"
-      classname="form-control"
-      placeholder="Start typing"
-      :placechanged="getAddress"
-      :error="handleError"
-    >
-    </Places>
-  </div>
-  <!-- <div class="events-container">
+  <div class="events-container">
     <div class="navbar navbar-default shadow">
       <div class="right-menu">
         <el-button type="text">
@@ -38,12 +28,15 @@
       <div class="left">
         <div class="events_filter">
           <div class="local_cat">
-            <el-input
+            <Places
               class="localisation"
-              placeholder="Type something"
-              prefix-icon="el-icon-search"
-              v-model="localisation">
-            </el-input>
+              id="from_address"
+              classname="form-control"
+              placeholder="Start typing"
+              :placechanged="getAddress"
+              :error="handleError"
+            >
+            </Places>
             <el-input
               class="category"
               placeholder="Type something"
@@ -89,18 +82,15 @@
         <Maps />
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script>
-// import Maps from '@/components/maps/Maps'
+import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
-// import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 export default {
-  // components: { Maps },
-  components: { Places },
-  // components: { VueGoogleAutocomplete, GooglePlaceAutocomplete },
+  components: { Places, Maps },
   data(){
     return {
       dates: '',

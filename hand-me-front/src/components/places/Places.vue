@@ -124,20 +124,20 @@
        * When a place changed
        */
       onPlaceChanged() {
-          let place = this.autocomplete.getPlace();
-          if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            this.$emit('no-results-found', place, this.id);
-            return;
-          }
-          if (place.address_components !== undefined) {
-              // return returnData object and PlaceResult object
-              this.$emit('placechanged', this.formatResult(place), place, this.id);
-              // update autocompleteText then emit change event
-              this.autocompleteText = document.getElementById(this.id).value
-              this.onChange()
-          }
+        let place = this.autocomplete.getPlace();
+        if (!place.geometry) {
+          // User entered the name of a Place that was not suggested and
+          // pressed the Enter key, or the Place Details request failed.
+          this.$emit('no-results-found', place, this.id);
+          return;
+        }
+        if (place.address_components !== undefined) {
+          // return returnData object and PlaceResult object
+          this.$emit('placechanged', this.formatResult(place), place, this.id);
+          // update autocompleteText then emit change event
+          this.autocompleteText = document.getElementById(this.id).value
+          this.onChange()
+        }
       },
       /**
        * When the input gets focus
@@ -206,17 +206,17 @@
           // eslint-disable-next-line no-undef
           if (!this.geolocation.geocoder) this.geolocation.geocoder = new google.maps.Geocoder();
           this.geolocation.geocoder.geocode({'location': value}, (results, status) => {
-              if (status === 'OK') {
-                  results = this.filterGeocodeResultTypes(results);
-                  if (results[0]) {
-                      this.$emit('placechanged', this.formatResult(results[0]), results[0], this.id);
-                      this.update(results[0].formatted_address);
-                  } else {
-                      this.$emit('error', 'no result for provided coordinates');
-                  }
+            if (status === 'OK') {
+              results = this.filterGeocodeResultTypes(results);
+              if (results[0]) {
+                this.$emit('placechanged', this.formatResult(results[0]), results[0], this.id);
+                this.update(results[0].formatted_address);
               } else {
-                  this.$emit('error', 'error getting address from coords');
+                this.$emit('error', 'no result for provided coordinates');
               }
+            } else {
+              this.$emit('error', 'error getting address from coords');
+            }
           })
       },
       /**
