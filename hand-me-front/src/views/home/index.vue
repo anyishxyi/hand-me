@@ -30,23 +30,15 @@
         <div class="search_bar">
           <el-input size="large" placeholder="Recherchez un évènement..." v-model="search">
             <i slot="suffix" class="el-input__icon el-icon-search search_btn"></i>
+            <vue-google-autocomplete
+              id="from_address"
+              classname="form-control"
+              placeholder="Start typing"
+              v-on:placechanged="getAddress"
+              v-on:error="handleError"
+            >
+            </vue-google-autocomplete>
           </el-input>
-          <!-- <google-places-autocomplete>
-             <div slot="input" slot-scope="{ context, events, actions }">
-              <label for="locationInput">Address Search</label>
-              <input
-                v-model="context.input"
-                @focus="events.inputHasReceivedFocus"
-                @input="events.inputHasChanged"
-                @keydown.enter.prevent="actions.selectItemFromList"
-                @keydown.down.prevent="actions.shiftResultsSelection"
-                @keydown.up.prevent="actions.unshiftResultsSelection"
-                type="search"
-                id="locationInput"
-                placeholder="Type something ..."
-              >
-            </div>
-          </google-places-autocomplete> -->
         </div>
       </div>
     </div>
@@ -157,6 +149,7 @@ I can make endless updates with whatever layout I desire!"</div>
 
 <script>
 import countTo from 'vue-count-to'
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
@@ -171,7 +164,7 @@ const event2 = require('@/icons/png/event2.png')
 const event3 = require('@/icons/png/event3.png')
 
 export default {
-  components: { countTo },
+  components: { countTo, VueGoogleAutocomplete },
   data(){
     return {
       search: '',
@@ -189,6 +182,8 @@ export default {
       localisation,
       events: [],
       navColorOnScroll: 'transparent !important',
+      from_address:{},
+      to_address:{}
     }
   },
   created() {
@@ -217,6 +212,12 @@ export default {
     },
     updateScroll() {
       this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#4370F3' : 'transparent !important'
+    },
+    getAddress(from_address) {
+      this.address = from_address;
+    },
+    handleError(error){
+      alert(error)
     }
   }
 }

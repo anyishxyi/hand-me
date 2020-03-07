@@ -1,7 +1,6 @@
 <template>
   <div>
     <vue-google-autocomplete
-      id="from_address"
       classname="form-control"
       placeholder="Start typing"
       v-on:placechanged="getAddress"
@@ -116,13 +115,7 @@ export default {
       console.log('events page')
     },
     getAddress(from_address) {
-      this.from_address = from_address;
-      console.log('from_address');
-      console.log(from_address);
-      // console.log('placeResultData');
-      // console.log(placeResultData);
-      // console.log('id');
-      // console.log(id);
+      this.address = from_address;
     },
     handleError(error){
       alert(error)
