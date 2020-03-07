@@ -1,12 +1,13 @@
 <template>
   <div>
-    <vue-google-autocomplete
+    <Places
+      id="from_address"
       classname="form-control"
       placeholder="Start typing"
-      v-on:placechanged="getAddress"
-      v-on:error="handleError"
+      :placechanged="getAddress"
+      :error="handleError"
     >
-    </vue-google-autocomplete>
+    </Places>
   </div>
   <!-- <div class="events-container">
     <div class="navbar navbar-default shadow">
@@ -93,11 +94,13 @@
 
 <script>
 // import Maps from '@/components/maps/Maps'
-import VueGoogleAutocomplete from 'vue-google-autocomplete'
+import Places from '@/components/places/Places'
+// import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 export default {
   // components: { Maps },
-  components: { VueGoogleAutocomplete },
+  components: { Places },
+  // components: { VueGoogleAutocomplete, GooglePlaceAutocomplete },
   data(){
     return {
       dates: '',

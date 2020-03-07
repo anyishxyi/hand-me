@@ -1,5 +1,5 @@
 <template>
-  <input
+  <el-input
     ref="autocomplete"
     type="text"
     :class="classname"
@@ -29,7 +29,6 @@
   const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country',
     'administrative_area_level_1', 'administrative_area_level_2'];
   export default {
-    name: 'VueGoogleAutocomplete',
     props: {
       id: {
         type: String,
