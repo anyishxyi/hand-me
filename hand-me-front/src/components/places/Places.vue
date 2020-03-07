@@ -28,8 +28,7 @@
     postal_code: 'short_name'
   };
   const CITIES_TYPE = ['locality', 'administrative_area_level_3'];
-  const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country',
-    'administrative_area_level_1', 'administrative_area_level_2'];
+  const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country', 'administrative_area_level_1', 'administrative_area_level_2'];
   export default {
     props: {
       id: {
@@ -107,7 +106,8 @@
     mounted: function() {
       const options = {};
       if (this.types) {
-        options.types = [this.types];
+        // options.types = [this.types];
+        options.types = ['(cities)']; // Because i want to show only cities
       }
       if (this.country) {
         options.componentRestrictions = {
@@ -204,67 +204,67 @@
        * @param  {Coordinates} value
        */
       updateCoordinates (value) {
-          if (!value && !(value.lat || value.lng)) return;
-          // eslint-disable-next-line no-undef
-          if (!this.geolocation.geocoder) this.geolocation.geocoder = new google.maps.Geocoder();
-          this.geolocation.geocoder.geocode({'location': value}, (results, status) => {
-            if (status === 'OK') {
-              results = this.filterGeocodeResultTypes(results);
-              if (results[0]) {
-                this.$emit('placechanged', this.formatResult(results[0]), results[0], this.id);
-                this.update(results[0].formatted_address);
-              } else {
-                this.$emit('error', 'no result for provided coordinates');
-              }
+        if (!value && !(value.lat || value.lng)) return;
+        // eslint-disable-next-line no-undef
+        if (!this.geolocation.geocoder) this.geolocation.geocoder = new google.maps.Geocoder();
+        this.geolocation.geocoder.geocode({'location': value}, (results, status) => {
+          if (status === 'OK') {
+            results = this.filterGeocodeResultTypes(results);
+            if (results[0]) {
+              this.$emit('placechanged', this.formatResult(results[0]), results[0], this.id);
+              this.update(results[0].formatted_address);
             } else {
-              this.$emit('error', 'error getting address from coords');
+              this.$emit('error', 'no result for provided coordinates');
             }
-          })
+          } else {
+            this.$emit('error', 'error getting address from coords');
+          }
+        })
       },
       /**
        * Update location based on navigator geolocation
        */
       geolocate () {
-          this.updateGeolocation ((geolocation, position) => {
-            console.log('position')
-            console.log(position)
-            this.updateCoordinates(geolocation)
-          })
+        this.updateGeolocation ((geolocation, position) => {
+          console.log('position')
+          console.log(position)
+          this.updateCoordinates(geolocation)
+        })
       },
       /**
        * Update internal location from navigator geolocation
        * @param  {Function} (geolocation, position)
        */
       updateGeolocation (callback = null) {
-          if (navigator.geolocation) {
-              let options = {};
-              if(this.geolocationOptions) Object.assign(options, this.geolocationOptions);
-              navigator.geolocation.getCurrentPosition(position => {
-                  let geolocation = {
-                      lat: position.coords.latitude,
-                      lng: position.coords.longitude
-                  };
-                  this.geolocation.loc = geolocation;
-                  this.geolocation.position = position;
-                  if (callback) callback(geolocation, position);
-              }, err => {
-                  this.$emit('error', 'Cannot get Coordinates from navigator', err);
-              }, options);
-          }
+        if (navigator.geolocation) {
+          let options = {};
+          if(this.geolocationOptions) Object.assign(options, this.geolocationOptions);
+          navigator.geolocation.getCurrentPosition(position => {
+            let geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            this.geolocation.loc = geolocation;
+            this.geolocation.position = position;
+            if (callback) callback(geolocation, position);
+          }, err => {
+            this.$emit('error', 'Cannot get Coordinates from navigator', err);
+          }, options);
+        }
       },
       // Bias the autocomplete object to the user's geographical location,
       // as supplied by the browser's 'navigator.geolocation' object.
       biasAutocompleteLocation () {
-          if (this.enableGeolocation) {
-              this.updateGeolocation((geolocation, position) => {
-                  // eslint-disable-next-line no-undef
-                  let circle = new google.maps.Circle({
-                      center: geolocation,
-                      radius: position.coords.accuracy
-                  });
-                  this.autocomplete.setBounds(circle.getBounds());
-              })
-          }
+        if (this.enableGeolocation) {
+          this.updateGeolocation((geolocation, position) => {
+            // eslint-disable-next-line no-undef
+            let circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            this.autocomplete.setBounds(circle.getBounds());
+          })
+        }
       },
       /**
        * Format result from Geo google APIs
@@ -272,17 +272,17 @@
        * @returns {{formatted output}}
        */
       formatResult (place) {
-          let returnData = {};
-          for (let i = 0; i < place.address_components.length; i++) {
-              let addressType = place.address_components[i].types[0];
-              if (ADDRESS_COMPONENTS[addressType]) {
-                  let val = place.address_components[i][ADDRESS_COMPONENTS[addressType]];
-                  returnData[addressType] = val;
-              }
+        let returnData = {};
+        for (let i = 0; i < place.address_components.length; i++) {
+          let addressType = place.address_components[i].types[0];
+          if (ADDRESS_COMPONENTS[addressType]) {
+            let val = place.address_components[i][ADDRESS_COMPONENTS[addressType]];
+            returnData[addressType] = val;
           }
-          returnData['latitude'] = place.geometry.location.lat();
-          returnData['longitude'] = place.geometry.location.lng();
-          return returnData
+        }
+        returnData['latitude'] = place.geometry.location.lat();
+        returnData['longitude'] = place.geometry.location.lng();
+        return returnData
       },
       /**
        * Extract configured types out of raw result as

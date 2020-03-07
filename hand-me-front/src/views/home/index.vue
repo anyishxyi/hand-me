@@ -18,7 +18,7 @@
               Inscription
             </router-link>
           </el-button>
-          <el-button type="primary">
+          <el-button type="text">
             <router-link :to="{path: '/login'}">
               Connexion
             </router-link>
@@ -219,8 +219,17 @@ export default {
     handleError(error){
       alert(error)
     },
-    getLocation() {
-
+    async getLocation() {
+      const options = {
+        enableHighAccuracy: false,
+        timeout: Infinity,
+        maximumAge: 0
+      }
+      await this.$getLocation(options)
+          .then(coordinates => {
+            console.log('coordinates')
+            console.log(coordinates)
+          });
     }
   }
 }
@@ -527,33 +536,6 @@ export default {
   .separator::after {
     margin-left: 20px;
   }
-
-  /*
-   * HR
-   */
-
-// hr {
-//   height: 1px;
-//   background: white;
-//   border: none;
-//   outline: none;
-//   // margin: 3em 3em 5em;
-//   position: relative;
-//   width: 50%;
-//   // margin: 3em auto;
-
-//   &:before {
-
-//     content: attr(data-symbol);
-//     position: absolute;
-//     top: 0;
-//     left: 50%;
-//     background: black;
-//     color: white;
-//     padding: 0.5em 3em;
-//     // @include transform(translate(-50%, -50%));
-//   }
-// }
 
   /*
   * spefics cards

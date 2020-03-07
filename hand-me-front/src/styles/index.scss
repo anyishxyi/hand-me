@@ -40,7 +40,7 @@ a:-webkit-any-link{
   top: 0;
   position: fixed;
   width: 100%;
-  background-color: red($color: #000000);
+  // background-color: red($color: #000000);
   // box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .right-menu {
@@ -96,6 +96,10 @@ a:-webkit-any-link{
           font-size: 12px;
         }
       }
+    }
+
+    .btn_connexion {
+      color: blue($color: #000000);
     }
   }
 }

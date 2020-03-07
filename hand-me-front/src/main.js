@@ -4,6 +4,7 @@ import App from './App.vue'
 import Element from 'element-ui'
 import './styles/element-variables.scss'
 import locale from 'element-ui/lib/locale/lang/fr'
+import VueGeolocation from 'vue-browser-geolocation';
 
 // import { GooglePlacesAutocomplete } from 'vue-better-google-places-autocomplete'
 
@@ -20,6 +21,8 @@ Vue.config.productionTip = false
 Vue.prototype.handleEvent = new Vue()
 
 // Vue.component('google-places-autocomplete', GooglePlacesAutocomplete)
+
+Vue.use(VueGeolocation)
 
 Vue.use(Element, { locale })
 
