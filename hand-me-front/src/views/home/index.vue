@@ -182,11 +182,12 @@ export default {
       events: [],
       navColorOnScroll: 'transparent !important',
       from_address:{},
-      to_address:{}
+      location: null
     }
   },
   created() {
     this.init()
+    this.getLocation()
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
@@ -217,6 +218,9 @@ export default {
     },
     handleError(error){
       alert(error)
+    },
+    getLocation() {
+
     }
   }
 }
