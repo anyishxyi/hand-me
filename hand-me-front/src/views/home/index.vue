@@ -185,9 +185,9 @@ export default {
       coordinates: {}
     }
   },
-  created() {
+  async created() {
     this.init(),
-    this.getCoordinates()
+    await this.getCoordinates()
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
