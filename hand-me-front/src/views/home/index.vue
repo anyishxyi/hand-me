@@ -147,7 +147,6 @@ I can make endless updates with whatever layout I desire!"</div>
 
 <script>
 import countTo from 'vue-count-to'
-// import VueGoogleAutocomplete from 'vue-google-autocomplete'
 import Places from '@/components/places/Places'
 
 const img1 = require('@/icons/png/User1.png')
@@ -182,12 +181,13 @@ export default {
       events: [],
       navColorOnScroll: 'transparent !important',
       from_address:{},
-      location: null
+      location: null,
+      coordinates: {}
     }
   },
   created() {
-    this.init()
-    this.getLocation()
+    this.init(),
+    this.getCoordinates()
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
@@ -219,17 +219,21 @@ export default {
     handleError(error){
       alert(error)
     },
-    async getLocation() {
+    async getCoordinates() {
       const options = {
         enableHighAccuracy: false,
         timeout: Infinity,
         maximumAge: 0
       }
       await this.$getLocation(options)
-          .then(coordinates => {
-            console.log('coordinates')
-            console.log(coordinates)
-          });
+                .then(coordinates => this.coordinates = coordinates )
+                .catch( err => console.error(err))
+
+      this.coordToCity()
+    },
+    coordToCity() {
+      console.log('this.coordinates')
+      console.log(this.coordinates)
     }
   }
 }

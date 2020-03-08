@@ -113,6 +113,7 @@
         options.componentRestrictions = {
           country: this.country
         };
+        // options.componentRestrictions = {country: "us"} // Only cities from france but doesnt work
       }
       // eslint-disable-next-line no-undef
       this.autocomplete = new google.maps.places.Autocomplete(
