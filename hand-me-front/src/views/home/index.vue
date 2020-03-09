@@ -226,7 +226,7 @@ export default {
         maximumAge: 0
       }
       await this.$getLocation(options)
-                .then(coordinates => this.coordinates = coordinates )
+                .then( coordinates => this.coordinates = coordinates )
                 .catch( err => console.error(err))
 
       this.coordToCity()
@@ -234,6 +234,35 @@ export default {
     coordToCity() {
       console.log('this.coordinates')
       console.log(this.coordinates)
+      const lat = this.coordinates.lat
+      const lng = this.coordinates.lng
+      console.log('lat')
+      console.log(lat)
+      console.log('lng')
+      console.log(lng)
+      return new Promise(function (resolve, reject) {
+        const request = new XMLHttpRequest();
+        const method = 'GET';
+        const url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM';
+        const async = true;
+
+        request.open(method, url, async)
+        request.onreadystatechange = function () {
+          if (request.readyState == 4) {
+            if (request.status == 200) {
+              const data = JSON.parse(request.responseText);
+              const address = data.results;
+              console.log('address')
+              console.log(address)
+              resolve(address);
+            }
+            else {
+              reject(request.status);
+            }
+          }
+        };
+        request.send();
+      });
     }
   }
 }
