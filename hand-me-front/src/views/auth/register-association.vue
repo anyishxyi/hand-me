@@ -149,7 +149,7 @@ export default {
   },
   methods: {
     register() {
-      authService.registerParticular(
+      authService.registerAssociation(
         this.associationName,
         this.associationRegisterNumber,
         this.associationOwnerName,
