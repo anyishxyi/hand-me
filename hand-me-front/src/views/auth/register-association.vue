@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form action="/action_page.php">
+    <form @submit.prevent="register">
       <div class="row">
         <div class="col-25">
           <label for="Nom">Nom de l'association</label>
@@ -11,6 +11,7 @@
             id="fname"
             name="association name"
             placeholder="Nom de votre association"
+            v-model="associationName"
             required
           />
         </div>
@@ -25,6 +26,7 @@
             id="lname"
             name="register number"
             placeholder="Numéro enregistrement"
+            v-model="associationRegisterNumber"
             required
           />
         </div>
@@ -39,6 +41,7 @@
             id="lname"
             name="owner name"
             placeholder="Nom du responsable ou du représentant"
+            v-model="associationOwnerName"
             required
           />
         </div>
@@ -53,6 +56,7 @@
             id="lname"
             name="owner surname"
             placeholder="Prénom du responsable ou du représentant"
+            v-model="associationOwnerFirstName"
             required
           />
         </div>
@@ -62,7 +66,14 @@
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="text" id="lname" name="email" placeholder="Donner votre email" required />
+          <input
+            type="text"
+            id="lname"
+            name="email"
+            placeholder="Donner votre email"
+            v-model="associationEmail"
+            required
+          />
         </div>
       </div>
       <div class="row">
@@ -75,6 +86,7 @@
             id="lname"
             name="password"
             placeholder="Renseigner un mot de passe"
+            v-model="password"
             required
           />
         </div>
@@ -84,7 +96,13 @@
           <label for="phone">Téléphone</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="lname" name="phone" placeholder="Renseigner un numéro" />
+          <input
+            type="tel"
+            id="lname"
+            name="phone"
+            placeholder="Renseigner un numéro"
+            v-model="phoneNumber"
+          />
         </div>
       </div>
       <div class="row">
@@ -92,7 +110,13 @@
           <label for="location">Adresse</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="lname" name="location" placeholder="Renseigner une adresse" />
+          <input
+            type="tel"
+            id="lname"
+            name="location"
+            placeholder="Renseigner une adresse"
+            v-model="location"
+          />
         </div>
       </div>
       <div class="row">
@@ -104,11 +128,39 @@
 
 <script>
 //import NavBar from "../commons/Navbar";
+import authService from "../../services/auth";
 
 export default {
   name: "registerAssociation",
   components: {
     //NavBar
+  },
+  data() {
+    return {
+      associationName: "",
+      associationRegisterNumber: "",
+      associationOwnerName: "",
+      associationOwnerFirstName: "",
+      associationEmail: "",
+      password: "",
+      phoneNumber: "",
+      location: ""
+    };
+  },
+  methods: {
+    register() {
+      authService.registerParticular(
+        this.associationName,
+        this.associationRegisterNumber,
+        this.associationOwnerName,
+        this.associationOwnerFirstName,
+        this.associationEmail,
+        this.password,
+        this.phoneNumber,
+        this.location
+      );
+      //console.log("server res:", test);
+    }
   }
 };
 </script>
