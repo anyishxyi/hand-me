@@ -27,16 +27,16 @@ export default {
         })
     },
 
-    registerAssociation: (associationName, registerNumber, ownerName, ownerSurname, email, password, phoneNumber, location) => {
-        return axios.post('http://localhost:3000/create-particular',{
-            associationName, 
-            registerNumber, 
-            ownerName,
-            ownerSurname, 
-            email,
-            password,
-            phoneNumber,
-            location
+    registerAssociation: (organizationName, organizationChiefName, organizationPassword, organizationLocation, organizationEmail, organizationLogo, organizationPhoneNumber, organizationDescription) => {
+        return axios.post('http://51.178.54.198:8181/gpe/organization/create_organization',{
+            organizationName, 
+            organizationLogo, 
+            organizationChiefName,
+            organizationDescription, 
+            organizationEmail,
+            organizationPassword,
+            organizationPhoneNumber,
+            organizationLocation
         }).then((res)=>{
             return res;
         })
