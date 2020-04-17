@@ -15,7 +15,7 @@ export default {
     },
 
     registerParticular: (name, firstName, email, password, phoneNumber, location) => {
-        return axios.post('http://localhost:3000/create-particular',{
+        return axios.post('http://51.178.54.198:8181/gpe/particular/create_particular',{
             name, 
             firstName, 
             email,
