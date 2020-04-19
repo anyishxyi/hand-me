@@ -4,7 +4,7 @@ const axios=require('axios').default;
 export default {
 
     login: (email,password) => {
-        return axios.post('http://51.178.54.198:8181/gpe/authen/login_particular',{
+        return axios.get('http://51.178.54.198:8181/gpe/authen/login_particular',{
             email,
             password
         }).then((res) => {
@@ -50,16 +50,15 @@ export default {
     ) => {
         return axios.post('http://51.178.54.198:8181/gpe/organization/create_organization',{
             organizationName, 
-            organizationChiefName,// good
+            organizationChiefName,
             organizationChiefFirstname,
-            organizationEmail, //good
-            organizationPassword,// good
-            organizationPhoneNumber, //good
-            organizationLocation, //good
+            organizationEmail,
+            organizationPassword,
+            organizationPhoneNumber,
+            organizationLocation, 
             organizationMatricule,
-
             organizationLogo,
-            organizationDescription, // responsable prénom
+            organizationDescription,
             organizationWebSite,
             organizationCreationDate
         }).then((res)=>{
