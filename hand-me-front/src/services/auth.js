@@ -4,9 +4,11 @@ const axios=require('axios').default;
 export default {
 
     login: (email,password) => {
-        return axios.get('http://51.178.54.198:8181/gpe/authen/login_particular',{
-            email,
-            password
+        return axios.get('http://51.178.54.198:8181/gpe/authen/login_particular', {
+            params: {
+                email: email,
+                password: password
+            }
         }).then((res) => {
             return res;
         }).catch((error) => {
