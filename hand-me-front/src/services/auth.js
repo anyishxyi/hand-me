@@ -46,7 +46,7 @@ export default {
         organizationPhoneNumber, 
         organizationLocation, 
         organizationLogo,
-        organizationDescription, 
+        organizationDescription="fake description", 
         organizationWebSite,
         organizationCreationDate
     ) => {
