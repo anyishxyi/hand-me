@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form action="/action_page.php">
+    <form @submit.prevent="register">
       <div class="row">
         <div class="col-25">
           <label for="Nom">Nom</label>
