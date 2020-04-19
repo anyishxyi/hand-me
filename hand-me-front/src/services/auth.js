@@ -4,7 +4,7 @@ const axios=require('axios').default;
 export default {
 
     login: (email,password) => {
-        return axios.post('http://localhost:3000/login',{
+        return axios.post('http://51.178.54.198:8181/gpe/authen/login_particular',{
             email,
             password
         }).then((res) => {
@@ -14,29 +14,54 @@ export default {
         });
     },
 
-    registerParticular: (name, firstName, email, password, phoneNumber, location) => {
+    registerParticular: (
+        particularName, 
+        particularFirstName, 
+        particularEmail, 
+        particularPassword, 
+        particularPhonenumber, 
+        particularLocation
+    ) => {
         return axios.post('http://51.178.54.198:8181/gpe/particular/create_particular',{
-            name, 
-            firstName, 
-            email,
-            password, 
-            phoneNumber,
-            location
+            particularName, 
+            particularFirstName, 
+            particularEmail,
+            particularPassword, 
+            particularPhonenumber,
+            particularLocation
         }).then((res)=>{
             return res;
         })
     },
 
-    registerAssociation: (organizationName, organizationChiefName, organizationPassword, organizationLocation, organizationEmail, organizationLogo, organizationPhoneNumber, organizationDescription) => {
+    registerAssociation: (
+        organizationName, 
+        organizationMatricule,
+        organizationChiefName, 
+        organizationChiefFirstname, 
+        organizationEmail, 
+        organizationPassword, 
+        organizationPhoneNumber, 
+        organizationLocation, 
+        organizationLogo,
+        organizationDescription, 
+        organizationWebSite,
+        organizationCreationDate
+    ) => {
         return axios.post('http://51.178.54.198:8181/gpe/organization/create_organization',{
             organizationName, 
-            organizationLogo, 
-            organizationChiefName,
-            organizationDescription, 
-            organizationEmail,
-            organizationPassword,
-            organizationPhoneNumber,
-            organizationLocation
+            organizationChiefName,// good
+            organizationChiefFirstname,
+            organizationEmail, //good
+            organizationPassword,// good
+            organizationPhoneNumber, //good
+            organizationLocation, //good
+            organizationMatricule,
+
+            organizationLogo,
+            organizationDescription, // responsable prénom
+            organizationWebSite,
+            organizationCreationDate
         }).then((res)=>{
             return res;
         })

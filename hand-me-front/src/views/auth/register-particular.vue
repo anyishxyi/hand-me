@@ -6,7 +6,7 @@
           <label for="Nom">Nom</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="Nom" placeholder="Donner votre nom" required />
+          <input type="text" id="fname" name="Nom" placeholder="Donner votre nom" v-model="name" required />
         </div>
       </div>
       <div class="row">
@@ -14,7 +14,7 @@
           <label for="Prénom">Prénom</label>
         </div>
         <div class="col-75">
-          <input type="text" id="lname" name="Prénom" placeholder="Donner votre prénom" required />
+          <input type="text" id="lname" name="Prénom" placeholder="Donner votre prénom" v-model="surname" required />
         </div>
       </div>
       <div class="row">
@@ -22,7 +22,7 @@
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="text" id="lname" name="email" placeholder="Donner votre email" required />
+          <input type="text" id="lname" name="email" placeholder="Donner votre email" v-model="email" required />
         </div>
       </div>
       <div class="row">
@@ -33,6 +33,7 @@
           <input
             type="password"
             id="lname"
+            v-model="password"
             name="password"
             placeholder="Renseigner un mot de passe"
             required
@@ -44,7 +45,7 @@
           <label for="phone">Téléphone</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="lname" name="phone" placeholder="Renseigner un numéro" />
+          <input type="tel" id="lname" name="phone" placeholder="Renseigner un numéro" v-model="telNumber"/>
         </div>
       </div>
       <div class="row">
@@ -52,7 +53,7 @@
           <label for="location">Adresse</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="lname" name="location" placeholder="Renseigner une adresse" />
+          <input type="tel" id="lname" name="location" placeholder="Renseigner une adresse" v-model="location" />
         </div>
       </div>
       <div class="row">
@@ -64,11 +65,27 @@
 
 <script>
 //import NavBar from "../commons/Navbar";
+import authService from "../../services/auth";
 
 export default {
   name: "registerParticular",
   components: {
     //NavBar
+  },
+  data(){
+    return{
+      name: "",
+      surname: "",
+      email: "",
+      password: "",
+      telNumber: "",
+      location: "",
+    }
+  },
+  methods:{
+    register(){
+      authService.registerParticular(this.name, this.surname, this.email, this.password, this.telNumber, this.location);
+    }
   }
 };
 </script>
