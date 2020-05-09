@@ -96,10 +96,17 @@
 import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
 
+const twitter = require('@/icons/png/twitter.png')
+const facebook = require('@/icons/png/facebook.png')
+const france = require('@/icons/png/france.png')
+
 export default {
   components: { Places, Maps },
   data(){
     return {
+      twitter,
+      facebook,
+      france,
       dates: '',
       localisation: '',
       category: '',
