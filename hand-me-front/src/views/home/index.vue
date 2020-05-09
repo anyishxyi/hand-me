@@ -276,6 +276,76 @@ export default {
 
 <style lang="scss" scoped>
   .home-page {
+.navbar {
+  height: 60px;
+  border: none;
+  z-index: 100;
+  transition: background-color 1s ease 0s;
+  top: 0;
+  position: fixed;
+  width: 100%;
+
+  .right-menu {
+    float: right;
+    height: 100%;
+    line-height: 60px;
+    margin-right: 40px;
+
+    &:focus {
+      outline: none;
+    }
+
+    .right-menu-item {
+      display: inline-block;
+      padding: 0 8px;
+      height: 100%;
+      font-size: 1.1em;
+      vertical-align: text-bottom;
+
+      &.lang {
+        font-size: 1.7em;
+      }
+
+      &.hover-effect {
+        cursor: pointer;
+        transition: background .3s;
+
+        &:hover {
+          background: rgba(0, 0, 0, .025)
+        }
+      }
+    }
+
+    .avatar-container {
+      margin-right: 30px;
+
+      .avatar-wrapper {
+        margin-top: 5px;
+        position: relative;
+
+        .user-avatar {
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+        }
+
+        .el-icon-caret-bottom {
+          cursor: pointer;
+          position: absolute;
+          right: -20px;
+          top: 25px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .btn_connexion {
+      color: blue($color: #000000);
+    }
+  }
+}
+
     .banner {
       background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
       background-size: cover;
