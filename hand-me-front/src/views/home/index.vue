@@ -211,7 +211,7 @@ export default {
       ]
     },
     updateScroll() {
-      this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#4370F3' : 'transparent !important'
+      this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#222020' : 'transparent !important'
     },
     getAddress(from_address) {
       this.address = from_address;
@@ -251,7 +251,7 @@ export default {
           if (request.readyState == 4) {
             if (request.status == 200) {
               const data = JSON.parse(request.responseText);
-              const address = data.results;
+              const address = data.results[0];
               console.log('address')
               console.log(address)
               resolve(address);
