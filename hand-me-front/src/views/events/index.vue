@@ -1,6 +1,6 @@
 <template>
   <div class="events-container">
-    <div class="navbar navbar-default shadow">
+    <div class="navbar navbar-default nav-color shadow">
       <div class="right-menu">
         <el-button type="text">
           <router-link :to="{path: '/home'}">

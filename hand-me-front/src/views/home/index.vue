@@ -82,6 +82,7 @@
     </div>
     <div class="maps">
       <div class="title">Vos évènements à proximité</div>
+      <Maps />
     </div>
     <div class="events_overview">
       <div class="events">
@@ -148,6 +149,7 @@ I can make endless updates with whatever layout I desire!"</div>
 <script>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
+import Maps from '@/components/maps/Maps'
 
 const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
@@ -162,7 +164,7 @@ const event2 = require('@/icons/png/event2.png')
 const event3 = require('@/icons/png/event3.png')
 
 export default {
-  components: { countTo, Places },
+  components: { countTo, Places, Maps },
   data(){
     return {
       search: '',
@@ -373,7 +375,6 @@ export default {
     }
 
     .maps {
-      background: url('~@/icons/png/maps.png') no-repeat center center;
       background-size: cover;
       height: 600px;
       .title {
