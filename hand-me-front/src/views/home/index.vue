@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="left_content">
-        <h1 class="heading">Trouvez des meilleurs évènements à Paris</h1>
+        <h1 class="heading">Trouvez des évènements qui vous correspondent près de chez vous</h1>
         <div class="search_bar">
           <Places
             class="localisation"
@@ -278,13 +278,13 @@ export default {
       height: 780px;
 
       .left_content {
-        width: 60%;
+        width: 50%;
         padding-left: 50px;
 
         .heading {
           color: white;
           padding-top: 200px;
-          font-size: 60px;
+          font-size: 55px;
         }
 
         p {
