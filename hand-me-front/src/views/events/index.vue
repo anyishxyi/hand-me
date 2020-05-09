@@ -37,16 +37,8 @@
               :error="handleError"
             >
             </Places>
-            <el-input
-              class="category"
-              placeholder="Type something"
-              prefix-icon="el-icon-search"
-              v-model="category">
-            </el-input>
-          </div>
-          <div class="block clear">
             <el-date-picker
-              class="dates"
+              class="category"
               v-model="dates"
               type="daterange"
               range-separator="A"
@@ -55,7 +47,7 @@
             </el-date-picker>
           </div>
         </div>
-        <div class="events_list">
+        <div class="events_list clear">
           <ol class="SD4Ugf">
             <li class="lPyEac">
               <div class="MebuN">
