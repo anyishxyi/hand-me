@@ -143,8 +143,11 @@ I can make endless updates with whatever layout I desire!"</div>
       </div>
     </div>
     <div class="footer">
-		<div class="left">rx sociaux</div>
-		<div class="right">Made in France, Paris copiright hand-me.fr 2020</div>
+		<div class="left">
+			<el-image :src="twitter" class="flag-size" lazy />
+			<el-image :src="facebook" class="flag-size icon-right" lazy />
+		</div>
+		<div class="right"><el-image :src="france" class="flag-size" lazy /> Made in France, Paris copiright hand-me.fr 2020</div>
 	</div>
   </div>
 </template>
@@ -153,6 +156,10 @@ I can make endless updates with whatever layout I desire!"</div>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
 import Maps from '@/components/maps/Maps'
+
+const twitter = require('@/icons/png/twitter.png')
+const facebook = require('@/icons/png/facebook.png')
+const france = require('@/icons/png/france.png')
 
 const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
@@ -174,6 +181,9 @@ export default {
       nb_users: 6000,
       nb_orga: 300,
       nb_events: 980,
+      twitter,
+      facebook,
+      france,
       img1,
       img2,
       img3,

@@ -42,6 +42,7 @@ a:-webkit-any-link{
    
     .left {
       float: left;
+      width: 50%;
       padding-top: 25px;
       padding-left: 160px;
     }
@@ -51,3 +52,10 @@ a:-webkit-any-link{
       padding-top: 25px;
 	}
 }
+
+.flag-size {
+  width: 15px;
+  vertical-align: middle;
+}
+
+.icon-right { padding-left: 20px; }
