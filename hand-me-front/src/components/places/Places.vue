@@ -38,7 +38,7 @@
       classname: String,
       placeholder: {
         type: String,
-        default: 'Start typing'
+        default: 'Entrez le nom de votre ville'
       },
       types: {
         type: String,

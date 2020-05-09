@@ -32,7 +32,7 @@
             class="localisation"
             id="from_address"
             classname="form-control"
-            placeholder="Start typing"
+            placeholder="Entrez le nom de votre ville..."
             :placechanged="getAddress"
             :error="handleError"
           >
@@ -142,7 +142,11 @@ I can make endless updates with whatever layout I desire!"</div>
         </div>
       </div>
     </div>
-    <div></div>
+    <div class="footer">
+	<div class="left"></div>
+	<div class="right"></div>
+	<div></div>
+	</div>
   </div>
 </template>
 

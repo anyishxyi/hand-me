@@ -32,7 +32,7 @@
               class="localisation"
               id="from_address"
               classname="form-control"
-              placeholder="Start typing"
+              placeholder="Entrez le nom de votre ville"
               :placechanged="getAddress"
               :error="handleError"
             >
