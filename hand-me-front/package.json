@@ -51,6 +51,7 @@
     "google-maps-api-loader": "^1.1.1",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
+    "localforage": "^1.7.3",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",

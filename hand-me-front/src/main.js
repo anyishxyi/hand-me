@@ -5,8 +5,7 @@ import Element from 'element-ui'
 import './styles/element-variables.scss'
 import locale from 'element-ui/lib/locale/lang/fr'
 import VueGeolocation from 'vue-browser-geolocation';
-
-// import { GooglePlacesAutocomplete } from 'vue-better-google-places-autocomplete'
+import LocalForage from 'localforage'
 
 import '@/styles/index.scss' // global css
 
@@ -16,11 +15,13 @@ import router from './router'
 const moment = require('moment')
 require('moment/locale/fr')
 
+LocalForage.config({ driver: LocalForage.IndexedDB, name: 'Hand Me', version: 1.0, storeName: 'HandMe' })
+
 Vue.config.productionTip = false
 
 Vue.prototype.handleEvent = new Vue()
 
-// Vue.component('google-places-autocomplete', GooglePlacesAutocomplete)
+Vue.prototype.$localforage = LocalForage
 
 Vue.use(VueGeolocation)
 
