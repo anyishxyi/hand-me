@@ -31,3 +31,23 @@ a:-webkit-any-link{
   color: white !important;
   font-size: 16px;
 }
+
+.footer {
+   left: 0;
+   width: 100%;
+   background-color: #222020;
+   color: white;
+   height: 60px;
+   font-size: 12px;
+   
+    .left {
+      float: left;
+      padding-top: 25px;
+      padding-left: 160px;
+    }
+    .right {
+      float: right;
+      width: 30%;
+      padding-top: 25px;
+	}
+}

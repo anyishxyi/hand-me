@@ -82,9 +82,9 @@
         <Maps />
       </div>
     </div>
-    <div class="footer">
+    <div class="footer footer-fixed">
 		<div class="left">rx sociaux</div>
-		<div class="right">copyright</div>
+		<div class="right">Made in France, Paris copiright hand-me.fr 2020</div>
 	</div>
   </div>
 </template>
@@ -245,16 +245,9 @@ export default {
   }
 }
 
-.footer {
-   position: fixed;
-   left: 0;
+.footer-fixed {
    bottom: 0;
-   width: 100%;
-   background-color: #222020;
-   color: white;
-   height: 60px;
-   .left {}
-   .right {}
+   position: fixed;
 }
 
 .clear {

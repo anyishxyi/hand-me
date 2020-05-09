@@ -143,9 +143,8 @@ I can make endless updates with whatever layout I desire!"</div>
       </div>
     </div>
     <div class="footer">
-	<div class="left"></div>
-	<div class="right"></div>
-	<div></div>
+		<div class="left">rx sociaux</div>
+		<div class="right">Made in France, Paris copiright hand-me.fr 2020</div>
 	</div>
   </div>
 </template>
