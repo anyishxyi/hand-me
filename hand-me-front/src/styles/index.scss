@@ -32,27 +32,6 @@ a:-webkit-any-link{
   font-size: 16px;
 }
 
-.footer {
-   left: 0;
-   width: 100%;
-   background-color: #222020;
-   color: white;
-   height: 60px;
-   font-size: 12px;
-   
-    .left {
-      float: left;
-      width: 50%;
-      padding-top: 25px;
-      padding-left: 160px;
-    }
-    .right {
-      float: right;
-      width: 30%;
-      padding-top: 25px;
-	}
-}
-
 .flag-size {
   width: 15px;
   vertical-align: middle; // align icon with textes in a div

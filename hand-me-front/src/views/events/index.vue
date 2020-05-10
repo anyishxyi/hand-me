@@ -26,6 +26,10 @@
     </div>
     <div class="container">
       <div class="left">
+        <div class="heading">
+          <h1>RECHERCHER UN EVENEMENT</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius</p>
+        </div>
         <div class="events_filter">
           <div class="local_cat">
             <Places
@@ -55,13 +59,13 @@
         <Maps />
       </div>
     </div>
-    <div class="footer footer-fixed">
-		<div class="left">
-			<el-image :src="twitter" class="flag-size" lazy />
-			<el-image :src="facebook" class="flag-size icon-right" lazy />
-		</div>
-		<div class="right"><el-image :src="france" class="flag-size" lazy /> Made in France, Paris copiright hand-me.fr 2020</div>
-	</div>
+    <!-- <div class="footer footer-fixed">
+      <div class="left">
+        <el-image :src="twitter" class="flag-size" lazy />
+        <el-image :src="facebook" class="flag-size icon-right" lazy />
+      </div>
+      <div class="right"><el-image :src="france" class="flag-size" lazy /> Made in France, Paris copyright hand-me.fr 2020</div>
+    </div> -->
   </div>
 </template>
 
@@ -69,17 +73,11 @@
 import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
 
-const twitter = require('@/icons/png/twitter.png')
-const facebook = require('@/icons/png/facebook.png')
-const france = require('@/icons/png/france.png')
-
 export default {
+  name: "EVENTSPAGE",
   components: { Places, Maps },
   data(){
     return {
-      twitter,
-      facebook,
-      france,
       dates: '',
       localisation: '',
       category: '',
@@ -196,7 +194,8 @@ export default {
   .left {
     text-align:justify;
     float:left;
-    width:40%;
+    width:45%;
+    margin: 45px;
 
     .events_filter {
 
@@ -207,7 +206,8 @@ export default {
         }
         .dates {
           float: right;
-          width:50%;
+          width: 47%;
+          margin-left: 10px;
         }
       }
     }
@@ -220,7 +220,7 @@ export default {
     text-align:justify;
     float:right;
     height: 700px;
-    width: 60%;
+    width: 45%;
   }
 }
 

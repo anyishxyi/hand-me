@@ -142,13 +142,6 @@ I can make endless updates with whatever layout I desire!"</div>
         </div>
       </div>
     </div>
-    <div class="footer">
-		<div class="left">
-			<el-image :src="twitter" class="flag-size" lazy />
-			<el-image :src="facebook" class="flag-size icon-right" lazy />
-		</div>
-		<div class="right"><el-image :src="france" class="flag-size" lazy /> Made in France, Paris copiright hand-me.fr 2020</div>
-	</div>
   </div>
 </template>
 
@@ -174,6 +167,7 @@ const event2 = require('@/icons/png/event2.png')
 const event3 = require('@/icons/png/event3.png')
 
 export default {
+  name: 'HOMEPAGE',
   components: { countTo, Places, Maps },
   data(){
     return {
