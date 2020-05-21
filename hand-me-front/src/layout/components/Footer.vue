@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     init() {
-      console.log('footer')
+      // console.log('footer')
     }
   }
 }
@@ -42,6 +42,8 @@ export default {
    color: white;
    height: 60px;
    font-size: 12px;
+   bottom: 0;
+  //  position: fixed; TODO in events page
 
     .left {
       float: left;

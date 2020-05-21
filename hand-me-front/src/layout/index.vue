@@ -6,7 +6,6 @@
   </div>
 </template>
 <script>
-// import { AppMain, Navbar } from './components'
 // import { AppMain, Navbar, Footer } from './components'
 import { AppMain, Footer } from './components'
 
