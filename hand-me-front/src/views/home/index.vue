@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <div class="navbar navbar-default" :style='{ backgroundColor: `${navColorOnScroll}` }'>
+      <!-- <div class="navbar navbar-default" :style='{ backgroundColor: `${navColorOnScroll}` }'>
         <div class="right-menu">
           <el-button type="text">
             <router-link :to="{path: '/home'}">
@@ -24,7 +24,7 @@
             </router-link>
           </el-button>
         </div>
-      </div>
+      </div> -->
       <div class="left_content">
         <h1 class="heading">Trouvez des évènements qui vous correspondent près de chez vous</h1>
         <div class="search_bar">

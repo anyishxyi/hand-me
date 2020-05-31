@@ -1,13 +1,13 @@
 <template>
   <div class="app-wrapper">
-    <!-- <navbar /> -->
+    <Navbar />
     <app-main />
     <Footer />
   </div>
 </template>
 <script>
-// import { AppMain, Navbar, Footer } from './components'
-import { AppMain, Footer } from './components'
+import { AppMain, Navbar, Footer } from './components'
+// import { AppMain, Footer } from './components'
 
 import { mapState } from 'vuex'
 
@@ -15,7 +15,7 @@ export default {
   name: 'Layout',
   components: {
     AppMain,
-    // Navbar,
+    Navbar,
     Footer
   },
   computed: {
