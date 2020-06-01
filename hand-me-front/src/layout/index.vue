@@ -7,7 +7,6 @@
 </template>
 <script>
 import { AppMain, Navbar, Footer } from './components'
-// import { AppMain, Footer } from './components'
 
 import { mapState } from 'vuex'
 
