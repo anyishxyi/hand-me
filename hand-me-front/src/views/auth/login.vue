@@ -53,6 +53,7 @@ export default {
     login() {
       authService.login(this.inputEmail, this.inputPassword).then(data => {
         console.log(data);
+        //this.$router.push({ path: "userBoard", query: data });
       });
     }
   }
