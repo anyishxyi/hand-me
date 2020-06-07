@@ -4,7 +4,7 @@ const axios=require('axios').default;
 export default {
 
     login: (email,password) => {
-        return axios.get('http://51.178.54.198:8181/gpe/authen/login_particular', {
+        return axios.get('https://backend.hand-me.fr:8443/gpe/authen/login_particular', {
             params: {
                 email: email,
                 password: password
@@ -24,7 +24,7 @@ export default {
         particularPhonenumber, 
         particularLocation
     ) => {
-        return axios.post('http://51.178.54.198:8181/gpe/particular/create_particular',{
+        return axios.post('https://backend.hand-me.fr:8443/gpe/particular/create_particular',{
             particularName, 
             particularFirstName, 
             particularEmail,
@@ -50,7 +50,7 @@ export default {
         organizationWebSite,
         organizationCreationDate
     ) => {
-        return axios.post('http://51.178.54.198:8181/gpe/organization/create_organization',{
+        return axios.post('https://backend.hand-me.fr:8443/gpe/organization/create_organization',{
             organizationName, 
             organizationChiefName,
             organizationChiefFirstname,
