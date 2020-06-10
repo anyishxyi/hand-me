@@ -79,14 +79,22 @@
 
 <script>
 import Table from "../../components/table/table";
-import data from "../../components/table/data.json";
+//import data from "../../components/table/data.json";
 
 export default {
   name: "userBoard",
-  data: () => {
+  mounted: function() {
+    return (this.todos = this.$route.params.data.events);
+  },
+  data: function() {
     return {
-      todos: data.todos
+      todos: []
     };
+  },
+  methods: {
+    loadUserEvents() {
+      return this.$route.params.data.events;
+    }
   },
   components: {
     Table
