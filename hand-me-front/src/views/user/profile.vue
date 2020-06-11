@@ -79,7 +79,6 @@
 
 <script>
 import Table from "../../components/table/table";
-//import data from "../../components/table/data.json";
 
 export default {
   name: "userBoard",
