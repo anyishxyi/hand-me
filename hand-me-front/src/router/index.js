@@ -60,7 +60,7 @@ export const constantRoutes = [
       {
         path: '/profile',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/user/profile'),
-        name: 'profile',
+        name: 'userBoard',
         hidden: true
       },
       {
