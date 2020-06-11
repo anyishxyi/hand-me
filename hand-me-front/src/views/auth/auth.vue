@@ -8,7 +8,7 @@
       </header>
       <div class="wrapper">
         <h3>Créer un compte</h3>
-        <p>Si vous n'avez pas encore de compte, créez-en un maintenant !</p>
+        <p>Si vous n'avez pas encore de compte, créez-en un maintenant</p>
         <router-link to="/register">
           <el-button type="secondary" class="cta" round>
            S'inscrire
