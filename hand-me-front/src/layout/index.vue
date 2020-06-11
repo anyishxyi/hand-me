@@ -1,13 +1,11 @@
 <template>
   <div class="app-wrapper">
-    <!-- <navbar /> -->
+    <Navbar />
     <app-main />
-    <footer />
+    <Footer />
   </div>
 </template>
 <script>
-// import { AppMain, Navbar } from './components'
-/* eslint-disable vue/no-unused-components */
 import { AppMain, Navbar, Footer } from './components'
 
 import { mapState } from 'vuex'

@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <div class="navbar navbar-default" :style='{ backgroundColor: `${navColorOnScroll}` }'>
+      <!-- <div class="navbar navbar-default" :style='{ backgroundColor: `${navColorOnScroll}` }'>
         <div class="right-menu">
           <el-button type="text">
             <router-link :to="{path: '/home'}">
@@ -24,7 +24,7 @@
             </router-link>
           </el-button>
         </div>
-      </div>
+      </div> -->
       <div class="left_content">
         <h1 class="heading">Trouvez des évènements qui vous correspondent près de chez vous</h1>
         <div class="search_bar">
@@ -142,11 +142,6 @@ I can make endless updates with whatever layout I desire!"</div>
         </div>
       </div>
     </div>
-    <div class="footer">
-	<div class="left"></div>
-	<div class="right"></div>
-	<div></div>
-	</div>
   </div>
 </template>
 
@@ -154,6 +149,10 @@ I can make endless updates with whatever layout I desire!"</div>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
 import Maps from '@/components/maps/Maps'
+
+const twitter = require('@/icons/png/twitter.png')
+const facebook = require('@/icons/png/facebook.png')
+const france = require('@/icons/png/france.png')
 
 const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
@@ -168,6 +167,7 @@ const event2 = require('@/icons/png/event2.png')
 const event3 = require('@/icons/png/event3.png')
 
 export default {
+  name: 'HOMEPAGE',
   components: { countTo, Places, Maps },
   data(){
     return {
@@ -175,6 +175,9 @@ export default {
       nb_users: 6000,
       nb_orga: 300,
       nb_events: 980,
+      twitter,
+      facebook,
+      france,
       img1,
       img2,
       img3,
@@ -276,6 +279,76 @@ export default {
 
 <style lang="scss" scoped>
   .home-page {
+.navbar {
+  height: 60px;
+  border: none;
+  z-index: 100;
+  transition: background-color 1s ease 0s;
+  top: 0;
+  position: fixed;
+  width: 100%;
+
+  .right-menu {
+    float: right;
+    height: 100%;
+    line-height: 60px;
+    margin-right: 40px;
+
+    &:focus {
+      outline: none;
+    }
+
+    .right-menu-item {
+      display: inline-block;
+      padding: 0 8px;
+      height: 100%;
+      font-size: 1.1em;
+      vertical-align: text-bottom;
+
+      &.lang {
+        font-size: 1.7em;
+      }
+
+      &.hover-effect {
+        cursor: pointer;
+        transition: background .3s;
+
+        &:hover {
+          background: rgba(0, 0, 0, .025)
+        }
+      }
+    }
+
+    .avatar-container {
+      margin-right: 30px;
+
+      .avatar-wrapper {
+        margin-top: 5px;
+        position: relative;
+
+        .user-avatar {
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+        }
+
+        .el-icon-caret-bottom {
+          cursor: pointer;
+          position: absolute;
+          right: -20px;
+          top: 25px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .btn_connexion {
+      color: blue($color: #000000);
+    }
+  }
+}
+
     .banner {
       background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
       background-size: cover;
