@@ -85,25 +85,7 @@
       <Maps />
     </div>
     <div class="events_overview">
-      <div class="events">
-        <div class="event" v-for="event of events" :key="event.id">
-          <div class="container" :style='{ backgroundImage: `url("${event.img}")` }'>
-            <div class="content">
-              <div class="nav-info clearfix" id="offices">
-                <div class="one-half">
-                  <div class="info" id="offices">
-                    <div class="event_title">Titre Event</div>
-                    <div class="event_description">court description</div>
-                    <div class="date">+1 123 654 987 36</div>
-                  </div>
-                </div>
-                <div class="one-half">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ListEvents :events="events" />
       <div class="btn_all_events">
         <el-button type="primary">
           <router-link :to="{path: '/events'}">VOIR TOUS LES EVENEMENTS</router-link>
@@ -149,6 +131,7 @@ I can make endless updates with whatever layout I desire!"</div>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
 import Maps from '@/components/maps/Maps'
+import ListEvents from '@/components/event/ListEvents'
 
 const twitter = require('@/icons/png/twitter.png')
 const facebook = require('@/icons/png/facebook.png')
@@ -168,7 +151,7 @@ const event3 = require('@/icons/png/event3.png')
 
 export default {
   name: 'HOMEPAGE',
-  components: { countTo, Places, Maps },
+  components: { countTo, Places, Maps, ListEvents },
   data(){
     return {
       search: '',
@@ -461,114 +444,6 @@ export default {
     }
 
     .events_overview {
-      padding-left: 10%;
-      padding-right: 10%;
-      padding-top: 5%;
-      padding-bottom: 5%;
-      background-color: white;
-
-      .events  {
-        display: flex;
-          // margin-left: 5px;
-          // margin-right: 5px;
-        .event {
-          box-sizing: border-box;
-          padding: 40px 0;
-        }
-
-        *, *:before, *:after {
-          box-sizing: inherit;
-        }
-
-        .container {
-          margin: 0 auto;
-          width: 360px;
-          height: 360px;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-          transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-          border-radius: 2px;
-          position: relative;
-          cursor: pointer;
-        }
-
-        .container:hover {
-          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        }
-
-        .content {
-          position: absolute;
-          bottom: 0px;
-          z-index: 9999;
-        }
-
-        .nav-info {
-          background: rgba(255,255,240, 0.65);
-
-          .info {
-            margin-top: 20px;
-            margin-bottom: 24px;
-
-            .event_title {
-              text-transform: uppercase;
-              font-weight: bold;
-              margin-bottom: 3px;
-            }
-
-            .event_description {
-              line-height: 16px;
-              margin-bottom: 6px;
-            }
-
-            .date {
-              color:  #C4A865;
-              // font-weight: bold;
-            }
-          }
-
-          img {
-            margin-top: 28px;
-            margin-right: 8px;
-          }
-        }
-
-        .one-half {
-          width: 180px;
-          float: left;
-          padding-left: 20px;
-        }
-
-        .clearfix:before,
-          .clearfix:after,
-          .row:before,
-          .row:after {
-            content: '\0020';
-            display: block;
-            overflow: hidden;
-            visibility: hidden;
-            width: 0;
-            height: 0; }
-          .row:after,
-          .clearfix:after {
-            clear: both; }
-          .row,
-          .clearfix {
-            zoom: 1; }
-
-
-        .clear {
-          clear: both;
-          display: block;
-          overflow: hidden;
-          visibility: hidden;
-          width: 0;
-          height: 0;
-        }
-      }
-
-      .events  > .event {
-        flex: 1; /*grow*/
-      }
-
       .btn_all_events {
         padding-top: 10px;
         display: flex;

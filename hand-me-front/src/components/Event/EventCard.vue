@@ -94,9 +94,10 @@ export default {
 }
 
 .card_home {
-  flex: auto;
-  margin: 20px;
   list-style: none;
+  display: inline-block;
+  padding: 0;
+  width: 30%;
 }
 
 .card_no_home {

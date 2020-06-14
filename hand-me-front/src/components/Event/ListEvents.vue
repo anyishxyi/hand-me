@@ -1,10 +1,6 @@
 <template>
   <section class="cards">
-    <EventCard></EventCard>
-    <EventCard></EventCard>
-    <EventCard></EventCard>
-    <EventCard></EventCard>
-    <EventCard></EventCard>
+    <EventCard v-for="event in events" :key="event.id" />
   </section>
 </template>
 
@@ -13,12 +9,12 @@ import EventCard from './EventCard'
 
 export default {
   name: 'ListEvents',
-  // props: {
-  //   events: {
-  //     type: Array,
-  //     required: true
-  //   },
-  // },
+  props: {
+    events: {
+      type: Array,
+      required: true
+    },
+  },
   components: {
     EventCard
   },
@@ -30,12 +26,16 @@ export default {
 
 <style>
 .cards {
-  width: 100%;
+  /* width: 100%;
   justify-content: center;
   -webkit-justify-content: center;
-  max-width: 820px;
   overflow: scroll;
   display: flex;
+  flex-wrap: wrap; */
+  display: inline-flex;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 </style>
