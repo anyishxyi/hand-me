@@ -20,7 +20,10 @@
 
 <script>
 export default {
+  name: 'Event',
+  data(){
 
+  }
 }
 </script>
 

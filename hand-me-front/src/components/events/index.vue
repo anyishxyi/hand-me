@@ -1,12 +1,18 @@
 <template>
-<section class="cards">
-
-</section>
+  <section class="cards">
+    <Event></Event>
+  </section>
 </template>
 
 <script>
-export default {
+import Event from '../event'
 
+export default {
+  name: 'Events',
+  components: {
+    Event
+  },
+  data(){}
 }
 </script>
 
