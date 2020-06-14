@@ -1,5 +1,8 @@
 <template>
   <div class="navbar navbar-default nav-color shadow">
+    <div class="logo">
+      HAND ME
+    </div>
     <div class="right-menu">
       <el-button type="text">
         <router-link :to="{path: '/home'}">
@@ -71,6 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .navbar {
   height: 60px;
   border: none;
@@ -80,6 +84,19 @@ export default {
   position: fixed;
   width: 100%;
   background-color: #222020;
+  // display: flex;
+
+  .logo {
+    font-family: Helvetica;
+    font-size: 24px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    float: left;
+    line-height: 60px;
+    margin-left: 40px;
+    // text-align: center;
+    // background: #D5E2FF;
+  }
 
   .right-menu {
     float: right;
