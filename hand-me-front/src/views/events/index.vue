@@ -27,6 +27,9 @@
             </el-date-picker>
           </div>
         </div>
+        <div class="events_info">
+          {{events.length}} évènements
+        </div>
         <div class="events_list clear">
           <ListEvents />
         </div>
@@ -43,7 +46,6 @@ import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
 import ListEvents from '@/components/event/ListEvents'
 
-
 export default {
   name: "EVENTSPAGE",
   components: { Places, Maps, ListEvents },
@@ -53,7 +55,8 @@ export default {
       localisation: '',
       category: '',
       from_address:{},
-      to_address:{}
+      to_address:{},
+      events: []
     }
   },
   created() {
@@ -61,7 +64,26 @@ export default {
   },
   methods: {
     init() {
-      console.log('events page')
+      this.events = [
+        {
+          title: 'aaaaa'
+        },
+        {
+          title: 'aaaaa'
+        },
+        {
+          title: 'aaaaa'
+        },
+        {
+          title: 'aaaaa'
+        },
+        {
+          title: 'aaaaa'
+        },
+        {
+          title: 'aaaaa'
+        }
+      ]
     },
     getAddress(from_address) {
       this.address = from_address;
@@ -80,21 +102,23 @@ export default {
   flex-flow: column;
   height: 100%;
   color: #333333;
-  .nav-color {
-
-  }
 }
 
 .container {
   width:100%;
   margin-top:60px;
-  // display:table;
 
   .left {
     text-align:justify;
     float:left;
     width:45%;
     margin: 45px;
+
+    .heading {
+      font-size: 14px;
+      color: #7E829B;
+      letter-spacing: 0.14px;
+    }
 
     .events_filter {
 
@@ -111,8 +135,8 @@ export default {
       }
     }
 
-    .events_list {
-
+    .events_info {
+      margin-top: 20px;
     }
   }
   .right {
