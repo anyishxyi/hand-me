@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: `http://localhost:3000`,
+  baseURL: `https://backend.hand-me.fr:8443/gpe/`,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -10,7 +10,13 @@ const apiClient = axios.create({
 })
 
 export default {
-  async getEvents() {
-    return apiClient.get('/events')
+  async login(userData) {
+    return apiClient.post('/authen/login_particular', userData)
+  },
+  async registerParticular(userData) {
+    return apiClient.post('/particular/create_particular', userData)
+  },
+  async registerAssociation(userData) {
+    return apiClient.post('/organization/create_organization', userData)
   }
 }

@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="events_list clear">
-
+          <ListEvents />
         </div>
       </div>
       <div class="right">
@@ -41,10 +41,12 @@
 <script>
 import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
+import ListEvents from '@/components/event/ListEvents'
+
 
 export default {
   name: "EVENTSPAGE",
-  components: { Places, Maps },
+  components: { Places, Maps, ListEvents },
   data(){
     return {
       dates: '',

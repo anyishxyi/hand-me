@@ -2,10 +2,6 @@
   <section class="cards">
     <EventCard></EventCard>
     <EventCard></EventCard>
-    <EventCard></EventCard>
-    <EventCard></EventCard>
-    <EventCard></EventCard>
-    <EventCard></EventCard>
   </section>
 </template>
 
@@ -29,5 +25,6 @@ export default {
   justify-content: center;
   -webkit-justify-content: center;
   max-width: 820px;
+  padding-top: 20px;
 }
 </style>
