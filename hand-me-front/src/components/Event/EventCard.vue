@@ -1,10 +1,10 @@
 <template>
-  <article class="card card--1">
+  <article class="card card--1 card_home">
     <div class="card__info-hover">
-        <div class="card__clock-info">
-          <svg class="card__clock"  viewBox="0 0 24 24"><path d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z" />
-          </svg><span class="card__time">15 min</span>
-        </div>
+      <div class="card__clock-info">
+        <svg class="card__clock"  viewBox="0 0 24 24"><path d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z" />
+        </svg><span class="card__time">15 min</span>
+      </div>
     </div>
     <div class="card__img"></div>
     <a href="#" class="card_link">
@@ -78,15 +78,23 @@ export default {
   top: 0;
 }
 .card {
-  margin-right: 25px;
   transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
   background-color: #fff;
-  width: 33.3%;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
 }
+
+.card_home {
+  width: 50%;
+  margin-right: 50px;
+}
+.card_no_home {
+  width: 33.3%;
+  margin-right: 20px;
+}
+
 .card:hover {
   box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
   transform: scale(1.10, 1.10);

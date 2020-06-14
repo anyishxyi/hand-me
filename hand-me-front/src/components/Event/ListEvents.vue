@@ -25,6 +25,6 @@ export default {
   justify-content: center;
   -webkit-justify-content: center;
   max-width: 820px;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 </style>
