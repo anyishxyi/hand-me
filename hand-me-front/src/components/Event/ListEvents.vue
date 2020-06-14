@@ -1,16 +1,21 @@
 <template>
   <section class="cards">
-    <Event></Event>
+    <EventCard></EventCard>
+    <EventCard></EventCard>
+    <EventCard></EventCard>
+    <EventCard></EventCard>
+    <EventCard></EventCard>
+    <EventCard></EventCard>
   </section>
 </template>
 
 <script>
-import Event from '../event'
+import EventCard from './EventCard'
 
 export default {
-  name: 'Events',
+  name: 'ListEvents',
   components: {
-    Event
+    EventCard
   },
   data(){}
 }
