@@ -7,25 +7,23 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius</p>
         </div>
         <div class="events_filter">
-          <div class="local_cat">
-            <Places
-              class="localisation"
-              id="from_address"
-              classname="form-control"
-              placeholder="Entrez le nom de votre ville"
-              :placechanged="getAddress"
-              :error="handleError"
-            >
-            </Places>
-            <el-date-picker
-              class="dates"
-              v-model="dates"
-              type="daterange"
-              range-separator="A"
-              start-placeholder="Date départ"
-              end-placeholder="Date fin">
-            </el-date-picker>
-          </div>
+          <Places
+            class="localisation"
+            id="from_address"
+            classname="form-control"
+            placeholder="Entrez le nom de votre ville"
+            :placechanged="getAddress"
+            :error="handleError"
+          >
+          </Places>
+          <el-date-picker
+            class="dates"
+            v-model="dates"
+            type="daterange"
+            range-separator="A"
+            start-placeholder="Date départ"
+            end-placeholder="Date fin">
+          </el-date-picker>
         </div>
         <div class="events_info">
           {{events.length}} évènements
@@ -121,22 +119,23 @@ export default {
     }
 
     .events_filter {
-
-      .local_cat {
-        .localisation {
-          float:left;
-          width:50%;
-        }
-        .dates {
-          float: right;
-          width: 47%;
-          margin-left: 10px;
-        }
+      .localisation {
+        float:left;
+        width:50%;
+      }
+      .dates {
+        float: right;
+        width: 47%;
+        margin-left: 10px;
       }
     }
 
     .events_info {
-      margin-top: 20px;
+      margin-top: 80px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #444040;
+      letter-spacing: 0.18px;
     }
   }
   .right {

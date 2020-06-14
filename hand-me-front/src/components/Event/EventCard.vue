@@ -94,9 +94,11 @@ export default {
 }
 
 .card_home {
-  width: 50%;
-  margin-right: 50px;
+  flex: auto;
+  margin: 20px;
+  list-style: none;
 }
+
 .card_no_home {
   width: 33.3%;
   margin-right: 20px;
