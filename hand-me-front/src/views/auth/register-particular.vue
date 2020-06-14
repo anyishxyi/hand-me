@@ -6,7 +6,14 @@
           <label for="Nom">Nom</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="Nom" placeholder="Donner votre nom" v-model="name" required />
+          <input
+            type="text"
+            id="fname"
+            name="Nom"
+            placeholder="Donner votre nom"
+            v-model="name"
+            required
+          />
         </div>
       </div>
       <div class="row">
@@ -14,7 +21,14 @@
           <label for="Prénom">Prénom</label>
         </div>
         <div class="col-75">
-          <input type="text" id="lname" name="Prénom" placeholder="Donner votre prénom" v-model="surname" required />
+          <input
+            type="text"
+            id="lname"
+            name="Prénom"
+            placeholder="Donner votre prénom"
+            v-model="surname"
+            required
+          />
         </div>
       </div>
       <div class="row">
@@ -22,7 +36,14 @@
           <label for="email">Email</label>
         </div>
         <div class="col-75">
-          <input type="text" id="lname" name="email" placeholder="Donner votre email" v-model="email" required />
+          <input
+            type="text"
+            id="lname"
+            name="email"
+            placeholder="Donner votre email"
+            v-model="email"
+            required
+          />
         </div>
       </div>
       <div class="row">
@@ -45,7 +66,13 @@
           <label for="phone">Téléphone</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="lname" name="phone" placeholder="Renseigner un numéro" v-model="telNumber"/>
+          <input
+            type="tel"
+            id="lname"
+            name="phone"
+            placeholder="Renseigner un numéro"
+            v-model="telNumber"
+          />
         </div>
       </div>
       <div class="row">
@@ -53,7 +80,13 @@
           <label for="location">Adresse</label>
         </div>
         <div class="col-75">
-          <input type="tel" id="lname" name="location" placeholder="Renseigner une adresse" v-model="location" />
+          <input
+            type="tel"
+            id="lname"
+            name="location"
+            placeholder="Renseigner une adresse"
+            v-model="location"
+          />
         </div>
       </div>
       <div class="row">
@@ -72,19 +105,26 @@ export default {
   components: {
     //NavBar
   },
-  data(){
-    return{
+  data() {
+    return {
       name: "",
       surname: "",
       email: "",
       password: "",
       telNumber: "",
-      location: "",
-    }
+      location: ""
+    };
   },
-  methods:{
-    register(){
-      authService.registerParticular(this.name, this.surname, this.email, this.password, this.telNumber, this.location);
+  methods: {
+    register() {
+      authService.registerParticular(
+        this.name,
+        this.surname,
+        this.email,
+        this.password,
+        this.telNumber,
+        this.location
+      );
     }
   }
 };

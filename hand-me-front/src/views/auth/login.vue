@@ -52,9 +52,9 @@ export default {
   methods: {
     login() {
       authService.login(this.inputEmail, this.inputPassword).then(data => {
-        //console.log(data);
+        console.log("data:", data);
         this.$router.push({ name: "userBoard", params: data });
-        console.log("after");
+        console.log("after22");
       });
     }
   }
