@@ -1,8 +1,6 @@
 <template>
   <div class="navbar navbar-default nav-color shadow">
-    <div class="logo">
-      HAND ME
-    </div>
+    <el-image class="logo" :src="logo" lazy />
     <div class="right-menu">
       <el-button type="text">
         <router-link :to="{path: '/home'}">
@@ -30,13 +28,15 @@
 
 <script>
 const OFFSET = 60
+const logo = require('@/icons/png/handMe.png')
 
 export default {
   data() {
     return {
       showNavbar: true,
       lastScrollPosition: 0,
-      scrollValue: 0
+      scrollValue: 0,
+      logo
     }
   },
   mounted () {
@@ -55,8 +55,6 @@ export default {
   },
   methods: {
     init() {
-      // eslint-disable-next-line no-console
-      console.log('navbar')
     },
     onScroll () {
       if (window.pageYOffset < 0) {
@@ -87,15 +85,12 @@ export default {
   // display: flex;
 
   .logo {
-    font-family: Helvetica;
-    font-size: 24px;
-    color: #FFFFFF;
-    letter-spacing: 0;
     float: left;
+    width: 140px;
+    height: 18px;
     line-height: 60px;
-    margin-left: 40px;
-    // text-align: center;
-    // background: #D5E2FF;
+    margin-left: 20px;
+    margin-top: 20px;
   }
 
   .right-menu {

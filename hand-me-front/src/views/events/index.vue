@@ -35,13 +35,6 @@
         <Maps />
       </div>
     </div>
-    <!-- <div class="footer footer-fixed">
-      <div class="left">
-        <el-image :src="twitter" class="flag-size" lazy />
-        <el-image :src="facebook" class="flag-size icon-right" lazy />
-      </div>
-      <div class="right"><el-image :src="france" class="flag-size" lazy /> Made in France, Paris copyright hand-me.fr 2020</div>
-    </div> -->
   </div>
 </template>
 
