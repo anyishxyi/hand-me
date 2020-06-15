@@ -7,6 +7,7 @@
     @close="modalClose"
   >
     <svg-icon class="close-modal-icon" icon-class="close" @click="modalOpened = false" />
+    hello
   </el-dialog>
 </template>
 
@@ -36,6 +37,11 @@ export default {
       this.modalOpened = newVal
     }
   },
+  methods: {
+    modalClose() {
+      this.$emit('eventModalClose')
+    },
+  }
 }
 </script>
 
