@@ -11,6 +11,7 @@ import '@/styles/index.scss' // global css
 
 import store from './store'
 import router from './router'
+import './icons'
 
 const moment = require('moment')
 require('moment/locale/fr')
