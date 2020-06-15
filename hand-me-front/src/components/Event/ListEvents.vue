@@ -4,6 +4,7 @@
       v-for="event in events"
       :key="event.id"
       :event="event"
+      :isHome="isHome"
       @click.native="handleShowEvent(event)"
     />
 
@@ -26,6 +27,10 @@ export default {
     events: {
       type: Array,
       required: true
+    },
+    isHome: {
+      type: Boolean,
+      default: false
     },
   },
   components: {

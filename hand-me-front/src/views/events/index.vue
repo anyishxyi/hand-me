@@ -83,10 +83,6 @@ export default {
           id: 4,
           title: 'aaaaa'
         },
-        {
-          id: 5,
-          title: 'aaaaa'
-        },
       ]
     },
     getAddress(from_address) {
