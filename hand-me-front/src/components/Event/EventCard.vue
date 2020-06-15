@@ -103,20 +103,18 @@ export default {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  float: left;
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
-}
-
-.card_home {
   list-style: none;
   display: inline-block;
   padding: 0;
-  width: 30%;
+}
+
+.card_home {
+  width: 50%;
 }
 
 .card_no_home {
   width: 33.3%;
-  margin-right: 20px;
 }
 
 .card:hover {
