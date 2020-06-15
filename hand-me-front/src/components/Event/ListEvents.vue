@@ -26,12 +26,6 @@ export default {
 
 <style>
 .cards {
-  /* width: 100%;
-  justify-content: center;
-  -webkit-justify-content: center;
-  overflow: scroll;
-  display: flex;
-  flex-wrap: wrap; */
   display: inline-flex;
   flex-wrap: wrap;
   margin: 0;

@@ -64,23 +64,29 @@ export default {
     init() {
       this.events = [
         {
+          id: 0,
           title: 'aaaaa'
         },
         {
+          id: 1,
           title: 'aaaaa'
         },
         {
+          id: 2,
           title: 'aaaaa'
         },
         {
+          id: 3,
           title: 'aaaaa'
         },
         {
+          id: 4,
           title: 'aaaaa'
         },
         {
+          id: 5,
           title: 'aaaaa'
-        }
+        },
       ]
     },
     getAddress(from_address) {
