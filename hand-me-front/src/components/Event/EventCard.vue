@@ -7,9 +7,7 @@
       </div>
     </div>
     <div class="card__img"></div>
-    <a href="#" class="card_link">
-      <div class="card__img--hover"></div>
-    </a>
+    <div class="card__img--hover"></div>
     <div class="card__info">
       <span class="card__category"> Recipe</span>
       <h3 class="card__title">Crisp Spanish tortilla Matzo brei</h3>
@@ -19,16 +17,32 @@
 </template>
 
 <script>
+
 export default {
   name: 'EventCard',
-  // props: {
-  //   event: {
-  //     type: Object,
-  //     required: true
-  //   },
+  props: {
+    event: {
+      type: Object,
+      required: true
+    },
+  },
+  // components: {
+  //   ShowEvent
   // },
   data(){
-    return {}
+    return {
+      dialogEventVisible: false
+    }
+  },
+  methods: {
+    async handleShowEvent() {
+      if (this.event) {
+        this.dialogEventVisible = true
+      }
+    },
+    toggleDisplayEventVisibility(value) {
+      this.dialogEventVisible = value
+    },
   }
 }
 </script>

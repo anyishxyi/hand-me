@@ -1,11 +1,25 @@
 <template>
   <section class="cards">
-    <EventCard v-for="event in events" :key="event.id" />
+    <slot v-for="event in events">
+      <EventCard
+        :key="event.id"
+        :event="event"
+        @click.native="handleShowEvent(event)"
+      />
+    </slot>
+
+    <ShowEvent
+      :event="eventClicked"
+      :visibility="dialogEventVisible"
+      @eventToggleDisplayEvent="toggleDisplayEventVisibility"
+    />
+
   </section>
 </template>
 
 <script>
 import EventCard from './EventCard'
+import ShowEvent from './ShowEvent'
 
 export default {
   name: 'ListEvents',
@@ -16,10 +30,30 @@ export default {
     },
   },
   components: {
-    EventCard
+    EventCard,
+    ShowEvent
   },
   data(){
-    return {}
+    return {
+      eventClicked: {
+        type: Object,
+        default: {}
+      },
+      dialogEventVisible: false
+    }
+  },
+  methods: {
+    async handleShowEvent(event) {
+      console.log('clicked')
+      if (event) {
+        this.eventClicked = event
+        this.dialogEventVisible = true
+      }
+    },
+    toggleDisplayEventVisibility(value) {
+      if(!value) this.eventClicked = {}
+      this.dialogEventVisible = value
+    },
   }
 }
 </script>
