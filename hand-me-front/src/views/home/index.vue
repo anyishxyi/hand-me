@@ -1,30 +1,6 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <!-- <div class="navbar navbar-default" :style='{ backgroundColor: `${navColorOnScroll}` }'>
-        <div class="right-menu">
-          <el-button type="text">
-            <router-link :to="{path: '/home'}">
-              Accueil
-            </router-link>
-          </el-button>
-          <el-button type="text">
-            <router-link :to="{path: '/events'}">
-              Evenements
-            </router-link>
-          </el-button>
-          <el-button type="text">
-            <router-link :to="{path: '/register'}">
-              Inscription
-            </router-link>
-          </el-button>
-          <el-button type="text">
-            <router-link :to="{path: '/login'}">
-              Connexion
-            </router-link>
-          </el-button>
-        </div>
-      </div> -->
       <div class="left_content">
         <h1 class="heading">Trouvez des évènements qui vous correspondent près de chez vous</h1>
         <div class="search_bar">
@@ -35,8 +11,7 @@
             placeholder="Entrez le nom de votre ville..."
             :placechanged="getAddress"
             :error="handleError"
-          >
-          </Places>
+          />
         </div>
       </div>
     </div>
@@ -85,7 +60,7 @@
       <Maps />
     </div>
     <div class="events_overview">
-      <ListEvents :events="events" />
+      <ListEvents :events="events" :isHome="isHome" />
       <div class="btn_all_events">
         <el-button type="primary">
           <router-link :to="{path: '/events'}">VOIR TOUS LES EVENEMENTS</router-link>
@@ -174,7 +149,8 @@ export default {
       navColorOnScroll: 'transparent !important',
       from_address:{},
       location: null,
-      coordinates: {}
+      coordinates: {},
+      isHome: true
     }
   },
   async created() {

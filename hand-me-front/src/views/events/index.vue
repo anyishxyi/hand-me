@@ -14,16 +14,15 @@
             placeholder="Entrez le nom de votre ville"
             :placechanged="getAddress"
             :error="handleError"
-          >
-          </Places>
+          />
           <el-date-picker
             class="dates"
             v-model="dates"
             type="daterange"
             range-separator="A"
             start-placeholder="Date départ"
-            end-placeholder="Date fin">
-          </el-date-picker>
+            end-placeholder="Date fin"
+          />
         </div>
         <div class="events_info">
           {{events.length}} évènements

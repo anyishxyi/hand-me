@@ -1,18 +1,23 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 36.447 36.447" style="enable-background:new 0 0 36.447 36.447;" xml:space="preserve" class=""><g><g>
-	<g>
-		<path d="M30.224,3.948h-1.098V2.75c0-1.517-1.197-2.75-2.67-2.75c-1.474,0-2.67,1.233-2.67,2.75v1.197h-2.74V2.75    c0-1.517-1.197-2.75-2.67-2.75c-1.473,0-2.67,1.233-2.67,2.75v1.197h-2.74V2.75c0-1.517-1.197-2.75-2.67-2.75    c-1.473,0-2.67,1.233-2.67,2.75v1.197H6.224c-2.343,0-4.25,1.907-4.25,4.25v24c0,2.343,1.907,4.25,4.25,4.25h24    c2.344,0,4.25-1.907,4.25-4.25v-24C34.474,5.855,32.567,3.948,30.224,3.948z M25.286,2.75c0-0.689,0.525-1.25,1.17-1.25    c0.646,0,1.17,0.561,1.17,1.25v4.896c0,0.689-0.524,1.25-1.17,1.25c-0.645,0-1.17-0.561-1.17-1.25V2.75z M17.206,2.75    c0-0.689,0.525-1.25,1.17-1.25s1.17,0.561,1.17,1.25v4.896c0,0.689-0.525,1.25-1.17,1.25s-1.17-0.561-1.17-1.25V2.75z M9.125,2.75    c0-0.689,0.525-1.25,1.17-1.25s1.17,0.561,1.17,1.25v4.896c0,0.689-0.525,1.25-1.17,1.25s-1.17-0.561-1.17-1.25V2.75z     M31.974,32.198c0,0.965-0.785,1.75-1.75,1.75h-24c-0.965,0-1.75-0.785-1.75-1.75v-22h27.5V32.198z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="6.724" y="14.626" width="4.595" height="4.089" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="12.857" y="14.626" width="4.596" height="4.089" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="18.995" y="14.626" width="4.595" height="4.089" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="25.128" y="14.626" width="4.596" height="4.089" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="6.724" y="20.084" width="4.595" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="12.857" y="20.084" width="4.596" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="18.995" y="20.084" width="4.595" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="25.128" y="20.084" width="4.596" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="6.724" y="25.54" width="4.595" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="12.857" y="25.54" width="4.596" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="18.995" y="25.54" width="4.595" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-		<rect x="25.128" y="25.54" width="4.596" height="4.086" data-original="#000000" class="active-path" data-old_color="#000000" fill="#4370F3"/>
-	</g>
-</g></g> </svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="44px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Icon-Calendar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M34,40 L6,40 C4.898,40 4,39.104 4,38 L4,20 L36,20 L36,38 C36,39.104 35.104,40 34,40 M6,8 L10,8 L10,10 C10,11.104 10.896,12 12,12 C13.104,12 14,11.104 14,10 L14,8 L26,8 L26,10 C26,11.104 26.894,12 28,12 C29.106,12 30,11.104 30,10 L30,8 L34,8 C35.104,8 36,8.898 36,10 L36,16 L4,16 L4,10 C4,8.898 4.898,8 6,8 M34,4 L30,4 L30,2 C30,0.896 29.106,0 28,0 C26.894,0 26,0.896 26,2 L26,4 L14,4 L14,2 C14,0.896 13.104,0 12,0 C10.896,0 10,0.896 10,2 L10,4 L6,4 C2.692,4 0,6.692 0,10 L0,38 C0,41.308 2.692,44 6,44 L34,44 C37.308,44 40,41.308 40,38 L40,10 C40,6.692 37.308,4 34,4" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01.homepage" transform="translate(-282.000000, -1091.000000)">
+            <g id="avantages" transform="translate(110.000000, 1054.000000)">
+                <g id="01">
+                    <g id="Icon_calendar" transform="translate(172.000000, 37.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Icon-Calendar" fill="#4370F3" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
