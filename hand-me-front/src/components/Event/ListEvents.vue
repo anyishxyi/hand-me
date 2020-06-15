@@ -1,12 +1,11 @@
 <template>
   <section class="cards">
-    <slot v-for="event in events">
-      <EventCard
-        :key="event.id"
-        :event="event"
-        @click.native="handleShowEvent(event)"
-      />
-    </slot>
+    <EventCard
+      v-for="event in events"
+      :key="event.id"
+      :event="event"
+      @click.native="handleShowEvent(event)"
+    />
 
     <ShowEvent
       :event="eventClicked"
