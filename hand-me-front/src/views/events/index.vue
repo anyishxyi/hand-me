@@ -29,7 +29,7 @@
           {{events.length}} évènements
         </div>
         <div class="events_list clear">
-          <ListEvents />
+          <ListEvents :events="events" />
         </div>
       </div>
       <div class="right">

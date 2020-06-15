@@ -8,6 +8,11 @@
   >
     <svg-icon class="close-modal-icon" icon-class="close" @click="modalOpened = false" />
     hello
+    <slot />
+    <span v-if="hasBtns" slot="footer">
+      <div class="cancel" @click="modalClose">{{ $t('utils.form.cancel') }}</div>
+      <div class="confirm" @click="confirm">{{ $t('utils.form.confirm') }}</div>
+    </span>
   </el-dialog>
 </template>
 
@@ -27,7 +32,11 @@ export default {
     event: {
       type: Object,
       required: true
-    }
+    },
+    hasBtns: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
@@ -42,7 +51,10 @@ export default {
   methods: {
     beforeClose() {
       this.$emit('eventToggleDisplayEvent', false)
-    }
+    },
+    confirm() {
+      this.$emit('confirm')
+    },
   }
 }
 </script>
