@@ -46,6 +46,6 @@ export default {
 .google-map {
   width: 100%;
   min-height: 100%;
-  height: 700px;
+  height: 500px;
 }
 </style>

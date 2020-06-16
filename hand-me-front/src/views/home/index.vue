@@ -60,7 +60,9 @@
       <Maps />
     </div>
     <div class="events_overview">
-      <ListEvents :events="events" :isHome="isHome" />
+      <div class="events_list">
+        <ListEvents :events="events" :isHome="isHome" />
+      </div>
       <div class="btn_all_events">
         <el-button type="primary">
           <router-link :to="{path: '/events'}">VOIR TOUS LES EVENEMENTS</router-link>
@@ -420,6 +422,10 @@ export default {
     }
 
     .events_overview {
+      padding-top: 5%;
+      .events_list {
+        margin: auto;
+      }
       .btn_all_events {
         padding-top: 10px;
         display: flex;
