@@ -414,7 +414,7 @@ export default {
 
     .maps {
       background-size: cover;
-      height: 600px;
+      height: 500px;
       .title {
         background: transparent !important;
         align-items: center;
@@ -422,12 +422,15 @@ export default {
     }
 
     .events_overview {
-      padding-top: 5%;
+      padding-top: 50px;
+      padding-bottom: 50px;
       .events_list {
-        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .btn_all_events {
-        padding-top: 10px;
+        padding-top: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
