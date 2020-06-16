@@ -1,6 +1,7 @@
 <template>
   <GoogleMapLoader
     :mapConfig="mapConfig"
+    :isHome="isHome"
   >
     <template slot-scope="{ google, map }">
       <GoogleMapMarker
@@ -24,6 +25,12 @@ export default {
   components: {
     GoogleMapLoader,
     GoogleMapMarker
+  },
+  props: {
+    isHome: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data() {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="google-map" ref="googleMap"></div>
+    <div class="google-map" v-bind:class="{ home: isHome, no_home: !isHome }" ref="googleMap" />
     <template v-if="Boolean(this.google) && Boolean(this.map)">
       <slot
         :google="google"
@@ -15,7 +15,11 @@ import GoogleMapsApiLoader from "google-maps-api-loader";
 
 export default {
   props: {
-    mapConfig: Object
+    mapConfig: Object,
+    isHome: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data() {
@@ -46,6 +50,11 @@ export default {
 .google-map {
   width: 100%;
   min-height: 100%;
+}
+.home {
   height: 500px;
+}
+.no_home {
+  height: 700px;
 }
 </style>

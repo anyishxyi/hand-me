@@ -57,7 +57,7 @@
     </div>
     <div class="maps">
       <div class="title">Vos évènements à proximité</div>
-      <Maps />
+      <Maps :isHome="isHome" />
     </div>
     <div class="events_overview">
       <div class="events_list">
