@@ -1,4 +1,10 @@
-export default {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _default = {
   WATER: "#021019",
   TRANSIT: "#146474",
   ROAD_LOCAL: "#000000",
@@ -14,5 +20,6 @@ export default {
   TEXT_FILL: "#ffffff",
   COLOR_SELECTED_POINT: "rgb(0,184,83)",
   COLOR_POINT: "rgb(243,114,114)",
-  COLOR_POINT_FILL: "rgb(255,255,255)",
+  COLOR_POINT_FILL: "rgb(255,255,255)"
 };
+exports["default"] = _default;
