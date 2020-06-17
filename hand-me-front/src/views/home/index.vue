@@ -41,27 +41,27 @@
       </div>
     </div>
     <div class="category">
-      <div class="cat_header separator">Lorem ipsum dolor sit amet</div>
+      <div class="cat_header separator">Bienvenue</div>
       <div class="cat_subject">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius
+        Vous êtes une association qui souhaite mettre en place des évènements ? Grâce à HandMe, La publication de votre évènement sur la plateforme se retrouve simplifier par notre système de gestion d'évènement. Vous êtes un bénévole qui souhaite donner de son temps ? Trouvez les évènements proches de chez vous en quelques clics et rejoingez une communauté afin de partager avec les autres participants d'un évènement.
       </div>
       <div class="cat_content">
         <el-card>
           <el-image :src="calendar" class="icon-class" lazy></el-image>
           <div class="details">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+            Trouve les évènements qui te correspondent le mieux et ajoutes les à ta liste personnelle.
           </div>
         </el-card>
         <el-card class="middle-card">
           <el-image :src="people" class="icon-class" lazy></el-image>
           <div class="details">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+            Créer ou rejoins une communauté sur HandMe pour montrer ton soutient aux associations.
           </div>
         </el-card>
         <el-card>
           <el-image :src="localisation" class="icon-class" lazy></el-image>
           <div class="details">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris
+            Trouve les évènements à proximité de chez toi en visualisant directement ses dernières sur notre carte intéractive.
           </div>
         </el-card>
       </div>
@@ -69,15 +69,15 @@
     <div class="counter">
       <div >
         <count-to :start-val="0" :end-val="nb_users" class="count" separator=" " />
-        <p>Membres</p>
+        <p>Membres présents sur notre plateforme</p>
       </div>
       <div class="middle-card">
         <count-to :start-val="0" :end-val="nb_orga" class="count" separator=" " />
-        <p>Organisateurs</p>
+        <p>Organisateurs propose des évènements sur la plateforme</p>
       </div>
       <div >
         <count-to :start-val="0" :end-val="nb_events" class="count" separator=" " />
-        <p>Evènements</p>
+        <p>Evènements présents sur la plateforme</p>
       </div>
     </div>
     <div class="maps">
