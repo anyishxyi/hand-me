@@ -24,10 +24,7 @@ export default {
       type: String,
       default: '33%'
     },
-    event: {
-      type: Object,
-      required: true
-    }
+    event: {}
   },
   data() {
     return {

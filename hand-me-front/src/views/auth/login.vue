@@ -4,43 +4,17 @@
       :width="width"
       @eventToggleDisplayModal="beforeClose"
     >
-      <div class="container">
-        <form @submit.prevent="login">
-          <div class="row">
-            <div class="col-25">
-              <label for="email">Email</label>
-            </div>
-            <div class="col-75">
-              <input
-                type="text"
-                id="lname"
-                name="email"
-                placeholder="Donner votre email"
-                v-model="inputEmail"
-                required
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label for="password">Mot de passe</label>
-            </div>
-            <div class="col-75">
-              <input
-                type="password"
-                id="lname"
-                name="password"
-                placeholder="Renseigner un mot de passe"
-                v-model="inputPassword"
-                required
-              />
-            </div>
-          </div>
-          <div class="row">
-            <input type="submit" value="Submit" />
-          </div>
-        </form>
-      </div>
+      <el-form class="demo-form-inline">
+        <el-form-item>
+          <el-input v-model="userData.email" placeholder="Email"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="userData.password" placeholder="Password"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">Query</el-button>
+        </el-form-item>
+      </el-form>
     </GeneralModal>
 </template>
 
@@ -67,9 +41,13 @@ export default {
     };
   },
   methods: {
-    async login() {
+    async onSubmit() {
       if(!this.userData.email || !this.userData.password) return
-      const user = await apiService.login(this.userData).catch(error => console.error(error))
+      const user = await apiService.login(this.userData)
+                                    .catch(error => {
+                                      this.$notify.error({title: 'Error', message: 'Ceci est une erreur'});
+                                      console.error(error)
+                                    })
       console.log('user')
       console.log(user)
     },

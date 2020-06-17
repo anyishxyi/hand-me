@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     async handleShowEvent(event) {
-      console.log('clicked')
       if (event) {
         this.eventClicked = event
         this.dialogEventVisible = true

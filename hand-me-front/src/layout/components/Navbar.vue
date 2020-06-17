@@ -17,25 +17,28 @@
           Inscription
         </router-link>
       </el-button>
-      <el-button type="primary">
-        <router-link :to="{path: '/login'}">
-          Connexion
-        </router-link>
-      </el-button>
+      <el-button type="primary" @click="showLoginPage=!showLoginPage">Connexion</el-button>
     </div>
+    <LoginPage
+      :visibility="showLoginPage"
+      @eventToggleLogin="toggleDisplayLogiVisibility"
+    />
   </div>
 </template>
 
 <script>
+import LoginPage from '@/views/auth/login'
 const OFFSET = 60
 const logo = require('@/icons/png/handMe.png')
 
 export default {
+  components: { LoginPage },
   data() {
     return {
       showNavbar: true,
       lastScrollPosition: 0,
       scrollValue: 0,
+      showLoginPage: false,
       logo
     }
   },
@@ -66,6 +69,9 @@ export default {
       }
       this.showNavbar = window.pageYOffset < this.lastScrollPosition
       this.lastScrollPosition = window.pageYOffset
+    },
+    toggleDisplayLogiVisibility(value) {
+      this.showLoginPage = value
     }
   }
 }
