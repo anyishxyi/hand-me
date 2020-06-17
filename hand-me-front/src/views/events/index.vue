@@ -106,12 +106,16 @@ export default {
 .container {
   width:100%;
   margin-top:60px;
+  height: 705px;
 
   .left {
     text-align:justify;
     float:left;
     width:45%;
-    margin: 45px;
+    margin-top: 20px;
+    margin-left: 45px;
+    margin-right: 0px;
+    margin-bottom: 0px;
 
     .heading {
       font-size: 14px;
@@ -138,6 +142,11 @@ export default {
       color: #444040;
       letter-spacing: 0.18px;
     }
+
+    .events_list {
+      height: 500px;;
+      overflow: scroll;
+    }
   }
   .right {
     text-align:justify;
@@ -148,8 +157,8 @@ export default {
 }
 
 .footer-fixed {
-   bottom: 0;
-   position: fixed;
+  bottom: 0;
+  position: fixed;
 }
 
 .clear {

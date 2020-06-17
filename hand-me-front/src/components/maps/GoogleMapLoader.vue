@@ -55,6 +55,6 @@ export default {
   height: 500px;
 }
 .no_home {
-  height: 700px;
+  height: 730px;
 }
 </style>
