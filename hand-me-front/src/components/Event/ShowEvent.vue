@@ -29,14 +29,7 @@ export default {
     },
   },
   data() {
-    return {
-      modalOpened: false
-    }
-  },
-  watch: {
-    visibility: function(newVal) {
-      this.modalOpened = newVal
-    }
+    return {}
   },
   methods: {
     beforeClose(newVal) {

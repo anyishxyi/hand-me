@@ -33,9 +33,15 @@ export const constantRoutes = [
         name: 'home',
         // meta: { title: 'events', icon: 'home', affix: true }
       },
+      // {
+      //   path: '/login',
+      //   component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/auth'),
+      //   name: 'login',
+      //   hidden: true
+      // },
       {
         path: '/login',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/auth'),
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/login'),
         name: 'login',
         hidden: true
       },
