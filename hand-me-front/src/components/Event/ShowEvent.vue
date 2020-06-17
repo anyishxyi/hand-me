@@ -1,25 +1,19 @@
 <template>
-  <el-dialog
-    :visible.sync="modalOpened"
+  <GeneralModal
+    :visibility="visibility"
     :width="width"
-    :show-close="false"
-    custom-class="general-modal"
-    @close="beforeClose"
+    @eventToggleDisplayModal="beforeClose"
   >
-    <svg-icon class="close-modal-icon" icon-class="close" @click="modalOpened = false" />
     hello
-    <slot />
-    <span v-if="hasBtns" slot="footer">
-      <div class="cancel" @click="modalClose">{{ $t('utils.form.cancel') }}</div>
-      <div class="confirm" @click="confirm">{{ $t('utils.form.confirm') }}</div>
-    </span>
-  </el-dialog>
+  </GeneralModal>
 </template>
 
 <script>
+import GeneralModal from '@/components/GeneralModal'
 
 export default {
   name: 'ShowEvent',
+  components: { GeneralModal },
   props: {
     visibility: {
       type: Boolean,
@@ -33,10 +27,6 @@ export default {
       type: Object,
       required: true
     },
-    hasBtns: {
-      type: Boolean,
-      default: false
-    },
   },
   data() {
     return {
@@ -49,8 +39,8 @@ export default {
     }
   },
   methods: {
-    beforeClose() {
-      this.$emit('eventToggleDisplayEvent', false)
+    beforeClose(newVal) {
+      this.$emit('eventToggleDisplayEvent', newVal)
     },
     confirm() {
       this.$emit('confirm')
