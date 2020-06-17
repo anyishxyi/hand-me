@@ -10,15 +10,11 @@ var _ColorPalette = _interopRequireDefault(require("@/constants/ColorPalette"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var WATER = _ColorPalette["default"].WATER,
-    TRANSIT = _ColorPalette["default"].TRANSIT,
-    ROAD_LOCAL = _ColorPalette["default"].ROAD_LOCAL,
     ROAD_ARTERIAL_STROKE = _ColorPalette["default"].ROAD_ARTERIAL_STROKE,
     ROAD_ARTERIAL_FILL = _ColorPalette["default"].ROAD_ARTERIAL_FILL,
     ROAD_HIGHWAY_STROKE = _ColorPalette["default"].ROAD_HIGHWAY_STROKE,
     ROAD_HIGHWAY_FILL = _ColorPalette["default"].ROAD_HIGHWAY_FILL,
-    POI = _ColorPalette["default"].POI,
     LANDSCAPE = _ColorPalette["default"].LANDSCAPE,
-    ADMIN_STROKE = _ColorPalette["default"].ADMIN_STROKE,
     ADMIN_FILL = _ColorPalette["default"].ADMIN_FILL,
     TEXT_STROKE = _ColorPalette["default"].TEXT_STROKE,
     TEXT_FILL = _ColorPalette["default"].TEXT_FILL,
@@ -53,8 +49,8 @@ var LINE_PATH_CONFIG = {
 };
 exports.LINE_PATH_CONFIG = LINE_PATH_CONFIG;
 var mapSettings = {
-  clickableIcons: false,
-  streetViewControl: false,
+  clickableIcons: true,
+  streetViewControl: true,
   panControlOptions: false,
   gestureHandling: "cooperative",
   backgroundColor: LANDSCAPE,
@@ -62,9 +58,9 @@ var mapSettings = {
   zoomControlOptions: {
     style: "SMALL"
   },
-  zoom: 5,
-  minZoom: 2,
-  maxZoom: 8,
+  zoom: 8,
+  minZoom: 3,
+  maxZoom: 12,
   styles: [{
     "featureType": "all",
     "elementType": "labels.text.fill",
@@ -82,6 +78,7 @@ var mapSettings = {
   }, {
     "featureType": "administrative",
     "elementType": "geometry.fill",
+    // "stylers": [{ visibility: "off" }]
     "stylers": [{
       "color": ADMIN_FILL
     }]
@@ -89,12 +86,19 @@ var mapSettings = {
     "featureType": "administrative",
     "elementType": "geometry.stroke",
     "stylers": [{
-      "color": ADMIN_STROKE
-    }, {
-      "lightness": 14
-    }, {
-      "weight": 1.4
-    }]
+      visibility: "off"
+    }] // "stylers": [
+    //   {
+    // //     "color": ADMIN_STROKE
+    //   },
+    //   {
+    //     "lightness": 14
+    //   },
+    //   {
+    //     "weight": 1.4
+    //   }
+    // ]
+
   }, {
     "featureType": "landscape",
     "elementType": "all",
@@ -105,10 +109,16 @@ var mapSettings = {
     "featureType": "poi",
     "elementType": "geometry",
     "stylers": [{
-      "color": POI
-    }, {
-      "lightness": 5
-    }]
+      visibility: "off"
+    }] // "stylers": [
+    //   {
+    //     "color": POI
+    //   },
+    //   {
+    //     "lightness": 5
+    //   }
+    // ]
+
   }, {
     "featureType": "road.highway",
     "elementType": "geometry.fill",
@@ -141,14 +151,24 @@ var mapSettings = {
     "featureType": "road.local",
     "elementType": "geometry",
     "stylers": [{
-      "color": ROAD_LOCAL
-    }]
+      visibility: "off"
+    }] // "stylers": [
+    //   {
+    //     "color": ROAD_LOCAL
+    //   }
+    // ]
+
   }, {
     "featureType": "transit",
     "elementType": "all",
     "stylers": [{
-      "color": TRANSIT
-    }]
+      visibility: "off"
+    }] // "stylers": [
+    //   {
+    //     "color": TRANSIT
+    //   }
+    // ]
+
   }, {
     "featureType": "water",
     "elementType": "all",

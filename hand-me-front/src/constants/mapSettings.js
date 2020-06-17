@@ -2,15 +2,15 @@ import colorPalette from "@/constants/ColorPalette";
 
 const {
   WATER,
-  TRANSIT,
-  ROAD_LOCAL,
+  // TRANSIT,
+  // ROAD_LOCAL,
   ROAD_ARTERIAL_STROKE,
   ROAD_ARTERIAL_FILL,
   ROAD_HIGHWAY_STROKE,
   ROAD_HIGHWAY_FILL,
-  POI,
+  // POI,
   LANDSCAPE,
-  ADMIN_STROKE,
+  // ADMIN_STROKE,
   ADMIN_FILL,
   TEXT_STROKE,
   TEXT_FILL,
@@ -50,8 +50,8 @@ const LINE_PATH_CONFIG = {
 };
 
 const mapSettings = {
-  clickableIcons: false,
-  streetViewControl: false,
+  clickableIcons: true,
+  streetViewControl: true,
   panControlOptions: false,
   gestureHandling: "cooperative",
   backgroundColor: LANDSCAPE,
@@ -59,9 +59,9 @@ const mapSettings = {
   zoomControlOptions: {
     style: "SMALL"
   },
-  zoom: 5,
-  minZoom: 2,
-  maxZoom: 8,
+  zoom: 8,
+  minZoom: 3,
+  maxZoom: 12,
   styles: [
     {
       "featureType": "all",
@@ -87,6 +87,7 @@ const mapSettings = {
     {
       "featureType": "administrative",
       "elementType": "geometry.fill",
+      // "stylers": [{ visibility: "off" }]
       "stylers": [
           {
             "color": ADMIN_FILL
@@ -96,17 +97,18 @@ const mapSettings = {
     {
       "featureType": "administrative",
       "elementType": "geometry.stroke",
-      "stylers": [
-        {
-          "color": ADMIN_STROKE
-        },
-        {
-          "lightness": 14
-        },
-        {
-          "weight": 1.4
-        }
-      ]
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      // //     "color": ADMIN_STROKE
+      //   },
+      //   {
+      //     "lightness": 14
+      //   },
+      //   {
+      //     "weight": 1.4
+      //   }
+      // ]
     },
     {
       "featureType": "landscape",
@@ -120,14 +122,15 @@ const mapSettings = {
     {
       "featureType": "poi",
       "elementType": "geometry",
-      "stylers": [
-        {
-          "color": POI
-        },
-        {
-          "lightness": 5
-        }
-      ]
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      //     "color": POI
+      //   },
+      //   {
+      //     "lightness": 5
+      //   }
+      // ]
     },
     {
       "featureType": "road.highway",
@@ -174,20 +177,22 @@ const mapSettings = {
     {
       "featureType": "road.local",
       "elementType": "geometry",
-      "stylers": [
-        {
-          "color": ROAD_LOCAL
-        }
-      ]
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      //     "color": ROAD_LOCAL
+      //   }
+      // ]
     },
     {
       "featureType": "transit",
       "elementType": "all",
-      "stylers": [
-        {
-          "color": TRANSIT
-        }
-      ]
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      //     "color": TRANSIT
+      //   }
+      // ]
     },
     {
       "featureType": "water",
