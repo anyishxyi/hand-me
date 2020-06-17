@@ -43,13 +43,17 @@ export default {
   methods: {
     async onSubmit() {
       if(!this.userData.email || !this.userData.password) return
-      const user = await apiService.login(this.userData)
+      const res = await apiService.login(this.userData)
                                     .catch(error => {
                                       this.$notify.error({title: 'Error', message: 'Ceci est une erreur'});
                                       console.error(error)
                                     })
-      console.log('user')
-      console.log(user)
+      console.log('res')
+      console.log(res)
+      if(!res || !res.data || res.status !== 200) {
+        this.$notify.error({title: 'Error', message: 'Ceci est une autre erreur'});
+        return
+      }
     },
     beforeClose(newVal) {
       this.$emit('eventToggleLogin', newVal)

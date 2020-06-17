@@ -76,13 +76,52 @@
 			<h1>Bienvenue</h1>
 			<p>Repondez à ces quelques questions afin de continuer.</p>
 			<p><strong>Qui êtes-vous ?</strong></p>
-			<p><el-button type="primary" @click="registerForm.society = true" class="btn" plain>Je suis une société(compte emetteur)</el-button></p>
-			<p><el-button type="primary" @click="registerForm.society = false" class="btn" plain>Je suis un associé / investisseur / salarié (compte receveur)</el-button></p>
+      <p><el-button type="primary" @click="registerForm.society = false" class="btn" plain>Je suis un particulier</el-button></p>
+			<p><el-button type="primary" @click="registerForm.society = true" class="btn" plain>Je suis une société(Association)</el-button></p>
 			<div class="buttons">
 				<el-button @click="backToRegister" type="text">retour</el-button>
 				<el-button @click="handleCheckSociety" class="btn btn-validate" type="danger">Suivant</el-button>
 			</div>
 		</div>
+    <!-- Steps for Particular registion -->
+    <div v-if="step11">
+			<p><strong>Informations nécessaires</strong></p>
+			<div class="first-input">
+				<div>
+					<p>Prenom:</p>
+					<el-input placeholder="Prenom..." v-model="userData.particularFirstName"></el-input>
+				</div>
+				<div class="input-left">
+					<p>Nom:</p>
+					<el-input placeholder="Nom..." v-model="userData.particularName" ></el-input>
+				</div>
+			</div>
+			<div class="inputs">
+				<div>
+					<p>Adresse:</p>
+					<el-input placeholder="Ville..." v-model="userData.particularLocation"></el-input>
+				</div>
+				<div class="input-left">
+					<p>Téléphone</p>
+					<el-input placeholder="Téléphone..." v-model="userData.phonenumber"></el-input>
+				</div>
+			</div>
+			<!-- <div class="inputs">
+				<div>
+					<p>Valeur nominale de l'action (€)</p>
+					<el-input v-model="registerForm.societyValueAction" @input="onValueAction"></el-input>
+				</div>
+				<div class="input-left">
+					<p>Nombre d'action (calculé)</p>
+					<el-input v-model="registerForm.societyNumberAction"  :disabled="true"></el-input>
+				</div>
+			</div> -->
+			<div class="buttons">
+				<el-button @click="backToCheckSociety" type="text">retour</el-button>
+				<el-button @click="handleValidateParticular" class="btn btn-validate" type="danger">Valider</el-button>
+			</div>
+    </div>
+    <!-- Steps for Association registion -->
 		<div v-if="step1">
 			<p><strong>Quel est le SIRET de votre société ?</strong></p>
 			<p><el-input placeholder="SIRET..." v-model="registerForm.siret" class="marginInput"></el-input></p>
@@ -139,6 +178,8 @@
 </template>
 
 <script>
+import apiService from '@/services/apiService'
+
 export default {
   name: 'Register',
   data() {
@@ -147,14 +188,20 @@ export default {
         email: '',
         password: '',
         confirmPassword: '',
-        society: true,
-        siret: undefined,
-        societyName: undefined,
-        societyWeb: undefined,
-        societyCity: undefined,
-        societyCapital: undefined,
-        societyValueAction: undefined,
-        societyNumberAction: undefined
+        particularName: '',
+        particularFirstName: '',
+        particularEmail: '',
+        particularPassword: '',
+        particularPhonenumber: '',
+        particularLocation: ''
+      },
+      userData : {
+        particularName: '',
+        particularFirstName: '',
+        particularEmail: '',
+        particularPassword: '',
+        particularPhonenumber: '',
+        particularLocation: ''
       },
       passwordType: 'password',
       loading: false,
@@ -167,8 +214,9 @@ export default {
       step: true,
       step1: false,
       step2: false,
+      step11: false,
       fit: 'fill',
-      // picture: require('@/assets/images/png/onboarding.png')
+      picture: require('@/icons/png/registerOnBoarding.png')
     }
   },
   methods: {
@@ -180,52 +228,77 @@ export default {
       }
     },
     handleCheckSociety() {
+      console.log(this.registerForm)
+      if(this.registerForm.society) {
+        this.step1 = true
+      } else {
+        this.step11 = true
+      }
       this.step = false
-      this.step1 = true
       this.step2 = false
-	},
-	backToCheckSociety() {
+    },
+    backToCheckSociety() {
       this.step = true
       this.step1 = false
+      this.step11 = false
       this.step2 = false
-	},
-	handleCheckSiret() {
+    },
+    handleCheckSiret() {
       if(this.handleCheckSiret.siret !== 0) {
         this.step = false
         this.step1 = false
+        this.step11 = false
         this.step2 = true
       }
-	},
-	backToCheckSiret() {
+    },
+    backToCheckSiret() {
       this.step = false
       this.step1 = true
+      this.step11 = false
       this.step2 = false
-	},
+    },
     backToRegister() {
       this.isRegister = true
       this.step = false
       this.step1 = false
+      this.step11 = false
       this.step2 = false
-	},
-	handleValidate() {
-        if ( !this.registerForm.siret ||
-        !this.registerForm.societyName ||
-        !this.registerForm.societyWeb ||
-        !this.registerForm.societyCity ||
-        !this.registerForm.societyCapital ||
-        !this.registerForm.societyValueAction ||
-        !this.registerForm.societyNumberAction) {
-          return
-        }
+    },
+    handleValidate() {
+      if ( !this.registerForm.siret ||
+      !this.registerForm.societyName ||
+      !this.registerForm.societyWeb ||
+      !this.registerForm.societyCity ||
+      !this.registerForm.societyCapital ||
+      !this.registerForm.societyValueAction ||
+      !this.registerForm.societyNumberAction) {
+        return
+      }
       console.log('this.registerForm')
       console.log(this.registerForm)
-	},
+    },
+    async handleValidateParticular() {
+      // if ( !this.registerForm.siret ||
+      // !this.registerForm.societyName ||
+      // !this.registerForm.societyWeb ||
+      // !this.registerForm.societyCity ||
+      // !this.registerForm.societyCapital ||
+      // !this.registerForm.societyValueAction ||
+      // !this.registerForm.societyNumberAction) {
+
+        this.userData.particularEmail = this.registerForm.email,
+        this.userData.particularPassword = this.registerForm.password
+      // }
+      const res = await apiService.registerParticular(this.userData).catch(error => console.log(error))
+      console.log('this.res')
+      console.log(res)
+    },
     onValueAction(value) {
-		console.log(value)
-		if(!value || !this.registerForm.societyCapital) return
-		this.registerForm.societyValueAction = value
-		this.registerForm.societyNumberAction = this.registerForm.societyCapital / this.registerForm.societyValueAction
-	}
+      console.log(value)
+      if(!value || !this.registerForm.societyCapital) return
+      this.registerForm.societyValueAction = value
+      this.registerForm.societyNumberAction = this.registerForm.societyCapital / this.registerForm.societyValueAction
+    }
   }
 }
 </script>
