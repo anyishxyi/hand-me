@@ -61,7 +61,7 @@
     </div>
     <div class="events_overview">
       <div class="events_list">
-        <ListEvents :events="events" :isHome="isHome" />
+        <ListEvents :events="events" isHome="true" />
       </div>
       <div class="btn_all_events">
         <el-button type="primary">
@@ -161,7 +161,6 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
-    // this.address.focus();
   },
   methods: {
     init() {

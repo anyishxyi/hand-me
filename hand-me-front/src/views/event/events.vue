@@ -28,7 +28,7 @@
           {{events.length}} évènements
         </div>
         <div class="events_list clear">
-          <ListEvents :events="events" />
+          <ListEvents :events="events" isHome="false" />
         </div>
       </div>
       <div class="right">
@@ -111,9 +111,9 @@ export default {
   .left {
     text-align:justify;
     float:left;
-    width:45%;
+    width: 53%;
     margin-top: 20px;
-    margin-left: 45px;
+    margin-left: 25px;
     margin-right: 0px;
     margin-bottom: 0px;
 
@@ -121,9 +121,11 @@ export default {
       font-size: 14px;
       color: #7E829B;
       letter-spacing: 0.14px;
+      margin-right: 25px;
     }
 
     .events_filter {
+      margin-right: 25px;
       .localisation {
         float:left;
         width:50%;
