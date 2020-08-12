@@ -57,11 +57,11 @@
     </div>
     <div class="maps">
       <div class="title">Vos évènements à proximité</div>
-      <Maps :isHome="isHome" />
+      <Maps :isHome="true" />
     </div>
     <div class="events_overview">
       <div class="events_list">
-        <ListEvents :events="events" isHome="true" />
+        <ListEvents :events="events" :isHome="true" />
       </div>
       <div class="btn_all_events">
         <el-button type="primary">
@@ -151,8 +151,7 @@ export default {
       navColorOnScroll: 'transparent !important',
       from_address:{},
       location: null,
-      coordinates: {},
-      isHome: true
+      coordinates: {}
     }
   },
   async created() {
@@ -238,286 +237,287 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .home-page {
-.navbar {
-  height: 60px;
-  border: none;
-  z-index: 100;
-  transition: background-color 1s ease 0s;
-  top: 0;
-  position: fixed;
-  width: 100%;
+.home-page {
+  .navbar {
+    height: 60px;
+    border: none;
+    z-index: 100;
+    transition: background-color 1s ease 0s;
+    top: 0;
+    position: fixed;
+    width: 100%;
 
-  .right-menu {
-    float: right;
-    height: 100%;
-    line-height: 60px;
-    margin-right: 40px;
-
-    &:focus {
-      outline: none;
-    }
-
-    .right-menu-item {
-      display: inline-block;
-      padding: 0 8px;
+    .right-menu {
+      float: right;
       height: 100%;
-      font-size: 1.1em;
-      vertical-align: text-bottom;
+      line-height: 60px;
+      margin-right: 40px;
 
-      &.lang {
-        font-size: 1.7em;
+      &:focus {
+        outline: none;
       }
 
-      &.hover-effect {
-        cursor: pointer;
-        transition: background .3s;
+      .right-menu-item {
+        display: inline-block;
+        padding: 0 8px;
+        height: 100%;
+        font-size: 1.1em;
+        vertical-align: text-bottom;
 
-        &:hover {
-          background: rgba(0, 0, 0, .025)
+        &.lang {
+          font-size: 1.7em;
         }
-      }
-    }
 
-    .avatar-container {
-      margin-right: 30px;
-
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
-
-        .user-avatar {
+        &.hover-effect {
           cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
+          transition: background .3s;
 
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+          &:hover {
+            background: rgba(0, 0, 0, .025)
+          }
         }
       }
-    }
 
-    .btn_connexion {
-      color: blue($color: #000000);
+      .avatar-container {
+        margin-right: 30px;
+
+        .avatar-wrapper {
+          margin-top: 5px;
+          position: relative;
+
+          .user-avatar {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+
+          .el-icon-caret-bottom {
+            cursor: pointer;
+            position: absolute;
+            right: -20px;
+            top: 25px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .btn_connexion {
+        color: blue($color: #000000);
+      }
     }
   }
-}
 
-    .banner {
-      background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
-      background-size: cover;
-      height: 780px;
+  .banner {
+    background: url('~@/icons/jpg/header_home.jpg') no-repeat center center;
+    background-size: cover;
+    height: 780px;
 
-      .left_content {
-        width: 50%;
-        padding-left: 50px;
+    .left_content {
+      width: 50%;
+      padding-left: 50px;
 
-        .heading {
-          color: white;
-          padding-top: 200px;
-          font-size: 55px;
-        }
+      .heading {
+        color: white;
+        padding-top: 200px;
+        font-size: 55px;
+      }
 
-        p {
-          text-align: center;
-        }
+      p {
+        text-align: center;
+      }
 
-        .search_bar {
-          width: 650px;
-        }
+      .search_bar {
+        width: 650px;
       }
     }
-    .category {
-      text-align: center;
+  }
 
-      .cat_header {
-        font-size: 37px;
-        font-weight: 600;
-        padding-top: 5%;
-      }
+  .category {
+    text-align: center;
 
-      .cat_subject {
-        font-weight: 200;
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-      }
-
-      .cat_content {
-        display: flex;
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-bottom: 5%;
-
-
-      }
-
-      .cat_content > el-card {
-        flex: 1; /*grow*/
-        padding: 10px;
-      }
-
-      .details {
-        padding: 14px;
-        color: #444040;
-        font-weight: Medium;
-        line-height: 1.5;
-      }
+    .cat_header {
+      font-size: 37px;
+      font-weight: 600;
+      padding-top: 5%;
     }
 
-    .middle-card {
-      margin-left: 20px;
-      margin-right: 20px;
+    .cat_subject {
+      font-weight: 200;
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-top: 5%;
+      padding-bottom: 5%;
     }
 
-    .counter {
-      background-color: #4370F3;
-      text-align: center;
-      color: white;
+    .cat_content {
       display: flex;
       padding-left: 10%;
       padding-right: 10%;
-      // padding-bottom: 5%;
-      justify-content: center;
-      align-items: center;
+      padding-bottom: 5%;
 
-      .count {
-        font-size: 40px;
-        font-weight: Medium;
-      }
 
-      .count + p {
-        margin-top: 0.2em;
-        font-size: 0.9em;
-        color: white;
-        margin-bottom: 2em;
-      }
-
-      .counter-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
     }
-    .counter > div {
+
+    .cat_content > el-card {
       flex: 1; /*grow*/
       padding: 10px;
     }
 
-    .maps {
-      background-size: cover;
-      height: 500px;
-      .title {
-        background: transparent !important;
-        align-items: center;
-      }
+    .details {
+      padding: 14px;
+      color: #444040;
+      font-weight: Medium;
+      line-height: 1.5;
     }
-
-    .events_overview {
-      padding-top: 50px;
-      padding-bottom: 50px;
-      .events_list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .btn_all_events {
-        padding-top: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-
-    .commentaries {
-      background-color: #F4F6FC;
-      text-align: center;
-
-      .com_header {
-        font-size: 30px;
-        font-weight: 600;
-        padding-top: 5%;
-        padding-bottom: 5%;
-      }
-
-      .com_content {
-        display: flex;
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-bottom: 5%;
-
-        div {
-          .photo {
-
-          }
-
-          .name {
-            color: #4370F3;
-            font-size: 24px;
-            font-weight: Medium;
-          }
-
-          .role {
-            color: #7E829B;
-            font-size: 14px;
-            font-weight: Medium;
-          }
-
-          .comment {
-            padding-top: 25px;
-            color: #444040;
-            // font-size: 40px;
-            font-weight: Medium;
-            line-height: 1.8;
-          }
-        }
-      }
-
-      .com_content > div {
-        flex: 1; /*grow*/
-        padding: 10px;
-      }
-    }
-
   }
 
-  .separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
-  .separator::before, .separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 2px solid #4370F3;
-    max-width: 10%;
-  }
-  .separator::before {
+  .middle-card {
+    margin-left: 20px;
     margin-right: 20px;
   }
-  .separator::after {
-    margin-left: 20px;
+
+  .counter {
+    background-color: #4370F3;
+    text-align: center;
+    color: white;
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+    // padding-bottom: 5%;
+    justify-content: center;
+    align-items: center;
+
+    .count {
+      font-size: 40px;
+      font-weight: Medium;
+    }
+
+    .count + p {
+      margin-top: 0.2em;
+      font-size: 0.9em;
+      color: white;
+      margin-bottom: 2em;
+    }
+
+    .counter-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .counter > div {
+    flex: 1; /*grow*/
+    padding: 10px;
   }
 
-  /*
-  * spefics cards
-  */
-
-
-  .hide {
-    display: none;
+  .maps {
+    background-size: cover;
+    height: 500px;
+    .title {
+      background: transparent !important;
+      align-items: center;
+    }
   }
 
-  .icon-class {
-    width: 30px;
-    height: 30px;
+  .events_overview {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .events_list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn_all_events {
+      padding-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
+
+  .commentaries {
+    background-color: #F4F6FC;
+    text-align: center;
+
+    .com_header {
+      font-size: 30px;
+      font-weight: 600;
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+
+    .com_content {
+      display: flex;
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-bottom: 5%;
+
+      div {
+        .photo {
+
+        }
+
+        .name {
+          color: #4370F3;
+          font-size: 24px;
+          font-weight: Medium;
+        }
+
+        .role {
+          color: #7E829B;
+          font-size: 14px;
+          font-weight: Medium;
+        }
+
+        .comment {
+          padding-top: 25px;
+          color: #444040;
+          // font-size: 40px;
+          font-weight: Medium;
+          line-height: 1.8;
+        }
+      }
+    }
+
+    .com_content > div {
+      flex: 1; /*grow*/
+      padding: 10px;
+    }
+  }
+
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.separator::before, .separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #4370F3;
+  max-width: 10%;
+}
+.separator::before {
+  margin-right: 20px;
+}
+.separator::after {
+  margin-left: 20px;
+}
+
+/*
+* spefics cards
+*/
+
+
+.hide {
+  display: none;
+}
+
+.icon-class {
+  width: 30px;
+  height: 30px;
+}
 </style>

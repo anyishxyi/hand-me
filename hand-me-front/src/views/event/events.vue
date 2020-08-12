@@ -28,11 +28,11 @@
           {{events.length}} évènements
         </div>
         <div class="events_list clear">
-          <ListEvents :events="events" isHome="false" />
+          <ListEvents :events="events" :isHome="false" />
         </div>
       </div>
       <div class="right">
-        <Maps />
+        <Maps :isHome="false" />
       </div>
     </div>
   </div>

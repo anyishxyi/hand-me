@@ -30,6 +30,12 @@ export default {
       default: false
     },
   },
+  watch: {
+    isHome: function (val) {
+      console.log('val')
+      console.log(val)
+    }
+  },
   data(){
     return {
       dialogEventVisible: false
