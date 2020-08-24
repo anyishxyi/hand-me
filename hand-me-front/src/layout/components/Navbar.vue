@@ -1,25 +1,27 @@
 <template>
-  <div class="navbar navbar-default nav-color shadow">
-    <router-link :to="{path: '/home'}">
-      <el-image class="logo" :src="logo" lazy />
-    </router-link>
-    <div class="right-menu">
-      <el-button type="text">
-        <router-link :to="{path: '/home'}">
-          Accueil
-        </router-link>
-      </el-button>
-      <el-button type="text">
-        <router-link :to="{path: '/events'}">
-          Evenements
-        </router-link>
-      </el-button>
-      <el-button type="text">
-        <router-link :to="{path: '/register'}">
-          Inscription
-        </router-link>
-      </el-button>
-      <el-button type="primary" @click="loginClicked">Connexion</el-button>
+  <div>
+    <div class="navbar navbar-default nav-color shadow">
+      <router-link :to="{path: '/home'}">
+        <el-image class="logo" :src="logo" lazy />
+      </router-link>
+      <div class="right-menu">
+        <el-button type="text">
+          <router-link :to="{path: '/home'}">
+            Accueil
+          </router-link>
+        </el-button>
+        <el-button type="text">
+          <router-link :to="{path: '/events'}">
+            Evenements
+          </router-link>
+        </el-button>
+        <el-button type="text">
+          <router-link :to="{path: '/register'}">
+            Inscription
+          </router-link>
+        </el-button>
+        <el-button type="primary" @click="loginClicked">Connexion</el-button>
+      </div>
     </div>
     <Login
       :visibility="showLoginPage"
