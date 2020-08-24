@@ -1,243 +1,305 @@
 <template>
-  <div class="events-container">
-    <div class="navbar navbar-default nav-color shadow">
-      <div class="right-menu">
-        <el-button type="text">
-          <router-link :to="{path: '/home'}">
-            Accueil
-          </router-link>
-        </el-button>
-        <el-button type="text">
-          <router-link :to="{path: '/events'}">
-            Evenements
-          </router-link>
-        </el-button>
-        <el-button type="text">
-          <router-link :to="{path: '/register'}">
-            Inscription
-          </router-link>
-        </el-button>
-        <el-button type="primary">
-          <router-link :to="{path: '/login'}">
-            Connexion
-          </router-link>
-        </el-button>
-      </div>
-    </div>
-    <div class="container">
-      <div class="left">
-        <div class="heading">
-          <h1>RECHERCHER UN EVENEMENT</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius</p>
+  <div>
+    <header class="header">
+      <nav class="header-nav">
+        <div class="header-nav-logo">
+          <span class="header-nav-logo__text">HAND</span>
+          <div class="header-nav-logo__point"></div>
+          <span class="header-nav-logo__text">ME</span>
         </div>
-        <div class="events_filter">
-          <div class="local_cat">
-            <Places
-              class="localisation"
-              id="from_address"
-              classname="form-control"
-              placeholder="Entrez le nom de votre ville"
-              :placechanged="getAddress"
-              :error="handleError"
-            >
-            </Places>
-            <el-date-picker
-              class="dates"
-              v-model="dates"
-              type="daterange"
-              range-separator="A"
-              start-placeholder="Date départ"
-              end-placeholder="Date fin">
-            </el-date-picker>
+        <ul class="header-nav-menu">
+          <li class="header-nav-menu__item">
+            <a class="header-nav-menu__link" href>Accueil</a>
+          </li>
+          <li class="header-nav-menu__item">
+            <a class="header-nav-menu__link" href>Évènements</a>
+          </li>
+          <li class="header-nav-menu__item">
+            <a class="header-nav-menu__link" href>Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="board">
+      <!--left-->
+      <div class="board-left">
+        <div class="board-left-profile">
+          <span class="board-left-profile__name"></span>
+          <span class="board-left-profile__location"></span>
+        </div>
+        <div class="board-left-menu">
+          <div class="board-left-menu-container">
+            <div class="board-left-menu-container-item">
+              <a href>
+                <img src="../../assets/Icon.png" alt />
+              </a>
+            </div>
+            <div class="board-left-menu-container-item"></div>
+            <div class="board-left-menu-container-item"></div>
+            <div class="board-left-menu-container-item"></div>
+            <div class="board-left-menu-container-item"></div>
+            <div class="board-left-menu-container-item"></div>
           </div>
         </div>
-        <div class="events_list clear">
+      </div>
 
+      <!--middle-->
+      <div class="board-middle">
+        <div class="board-middle-banner">
+          <span class="board-middle-banner-text">Hello user</span>
+          <h1 class="board-middle-banner-title">bienvenue sur ton dashboard</h1>
         </div>
+        <div class="board-middle-content">
+          <div class="board-middle-content-cards">
+            <div class="board-middle-content-cards-card">
+              <h2 class="text-uppercase">évènements</h2>
+              <span class="board-middle-content-cards-card-txt">All the Lorem Ipsum generators</span>
+            </div>
+            <div class="board-middle-content-cards-card">
+              <h2 class="text-uppercase">évènements</h2>
+              <span class="board-middle-content-cards-card-txt">All the Lorem Ipsum generators</span>
+            </div>
+            <div class="board-middle-content-cards-card">
+              <h2 class="text-uppercase">évènements</h2>
+              <span class="board-middle-content-cards-card-txt">All the Lorem Ipsum generators</span>
+            </div>
+          </div>
+          <div class="board-middle-content-table">
+            <Table :heads="['label1', 'label2', 'label3', 'label4']" :body="todos" />
+          </div>
+        </div>
+        <div></div>
       </div>
-      <div class="right">
-        <Maps />
-      </div>
-    </div>
-    <div class="footer footer-fixed">
-      <div class="left">
-        <el-image :src="twitter" class="flag-size" lazy />
-        <el-image :src="facebook" class="flag-size icon-right" lazy />
-      </div>
-      <div class="right"><el-image :src="france" class="flag-size" lazy /> Made in France, Paris copyright hand-me.fr 2020</div>
-    </div>
+
+      <!--right-->
+      <div class="board-right"></div>
+    </section>
   </div>
 </template>
 
 <script>
-import Maps from '@/components/maps/Maps'
-import Places from '@/components/places/Places'
-
-const twitter = require('@/icons/png/twitter.png')
-const facebook = require('@/icons/png/facebook.png')
-const france = require('@/icons/png/france.png')
+import Table from "../../components/table/table";
 
 export default {
-  name: "EVENTSPAGE",
-  components: { Places, Maps },
-  data(){
-    return {
-      twitter,
-      facebook,
-      france,
-      dates: '',
-      localisation: '',
-      category: '',
-      from_address:{},
-      to_address:{}
-    }
+  name: "userBoard",
+  mounted: function() {
+    return (this.todos = this.$route.params.data.events);
   },
-  created() {
-    this.init()
+  data: function() {
+    return {
+      todos: []
+    };
   },
   methods: {
-    init() {
-      console.log('events page')
-    },
-    getAddress(from_address) {
-      this.address = from_address;
-    },
-    handleError(error){
-      alert(error)
+    loadUserEvents() {
+      return this.$route.params.data.events;
     }
+  },
+  components: {
+    Table
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
+$darkGrey: #212020;
+$white: #ffffff;
+$blue: #4270f3;
+$brightGrey: #d8d8d8;
 
-.navbar {
-  height: 60px;
-  border: none;
-  z-index: 100;
-  transition: background-color 1s ease 0s;
-  top: 0;
-  position: fixed;
+@mixin text-uppercase() {
+  text-transform: uppercase;
+}
+
+@mixin bg-color-hover($color) {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $color;
+}
+
+.header {
   width: 100%;
-  background-color: #222020;
-
-  .right-menu {
-    float: right;
-    height: 100%;
-    line-height: 60px;
-    margin-right: 40px;
-
-    &:focus {
-      outline: none;
-    }
-
-    .right-menu-item {
-      display: inline-block;
-      padding: 0 8px;
-      height: 100%;
-      font-size: 1.1em;
-      vertical-align: text-bottom;
-
-      &.lang {
-        font-size: 1.7em;
-      }
-
-      &.hover-effect {
-        cursor: pointer;
-        transition: background .3s;
-
-        &:hover {
-          background: rgba(0, 0, 0, .025)
-        }
-      }
-    }
-
-    .avatar-container {
-      margin-right: 30px;
-
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
-
-        .user-avatar {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
-
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
-        }
-      }
-    }
-
-    .btn_connexion {
-      color: blue($color: #000000);
-    }
-  }
-}
-
-.events-container {
-  width:100%;
+  height: 60px;
   display: flex;
-  flex-flow: column;
-  height: 100%;
-  color: #333333;
-  .nav-color {
-
-  }
-}
-
-.container {
-  width:100%;
-  margin-top:60px;
-  // display:table;
-
-  .left {
-    text-align:justify;
-    float:left;
-    width:45%;
-    margin: 45px;
-
-    .events_filter {
-
-      .local_cat {
-        .localisation {
-          float:left;
-          width:50%;
-        }
-        .dates {
-          float: right;
-          width: 47%;
-          margin-left: 10px;
+  justify-content: center;
+  background-color: $darkGrey;
+  &-nav {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-logo {
+      display: flex;
+      align-items: center;
+      &__text {
+        color: $white;
+        font-weight: bold;
+        font-size: 18px;
+        @include text-uppercase();
+      }
+      &__point {
+        width: 8px;
+        height: 8px;
+        margin: 0 10px 0 10px;
+        border-radius: 50%;
+        background-color: $white;
+      }
+    }
+    &-menu {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      &__item {
+        font-weight: 500;
+        color: $white;
+        &:hover {
+          @include text-uppercase();
+          @include bg-color-hover($blue);
         }
       }
     }
+  }
+}
 
-    .events_list {
-
+.board {
+  width: 100%;
+  height: 900px;
+  display: flex;
+  &-left {
+    width: 25%;
+    height: 100%;
+    &-profile {
+      width: 100%;
+      height: 300px;
+      background: url("~@/assets/galina.png") no-repeat center center;
+      background-size: cover;
+    }
+    &-menu {
+      width: 100%;
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      background-color: $blue;
+      &-container {
+        width: 80%;
+        height: 400px;
+        margin: 30px 0 0 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+        &-item {
+          background-color: $blue;
+          border: 1px solid $brightGrey;
+          text-align: center;
+        }
+        &-item:hover {
+          background-color: $white;
+          border: 1px solid $brightGrey;
+          text-align: center;
+        }
+      }
     }
   }
-  .right {
-    text-align:justify;
-    float:right;
+  &-middle {
+    width: 70%;
     height: 700px;
-    width: 45%;
+    &-banner {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      background: url("~@/icons/jpg/header_home.jpg") no-repeat center center;
+      background-size: cover;
+      &-text {
+        position: absolute;
+        bottom: 40px;
+        left: 20px;
+        color: $white;
+        margin: 50px 0 50px 0;
+      }
+      &-title {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: $white;
+      }
+    }
+    &-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-cards {
+        width: 90%;
+        height: 300px;
+        display: flex;
+        justify-content: space-around;
+        margin: 30px 0 0 0;
+        &-card {
+          width: 33%;
+          margin: 0 25px 0 0;
+          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+          text-align: center;
+          h2 {
+            @include text-uppercase();
+          }
+        }
+      }
+
+      &-table {
+      }
+
+      /*table {
+        border-collapse: separate;
+        background: #fff;
+        width: 100%;
+        border-radius: 5px;
+        margin: 50px auto;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      thead {
+        border-radius: 5px;
+      }
+
+      thead th {
+        font-family: "Patua One", cursive;
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+        text-align: left;
+        padding: 20px;
+        background-image: linear-gradient(#646f7f, #4a5564);
+        border-top: 1px solid #858d99;
+
+        &:first-child {
+          border-top-left-radius: 5px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 5px;
+        }
+      }
+
+      tbody tr td {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        color: #5f6062;
+        font-size: 13px;
+        padding: 20px 20px 20px 20px;
+        border-bottom: 1px solid #e0e0e0;
+      }*/
+    }
+  }
+  &-right {
+    width: 25%;
+    height: 100%;
+    background-color: $blue;
   }
 }
-
-.footer-fixed {
-   bottom: 0;
-   position: fixed;
-}
-
-.clear {
-  clear:both;
-}
-
 </style>

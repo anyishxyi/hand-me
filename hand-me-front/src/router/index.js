@@ -35,13 +35,13 @@ export const constantRoutes = [
       },
       {
         path: '/login',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/login'),
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/auth'),
         name: 'login',
         hidden: true
       },
       {
         path: '/register',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/registerForm'),
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
         name: 'registerForm',
         hidden: true
       },
@@ -60,7 +60,7 @@ export const constantRoutes = [
       {
         path: '/profile',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/user/profile'),
-        name: 'profile',
+        name: 'userBoard',
         hidden: true
       },
       {

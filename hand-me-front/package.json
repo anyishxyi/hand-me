@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "git pull origin develop_front && vue-cli-service build && vue-cli-service serve",
+    "build:front": "git reset HEAD --hard && git pull origin develop_front && npm i && vue-cli-service build && vue-cli-service serve",
+    "build:prod": "git reset HEAD --hard && git pull origin master && npm i && vue-cli-service build && vue-cli-service serve",
     "lint": "vue-cli-service lint"
   },
   "contributors": [
@@ -33,6 +34,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.4.4",
     "element-ui": "^2.13.0",
+    "sass": "^1.26.5",
     "vue": "^2.6.10",
     "vue-browser-geolocation": "^1.8.0",
     "vue-count-to": "^1.0.13",
