@@ -25,7 +25,7 @@
     </div>
     <Login
       :visibility="showLoginPage"
-      @eventToggleLogin="toggleLoginVisibility"
+      @eventToggleLoginVisibility="toggleLoginVisibility"
     />
   </div>
 </template>

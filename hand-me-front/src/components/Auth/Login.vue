@@ -58,7 +58,7 @@ export default {
     beforeClose(newVal) {
       console.log('beforeclose')
       console.log(newVal)
-      this.$emit('toggleLoginVisibility', newVal)
+      this.$emit('eventToggleLoginVisibility', newVal)
     }
   }
 }
