@@ -1,6 +1,8 @@
 <template>
   <div class="navbar navbar-default nav-color shadow">
-    <el-image class="logo" :src="logo" lazy />
+    <router-link :to="{path: '/home'}">
+      <el-image class="logo" :src="logo" lazy />
+    </router-link>
     <div class="right-menu">
       <el-button type="text">
         <router-link :to="{path: '/home'}">
