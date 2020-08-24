@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import GoogleMapsApiLoader from "google-maps-api-loader";
 
 export default {
   props: {
@@ -28,11 +27,6 @@ export default {
     };
   },
   async mounted() {
-    const googleMapApi = await GoogleMapsApiLoader({
-      libraries: ['places', 'map'],
-      apiKey: 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM',
-    });
-    this.google = googleMapApi;
     if(!this.map) {
       this.initializeMap();
     }
@@ -41,7 +35,8 @@ export default {
   methods: {
     initializeMap() {
       const mapContainer = this.$refs.googleMap;
-      this.map = new this.google.maps.Map(mapContainer, this.mapConfig);
+      // eslint-disable-next-line no-undef
+      this.map = new google.maps.Map(mapContainer, this.mapConfig);
     }
   }
 };
