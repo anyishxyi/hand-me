@@ -51,7 +51,7 @@
                 autocomplete="on"
               />
             </el-form-item>
-            <el-button :loading="loading" type="primary" class="btn" style="width:100%;margin-bottom:30px;" round @click.native.prevent="handLogin">
+            <el-button :loading="loading" type="primary" class="btn" round @click.native.prevent="handLogin">
               SE CONNECTER
             </el-button>
           </el-form>
@@ -59,8 +59,8 @@
       </div>
       <div class="register-container">
         <div class="wrapper">
-          <p>AUGMENTEZ VOS CHANCES D'APPORTER UNE AIDE À UNE ASSOCIATION</p>
-          <p>Chaque mois plus de 10000 évènements sont créés sur notre plateforme</p>
+          <p class="title">AUGMENTEZ VOS CHANCES D'APPORTER UNE AIDE À UNE ASSOCIATION</p>
+          <p class="title2">Chaque mois plus de 10000 évènements sont créés sur notre plateforme</p>
           <router-link to="/register">
             <el-button type="secondary" class="btn" round>
               Créer votre compte
@@ -143,35 +143,22 @@ export default {
       width: 450px;
       background-color: #1f2d3d;
       position: relative;
-      header {
-        position: absolute;
-        top: 0;
-        left: 0; right: 0;
-        text-align: center;
-        margin: 0 auto;
-        .router-link-active:hover {
-          span {
-            color: tomato;
-          }
-        }
-        .svg-icon {
-          height: auto;
-          width: 300px;
-        }
-        span {
-          font-size: 1.5em;
-          letter-spacing: 0.3em;
-          display: block;
-          margin-top: -40px;
-          color: white;
-        }
-      }
       .wrapper {
         width: 450px;
         min-width: 250px;
         color: #fff;
-        h3 {
-          font-size: 2.5em;
+        margin: 0 20px;
+        .title {
+          text-transform: uppercase;
+          font-family: "Montserrat-SemiBold",Verdana,Arial,sans-serif;
+          font-size: 18px;
+          padding-bottom: 80px;
+          padding-top: 20px;
+        }
+        .title2 {
+          font-family: "Montserrat-SemiBold",Verdana,Arial,sans-serif;
+          font-size: 14px;
+          padding-bottom: 90px;
         }
       }
     }
