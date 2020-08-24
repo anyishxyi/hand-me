@@ -21,20 +21,21 @@ export default {
       default: false
     }
   },
-
   data() {
     return {
       google: null,
       map: null
     };
   },
-
   async mounted() {
     const googleMapApi = await GoogleMapsApiLoader({
-      apiKey: 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM'
+      libraries: ['places', 'map'],
+      apiKey: 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM',
     });
     this.google = googleMapApi;
-    this.initializeMap();
+    if(!this.map) {
+      this.initializeMap();
+    }
   },
 
   methods: {
