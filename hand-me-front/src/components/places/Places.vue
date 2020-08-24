@@ -90,8 +90,8 @@
     mounted: function() {
       let options = {};
       options.types = ['(cities)']; // Because i want to show only cities
-      console.log('options')
-      console.log(options)
+      // console.log('options')
+      // console.log(options)
       // eslint-disable-next-line no-undef
       this.autocomplete = new google.maps.places.Autocomplete(
         document.getElementById(this.id),
