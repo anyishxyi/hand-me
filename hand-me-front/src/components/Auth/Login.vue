@@ -1,21 +1,21 @@
 <template>
-    <GeneralModal
-      :visibility="visibility"
-      :width="width"
-      @eventToggleDisplayModal="beforeClose"
-    >
-      <el-form class="demo-form-inline">
-        <el-form-item>
-          <el-input v-model="userData.email" placeholder="Email"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-input v-model="userData.password" placeholder="Password"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="onSubmit">Query</el-button>
-        </el-form-item>
-      </el-form>
-    </GeneralModal>
+  <GeneralModal
+    :modal-visible="visibility"
+    width="600px"
+    @eventModalClose="beforeClose"
+  >
+    <!-- <el-form class="demo-form-inline">
+      <el-form-item>
+        <el-input v-model="userData.email" placeholder="Email"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input v-model="userData.password" placeholder="Password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">Query</el-button>
+      </el-form-item>
+    </el-form> -->
+  </GeneralModal>
 </template>
 
 <script>
@@ -56,6 +56,8 @@ export default {
       }
     },
     beforeClose(newVal) {
+      console.log('beforeclose')
+      console.log(newVal)
       this.$emit('toggleLoginVisibility', newVal)
     }
   }

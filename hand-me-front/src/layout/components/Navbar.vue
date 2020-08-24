@@ -74,9 +74,13 @@ export default {
     },
     toggleLoginVisibility(value) {
       this.showLoginPage = value
+      // console.log('toggleLoginVisibility')
+      // console.log(this.showLoginPage)
     },
     loginClicked() {
+      // console.log('clicked')
       this.showLoginPage = true
+      // console.log(this.showLoginPage)
     }
   }
 }

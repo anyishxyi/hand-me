@@ -4,27 +4,76 @@
     :width="width"
     :show-close="false"
     custom-class="general-modal"
-    @close="beforeClose"
+    @close="modalClose"
   >
     <svg-icon class="close-modal-icon" icon-class="close" @click="modalOpened = false" />
+    <HeaderContent
+      v-if="headerTitle.length > 0"
+      :icon="headerIcon"
+      :icon-custom="headerImage"
+      :title="headerTitle"
+      :default-subtitle="headerSubtitle"
+    />
     <slot />
+    <span v-if="hasBtns" slot="footer">
+      <div class="cancel" @click="modalClose">{{ $t('utils.cancel') }}</div>
+      <div class="confirm" @click="confirm">{{ $t('utils.confirm') }}</div>
+    </span>
+    <slot name="subfooter">
+      <div v-if="subfooterTitle1" class="subfooter">
+        <a v-if="subfooterTitle1" class="subfooter-button subfooter1" @click="subfooterClick1()">{{ subfooterTitle1 }}</a>
+        <a v-if="subfooterTitle2" class="subfooter-button subfooter2" @click="subfooterClick2()">{{ subfooterTitle2 }}</a>
+      </div>
+    </slot>
   </el-dialog>
 </template>
 
 <script>
-
+import HeaderContent from '@/components/Widget/HeaderContent'
 export default {
   name: 'GeneralModal',
+  components: { HeaderContent },
   props: {
-    visibility: {
+    modalVisible: {
       type: Boolean,
       default: false
+    },
+    headerTitle: {
+      type: String,
+      default: ''
+    },
+    headerSubtitle: {
+      type: String,
+      default: ''
+    },
+    headerIcon: {
+      type: String,
+      default: ''
+    },
+    headerImage: {
+      type: String,
+      default: ''
     },
     width: {
       type: String,
       default: '33%'
     },
-    event: {}
+    hasBtns: {
+      type: Boolean,
+      default: false
+    },
+    closeDialogQuestion: {
+      type: Boolean,
+      default: false
+    },
+    subfooterTitle1: {
+      type: String,
+      default: ''
+    },
+    subfooterTitle2: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {
@@ -32,17 +81,23 @@ export default {
     }
   },
   watch: {
-    visibility: function(newVal) {
+    modalVisible: function(newVal) {
       this.modalOpened = newVal
     }
   },
   methods: {
-    beforeClose() {
-      this.$emit('eventToggleDisplayModal', false)
+    modalClose() {
+      this.$emit('eventModalClose')
     },
     confirm() {
       this.$emit('confirm')
     },
+    subfooterClick1() {
+      this.$emit('subfooterClick1')
+    },
+    subfooterClick2() {
+      this.$emit('subfooterClick2')
+    }
   }
 }
 </script>

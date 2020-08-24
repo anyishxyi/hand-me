@@ -1,8 +1,8 @@
 <template>
   <GeneralModal
-    :visibility="visibility"
-    :width="width"
-    @eventToggleDisplayModal="beforeClose"
+    :modal-visible="visibility"
+    width="600px"
+    @eventModalClose="beforeClose"
   >
     hello
   </GeneralModal>
@@ -18,10 +18,6 @@ export default {
     visibility: {
       type: Boolean,
       default: false
-    },
-    width: {
-      type: String,
-      default: '33%'
     },
     event: {
       type: Object,
