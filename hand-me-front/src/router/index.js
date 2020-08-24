@@ -40,12 +40,6 @@ export const constantRoutes = [
       //   hidden: true
       // },
       {
-        path: '/login',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/login'),
-        name: 'login',
-        hidden: true
-      },
-      {
         path: '/register',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
         name: 'registerForm',

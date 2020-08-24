@@ -61,11 +61,7 @@
         <div class="wrapper">
           <p class="title">AUGMENTEZ VOS CHANCES D'APPORTER UNE AIDE À UNE ASSOCIATION</p>
           <p class="title2">Chaque mois plus de 10000 évènements sont créés sur notre plateforme</p>
-          <router-link to="/register">
-            <el-button type="secondary" class="btn" round>
-              Créer votre compte
-            </el-button>
-          </router-link>
+          <el-button @click="handleRegister" type="secondary" class="btn" round>Créer votre compte</el-button>
         </div>
       </div>
     </div>
@@ -120,6 +116,10 @@ export default {
     },
     handLogin() {
       console.log('clicked')
+    },
+    async handleRegister() {
+      this.$emit('eventToggleLoginVisibility', false)
+      await this.$router.push({ path: 'register' })
     }
   }
 }
