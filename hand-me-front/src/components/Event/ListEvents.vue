@@ -1,5 +1,5 @@
 <template>
-  <section class="cards">
+  <section v-bind:class="{ cards_home: isHome, cards: !isHome }">
     <EventCard
       v-for="event in events"
       :key="event.id"
@@ -68,5 +68,12 @@ export default {
   margin: 0;
   padding: 0;
   text-align: left;
+}
+.cards_home {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 80%;
 }
 </style>

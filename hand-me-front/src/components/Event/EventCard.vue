@@ -122,7 +122,7 @@ export default {
 }
 
 .card_home {
-  width: 31%;
+  width: 33%;
 }
 
 .card:hover {
