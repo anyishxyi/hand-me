@@ -22,8 +22,8 @@
               <el-switch
                 class="mb-37"
                 v-model="loginForm.type"
-                active-text="Particulier"
-                inactive-text="Organisation">
+                active-text="Organisation"
+                inactive-text="Particulier">
               </el-switch>
             </div>
 
@@ -51,7 +51,7 @@
                 autocomplete="on"
               />
             </el-form-item>
-            <el-button :loading="loading" type="primary" class="btn" round @click.native.prevent="handLogin">
+            <el-button :loading="loading" type="primary" class="btn" round @click.native.prevent="onSubmit">
               SE CONNECTER
             </el-button>
           </el-form>
@@ -97,15 +97,24 @@ export default {
   methods: {
     async onSubmit() {
       if(!this.loginForm.email || !this.loginForm.password) return
-      const res = await apiService.login(this.loginForm)
-                                    .catch(error => {
-                                      this.$notify.error({title: 'Error', message: 'Ceci est une erreur'});
-                                      console.error(error)
-                                    })
+      let res = null
+      if(this.loginForm.type) {
+        res = await apiService.orgaLogin(this.loginForm)
+                              .catch(error => {
+                                this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                console.error(error)
+                              })
+      } else {
+        res = await apiService.userLogin(this.loginForm)
+                              .catch(error => {
+                                this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                console.error(error)
+                              })
+      }
       console.log('res')
       console.log(res)
       if(!res || !res.data || res.status !== 200) {
-        this.$notify.error({title: 'Error', message: 'Ceci est une autre erreur'});
+        this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
         return
       }
     },
@@ -113,9 +122,6 @@ export default {
       console.log('beforeclose')
       console.log(newVal)
       this.$emit('eventToggleLoginVisibility', newVal)
-    },
-    handLogin() {
-      console.log('clicked')
     },
     async handleRegister() {
       this.$emit('eventToggleLoginVisibility', false)

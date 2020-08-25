@@ -10,7 +10,10 @@ const apiClient = axios.create({
 })
 
 export default {
-  async login(userData) {
+  async orgaLogin(userData) {
+    return apiClient.post('/authen/login_organization', userData)
+  },
+  async userLogin(userData) {
     return apiClient.post('/authen/login_particular', userData)
   },
   async registerParticular(userData) {
