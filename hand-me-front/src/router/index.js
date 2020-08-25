@@ -70,9 +70,9 @@ export const constantRoutes = [
         hidden: true
       },
       {
-        path: '/create-event',
+        path: '/create_event',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/event/createEvent'),
-        name: 'create-event',
+        name: 'create_event',
         hidden: true
       }
     ]

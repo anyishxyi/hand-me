@@ -117,6 +117,7 @@ export default {
         this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
         return
       }
+      await this.$localforage.setItem('userData', res.data).catch(error => console.error(error))
     },
     beforeClose(newVal) {
       console.log('beforeclose')

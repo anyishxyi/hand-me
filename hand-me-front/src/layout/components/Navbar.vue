@@ -15,12 +15,12 @@
             Evenements
           </router-link>
         </el-button>
-        <el-button type="text">
-          <router-link :to="{path: '/register'}">
-            Inscription
+        <el-button v-if="userData" type="text">
+          <router-link :to="{path: '/create_event'}">
+            Créer Evenement
           </router-link>
         </el-button>
-        <el-button type="primary" @click="loginClicked">Connexion</el-button>
+        <el-button v-if="!userData" type="primary" @click="loginClicked">Connexion</el-button>
       </div>
     </div>
     <Login
@@ -43,16 +43,18 @@ export default {
       lastScrollPosition: 0,
       scrollValue: 0,
       showLoginPage: false,
-      logo
+      logo,
+      userData: null
     }
   },
-  mounted () {
+  async mounted () {
     this.lastScrollPosition = window.pageYOffset
     window.addEventListener('scroll', this.onScroll)
     const viewportMeta = document.createElement('meta')
     viewportMeta.name = 'viewport'
     viewportMeta.content = 'width=device-width, initial-scale=1'
     document.head.appendChild(viewportMeta)
+    this.userData = await this.$localforage.getItem('userData')
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)

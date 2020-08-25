@@ -41,7 +41,7 @@
 <script>
 import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
-import ListEvents from '@/components/event/ListEvents'
+import ListEvents from '@/components/Event/ListEvents'
 
 export default {
   name: "EVENTSPAGE",

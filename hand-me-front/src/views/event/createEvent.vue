@@ -1,13 +1,144 @@
 <template>
-  <div>Create-event page is comming soon...</div>
+  <div class="events-container">
+    <div class="container">
+      <div class="left">
+        <div class="heading">
+          <h1>RECHERCHER UN EVENEMENT</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius</p>
+        </div>
+        <div class="content">
+        </div>
+      </div>
+      <div class="right" />
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
 
+export default {
+  name: "CREATEEVENTPAGE",
+  data(){
+    return {
+      dates: '',
+      localisation: '',
+      category: '',
+      from_address:{},
+      to_address:{},
+      events: []
+    }
+  },
+  created() {
+    this.init()
+  },
+  methods: {
+    init() {
+      this.events = [
+        {
+          id: 0,
+          title: 'aaaaa'
+        },
+        {
+          id: 1,
+          title: 'aaaaa'
+        },
+        {
+          id: 2,
+          title: 'aaaaa'
+        },
+        {
+          id: 3,
+          title: 'aaaaa'
+        },
+        {
+          id: 4,
+          title: 'aaaaa'
+        },
+      ]
+    },
+    getAddress(from_address) {
+      this.address = from_address;
+    },
+    handleError(error){
+      alert(error)
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.events-container {
+  width:100%;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  color: #333333;
+}
+
+.container {
+  width:100%;
+  margin-top:60px;
+  height: 705px;
+
+  .left {
+    text-align:justify;
+    float:left;
+    width: 53%;
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+
+    .heading {
+      font-size: 14px;
+      color: #7E829B;
+      letter-spacing: 0.14px;
+      margin-right: 25px;
+    }
+
+    .events_filter {
+      margin-right: 25px;
+      .localisation {
+        float:left;
+        width:50%;
+      }
+      .dates {
+        float: right;
+        width: 47%;
+        margin-left: 10px;
+      }
+    }
+
+    .events_info {
+      margin-top: 80px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #444040;
+      letter-spacing: 0.18px;
+    }
+
+    .events_list {
+      height: 500px;;
+      overflow: scroll;
+    }
+  }
+  .right {
+    background: url('~@/assets/bg_create_project.png') no-repeat center center;
+    background-size: cover;
+    text-align:justify;
+    float:right;
+    height: 750px;
+    width: 45%;
+  }
+}
+
+.footer-fixed {
+  bottom: 0;
+  position: fixed;
+}
+
+.clear {
+  clear:both;
+}
 
 </style>

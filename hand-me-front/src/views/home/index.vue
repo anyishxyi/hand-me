@@ -108,7 +108,7 @@ I can make endless updates with whatever layout I desire!"</div>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
 import Maps from '@/components/maps/Maps'
-import ListEvents from '@/components/event/ListEvents'
+import ListEvents from '@/components/Event/ListEvents'
 
 const twitter = require('@/icons/png/twitter.png')
 const facebook = require('@/icons/png/facebook.png')
