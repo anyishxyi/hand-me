@@ -7,7 +7,7 @@
     "autocomplete"
   ],
   "scripts": {
-    "start": "vue-cli-service serve --port 8443",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:front": "git reset HEAD --hard && git pull origin develop_front && npm i && vue-cli-service build",
     "build:prod": "git reset HEAD --hard && git pull origin master && npm i && vue-cli-service build",

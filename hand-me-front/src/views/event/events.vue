@@ -77,34 +77,11 @@ export default {
                                     console.error(error)
                                     return
                                   })
-      console.log('res')
-      console.log(res)
-      if(!res || !res.data || res.status !== 200) {
-        // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
-        return
-      }
-      this.events = [
-        {
-          id: 0,
-          title: 'aaaaa'
-        },
-        {
-          id: 1,
-          title: 'aaaaa'
-        },
-        {
-          id: 2,
-          title: 'aaaaa'
-        },
-        {
-          id: 3,
-          title: 'aaaaa'
-        },
-        {
-          id: 4,
-          title: 'aaaaa'
-        },
-      ]
+      if(!res || !res.data || res.status !== 200) return
+
+      this.events = res.data.events
+      console.log('this.events')
+      console.log(this.events)
     },
     getAddress(from_address) {
       this.address = from_address;

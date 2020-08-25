@@ -9,9 +9,9 @@
     <div class="card__img"></div>
     <div class="card__img--hover"></div>
     <div class="card__info">
-      <span class="card__category">event category</span>
-      <h3 class="card__title">event title</h3>
-      <span class="card__by">by <a href="#" class="card__author" title="author">Celeste Mills</a></span>
+      <span class="card__category">{{event.category.categoryName}}</span>
+      <h3 class="card__title">{{event.eventTitle}}</h3>
+      <span class="card__by">by {{event.eventMakerEmail}}</span>
     </div>
   </article>
 </template>
