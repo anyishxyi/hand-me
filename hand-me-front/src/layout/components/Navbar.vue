@@ -11,12 +11,12 @@
           </router-link>
         </el-button>
         <el-button type="text">
-          <router-link :to="{path: '/events'}">
+          <router-link :to="{path: '/event/all'}">
             Evenements
           </router-link>
         </el-button>
         <el-button v-if="userData" type="text">
-          <router-link :to="{path: '/create_event'}">
+          <router-link :to="{path: '/event/create'}">
             Créer Evenement
           </router-link>
         </el-button>

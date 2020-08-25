@@ -91,7 +91,7 @@ export default {
 
       console.log('eventData')
       console.log(this.eventData)
-      const res = await apiService.create_event(this.eventData, this.userData.token)
+      const res = await apiService.createEvent(this.eventData, this.userData.token)
                                   .catch(error => {
                                     this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
                                     console.error(error)

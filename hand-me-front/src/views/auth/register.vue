@@ -12,8 +12,8 @@
           <el-form-item prop="email">
             <el-input
               ref="email"
-              v-model="registerForm.email"
-              :placeholder="email"
+              v-model="email"
+              placeholder="email"
               name="email"
               type="text"
               tabindex="1"
@@ -25,29 +25,64 @@
             <el-input
               ref="password"
               :key="passwordType"
-              v-model="registerForm.password"
-              :type="passwordType"
-              :placeholder="password"
+              v-model="password"
+              type="password"
+              placeholder="password"
               name="password"
               tabindex="2"
               autocomplete="on"
             />
           </el-form-item>
 
-          <el-form-item prop="confirmPassword">
+            <el-form-item prop="name">
             <el-input
-              ref="confirmPassword"
-              :key="passwordType"
-              v-model="registerForm.confirmPassword"
-              :type="passwordType"
-              :placeholder="confirmPass"
-              name="confirmPassword"
-              tabindex="2"
+              ref="name"
+              v-model="name"
+              placeholder="name"
+              name="name"
+              type="text"
+              tabindex="1"
               autocomplete="on"
-              @keyup.enter.native="handleRegister"
             />
+            </el-form-item>
+
+            <el-form-item prop="surname">
+            <el-input
+              ref="surname"
+              v-model="surname"
+              placeholder="surname"
+              name="surname"
+              type="text"
+              tabindex="1"
+              autocomplete="on"
+            />
+            </el-form-item>
+
+            <el-form-item prop="phone">
+            <el-input
+              ref="phone"
+              v-model="phone"
+              placeholder="phone"
+              name="phone"
+              type="tel"
+              tabindex="1"
+              autocomplete="on"
+            />
+            </el-form-item>
+
+            <el-form-item prop="location">
+            <el-input
+              ref="location"
+              v-model="location"
+              placeholder="location"
+              name="location"
+              type="text"
+              tabindex="1"
+              autocomplete="on"
+            />
+
           </el-form-item>
-          <el-button :loading="loading" type="primary" class="btn" style="width:100%;margin-bottom:30px;" round @click.native.prevent="handleRegister">
+          <el-button :loading="loading" type="primary" class="btn" style="width:100%;margin-bottom:30px;" round @click.native.prevent="register">
             Créer votre compte
           </el-button>
         </el-form>
@@ -184,18 +219,16 @@ export default {
   name: 'Register',
   data() {
     return {
-      registerForm : {
-        email: '',
-        password: '',
-        confirmPassword: '',
-        particularName: '',
-        particularFirstName: '',
-        particularEmail: '',
-        particularPassword: '',
-        particularPhonenumber: '',
-        particularLocation: ''
-      },
-      userData : {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      particularName: '',
+      particularFirstName: '',
+      particularEmail: '',
+      particularPassword: '',
+      particularPhonenumber: '',
+      particularLocation: '',
+      userData: {
         particularName: '',
         particularFirstName: '',
         particularEmail: '',
@@ -207,8 +240,6 @@ export default {
       loading: false,
       success: false,
       isCodeDownloaded: false,
-      password: 'password',
-      email: 'email',
       confirmPass: 'Confirmer le mot de passe',
       isRegister: true,
       step: true,
@@ -220,6 +251,14 @@ export default {
     }
   },
   methods: {
+    // register(){
+    //   authService.registerParticular(this.name,
+    //     this.surname,
+    //     this.email,
+    //     this.password,
+    //     this.telNumber,
+    //     this.location);
+    // },
     handleRegister() {
       if(!this.registerForm || !this.registerForm.email) return
       if(this.registerForm.password === this.registerForm.confirmPassword) {

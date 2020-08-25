@@ -1,13 +1,14 @@
 const axios=require('axios').default;
 
-
 export default {
 
     login: (email,password) => {
-        return axios.post('https://backend.hand-me.fr:8443/gpe/authen/login_particular', {
-            email,
-            password
-        }).then((res) => {
+        return axios.post('https://backend.hand-me.fr:8443/gpe/authen/login_particular', 
+            {
+                email,
+                password
+            }
+        ).then((res) => {
             return res;
         }).catch((error) => {
             return error;
