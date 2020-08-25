@@ -2,11 +2,42 @@
   <div class="events-container">
     <div class="container">
       <div class="left">
-        <div class="heading">
-          <h1>RECHERCHER UN EVENEMENT</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius</p>
+        <div v-if="step1">
+          <div class="heading">Créer un évènement (Etape 1 sur 3)</div>
+          <div class="title">Commençons par donner un nom à votre évènement</div>
+          <div class="eventTitle">
+            <el-input placeholder="Saisissez le titre de votre évènement..." v-model="eventData.eventTitle"></el-input>
+          </div>
+          <div class="actions">
+            <el-button @click="nextToStep2" type="primary">Continuer</el-button>
+          </div>
         </div>
-        <div class="content">
+        <div v-if="step2">
+          <div class="heading">Créer un évènement (Etape 2 sur 3)</div>
+          <div class="title">Donnons une description de votre évènement</div>
+          <el-input
+            type="textarea"
+            class="eventDescr"
+            :autosize="{ minRows: 2, maxRows: 10}"
+            placeholder="Saisissez le titre de votre évènement..."
+            v-model="eventData.eventDescription">
+          </el-input>
+          <div class="actions">
+            <el-button class="left1" @click="nextToStep1" type="text">retour</el-button>
+            <el-button class="right2" @click="nextToStep3" type="primary">Continuer</el-button>
+          </div>
+        </div>
+        <div v-if="step3">
+          <div class="heading">Créer un évènement (Etape 3 sur 3)</div>
+          <div class="title">Quelques informations utiles</div>
+          <div class="content">
+            <el-input class="address" placeholder="Lieu de l'évènement..." v-model="eventData.eventPlace"></el-input>
+            <el-date-picker class="date" v-model="eventData.eventDate" type="date" placeholder="date de l'évènement..."></el-date-picker>
+          </div>
+          <div class="actions">
+            <el-button @click="nextToStep2" type="text">retour</el-button>
+            <el-button @click="validate" type="primary">Continuer</el-button>
+          </div>
         </div>
       </div>
       <div class="right" />
@@ -15,52 +46,63 @@
 </template>
 
 <script>
+import apiService from '@/services/apiService'
 
 export default {
   name: "CREATEEVENTPAGE",
   data(){
     return {
-      dates: '',
-      localisation: '',
-      category: '',
-      from_address:{},
-      to_address:{},
-      events: []
+      userData: {},
+      eventData: {
+        eventTitle: '',
+        eventDescription: '',
+        eventPlace: '',
+        eventDate: '',
+        eventMakerEmail: ''
+      },
+      step1: true,
+      step2: false,
+      step3: false
     }
   },
-  created() {
-    this.init()
+  async mounted() {
+    this.userData = await this.$localforage.getItem('userData')
   },
   methods: {
-    init() {
-      this.events = [
-        {
-          id: 0,
-          title: 'aaaaa'
-        },
-        {
-          id: 1,
-          title: 'aaaaa'
-        },
-        {
-          id: 2,
-          title: 'aaaaa'
-        },
-        {
-          id: 3,
-          title: 'aaaaa'
-        },
-        {
-          id: 4,
-          title: 'aaaaa'
-        },
-      ]
+    nextToStep1() {
+      this.step1 = true
+      this.step2 = false
+      this.step3 = false
     },
-    getAddress(from_address) {
-      this.address = from_address;
+    nextToStep2() {
+      if (this.eventData.eventTitle === '') return
+      this.step1 = false
+      this.step2 = true
+      this.step3 = false
     },
-    handleError(error){
-      alert(error)
+    nextToStep3() {
+      if (this.eventData.eventDescription === '') return
+      this.step1 = false
+      this.step2 = false
+      this.step3 = true
+    },
+    async validate() {
+      this.eventData.eventMakerEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
+
+      console.log('eventData')
+      console.log(this.eventData)
+      const res = await apiService.create_event(this.eventData, this.userData.token)
+                                  .catch(error => {
+                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                    console.error(error)
+                                    return
+                                  })
+      console.log('res')
+      console.log(res)
+      if(!res || !res.data || res.status !== 200) {
+        // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
+        return
+      }
     }
   }
 }
@@ -81,46 +123,66 @@ export default {
   height: 705px;
 
   .left {
-    text-align:justify;
     float:left;
     width: 53%;
     margin-top: 20px;
     margin-left: 25px;
     margin-right: 0px;
     margin-bottom: 0px;
+    display: block;
 
     .heading {
-      font-size: 14px;
+      font-size: 20px;
       color: #7E829B;
       letter-spacing: 0.14px;
-      margin-right: 25px;
+      margin-top: 90px;
+      margin-left: 50px;
+      margin-bottom: 60px;
     }
 
-    .events_filter {
-      margin-right: 25px;
-      .localisation {
-        float:left;
-        width:50%;
+    .title {
+      font-size: 30px;
+      color: #7E829B;
+      letter-spacing: 0.14px;
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-bottom: 60px;
+    }
+
+    .eventTitle {
+      width: 570px;
+      margin-left: 50px;
+      margin-bottom: 60px;
+    }
+
+    .eventDescr {
+      width: 650px;
+      margin-left: 50px;
+      margin-bottom: 60px;
+    }
+
+    .content {
+      width: 570px;
+      margin-left: 50px;
+      margin-bottom: 60px;
+
+      .address {
+        width: 300px;
       }
-      .dates {
-        float: right;
-        width: 47%;
-        margin-left: 10px;
+
+      .date {
+        width: 250px;
+        padding-left: 10px;
       }
     }
 
-    .events_info {
-      margin-top: 80px;
-      margin-bottom: 10px;
-      font-size: 18px;
-      color: #444040;
-      letter-spacing: 0.18px;
+    .actions {
+      display: flex;
+      margin-left: 50px;
+      .left1 { float: left; }
+      .right1 { float: right; }
     }
 
-    .events_list {
-      height: 500px;;
-      overflow: scroll;
-    }
   }
   .right {
     background: url('~@/assets/bg_create_project.png') no-repeat center center;

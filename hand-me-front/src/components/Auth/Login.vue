@@ -118,6 +118,7 @@ export default {
         return
       }
       await this.$localforage.setItem('userData', res.data).catch(error => console.error(error))
+      window.location.reload()
     },
     beforeClose(newVal) {
       console.log('beforeclose')

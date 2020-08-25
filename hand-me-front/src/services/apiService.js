@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiClient = axios.create({
+let apiClient = axios.create({
   baseURL: `https://backend.hand-me.fr:8443/gpe/`,
   withCredentials: false,
   headers: {
@@ -10,6 +10,17 @@ const apiClient = axios.create({
 })
 
 export default {
+  setClientSecured(token) {
+    apiClient = axios.create({
+      baseURL: `https://backend.hand-me.fr:8443/gpe/`,
+      withCredentials: false,
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      }
+    })
+  },
   async orgaLogin(userData) {
     return apiClient.post('/authen/login_organization', userData)
   },
@@ -21,5 +32,12 @@ export default {
   },
   async registerAssociation(userData) {
     return apiClient.post('/organization/create_organization', userData)
+  },
+  async createEvent(eventData, myToken) {
+    this.setClientSecured(myToken)
+    return apiClient.post('/event/create_event', eventData)
+  },
+  async getEvents(searchData) {
+    return apiClient.get(`event/search_events?placeCriteria=${searchData.placeCriteria}&titleCriteria=${searchData.titleCriteria}&categoryCriteria=${searchData.categoryCriteria}&descriptionCriteria=${searchData.descriptionCriteria}&eventMakerCriteria=${searchData.eventMakerCriteria}&dateCriteria=${searchData.dateCriteria}&pageRequested=${searchData.pageRequested}`)
   }
 }

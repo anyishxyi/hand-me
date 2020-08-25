@@ -42,6 +42,7 @@
 import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
 import ListEvents from '@/components/Event/ListEvents'
+import apiService from '@/services/apiService'
 
 export default {
   name: "EVENTSPAGE",
@@ -53,14 +54,35 @@ export default {
       category: '',
       from_address:{},
       to_address:{},
-      events: []
+      events: [],
+      filters: {
+        placeCriteria: "2 rue herminie prod'homme 35000 Rennes",
+        titleCriteria: '',
+        categoryCriteria: '',
+        descriptionCriteria: '',
+        eventMakerCriteria: '',
+        dateCriteria: '',
+        pageRequested: 0
+      }
     }
   },
-  created() {
-    this.init()
+  async mounted() {
+    await this.init()
   },
   methods: {
-    init() {
+    async init() {
+      const res = await apiService.getEvents(this.filters)
+                                  .catch(error => {
+                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                    console.error(error)
+                                    return
+                                  })
+      console.log('res')
+      console.log(res)
+      if(!res || !res.data || res.status !== 200) {
+        // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
+        return
+      }
       this.events = [
         {
           id: 0,
