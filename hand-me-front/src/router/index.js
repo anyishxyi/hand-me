@@ -33,12 +33,12 @@ export const constantRoutes = [
         name: 'home',
         // meta: { title: 'events', icon: 'home', affix: true }
       },
-      {
-        path: '/login',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/auth'),
-        name: 'login',
-        hidden: true
-      },
+      // {
+      //   path: '/login',
+      //   component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/auth'),
+      //   name: 'login',
+      //   hidden: true
+      // },
       {
         path: '/register',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
@@ -64,9 +64,15 @@ export const constantRoutes = [
         hidden: true
       },
       {
-        path: '/events',
-        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/events'),
+        path: '/event/all',
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/event/events'),
         name: 'events',
+        hidden: true
+      },
+      {
+        path: '/event/create',
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/event/createEvent'),
+        name: 'create_event',
         hidden: true
       }
     ]

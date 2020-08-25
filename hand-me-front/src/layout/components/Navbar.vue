@@ -1,48 +1,60 @@
 <template>
-  <div class="navbar navbar-default nav-color shadow">
-    <div class="right-menu">
-      <el-button type="text">
-        <router-link :to="{path: '/home'}">
-          Accueil
-        </router-link>
-      </el-button>
-      <el-button type="text">
-        <router-link :to="{path: '/events'}">
-          Evenements
-        </router-link>
-      </el-button>
-      <el-button type="text">
-        <router-link :to="{path: '/register'}">
-          Inscription
-        </router-link>
-      </el-button>
-      <el-button type="primary">
-        <router-link :to="{path: '/login'}">
-          Connexion
-        </router-link>
-      </el-button>
+  <div>
+    <div class="navbar navbar-default nav-color shadow">
+      <router-link :to="{path: '/home'}">
+        <el-image class="logo" :src="logo" lazy />
+      </router-link>
+      <div class="right-menu">
+        <el-button type="text">
+          <router-link :to="{path: '/home'}">
+            Accueil
+          </router-link>
+        </el-button>
+        <el-button type="text">
+          <router-link :to="{path: '/event/all'}">
+            Evenements
+          </router-link>
+        </el-button>
+        <el-button v-if="userData" type="text">
+          <router-link :to="{path: '/event/create'}">
+            Créer Evenement
+          </router-link>
+        </el-button>
+        <el-button v-if="!userData" type="primary" @click="loginClicked">Connexion</el-button>
+      </div>
     </div>
+    <Login
+      :visibility="showLoginPage"
+      @eventToggleLoginVisibility="toggleLoginVisibility"
+    />
   </div>
 </template>
 
 <script>
+import Login from '@/components/Auth/Login'
 const OFFSET = 60
+const logo = require('@/icons/png/handMe.png')
 
 export default {
+  components: { Login },
   data() {
     return {
       showNavbar: true,
       lastScrollPosition: 0,
-      scrollValue: 0
+      scrollValue: 0,
+      showLoginPage: false,
+      logo,
+      userData: null
     }
   },
-  mounted () {
+  async mounted () {
     this.lastScrollPosition = window.pageYOffset
     window.addEventListener('scroll', this.onScroll)
     const viewportMeta = document.createElement('meta')
     viewportMeta.name = 'viewport'
     viewportMeta.content = 'width=device-width, initial-scale=1'
     document.head.appendChild(viewportMeta)
+    this.userData = await this.$localforage.getItem('userData')
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)
@@ -52,8 +64,6 @@ export default {
   },
   methods: {
     init() {
-      // eslint-disable-next-line no-console
-      console.log('navbar')
     },
     onScroll () {
       if (window.pageYOffset < 0) {
@@ -65,12 +75,23 @@ export default {
       }
       this.showNavbar = window.pageYOffset < this.lastScrollPosition
       this.lastScrollPosition = window.pageYOffset
+    },
+    toggleLoginVisibility(value) {
+      this.showLoginPage = value
+      // console.log('toggleLoginVisibility')
+      // console.log(this.showLoginPage)
+    },
+    loginClicked() {
+      // console.log('clicked')
+      this.showLoginPage = true
+      // console.log(this.showLoginPage)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
 .navbar {
   height: 60px;
   border: none;
@@ -80,6 +101,16 @@ export default {
   position: fixed;
   width: 100%;
   background-color: #222020;
+  // display: flex;
+
+  .logo {
+    float: left;
+    width: 140px;
+    height: 18px;
+    line-height: 60px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
 
   .right-menu {
     float: right;

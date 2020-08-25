@@ -1,29 +1,30 @@
 import colorPalette from "@/constants/ColorPalette";
 
 const {
-  COLOR_LANDSCAPE,
-  COLOR_BORDERS,
-  COLOR_WATER,
-  COLOR_LINE,
-  COLOR_POINT_FILL,
-  COLOR_SELECTED_POINT
+  WATER,
+  // TRANSIT,
+  // ROAD_LOCAL,
+  ROAD_ARTERIAL_STROKE,
+  ROAD_ARTERIAL_FILL,
+  ROAD_HIGHWAY_STROKE,
+  ROAD_HIGHWAY_FILL,
+  // POI,
+  LANDSCAPE,
+  // ADMIN_STROKE,
+  ADMIN_FILL,
+  TEXT_STROKE,
+  TEXT_FILL,
+  COLOR_POINT,
+  COLOR_SELECTED_POINT,
+  COLOR_POINT_FILL
 } = colorPalette;
-
-const COLORS = {
-  BORDERS: COLOR_BORDERS,
-  LANDSCAPE: COLOR_LANDSCAPE,
-  LINE: COLOR_LINE,
-  POINT: COLOR_SELECTED_POINT,
-  POINT_FILL: COLOR_POINT_FILL,
-  WATER: COLOR_WATER
-};
 
 const POINT_MARKER_ICON_CONFIG = {
   path: "M 0, 0 m -5, 0 a 5,5 0 1,0 10,0 a 5,5 0 1,0 -10,0",
   strokeOpacity: 0.7,
   strokeWeight: 4,
-  strokeColor: COLORS.POINT,
-  fillColor: COLORS.POINT_FILL,
+  strokeColor: COLOR_POINT,
+  fillColor: COLOR_SELECTED_POINT,
   fillOpacity: 0.7,
   scale: 1
 };
@@ -39,7 +40,7 @@ const LINE_PATH_CONFIG = {
   clickable: false,
   geodesic: false,
   strokeOpacity: 0,
-  strokeColor: COLORS.LINE,
+  strokeColor: COLOR_POINT_FILL,
   icons: [
     {
       icon: LINE_SYMBOL_CONFIG,
@@ -49,95 +50,157 @@ const LINE_PATH_CONFIG = {
 };
 
 const mapSettings = {
-  clickableIcons: false,
-  streetViewControl: false,
+  clickableIcons: true,
+  streetViewControl: true,
   panControlOptions: false,
   gestureHandling: "cooperative",
-  backgroundColor: COLORS.LANDSCAPE,
+  backgroundColor: LANDSCAPE,
   mapTypeControl: false,
   zoomControlOptions: {
     style: "SMALL"
   },
-  zoom: 5,
-  minZoom: 2,
-  maxZoom: 8,
+  zoom: 8,
+  minZoom: 3,
+  maxZoom: 12,
   styles: [
     {
-      featureType: "landscape",
-      stylers: [
-        { hue: COLORS.LANDSCAPE },
-        { saturation: 50.2 },
-        { lightness: -34.8 },
-        { gamma: 1 }
+      "featureType": "all",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": TEXT_FILL
+        }
       ]
     },
     {
-      featureType: "poi",
-      stylers: [{ visibility: "off" }]
-    },
-    {
-      featureType: "road.highway",
-      stylers: [
-        { hue: COLORS.LANDSCAPE },
-        { saturation: -19.8 },
-        { lightness: -1.8 },
-        { gamma: 1 }
+      "featureType": "all",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": TEXT_STROKE
+        },
+        {
+          "lightness": 13
+        }
       ]
     },
     {
-      featureType: "road.arterial",
-      stylers: [
-        { hue: COLORS.LANDSCAPE },
-        { saturation: 72.4 },
-        { lightness: -32.6 },
-        { gamma: 1 }
+      "featureType": "administrative",
+      "elementType": "geometry.fill",
+      // "stylers": [{ visibility: "off" }]
+      "stylers": [
+          {
+            "color": ADMIN_FILL
+          }
       ]
     },
     {
-      featureType: "road.local",
-      stylers: [{ visibility: "off" }]
+      "featureType": "administrative",
+      "elementType": "geometry.stroke",
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      // //     "color": ADMIN_STROKE
+      //   },
+      //   {
+      //     "lightness": 14
+      //   },
+      //   {
+      //     "weight": 1.4
+      //   }
+      // ]
     },
     {
-      featureType: "transit",
-      stylers: [{ visibility: "off" }]
+      "featureType": "landscape",
+      "elementType": "all",
+      "stylers": [
+        {
+          "color": LANDSCAPE
+        }
+      ]
     },
     {
-      featureType: "administrative.province",
-      stylers: [{ visibility: "off" }]
+      "featureType": "poi",
+      "elementType": "geometry",
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      //     "color": POI
+      //   },
+      //   {
+      //     "lightness": 5
+      //   }
+      // ]
     },
     {
-      featureType: "administrative.locality",
-      stylers: [{ visibility: "off" }]
+      "featureType": "road.highway",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": ROAD_HIGHWAY_FILL
+        }
+      ]
     },
     {
-      featureType: "administrative.province",
-      stylers: [{ visibility: "off" }]
+      "featureType": "road.highway",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": ROAD_HIGHWAY_STROKE
+        },
+        {
+          "lightness": 25
+        }
+      ]
     },
     {
-      featureType: "administrative.land_parcel",
-      stylers: [{ visibility: "off" }]
+      "featureType": "road.arterial",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": ROAD_ARTERIAL_FILL
+        }
+      ]
     },
     {
-      featureType: "administrative.neighborhood",
-      stylers: [{ visibility: "off" }]
+      "featureType": "road.arterial",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": ROAD_ARTERIAL_STROKE
+        },
+        {
+          "lightness": 16
+        }
+      ]
     },
     {
-      featureType: "administrative.country",
-      elementType: "geometry.stroke",
-      stylers: [{ visibility: "on" }, { color: COLORS.BORDERS }]
+      "featureType": "road.local",
+      "elementType": "geometry",
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      //     "color": ROAD_LOCAL
+      //   }
+      // ]
     },
     {
-      featureType: "administrative",
-      elementType: "labels",
-      stylers: [{ visibility: "off" }]
+      "featureType": "transit",
+      "elementType": "all",
+      "stylers": [{ visibility: "off" }]
+      // "stylers": [
+      //   {
+      //     "color": TRANSIT
+      //   }
+      // ]
     },
     {
-      featureType: "water",
-      stylers: [
-        { hue: COLORS.WATER },
-        { saturation: -63.2 },
-        { lightness: 38 },
-        { gamma: 1 }
+      "featureType": "water",
+      "elementType": "all",
+      "stylers": [
+        {
+          "color": WATER
+        }
       ]
     }
   ]

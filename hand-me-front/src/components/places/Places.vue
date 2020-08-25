@@ -39,22 +39,6 @@
       placeholder: {
         type: String,
         default: 'Entrez le nom de votre ville'
-      },
-      types: {
-        type: String,
-        default: 'address'
-      },
-      country: {
-        type: [String, Array],
-        default: null
-      },
-      enableGeolocation: {
-        type: Boolean,
-        default: false
-      },
-      geolocationOptions: {
-        type: Object,
-        default: null
       }
     },
     data() {
@@ -104,17 +88,10 @@
       }
     },
     mounted: function() {
-      const options = {};
-      if (this.types) {
-        // options.types = [this.types];
-        options.types = ['(cities)']; // Because i want to show only cities
-      }
-      if (this.country) {
-        options.componentRestrictions = {
-          country: this.country
-        };
-        // options.componentRestrictions = {country: "us"} // Only cities from france but doesnt work
-      }
+      let options = {};
+      options.types = ['(cities)']; // Because i want to show only cities
+      // console.log('options')
+      // console.log(options)
       // eslint-disable-next-line no-undef
       this.autocomplete = new google.maps.places.Autocomplete(
         document.getElementById(this.id),

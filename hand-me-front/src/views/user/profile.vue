@@ -46,14 +46,14 @@
       <!--middle-->
       <div class="board-middle">
         <div class="board-middle-banner">
-          <span class="board-middle-banner-text">Hello user</span>
+          <span class="board-middle-banner-text">Hello {{userName}}</span>
           <h1 class="board-middle-banner-title">bienvenue sur ton dashboard</h1>
         </div>
         <div class="board-middle-content">
           <div class="board-middle-content-cards">
             <div class="board-middle-content-cards-card">
-              <h2 class="text-uppercase">évènements</h2>
-              <span class="board-middle-content-cards-card-txt">All the Lorem Ipsum generators</span>
+              <h2 class="text-uppercase">évènements créer:</h2>
+              <span class="board-middle-content-cards-card-txt">{{events.length}}</span>
             </div>
             <div class="board-middle-content-cards-card">
               <h2 class="text-uppercase">évènements</h2>
@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="board-middle-content-table">
-            <Table :heads="['label1', 'label2', 'label3', 'label4']" :body="todos" />
+            <Table :heads="['id', 'title', 'date', 'description']" :body="events" />
           </div>
         </div>
         <div></div>
@@ -82,17 +82,22 @@ import Table from "../../components/table/table";
 
 export default {
   name: "userBoard",
-  mounted: function() {
-    return (this.todos = this.$route.params.data.events);
-  },
   data: function() {
     return {
-      todos: []
+      events: [],
+      userName: ""
     };
   },
+  mounted: function() {
+    //console.log(this.$route.params);
+    this.loadUserData();
+    //return (this.todos = this.$route.params.data.events);
+  },
   methods: {
-    loadUserEvents() {
-      return this.$route.params.data.events;
+    loadUserData() {
+      console.log("usr data:", this.$route.params);
+      this.userName = this.$route.params.dto.particularFirstName;
+      this.events = this.$route.params.events;
     }
   },
   components: {
@@ -251,6 +256,8 @@ $brightGrey: #d8d8d8;
       }
 
       &-table {
+        width: 100%;
+        padding: 25px;
       }
 
       /*table {
