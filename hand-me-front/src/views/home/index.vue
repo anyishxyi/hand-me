@@ -59,7 +59,7 @@
       <div class="title">Vos évènements à proximité</div>
       <Maps :isHome="true" />
     </div>
-    <div class="events_overview">
+    <div v-if="events.length" class="events_overview">
       <div class="events_list">
         <ListEvents :events="events" :isHome="true" />
       </div>
@@ -109,6 +109,7 @@ import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
 import Maps from '@/components/maps/Maps'
 import ListEvents from '@/components/Event/ListEvents'
+import apiService from '@/services/apiService'
 
 const twitter = require('@/icons/png/twitter.png')
 const facebook = require('@/icons/png/facebook.png')
@@ -151,32 +152,39 @@ export default {
       navColorOnScroll: 'transparent !important',
       from_address:{},
       location: null,
-      coordinates: {}
+      coordinates: {},
+      filters: {
+        placeCriteria: '',
+        titleCriteria: '',
+        categoryCriteria: '',
+        descriptionCriteria: '',
+        eventMakerCriteria: '',
+        dateCriteria: '',
+        pageRequested: 0
+      }
     }
   },
   async created() {
-    this.init(),
+    await this.init()
     await this.getCoordinates()
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
   },
   methods: {
-    init() {
-      this.events = [
-        {
-          id: 0,
-          img: event1
-        },
-        {
-          id: 1,
-          img: event2
-        },
-        {
-          id: 2,
-          img: event3
-        }
-      ]
+    async init() {
+      const res = await apiService.getEvents(this.filters)
+                                  .catch(error => {
+                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                    console.error(error)
+                                    return
+                                  })
+      if(!res || !res.data || res.status !== 200) {
+        this.events = []
+        return
+      }
+
+      this.events = res.data.events
     },
     updateScroll() {
       this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#222020' : 'transparent !important'

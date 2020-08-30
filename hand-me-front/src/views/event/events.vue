@@ -80,8 +80,8 @@ export default {
       if(!res || !res.data || res.status !== 200) return
 
       this.events = res.data.events
-      console.log('this.events')
-      console.log(this.events)
+      // console.log('this.events')
+      // console.log(this.events)
     },
     getAddress(from_address) {
       this.address = from_address;
