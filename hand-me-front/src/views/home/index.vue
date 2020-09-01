@@ -8,6 +8,7 @@
             class="localisation"
             id="from_address"
             classname="form-control"
+            type="address"
             placeholder="Entrez le nom de votre ville..."
             :placechanged="getAddress"
             :error="handleError"
@@ -55,9 +56,9 @@
         <p>Evènements présents sur la plateforme</p>
       </div>
     </div>
-    <div class="maps">
-      <div class="title">Vos évènements à proximité</div>
-      <Maps :isHome="true" />
+    <div class="maps w3-display-container">
+      <div class="title w3-display-topleft w3-black w3-padding">Vos évènements à proximité</div>
+      <Maps :isHome="true" style="width:100%" />
     </div>
     <div v-if="events.length" class="events_overview">
       <div class="events_list">
@@ -101,6 +102,69 @@ I can make endless updates with whatever layout I desire!"</div>
         </div>
       </div>
     </div>
+    <div class="ourTeam">
+      <div class="header separator"> L'Equipe </div>
+      <div class="content">
+        <div>
+          <div class="photo">
+            <el-image :src="bd_pic" lazy />
+          </div>
+          <div class="name">BENONI Dexter</div>
+          <div class="role">DEVELOPPEUR FRONT</div>
+          <div class="rx"><el-link href="https://www.linkedin.com/in/dexter-benoni/" target="_blank" :underline="false"><el-image :src="linkedin" class="linkedin" lazy /></el-link></div>
+        </div>
+        <div>
+          <div class="photo">
+            <el-image :src="ka_pic" class="ka_pic" lazy />
+          </div>
+          <div class="name">KOUMARE Aboubacar</div>
+          <div class="role">DEVELOPPER BACK</div>
+          <div class="rx"><el-link href="https://www.linkedin.com/in/aboubacar-koumar%C3%A9/" target="_blank" :underline="false"><el-image :src="linkedin" class="linkedin" lazy /></el-link></div>
+        </div>
+        <div>
+          <div class="photo">
+            <el-image :src="nm_pic" lazy />
+          </div>
+          <div class="name">NGALULA Jean-Paul</div>
+          <div class="role">DEVELOPPEUR WEB</div>
+          <div class="rx"><el-link href="https://www.linkedin.com/in/jeanpaulngalula/" target="_blank" :underline="false"><el-image :src="linkedin" class="linkedin" lazy /></el-link></div>
+        </div>
+        <div>
+          <div class="photo">
+            <el-image :src="vk_pic" lazy />
+          </div>
+          <div class="name">VERBARD Kevin</div>
+          <div class="role">ADMINISTRATEUR SYSTEME ET CLOUD</div>
+          <div class="rx"><el-link href="https://www.linkedin.com/in/kevinverbard/" target="_blank" :underline="false"><el-image :src="linkedin" class="linkedin" lazy /></el-link></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+        <div class="header separator">CONTACT</div>
+        <div class="w3-row w3-padding-32">
+          <div class="w3-col m6 w3-large w3-margin-bottom">
+            <i class="fa fa-map-marker" style="width:30px"></i> Paris, FRANCE<br>
+            <i class="fa fa-phone" style="width:30px"></i> Phone: +33 1 44 08 00 23<br>
+            <i class="fa fa-envelope" style="width:30px"> </i> Email: contact@hand-me.fr<br>
+          </div>
+          <div class="w3-col m6">
+            <form action="/action_page.php" target="_blank">
+              <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                <div class="w3-half">
+                  <input class="w3-input w3-border" type="text" placeholder="Nom" required name="Nom">
+                </div>
+                <div class="w3-half">
+                  <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                </div>
+              </div>
+              <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+              <button class="w3-button w3-black w3-section w3-right" type="submit"><i class="fa fa-paper-plane"></i> ENVOYER</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,10 +178,17 @@ import apiService from '@/services/apiService'
 const twitter = require('@/icons/png/twitter.png')
 const facebook = require('@/icons/png/facebook.png')
 const france = require('@/icons/png/france.png')
+const linkedin = require('@/icons/png/linkedin.png')
+
 
 const img1 = require('@/icons/png/User1.png')
 const img2 = require('@/icons/png/User2.png')
 const img3 = require('@/icons/png/User3.png')
+
+const bd_pic = require('@/assets/dx.jpeg')
+const ka_pic = require('@/assets/ab.jpg')
+const nm_pic = require('@/assets/jp.jpeg')
+const vk_pic = require('@/assets/kv.jpeg')
 
 const calendar = require('@/icons/png/calendar.png')
 const people = require('@/icons/png/team.png')
@@ -139,9 +210,14 @@ export default {
       twitter,
       facebook,
       france,
+      linkedin,
       img1,
       img2,
       img3,
+      bd_pic,
+      ka_pic,
+      nm_pic,
+      vk_pic,
       event1,
       event2,
       event3,
@@ -423,7 +499,8 @@ export default {
     background-size: cover;
     height: 500px;
     .title {
-      background: transparent !important;
+      color: white;
+      padding-top: 30px;
       align-items: center;
     }
   }
@@ -494,6 +571,75 @@ export default {
     }
   }
 
+  .ourTeam {
+    background-color: white;
+    text-align: center;
+    align-items: center;
+
+    .header {
+      font-size: 30px;
+      font-weight: 600;
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+
+    .content {
+      display: flex;
+      padding-left: 20%;
+      padding-right: 10%;
+      padding-bottom: 5%;
+
+      div {
+        padding-left: 5px;
+        .photo {
+          .ka_pic {
+            width: 185px;
+          }
+        }
+
+        .name {
+          color: #4370F3;
+          font-size: 24px;
+          font-weight: Medium;
+        }
+
+        .role {
+          color: #7E829B;
+          font-size: 14px;
+          font-weight: Medium;
+        }
+
+        .comment {
+          padding-top: 25px;
+          color: #444040;
+          // font-size: 40px;
+          font-weight: Medium;
+          line-height: 1.8;
+        }
+
+        .rx {
+          padding-top: 5px;
+          .linkedin {
+            width: 25px;
+          }
+        }
+      }
+    }
+
+    .com_content > div {
+      flex: 1; /*grow*/
+      padding: 10px;
+    }
+  }
+
+  .contact {
+    background-color: #F4F6FC;
+    .header {
+      font-size: 30px;
+      font-weight: 600;
+      padding-bottom: 5%;
+    }
+  }
 }
 
 .separator {
