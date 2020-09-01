@@ -9,11 +9,11 @@
         <div class="events_filter">
           <Places
             class="localisation"
-            id="from_address"
+            id="address"
             classname="form-control"
+            type="(cities)"
             placeholder="Entrez le nom de votre ville"
-            :placechanged="getAddress"
-            :error="handleError"
+            @change="getPlace"
           />
           <el-date-picker
             class="dates"
@@ -50,13 +50,12 @@ export default {
   data(){
     return {
       dates: '',
-      localisation: '',
       category: '',
-      from_address:{},
-      to_address:{},
+      address:{},
       events: [],
+      city: '',
       filters: {
-        placeCriteria: "2 rue herminie prod'homme 35000 Rennes",
+        placeCriteria: '',
         titleCriteria: '',
         categoryCriteria: '',
         descriptionCriteria: '',
@@ -80,11 +79,17 @@ export default {
       if(!res || !res.data || res.status !== 200) return
 
       this.events = res.data.events
-      console.log('this.events')
-      console.log(this.events)
+      // console.log('this.events')
+      // console.log(this.events)
     },
-    getAddress(from_address) {
-      this.address = from_address;
+    getAddress(address) {
+      this.address = address;
+      console.log('this.address')
+      console.log(this.address)
+    },
+    getPlace(place) {
+      console.log('place')
+      console.log(place)
     },
     handleError(error){
       alert(error)

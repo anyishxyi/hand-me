@@ -6,7 +6,6 @@ import './styles/element-variables.scss'
 import locale from 'element-ui/lib/locale/lang/fr'
 import VueGeolocation from 'vue-browser-geolocation';
 import LocalForage from 'localforage'
-// import x5GMaps from 'x5-gmaps'
 
 import '@/styles/index.scss' // global css
 
@@ -24,8 +23,6 @@ Vue.config.productionTip = false
 Vue.prototype.handleEvent = new Vue()
 
 Vue.prototype.$localforage = LocalForage
-
-// Vue.use(x5GMaps, 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM')
 
 Vue.use(VueGeolocation)
 

@@ -47,7 +47,7 @@ export default {
       userData: null
     }
   },
-  async mounted () {
+  async beforeMount () {
     this.lastScrollPosition = window.pageYOffset
     window.addEventListener('scroll', this.onScroll)
     const viewportMeta = document.createElement('meta')
@@ -59,12 +59,7 @@ export default {
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)
   },
-  async created() {
-    await this.init()
-  },
   methods: {
-    init() {
-    },
     onScroll () {
       if (window.pageYOffset < 0) {
         console.log('<0')

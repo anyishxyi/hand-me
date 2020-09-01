@@ -39,6 +39,10 @@
       placeholder: {
         type: String,
         default: 'Entrez le nom de votre ville'
+      },
+      type: {
+        type: String,
+        required: true
       }
     },
     data() {
@@ -79,7 +83,7 @@
     },
     watch: {
       autocompleteText: function (newVal, oldVal) {
-        this.$emit('inputChange', { newVal, oldVal }, this.id);
+        this.$emit('inputChange', { newVal, oldVal }, this.id)
       },
       country: function() {
         this.autocomplete.setComponentRestrictions({
@@ -89,7 +93,11 @@
     },
     mounted: function() {
       let options = {};
-      options.types = ['(cities)']; // Because i want to show only cities
+      if (this.type === 'address') {
+        options.types = ['address']
+      } else {
+        options.types = ['(cities)']
+      }
       // console.log('options')
       // console.log(options)
       // eslint-disable-next-line no-undef
@@ -203,9 +211,9 @@
        * Update location based on navigator geolocation
        */
       geolocate () {
-        this.updateGeolocation ((geolocation, position) => {
-          console.log('position')
-          console.log(position)
+        this.updateGeolocation ((geolocation) => {
+          // console.log('position')
+          // console.log(position)
           this.updateCoordinates(geolocation)
         })
       },
