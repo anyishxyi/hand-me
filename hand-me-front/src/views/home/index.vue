@@ -2,15 +2,15 @@
   <div class="home-page">
     <div class="banner">
       <div class="left_content">
-        <h1 class="heading">Trouvez des évènements qui vous correspondent près de chez vous</h1>
+        <h1 class="heading">Trouvez des évènements qui vous correspondent dans votre ville</h1>
         <div class="search_bar">
           <Places
             class="localisation"
             id="from_address"
             classname="form-control"
-            type="address"
+            type="(cities)"
             placeholder="Entrez le nom de votre ville..."
-            :placechanged="getAddress"
+            :change="getAddress"
             :error="handleError"
           />
         </div>
@@ -267,6 +267,8 @@ export default {
     },
     getAddress(from_address) {
       this.address = from_address;
+      console.log('this.address')
+      console.log(this.address)
     },
     handleError(error){
       alert(error)
@@ -284,14 +286,14 @@ export default {
       this.coordToCity()
     },
     coordToCity() {
-      console.log('this.coordinates')
-      console.log(this.coordinates)
+      // console.log('this.coordinates')
+      // console.log(this.coordinates)
       const lat = this.coordinates.lat
       const lng = this.coordinates.lng
-      console.log('lat')
-      console.log(lat)
-      console.log('lng')
-      console.log(lng)
+      // console.log('lat')
+      // console.log(lat)
+      // console.log('lng')
+      // console.log(lng)
       return new Promise(function (resolve, reject) {
         const request = new XMLHttpRequest();
         const method = 'GET';
@@ -304,8 +306,8 @@ export default {
             if (request.status == 200) {
               const data = JSON.parse(request.responseText);
               const address = data.results[0];
-              console.log('address')
-              console.log(address)
+              // console.log('address')
+              // console.log(address)
               resolve(address);
             }
             else {
