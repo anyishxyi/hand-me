@@ -1,0 +1,683 @@
+{
+	"info": {
+		"_postman_id": "840f8323-8f69-4553-9c5f-891b739bc86b",
+		"name": "Perticular",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Particular_localhost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://51.178.54.198:8181/gpe/particular/all_particular",
+					"protocol": "http",
+					"host": [
+						"51",
+						"178",
+						"54",
+						"198"
+					],
+					"port": "8181",
+					"path": [
+						"gpe",
+						"particular",
+						"all_particular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Particular",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://backend.hand-me.fr:8443/gpe/particular/all_particular",
+					"protocol": "http",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"particular",
+						"all_particular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/authen/home",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"authen",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_particular",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"particularId\": 0,\n\t \"particularName\" : \"localhost name\",\n\t \"particularPassword\" : \"localhost password\",\n\t \"particularFirstName\":\"localhost firstname\",\n\t \"particularPhonenumber\" :\"0102030405\",\n\t \"particularEmail\" : \"localhost@yopmail.com\",\n\t \"particularLocation\" : \"2 localhost test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/particular/create_particular",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"particular",
+						"create_particular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_particular_localhost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"particularId\": 0,\n\t \"particularName\" : \"localhost name\",\n\t \"particularPassword\" : \"localhost password\",\n\t \"particularFirstName\":\"localhost firstname\",\n\t \"particularPhonenumber\" :\"0102030405\",\n\t \"particularEmail\" : \"localhost@yopmail.com\",\n\t \"particularLocation\" : \"2 localhost test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8443/particular/create_particular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"particular",
+						"create_particular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_organization",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"organizationName\" :\"HandMe test yeah\",\n\t\"organizationChiefName\" : \"Kevin\",\n\t\"organizationChiefFirstname\" :\"Kevin 10\",\n\t\"organizationPassword\" :\"Test nouvelle base de données\",\n\t\"organizationLocation\" :\"2 rue herminie prod'homme MA 11\",\n\t\"organizationMatricule\" :\"AZERTY123NVFH\",\n\t\"organizationLogo\" :\"imageToBASE64\",\n\t\"organizationDescription\" :\"Bénévolat\",\n\t\"organizationWebSite\" :\"www.handme.com\",\n\t\"organizationPhoneNumber\" :\"0102030405\",\n\t\"organizationEmail\" :\"handmetestyeah@gmail.com\",\n\t\"organizationCreationDate\" :\"30/07/2018\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.178.54.198:8181/gpe/organization/create_organization",
+					"protocol": "http",
+					"host": [
+						"51",
+						"178",
+						"54",
+						"198"
+					],
+					"port": "8181",
+					"path": [
+						"gpe",
+						"organization",
+						"create_organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_organization_localhost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"organizationName\" :\"HandMe test yeah\",\n\t\"organizationChiefName\" : \"Kevin\",\n\t\"organizationChiefFirstname\" :\"Kevin 10\",\n\t\"organizationPassword\" :\"Test nouvelle base de données\",\n\t\"organizationLocation\" :\"2 rue herminie prod'homme MA 11\",\n\t\"organizationMatricule\" :\"AZERTY123NVFH\",\n\t\"organizationLogo\" :\"imageToBASE64\",\n\t\"organizationDescription\" :\"Bénévolat\",\n\t\"organizationWebSite\" :\"www.handme.com\",\n\t\"organizationPhoneNumber\" :\"0102030405\",\n\t\"organizationEmail\" :\"handmetestyeah@gmail.com\",\n\t\"organizationCreationDate\" :\"30/07/2018\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8443/organization/create_organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"organization",
+						"create_organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2NhbGhvc3RAeW9wbWFpbC5jb20iLCJleHAiOjE1OTc4Njg4NTgsImlhdCI6MTU5Nzg2NzA1OH0.jodMs3b0dX3SoVm8fPNEvh4EymZcDy0xo0Hg_jmgGhtBRGbPD6AtKg6ZYA9kFQ8kvxO4q670vLvrpClfRkSmnw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventId\":0,\n\t \"eventTitle\":\"test create\",\n\t \"eventDescription\":\"test of create an event\",\n\t \"eventPlace\": \"2 rue herminie prod'homme 35000 Rennes\",\n\t \"eventDate\": \"2020-10-11T21:29:51.092+0000\",\n\t \"eventMakerEmail\": \"localhost@yopmail.com\",\n\t  \"categoryName\" : \"test catégory\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/event/create_event",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"event",
+						"create_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_event_localhost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoYW5kbWV0ZXN0eWVhaEBnbWFpbC5jb20iLCJleHAiOjE1OTc3OTQ2MjgsImlhdCI6MTU5Nzc5MjgyOH0.sbry5PDzGNGFbofG9wCN4vOyNHLb5YM27ln4q4NXY_MYryAm31hp6f3uR_fsY-hgLjy_1Ab4w95FIrcxx5sCUA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventId\":0,\n\t \"eventTitle\":\"test create 17\",\n\t \"eventDescription\":\"test of create an event 17\",\n\t \"eventPlace\": \"2 rue herminie prod'homme 35000 Rennes\",\n\t \"eventDate\": \"2020-08-11T21:29:51.092+0000\",\n\t \"eventMakerEmail\": \"localhost17@yopmail.com\",\n\t \"categoryName\" : \"test catégory\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8443/event/create_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"event",
+						"create_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_particular",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"localhost@yopmail.com\",\n\t\"password\":\"localhost password\"\n}"
+				},
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/authen/login_particular",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"authen",
+						"login_particular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_organization",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"boolean@gmail.com\",\n\t\"password\":\"rooter\"\n}"
+				},
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/authen/login_organization",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"authen",
+						"login_organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_particular_localhost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"localhost@yopmail.com\",\n\t\"password\":\"localhost password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8443/authen/login_particular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"authen",
+						"login_particular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_organization_localhost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"handmetestyeah@gmail.com\",\n\t\"password\":\"Test nouvelle base de données\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8443/authen/login_organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"authen",
+						"login_organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search_event",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/event/search_events?placeCriteria&titleCriteria=&categoryCriteria&descriptionCriteria&eventMakerCriteria&dateCriteria1=2020-10-10T01:30:00.000-00:00&dateCriteria2=2020-10-11T21:30:00.000-00:00&pageRequested=0",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"event",
+						"search_events"
+					],
+					"query": [
+						{
+							"key": "placeCriteria",
+							"value": null
+						},
+						{
+							"key": "titleCriteria",
+							"value": ""
+						},
+						{
+							"key": "categoryCriteria",
+							"value": null
+						},
+						{
+							"key": "descriptionCriteria",
+							"value": null
+						},
+						{
+							"key": "eventMakerCriteria",
+							"value": null
+						},
+						{
+							"key": "dateCriteria1",
+							"value": "2020-10-10T01:30:00.000-00:00"
+						},
+						{
+							"key": "dateCriteria2",
+							"value": "2020-10-11T21:30:00.000-00:00"
+						},
+						{
+							"key": "pageRequested",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search_event_localhost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8443/event/search_events?placeCriteria&titleCriteria=&categoryCriteria&descriptionCriteria&eventMakerCriteria&dateCriteria1=2020-10-10T08:00:00.000+0000&dateCriteria2=2020-10-12T21:30:00.000+0000&pageRequested=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"event",
+						"search_events"
+					],
+					"query": [
+						{
+							"key": "placeCriteria",
+							"value": null
+						},
+						{
+							"key": "titleCriteria",
+							"value": ""
+						},
+						{
+							"key": "categoryCriteria",
+							"value": null
+						},
+						{
+							"key": "descriptionCriteria",
+							"value": null
+						},
+						{
+							"key": "eventMakerCriteria",
+							"value": null
+						},
+						{
+							"key": "dateCriteria1",
+							"value": "2020-10-10T08:00:00.000+0000"
+						},
+						{
+							"key": "dateCriteria2",
+							"value": "2020-10-12T21:30:00.000+0000"
+						},
+						{
+							"key": "pageRequested",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_participant_event_localhost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2NhbGhvc3RAeW9wbWFpbC5jb20iLCJleHAiOjE1OTczMjUwODMsImlhdCI6MTU5NzMyMzI4M30.jV8neumOpEcdnevoncZfmvCdchQz9fY1FfcnZuU1bJvlwvLObwZWYWy27sJWE6Pzvtj5QQn970xla4KBRekc7Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventId\": 3,\n    \"participantEmail\": \"localhost2@yopmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8443/event/add_participant_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"event",
+						"add_participant_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_categoy_localhost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2NhbGhvc3RAeW9wbWFpbC5jb20iLCJleHAiOjE1OTc3OTQ2MjQsImlhdCI6MTU5Nzc5MjgyNH0.UXGLsbguAdcp8cB5bWz9By1vrVE5a19sPiws1YY8weHlebVsniLldyHIeOaABVS_XubaBOFLnfXfHcRzjZmqjw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoryName\": \"test catégory\",\n    \"categoryDescription\": \"test de creation de categorie\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8443/category/add_update_category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"category",
+						"add_update_category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_categoy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2NhbGhvc3RAeW9wbWFpbC5jb20iLCJleHAiOjE1OTc4Njg4NTgsImlhdCI6MTU5Nzg2NzA1OH0.jodMs3b0dX3SoVm8fPNEvh4EymZcDy0xo0Hg_jmgGhtBRGbPD6AtKg6ZYA9kFQ8kvxO4q670vLvrpClfRkSmnw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"categoryName\": \"test catégory\",\n    \"categoryDescription\": \"test de creation de categorie\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend.hand-me.fr:8443/gpe/category/add_update_category",
+					"protocol": "https",
+					"host": [
+						"backend",
+						"hand-me",
+						"fr"
+					],
+					"port": "8443",
+					"path": [
+						"gpe",
+						"category",
+						"add_update_category"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
