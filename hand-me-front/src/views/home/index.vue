@@ -241,14 +241,14 @@ export default {
       this.coordToCity()
     },
     coordToCity() {
-      console.log('this.coordinates')
-      console.log(this.coordinates)
+      // console.log('this.coordinates')
+      // console.log(this.coordinates)
       const lat = this.coordinates.lat
       const lng = this.coordinates.lng
-      console.log('lat')
-      console.log(lat)
-      console.log('lng')
-      console.log(lng)
+      // console.log('lat')
+      // console.log(lat)
+      // console.log('lng')
+      // console.log(lng)
       return new Promise(function (resolve, reject) {
         const request = new XMLHttpRequest();
         const method = 'GET';
@@ -261,8 +261,8 @@ export default {
             if (request.status == 200) {
               const data = JSON.parse(request.responseText);
               const address = data.results[0];
-              console.log('address')
-              console.log(address)
+              // console.log('address')
+              // console.log(address)
               resolve(address);
             }
             else {
