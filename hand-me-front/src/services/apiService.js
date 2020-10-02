@@ -43,8 +43,10 @@ export default {
                                               &categoryCriteria=${searchData.categoryCriteria}
                                               &descriptionCriteria=${searchData.descriptionCriteria}
                                               &eventMakerCriteria=${searchData.eventMakerCriteria}
-                                              &dateCriteria1=${searchData.dateFrom}
-                                              &dateCriteria2=${searchData.dateTo}
                                               &pageRequested=${searchData.pageRequested}`)
   }
+
+                                                // &dateCriteria1=${searchData.dateFrom}
+                                              // &dateCriteria2=${searchData.dateTo}
+
 }

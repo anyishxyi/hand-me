@@ -55,13 +55,13 @@ export default {
       events: [],
       city: '',
       filters: {
-        placeCriteria: '',
+        placeCriteria: 'Rennes',
         titleCriteria: '',
         categoryCriteria: '',
         descriptionCriteria: '',
         eventMakerCriteria: '',
-        dateFrom: '',
-        dateTo: '',
+        dateFrom: null,
+        dateTo: null,
         pageRequested: 0
       }
     }
@@ -89,8 +89,9 @@ export default {
       console.log(this.address)
     },
     getPlace(place) {
-      console.log('place')
-      console.log(place)
+      // console.log(place)
+      if(!place) return
+      this.init()
     },
     handleError(error){
       alert(error)
