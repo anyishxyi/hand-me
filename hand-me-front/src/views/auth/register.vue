@@ -13,20 +13,20 @@
           </div>
         </div>
         <!-- Steps for Particular registion -->
-        <div v-if="step11">
+        <div v-if="step11" class="step11">
           <p class="steping">Créer votre compte(Etape 2 sur 3)</p>
-          <p><strong>Identifiant de connexion</strong></p>
+          <h1 class="title">Veuillez renseigner ces informations d'authentification</h1>
           <div class="content">
-            <el-input placeholder="email..." v-model="registerForm.email"></el-input>
-            <el-input placeholder="Mot de passe..." v-model="registerForm.pass" ></el-input>
-            <el-input placeholder="Confirmation mot de passe..." v-model="registerForm.pass1" ></el-input>
+            <el-input placeholder="email..." class="input" v-model="registerForm.email"></el-input>
+            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" ></el-input>
+            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" ></el-input>
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
             <el-button @click="handleValidateIdentity" class="btn btn-validate" type="danger">Valider</el-button>
           </div>
         </div>
-        <div v-if="step12">
+        <div v-if="step12" class="step12">
           <p class="steping">Créer votre compte(Etape 3 sur 3)</p>
           <p><strong>Plus d'informations...</strong></p>
           <div class="first-input">
@@ -270,11 +270,32 @@ export default {
         padding-top: 20px;
         letter-spacing: 0.14px;
       }
-      .subtitle {
-        letter-spacing: 0.14px;
-      }
       .question {
         letter-spacing: 0.14px;
+      }
+      .buttons {
+        padding-top: 40px;
+      }
+    }
+
+    .step11 {
+      padding-top: 50px;
+      padding-left: 50px;
+
+      .steping {
+        color: #7E829B;
+      }
+      .title {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        letter-spacing: 0.14px;
+      }
+      .content {
+        letter-spacing: 0.14px;
+        .input {
+          width: 400px;
+          padding-bottom: 10px;
+        }
       }
       .buttons {
         padding-top: 40px;
