@@ -9,8 +9,8 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:staging": "git reset HEAD --hard && git pull origin develop_front && npm i && vue-cli-service build",
-    "build:prod": "git reset HEAD --hard && git pull origin master && npm i && vue-cli-service build",
+    "build:staging": "git reset HEAD --hard && git pull origin develop_front && npm i && vue-cli-service build && vue-cli-service serve",
+    "build:prod": "git reset HEAD --hard && git pull origin master && npm i && vue-cli-service build && vue-cli-service serve",
     "lint": "vue-cli-service lint"
   },
   "contributors": [
