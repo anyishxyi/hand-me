@@ -23,34 +23,36 @@
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
-            <el-button @click="handleValidateIdentity" class="btn btn-validate" type="danger">Valider</el-button>
+            <el-button @click="handleValidateIdentity" class="btn btn-validate" type="succes" round>Valider</el-button>
           </div>
         </div>
         <div v-if="step12" class="step12">
           <p class="steping">Créer votre compte(Etape 3 sur 3)</p>
-          <p><strong>Plus d'informations...</strong></p>
-          <div class="first-input">
-            <div>
-              <el-input placeholder="Prenom..." v-model="userData.particularFirstName"></el-input>
-            </div>
-            <div class="input-left">
-              <el-input placeholder="Nom..." v-model="userData.particularName" ></el-input>
-            </div>
-          </div>
-          <div class="inputs">
-            <div>
-              <el-input placeholder="Ville..." v-model="userData.particularLocation"></el-input>
-            </div>
-            <div class="input-left">
-              <el-input placeholder="Téléphone..." v-model="userData.phonenumber"></el-input>
-            </div>
+          <h1 class="title">Plus d'informations necessaire...</h1>
+          <div class="content">
+            <el-input placeholder="Prenom..."  class="input" v-model="userData.particularFirstName"></el-input>
+            <el-input placeholder="Nom..." class="input" v-model="userData.particularName" ></el-input>
+            <Places 
+              class="input" 
+              id="userAddress"
+              classname="form-control"
+              type="address"
+              placeholder="Adresse..."
+              @change="getPlace"
+              :error="handleError"
+            />
+            <!-- <el-input placeholder="Adresse..." class="input" v-model="userData.particularLocation"></el-input> -->
+            <el-input placeholder="Téléphone..." class="input" v-model="userData.phonenumber"></el-input>
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
-            <el-button @click="handleValidateParticular" class="btn btn-validate" type="danger">Valider</el-button>
+            <el-button @click="handleValidateParticular" class="btn btn-validate" type="succes" round>Valider</el-button>
           </div>
         </div>
-        <div v-if="step13">Success</div>
+        <div v-if="step13">
+          <p>Votre compte a été créé avec succès !</p>
+          <router-link :to="{path: '/events'}"><el-button>continuer</el-button></router-link>
+        </div>
         <!-- Steps for Association registion -->
         <div v-if="step1">
           <p><strong>Quel est le SIRET de votre société ?</strong></p>
@@ -107,9 +109,11 @@
 
 <script>
 import apiService from '@/services/apiService'
+import Places from '@/components/places/Places'
 
 export default {
   name: 'Register',
+  components: { Places },
   data() {
     return {
       registerForm: {},
@@ -122,6 +126,7 @@ export default {
       particularPassword: '',
       particularPhonenumber: '',
       particularLocation: '',
+      userAddress:{},
       userData: {
         particularName: '',
         particularFirstName: '',
@@ -169,7 +174,9 @@ export default {
       this.step1 = false
       this.step11 = false
       this.step12 = false
+      this.step13 = false
       this.step2 = false
+      this.step3 = false
     },
     handleCheckSiret() {
       if(this.handleCheckSiret.siret !== 0) {
@@ -177,7 +184,9 @@ export default {
         this.step1 = false
         this.step11 = false
         this.step12 = false
+        this.step13 = false
         this.step2 = true
+        this.step3 = false
       }
     },
     handleValidateIdentity() {
@@ -186,14 +195,18 @@ export default {
       this.step1 = false
       this.step11 = false
       this.step12 = true
+      this.step13 = false
       this.step2 = false
+      this.step3 = false
     },
     backToCheckSiret() {
       this.step = false
       this.step1 = true
       this.step11 = false
       this.step12 = false
+      this.step13 = false
       this.step2 = false
+      this.step3 = false
     },
     backToRegister() {
       this.isRegister = true
@@ -201,7 +214,9 @@ export default {
       this.step1 = false
       this.step11 = false
       this.step12 = false
+      this.step13 = false
       this.step2 = false
+      this.step3 = false
     },
     handleValidate() {
       if ( !this.registerForm.siret ||
@@ -224,13 +239,28 @@ export default {
       const res = await apiService.registerParticular(this.userData).catch(error => console.log(error))
       console.log('this.res')
       console.log(res)
+      this.isRegister = false
+      this.step = false
+      this.step1 = false
+      this.step11 = false
+      this.step12 = false
+      this.step13 = true
+      this.step2 = false
+      this.step3 = false
     },
     onValueAction(value) {
       console.log(value)
       if(!value || !this.registerForm.societyCapital) return
       this.registerForm.societyValueAction = value
       this.registerForm.societyNumberAction = this.registerForm.societyCapital / this.registerForm.societyValueAction
-    }
+    },
+    handleError(error){
+      alert(error)
+    },
+    getPlace(place) {
+      if(!place) return
+      this.userData.particularLocation = place
+    },
   }
 }
 </script>
@@ -279,6 +309,30 @@ export default {
     }
 
     .step11 {
+      padding-top: 50px;
+      padding-left: 50px;
+
+      .steping {
+        color: #7E829B;
+      }
+      .title {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        letter-spacing: 0.14px;
+      }
+      .content {
+        letter-spacing: 0.14px;
+        .input {
+          width: 400px;
+          padding-bottom: 10px;
+        }
+      }
+      .buttons {
+        padding-top: 40px;
+      }
+    }
+
+    .step12 {
       padding-top: 50px;
       padding-left: 50px;
 
