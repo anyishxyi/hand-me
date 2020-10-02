@@ -2,18 +2,19 @@
   <div class="events-container">
     <div class="container">
       <div class="left">
-        <div v-if="step">
-          <h1>Bienvenue</h1>
-          <p>Repondez à ces quelques questions afin de continuer.</p>
-          <p><strong>Qui êtes-vous ?</strong></p>
+        <div v-if="step" class="step">
+          <p class="steping">Créer votre compte(Etape 1 sur 3)</p>
+          <h1 class="title">Repondez à ces quelques questions afin de continuer...</h1>
+          <p class="question"><strong>Qui êtes-vous ?</strong></p>
           <p><el-button type="primary" @click="registerForm.society = false" class="btn" plain>Je suis un particulier</el-button></p>
           <p><el-button type="primary" @click="registerForm.society = true" class="btn" plain>Je suis une société(Association)</el-button></p>
           <div class="buttons">
-            <el-button @click="handleCheckSociety" class="btn btn-validate" type="danger">Suivant</el-button>
+            <el-button @click="handleCheckSociety" class="btn btn-validate" type="succes" round>Suivant</el-button>
           </div>
         </div>
         <!-- Steps for Particular registion -->
         <div v-if="step11">
+          <p class="steping">Créer votre compte(Etape 2 sur 3)</p>
           <p><strong>Identifiant de connexion</strong></p>
           <div class="content">
             <el-input placeholder="email..." v-model="registerForm.email"></el-input>
@@ -26,6 +27,7 @@
           </div>
         </div>
         <div v-if="step12">
+          <p class="steping">Créer votre compte(Etape 3 sur 3)</p>
           <p><strong>Plus d'informations...</strong></p>
           <div class="first-input">
             <div>
@@ -48,6 +50,7 @@
             <el-button @click="handleValidateParticular" class="btn btn-validate" type="danger">Valider</el-button>
           </div>
         </div>
+        <div v-if="step13">Success</div>
         <!-- Steps for Association registion -->
         <div v-if="step1">
           <p><strong>Quel est le SIRET de votre société ?</strong></p>
@@ -95,8 +98,9 @@
             <el-button @click="handleValidate" class="btn btn-validate" type="danger">Valider</el-button>
           </div>
         </div>
+        <div v-if="step3">Success</div>
       </div>
-      <div class="right"></div>
+      <div class="right" />
     </div>
   </div>
 </template>
@@ -135,8 +139,10 @@ export default {
       step: true,
       step1: false,
       step2: false,
+      step3: false,
       step11: false,
       step12: false,
+      step13: false,
       fit: 'fill'
     }
   },
@@ -252,56 +258,27 @@ export default {
     margin-bottom: 0px;
     display: block;
 
-    .heading {
-      font-size: 20px;
-      color: #7E829B;
-      letter-spacing: 0.14px;
-      margin-top: 90px;
-      margin-left: 50px;
-      margin-bottom: 60px;
-    }
+    .step {
+      padding-top: 50px;
+      padding-left: 50px;
 
-    .title {
-      font-size: 30px;
-      color: #7E829B;
-      letter-spacing: 0.14px;
-      margin-top: 50px;
-      margin-left: 50px;
-      margin-bottom: 60px;
-    }
-
-    .eventTitle {
-      width: 570px;
-      margin-left: 50px;
-      margin-bottom: 60px;
-    }
-
-    .eventDescr {
-      width: 650px;
-      margin-left: 50px;
-      margin-bottom: 60px;
-    }
-
-    .content {
-      width: 570px;
-      margin-left: 50px;
-      margin-bottom: 60px;
-
-      .address {
-        width: 300px;
+      .steping {
+        color: #7E829B;
       }
-
-      .date {
-        width: 250px;
-        padding-left: 10px;
+      .title {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        letter-spacing: 0.14px;
       }
-    }
-
-    .actions {
-      display: flex;
-      margin-left: 50px;
-      .left1 { float: left; }
-      .right1 { float: right; }
+      .subtitle {
+        letter-spacing: 0.14px;
+      }
+      .question {
+        letter-spacing: 0.14px;
+      }
+      .buttons {
+        padding-top: 40px;
+      }
     }
 
   }
