@@ -55,7 +55,7 @@ export default {
       events: [],
       city: '',
       filters: {
-        placeCriteria: 'Rennes',
+        placeCriteria: '',
         titleCriteria: '',
         categoryCriteria: '',
         descriptionCriteria: '',
