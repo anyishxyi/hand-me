@@ -60,7 +60,8 @@ export default {
         categoryCriteria: '',
         descriptionCriteria: '',
         eventMakerCriteria: '',
-        dateCriteria: '',
+        dateFrom: '',
+        dateTo: '',
         pageRequested: 0
       }
     }

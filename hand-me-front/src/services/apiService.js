@@ -38,6 +38,13 @@ export default {
     return apiClient.post('/event/create_event', eventData)
   },
   async getEvents(searchData) {
-    return apiClient.get(`event/search_events?placeCriteria=${searchData.placeCriteria}&titleCriteria=${searchData.titleCriteria}&categoryCriteria=${searchData.categoryCriteria}&descriptionCriteria=${searchData.descriptionCriteria}&eventMakerCriteria=${searchData.eventMakerCriteria}&dateCriteria=${searchData.dateCriteria}&pageRequested=${searchData.pageRequested}`)
+    return apiClient.get(`event/search_events?placeCriteria=${searchData.placeCriteria}
+                                              &titleCriteria=${searchData.titleCriteria}
+                                              &categoryCriteria=${searchData.categoryCriteria}
+                                              &descriptionCriteria=${searchData.descriptionCriteria}
+                                              &eventMakerCriteria=${searchData.eventMakerCriteria}
+                                              &dateCriteria1=${searchData.dateFrom}
+                                              &dateCriteria2=${searchData.dateTo}
+                                              &pageRequested=${searchData.pageRequested}`)
   }
 }
