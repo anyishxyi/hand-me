@@ -11,7 +11,7 @@
           </router-link>
         </el-button>
         <el-button type="text">
-          <router-link :to="{path: '/event/all'}">
+          <router-link :to="{path: '/events'}">
             Evenements
           </router-link>
         </el-button>
