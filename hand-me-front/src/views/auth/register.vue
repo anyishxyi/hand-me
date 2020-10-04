@@ -18,8 +18,8 @@
           <h1 class="title">Veuillez renseigner ces informations d'authentification</h1>
           <div class="content">
             <el-input placeholder="email..." class="input" v-model="registerForm.email"></el-input>
-            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" ></el-input>
-            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" ></el-input>
+            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password></el-input>
+            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password></el-input>
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
@@ -32,8 +32,8 @@
           <div class="content">
             <el-input placeholder="Prenom..."  class="input" v-model="userData.particularFirstName"></el-input>
             <el-input placeholder="Nom..." class="input" v-model="userData.particularName" ></el-input>
-            <Places 
-              class="input" 
+            <Places
+              class="input"
               id="userAddress"
               classname="form-control"
               type="address"
