@@ -17,9 +17,9 @@
           <p class="steping">Créer votre compte(Etape 2 sur 3)</p>
           <h1 class="title">Veuillez renseigner ces informations d'authentification</h1>
           <div class="content">
-            <el-input placeholder="email..." class="input" v-model="registerForm.email"></el-input>
-            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password></el-input>
-            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password></el-input>
+            <el-input placeholder="email..." class="input" v-model="registerForm.email" clearable />
+            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password />
+            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password />
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>

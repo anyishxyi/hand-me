@@ -21,6 +21,18 @@
           </router-link>
         </el-button>
         <el-button v-if="!userData" type="primary" @click="loginClicked">Connexion</el-button>
+        <el-dropdown v-if="userData" :hide-on-click="false">
+          <!-- <span class="el-dropdown-link">
+            Liste déroulante<i class="el-icon-arrow-down el-icon--right"></i>
+          </span> -->
+          <i class="el-icon-s-tools" />
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>Profil</el-dropdown-item>
+            <el-dropdown-item @click.native="openLogout" divided>
+              <span style="display:block;">Deconnexion</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
     <Login
@@ -55,6 +67,7 @@ export default {
     viewportMeta.content = 'width=device-width, initial-scale=1'
     document.head.appendChild(viewportMeta)
     this.userData = await this.$localforage.getItem('userData')
+    console.log('this.userData', this.userData)
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)
@@ -80,6 +93,18 @@ export default {
       // console.log('clicked')
       this.showLoginPage = true
       // console.log(this.showLoginPage)
+    },
+    openLogout() {
+      this.$confirm('Voulez vous vraiment vous deconnecter ?', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Annuler',
+        type: 'warning',
+        showClose: false
+      }).then( async () => {
+        await this.$localforage.removeItem('userData').catch(error => console.log('error', error))
+        this.userData = null
+        this.$router.push(`/home`)
+      })
     }
   }
 }
