@@ -21,10 +21,10 @@
           </router-link>
         </el-button>
         <el-button v-if="!userData" type="primary" class="pad" @click="loginClicked">Connexion</el-button>
-        <el-dropdown v-if="userData" class="right-menu-item hover-effect pad" trigger="click" :hide-on-click="false">
+        <el-dropdown v-if="userData" class="right-menu-item hover-effect pad" trigger="click">
           <i class="el-icon-s-tools" />
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>Profil</el-dropdown-item>
+            <el-dropdown-item @click.native="goToProfile">Profil</el-dropdown-item>
             <el-dropdown-item @click.native="openLogout" divided>
               <span style="display:block;">Deconnexion</span>
             </el-dropdown-item>
@@ -102,6 +102,9 @@ export default {
         this.userData = null
         await this.$router.replace(`/home?redirect=${this.$route.fullPath}`)
       })
+    },
+    goToProfile() {
+      this.$router.push(`/profile?redirect=${this.$route.fullPath}`)
     }
   }
 }
