@@ -1,26 +1,13 @@
 import axios from 'axios'
+import { authHeader } from './authHeader'
 
 let apiClient = axios.create({
   baseURL: `https://backend.hand-me.fr:8443/gpe/`,
   withCredentials: false,
-  headers: {
-    Accept: 'application/json',
-    'Content-type': 'application/json'
-  }
+  headers: authHeader()
 })
 
 export default {
-  setClientSecured(token) {
-    apiClient = axios.create({
-      baseURL: `https://backend.hand-me.fr:8443/gpe/`,
-      withCredentials: false,
-      headers: {
-        Authorization: 'Bearer ' + token,
-        Accept: 'application/json',
-        'Content-type': 'application/json'
-      }
-    })
-  },
   async orgaLogin(userData) {
     return apiClient.post('/authen/login_organization', userData)
   },
