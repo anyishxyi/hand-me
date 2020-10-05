@@ -19,7 +19,7 @@ export const constantRoutes = [
     children: [
       {
         path: '/redirect/:path(.*)',
-        component: () => import(/* webpackChunkName: "ownest-routes" */ '@/views/redirect/index')
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/redirect/index')
       }
     ]
   },

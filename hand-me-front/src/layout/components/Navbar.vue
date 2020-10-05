@@ -5,26 +5,23 @@
         <el-image class="logo" :src="logo" lazy />
       </router-link>
       <div class="right-menu">
-        <el-button type="text">
+        <el-button type="text" class="pad">
           <router-link :to="{path: '/home'}">
             Accueil
           </router-link>
         </el-button>
-        <el-button type="text">
+        <el-button type="text" class="pad">
           <router-link :to="{path: '/events'}">
             Evenements
           </router-link>
         </el-button>
-        <el-button v-if="userData" type="text">
+        <el-button v-if="userData" type="text" class="pad">
           <router-link :to="{path: '/event/create'}">
             Créer Evenement
           </router-link>
         </el-button>
-        <el-button v-if="!userData" type="primary" @click="loginClicked">Connexion</el-button>
-        <el-dropdown v-if="userData" :hide-on-click="false">
-          <!-- <span class="el-dropdown-link">
-            Liste déroulante<i class="el-icon-arrow-down el-icon--right"></i>
-          </span> -->
+        <el-button v-if="!userData" type="primary" class="pad" @click="loginClicked">Connexion</el-button>
+        <el-dropdown v-if="userData" class="right-menu-item hover-effect pad" trigger="click" :hide-on-click="false">
           <i class="el-icon-s-tools" />
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>Profil</el-dropdown-item>
@@ -147,19 +144,21 @@ export default {
       padding: 0 8px;
       height: 100%;
       font-size: 1.1em;
-      vertical-align: text-bottom;
-
+      color: white;
+      // vertical-align: text-bottom;
       &.lang {
         font-size: 1.7em;
       }
-
       &.hover-effect {
         cursor: pointer;
         transition: background .3s;
-
         &:hover {
           background: rgba(0, 0, 0, .025)
         }
+      }
+      .el-icon-s-tools {
+        font-size: 1.15em;
+        line-height: 3.1em;
       }
     }
 
@@ -191,5 +190,10 @@ export default {
       color: blue($color: #000000);
     }
   }
+}
+
+.pad {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 </style>

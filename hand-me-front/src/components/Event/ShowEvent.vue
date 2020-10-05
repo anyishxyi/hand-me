@@ -4,7 +4,15 @@
     width="600px"
     @eventModalClose="beforeClose"
   >
-    hello
+    <div class="header">
+
+    </div>
+    <div class="content">
+      {{}}
+    </div>
+    <div class="actions">
+
+    </div>
   </GeneralModal>
 </template>
 
