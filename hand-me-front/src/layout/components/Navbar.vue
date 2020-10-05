@@ -103,7 +103,7 @@ export default {
       }).then( async () => {
         await this.$localforage.removeItem('userData').catch(error => console.log('error', error))
         this.userData = null
-        this.$router.push(`/home`)
+        await this.$router.replace(`/home?redirect=${this.$route.fullPath}`)
       })
     }
   }

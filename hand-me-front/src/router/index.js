@@ -13,6 +13,17 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import(/* webpackChunkName: "ownest-routes" */ '@/views/redirect/index')
+      }
+    ]
+  },
+  {
     path: '/404',
     component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/error-page/404'),
     hidden: true
@@ -33,12 +44,6 @@ export const constantRoutes = [
         name: 'home',
         // meta: { title: 'events', icon: 'home', affix: true }
       },
-      // {
-      //   path: '/login',
-      //   component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/auth'),
-      //   name: 'login',
-      //   hidden: true
-      // },
       {
         path: '/register',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
@@ -76,7 +81,7 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes,
   duplicateNavigationPolicy: 'ignore'
