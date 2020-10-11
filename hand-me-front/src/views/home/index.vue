@@ -77,10 +77,9 @@
           <div class="photo">
             <el-image :src="img1" lazy />
           </div>
-          <div class="name">Pauline</div>
-          <div class="role">DESIGNER</div>
-          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
-I can make endless updates with whatever layout I desire!"</div>
+          <div class="name">Djibril</div>
+          <div class="role">Membre actif dans une association</div>
+          <div class="comment">"HandMe répond aux besoins classique dont à besoin un bénévole pour suivre ses évènements."</div>
         </div>
         <div>
           <div class="photo">
@@ -204,9 +203,9 @@ export default {
   data(){
     return {
       search: '',
-      nb_users: 6000,
-      nb_orga: 300,
-      nb_events: 980,
+      nb_users: 7,
+      nb_orga: 0,
+      nb_events: 5,
       twitter,
       facebook,
       france,
