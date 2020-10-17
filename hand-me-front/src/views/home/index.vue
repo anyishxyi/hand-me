@@ -44,15 +44,15 @@
     </div>
     <div class="counter">
       <div >
-        <count-to :start-val="0" :end-val="nb_users" class="count" separator=" " />
+        <count-to :start-val="0" :end-val="homeData.particularNumber" class="count" separator=" " />
         <p>Membres présents sur notre plateforme</p>
       </div>
       <div class="middle-card">
-        <count-to :start-val="0" :end-val="nb_orga" class="count" separator=" " />
+        <count-to :start-val="0" :end-val="homeData.organizationNumber" class="count" separator=" " />
         <p>Organisateurs propose des évènements sur la plateforme</p>
       </div>
       <div >
-        <count-to :start-val="0" :end-val="nb_events" class="count" separator=" " />
+        <count-to :start-val="0" :end-val="homeData.eventNumber" class="count" separator=" " />
         <p>Evènements présents sur la plateforme</p>
       </div>
     </div>
@@ -229,6 +229,11 @@ export default {
       from_address:{},
       location: null,
       coordinates: {},
+      homeData: {
+        eventNumber: 0,
+        organizationNumber: 0,
+        particularNumber: 0
+      },
       filters: {
         placeCriteria: '',
         titleCriteria: '',
@@ -249,18 +254,30 @@ export default {
   },
   methods: {
     async init() {
-      const res = await apiService.getEvents(this.filters)
+      const repEvents = await apiService.getEvents(this.filters)
                                   .catch(error => {
                                     this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
                                     console.error(error)
                                     return
                                   })
-      if(!res || !res.data || res.status !== 200) {
+      if(!repEvents || !repEvents.data || repEvents.status !== 200) {
         this.events = []
         return
       }
 
-      this.events = res.data.events
+      this.events = repEvents.data.events
+      const repHome = await apiService.getHomeData()
+                                  .catch(error => {
+                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                    console.error(error)
+                                    return
+                                  })
+      if(!repHome || !repHome.data || repHome.status !== 200) {
+        this.events = []
+        return
+      }
+
+      this.homeData = repHome.data
     },
     updateScroll() {
       this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#222020' : 'transparent !important'

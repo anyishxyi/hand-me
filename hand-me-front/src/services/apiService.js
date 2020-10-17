@@ -14,6 +14,9 @@ export default {
   async userLogin(userData) {
     return apiClient.post('/authen/login_particular', userData)
   },
+  async getHomeData() {
+    return apiClient.get('/authen/home')
+  },
   async registerParticular(userData) {
     return apiClient.post('/particular/create_particular', userData)
   },
