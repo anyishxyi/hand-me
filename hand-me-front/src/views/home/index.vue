@@ -204,9 +204,6 @@ export default {
   data(){
     return {
       search: '',
-      nb_users: 6000,
-      nb_orga: 300,
-      nb_events: 980,
       twitter,
       facebook,
       france,
