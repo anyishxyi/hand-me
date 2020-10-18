@@ -8,7 +8,18 @@
 
     </div>
     <div class="content">
-      {{}}
+
+    
+      <h3>Ttire de l'évènement :</h3> 
+      {{event.eventTitle}}
+      <h3>Lieu de l'évènement :</h3> 
+      {{event.eventPlace}}
+      <h3>Description de l'évènement :</h3> 
+      {{event.eventDescription}}
+
+      <div class="buttons">
+            <el-button  align="center" @click="add" class="btn btn-validate" type="success" round>Participer</el-button>
+      </div>
     </div>
     <div class="actions">
 
@@ -17,6 +28,7 @@
 </template>
 
 <script>
+import apiService from '@/services/apiService'
 import GeneralModal from '@/components/GeneralModal'
 
 export default {
@@ -33,7 +45,16 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      userData: {},
+      eventData: {
+         participantEmail: '',
+         eventId:''
+      }
+    }
+  },
+   async mounted() {
+    this.userData = await this.$localforage.getItem('userData')
   },
   methods: {
     beforeClose(newVal) {
@@ -42,6 +63,26 @@ export default {
     confirm() {
       this.$emit('confirm')
     },
+
+        async add() {
+      
+ this.eventData.participantEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
+ this.eventData.eventId = this.event.eventId
+      console.log('eventData')
+      console.log(this.eventData)
+      const res = await apiService.addevent(this.eventData, this.userData.token)
+                                  .catch(error => {
+                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+                                    console.error(error)
+                                    return
+                                  })
+      console.log('res')
+      console.log(res)
+      if(!res || !res.data || res.status !== 200) {
+        // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
+        return
+      }
+    }
   }
 }
 </script>

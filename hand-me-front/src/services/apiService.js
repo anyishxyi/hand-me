@@ -33,6 +33,11 @@ export default {
   async registerAssociation(userData) {
     return apiClient.post('/organization/create_organization', userData)
   },
+  async addevent(eventData, myToken) {
+    this.setClientSecured(myToken)
+    return apiClient.post('/event/add_participant_event', eventData)
+  },
+
   async createEvent(eventData, myToken) {
     this.setClientSecured(myToken)
     return apiClient.post('/event/create_event', eventData)

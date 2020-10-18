@@ -22,8 +22,8 @@
               <el-switch
                 class="mb-37"
                 v-model="loginForm.type"
-                active-text="Organisation"
-                inactive-text="Particulier">
+                active-text="Une association"
+                inactive-text="Un particulier">
               </el-switch>
             </div>
 
@@ -60,7 +60,7 @@
       <div class="register-container">
         <div class="wrapper">
           <p class="title">AUGMENTEZ VOS CHANCES D'APPORTER UNE AIDE À UNE ASSOCIATION</p>
-          <p class="title2">Chaque mois plus de 10000 évènements sont créés sur notre plateforme</p>
+          <p class="title2">Chaque mois plusieurs évènements sont créés sur notre plateforme</p>
           <el-button @click="handleRegister" type="secondary" class="btn" round>Créer votre compte</el-button>
         </div>
       </div>

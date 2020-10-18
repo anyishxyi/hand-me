@@ -21,7 +21,7 @@ const {
 
 const POINT_MARKER_ICON_CONFIG = {
   path: "M 0, 0 m -5, 0 a 5,5 0 1,0 10,0 a 5,5 0 1,0 -10,0",
-  strokeOpacity: 0.7,
+  strokeOpacity: 17,
   strokeWeight: 4,
   strokeColor: COLOR_POINT,
   fillColor: COLOR_SELECTED_POINT,
@@ -52,16 +52,16 @@ const LINE_PATH_CONFIG = {
 const mapSettings = {
   clickableIcons: true,
   streetViewControl: true,
-  panControlOptions: false,
+  panControlOptions: true,
   gestureHandling: "cooperative",
   backgroundColor: LANDSCAPE,
-  mapTypeControl: false,
+  mapTypeControl: true,
   zoomControlOptions: {
     style: "SMALL"
   },
   zoom: 8,
   minZoom: 3,
-  maxZoom: 12,
+  maxZoom: 25,
   styles: [
     {
         "featureType": "administrative",

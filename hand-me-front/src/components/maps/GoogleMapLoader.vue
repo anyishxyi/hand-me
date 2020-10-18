@@ -11,7 +11,7 @@
 </template>
 
 <script>
-
+import GoogleMapsApiLoader from "google-maps-api-loader";
 export default {
   props: {
     mapConfig: Object,
@@ -27,9 +27,11 @@ export default {
     };
   },
   async mounted() {
-    if(!this.map) {
-      this.initializeMap();
-    }
+    const googleMapApi = await GoogleMapsApiLoader({
+      apiKey: 'AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM'
+    });
+    this.google = googleMapApi;
+    this.initializeMap();
   },
 
   methods: {
