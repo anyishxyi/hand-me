@@ -2,11 +2,12 @@
   <GoogleMapLoader
     :mapConfig="mapConfig"
     :isHome="isHome"
-    
+
   >
     <template slot-scope="{ google, map }">
       <GoogleMapMarker
         v-for="marker in markers"
+        :position="{ lat: marker.lat, lng: marker.lng }"
         :key="marker.id"
         :marker="marker"
         :google="google"
@@ -56,7 +57,7 @@ export default {
      },
     markers:[
        {
-          "eventId": 2,
+          "eventId": 0,
           "lat": 48.8534,
           "lng": 2.3488
       },

@@ -52,14 +52,14 @@ const LINE_PATH_CONFIG = {
 const mapSettings = {
   clickableIcons: true,
   streetViewControl: true,
-  panControlOptions: true,
+  panControlOptions: false,
   gestureHandling: "cooperative",
   backgroundColor: LANDSCAPE,
-  mapTypeControl: true,
+  mapTypeControl: false,
   zoomControlOptions: {
     style: "SMALL"
   },
-  zoom: 8,
+  zoom: 11,
   minZoom: 3,
   maxZoom: 25,
   styles: [

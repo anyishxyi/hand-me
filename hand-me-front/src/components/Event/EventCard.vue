@@ -56,7 +56,7 @@ export default {
 
 <style>
 .card--1 .card__img, .card--1 .card__img--hover {
-  background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-image: url('~@/assets/logo_event.jpg')
 }
 .card__clock {
   width: 15px;
