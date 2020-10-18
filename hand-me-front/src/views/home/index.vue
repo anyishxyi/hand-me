@@ -294,7 +294,7 @@ export default {
       return new Promise(function (resolve, reject) {
         const request = new XMLHttpRequest();
         const method = 'GET';
-        const url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM';
+        const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM';
         const async = true;
 
         request.open(method, url, async)
