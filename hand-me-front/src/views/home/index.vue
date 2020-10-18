@@ -85,19 +85,17 @@
           <div class="photo">
             <el-image :src="img2" lazy />
           </div>
-          <div class="name">Josie</div>
-          <div class="role">PHOTOGRAPHER</div>
-          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
-I can make endless updates with whatever layout I desire!"</div>
+          <div class="name">Willyan</div>
+          <div class="role">Membre d'un BDE</div>
+          <div class="comment">""</div>
         </div>
         <div>
           <div class="photo">
             <el-image :src="img3" lazy />
           </div>
-          <div class="name">Paul</div>
-          <div class="role">BLOGER</div>
-          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
-I can make endless updates with whatever layout I desire!"</div>
+          <div class="name">Wilson</div>
+          <div class="role">Gérant d'une association</div>
+          <div class="comment">""</div>
         </div>
       </div>
     </div>
@@ -180,9 +178,9 @@ const france = require('@/icons/png/france.png')
 const linkedin = require('@/icons/png/linkedin.png')
 
 
-const img1 = require('@/icons/png/User1.png')
-const img2 = require('@/icons/png/User2.png')
-const img3 = require('@/icons/png/User3.png')
+const img1 = require('@/icons/svg/feedback.svg')
+const img2 = require('@/icons/svg/feedback1.svg')
+const img3 = require('@/icons/svg/feedback.svg')
 
 const bd_pic = require('@/assets/dx.jpeg')
 const ka_pic = require('@/assets/ab.jpg')
