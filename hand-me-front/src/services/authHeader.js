@@ -5,12 +5,14 @@ export function authHeader() {
     if (!user || !user.token) {
         return {
           Accept: 'application/json',
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          'Access-Control-Allow-Origin' : '*',
         }
     } else {
         return {
           Accept: 'application/json',
           'Content-type': 'application/json',
+          'Access-Control-Allow-Origin' : '*',
           'Authorization': `Bearer ${user.token}`
         };
     }

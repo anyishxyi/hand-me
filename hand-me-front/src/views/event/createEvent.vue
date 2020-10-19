@@ -8,6 +8,15 @@
           <div class="eventTitle">
             <el-input placeholder="Saisissez le titre de votre évènement..." v-model="eventData.eventTitle"></el-input>
           </div>
+
+        <div class="eventTitle">
+          <el-select v-model="eventData.categoryName" placeholder="Type d'évènement">
+            <el-option label="Entraide sur un projet" value="Entraide sur un projet"></el-option>
+            <el-option label="Action pour les autres" value="Action pour les autres"></el-option>
+            <el-option label="Action pour l'environnement" value="Action pour l'environnement"></el-option>
+          </el-select>
+        </div>
+
           <div class="actions">
             <el-button @click="nextToStep2" type="primary">Continuer</el-button>
           </div>
@@ -58,7 +67,8 @@ export default {
         eventDescription: '',
         eventPlace: '',
         eventDate: '',
-        eventMakerEmail: ''
+        eventMakerEmail: '',
+        categoryName : ''
       },
       step1: true,
       step2: false,
@@ -97,8 +107,7 @@ export default {
                                     console.error(error)
                                     return
                                   })
-      console.log('res')
-      console.log(res)
+      console.log('res', res)
       if(!res || !res.data || res.status !== 200) {
         // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
         return

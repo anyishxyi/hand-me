@@ -8,6 +8,17 @@ let apiClient = axios.create({
 })
 
 export default {
+  setClientSecured(token) {
+    this.apiClient = axios.create({
+      baseURL: `https://backend.hand-me.fr:8443/gpe/`,
+      withCredentials: false,
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/json',
+        'Content-type': 'application/json'
+      }
+    })
+  },
   async orgaLogin(userData) {
     return apiClient.post('/authen/login_organization', userData)
   },
@@ -23,6 +34,11 @@ export default {
   async registerAssociation(userData) {
     return apiClient.post('/organization/create_organization', userData)
   },
+  async addevent(eventData, myToken) {
+    this.setClientSecured(myToken)
+    return apiClient.post('/event/add_participant_event', eventData)
+  },
+
   async createEvent(eventData, myToken) {
     this.setClientSecured(myToken)
     return apiClient.post('/event/create_event', eventData)

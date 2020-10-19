@@ -1,5 +1,5 @@
 <script>
-import { POINT_MARKER_ICON_CONFIG } from "@/constants/mapSettings";
+//import { POINT_MARKER_ICON_CONFIG } from "@/constants/mapSettings";
 
 export default {
   props: {
@@ -20,10 +20,10 @@ export default {
     const { Marker } = this.google.maps;
 
     new Marker({
-      position: this.marker.position,
+      position: this.marker,
       marker: this.marker,
       map: this.map,
-      icon: POINT_MARKER_ICON_CONFIG
+      icon:{ url: require('../../icons/png/pin.png')}
     });
   },
   // eslint-disable-next-line vue/require-render-return

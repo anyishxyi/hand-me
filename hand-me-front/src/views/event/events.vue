@@ -4,7 +4,7 @@
       <div class="left">
         <div class="heading">
           <h1>RECHERCHER UN EVENEMENT</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lorem ut sapien volutpat, et fermentum mauris rutrum. Nulla metus lectus, bibendum eget eros sit amet, iaculis sagittis mauris. Fusce sed euismod ligula. Morbi pharetra viverra consectetur. Praesent egestas sollicitudin justo aliquet suscipit. Sed ut augue nec purus varius</p>
+          <p> Trouver les évènements qui conviennent dans votre ville</p>
         </div>
         <div class="events_filter">
           <Places
@@ -91,6 +91,8 @@ export default {
     getPlace(place) {
       // console.log(place)
       if(!place) return
+      this.filters.placeCriteria = place.split(',')[0]
+      console.log('ville', this.filters.placeCriteria)
       this.init()
     },
     handleError(error){

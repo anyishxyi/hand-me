@@ -5,22 +5,22 @@
         <el-image class="logo" :src="logo" lazy />
       </router-link>
       <div class="right-menu">
-        <el-button type="text" class="pad">
+        <el-button type="primary" class="pad">
           <router-link :to="{path: '/home'}">
             Accueil
           </router-link>
         </el-button>
-        <el-button type="text" class="pad">
+        <el-button type="primary" class="pad">
           <router-link :to="{path: '/events'}">
             Evenements
           </router-link>
         </el-button>
-        <el-button v-if="userData" type="text" class="pad">
+        <el-button v-if="userData" type="success" class="pad" plain>
           <router-link :to="{path: '/event/create'}">
             Créer Evenement
           </router-link>
         </el-button>
-        <el-button v-if="!userData" type="primary" class="pad" @click="loginClicked">Connexion</el-button>
+        <el-button v-if="!userData" type="success" class="pad" @click="loginClicked" round>Connexion</el-button>
         <el-dropdown v-if="userData" class="right-menu-item hover-effect pad" trigger="click">
           <i class="el-icon-s-tools" />
           <el-dropdown-menu slot="dropdown">

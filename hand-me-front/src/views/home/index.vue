@@ -77,28 +77,25 @@
           <div class="photo">
             <el-image :src="img1" lazy />
           </div>
-          <div class="name">Pauline</div>
-          <div class="role">DESIGNER</div>
-          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
-I can make endless updates with whatever layout I desire!"</div>
+          <div class="name">Djibril</div>
+          <div class="role">Membre actif dans une association</div>
+          <div class="comment">"HandMe répond aux besoins classique dont à besoin un bénévole pour suivre ses évènements."</div>
         </div>
         <div>
           <div class="photo">
             <el-image :src="img2" lazy />
           </div>
-          <div class="name">Josie</div>
-          <div class="role">PHOTOGRAPHER</div>
-          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
-I can make endless updates with whatever layout I desire!"</div>
+          <div class="name">Willyan</div>
+          <div class="role">Membre d'un BDE</div>
+          <div class="comment">""</div>
         </div>
         <div>
           <div class="photo">
             <el-image :src="img3" lazy />
           </div>
-          <div class="name">Paul</div>
-          <div class="role">BLOGER</div>
-          <div class="comment">"After using various platforms, I changed for Diadema because of the flexibility it offers.
-I can make endless updates with whatever layout I desire!"</div>
+          <div class="name">Wilson</div>
+          <div class="role">Gérant d'une association</div>
+          <div class="comment">""</div>
         </div>
       </div>
     </div>
@@ -181,9 +178,9 @@ const france = require('@/icons/png/france.png')
 const linkedin = require('@/icons/png/linkedin.png')
 
 
-const img1 = require('@/icons/png/User1.png')
-const img2 = require('@/icons/png/User2.png')
-const img3 = require('@/icons/png/User3.png')
+const img1 = require('@/icons/jpg/feedback.jpg')
+const img2 = require('@/icons/jpg/feedback1.jpg')
+const img3 = require('@/icons/jpg/feedback.jpg')
 
 const bd_pic = require('@/assets/dx.jpeg')
 const ka_pic = require('@/assets/ab.jpg')
@@ -298,18 +295,18 @@ export default {
       this.coordToCity()
     },
     coordToCity() {
-      console.log('this.coordinates')
-      console.log(this.coordinates)
+      // console.log('this.coordinates')
+      // console.log(this.coordinates)
       const lat = this.coordinates.lat
       const lng = this.coordinates.lng
-      console.log('lat')
-      console.log(lat)
-      console.log('lng')
-      console.log(lng)
+      // console.log('lat')
+      // console.log(lat)
+      // console.log('lng')
+      // console.log(lng)
       return new Promise(function (resolve, reject) {
         const request = new XMLHttpRequest();
         const method = 'GET';
-        const url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM';
+        const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyAe1WPBLhSasHA1CvdEpkbOqqGOTB4d3pM';
         const async = true;
 
         request.open(method, url, async)
@@ -318,8 +315,8 @@ export default {
             if (request.status == 200) {
               const data = JSON.parse(request.responseText);
               const address = data.results[0];
-              console.log('address')
-              console.log(address)
+              // console.log('address')
+              // console.log(address)
               resolve(address);
             }
             else {

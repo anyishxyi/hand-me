@@ -7,7 +7,7 @@
           <h1 class="title">Repondez à ces quelques questions afin de continuer...</h1>
           <p class="question"><strong>Qui êtes-vous ?</strong></p>
           <p><el-button type="primary" @click="registerForm.society = false" class="btn" plain>Je suis un particulier</el-button></p>
-          <p><el-button type="primary" @click="registerForm.society = true" class="btn" plain>Je suis une société(Association)</el-button></p>
+          <p><el-button type="primary" @click="registerForm.society = true" class="btn" plain>Je suis une association</el-button></p>
           <div class="buttons">
             <el-button @click="handleCheckSociety" class="btn btn-validate" type="succes" round>Suivant</el-button>
           </div>
@@ -56,7 +56,22 @@
         <!-- Steps for Association registion -->
         <div v-if="step1">
           <p><strong>Quel est le SIRET de votre société ?</strong></p>
-          <p><el-input placeholder="SIRET..." v-model="registerForm.siret" class="marginInput"></el-input></p>
+          <p><el-input placeholder="SIRET..." v-model="orgaData.organizationMatricule" class="marginInput"></el-input></p>
+            <div>
+              <p>Nom de l'association:</p>
+              <el-input placeholder="Nom de votre association..." v-model="orgaData.organizationName"></el-input>
+            </div>
+               <p>Siège social de l'association</p>
+              <Places
+              class="input"
+              id="userAddress"
+              classname="form-control"
+              type="address"
+              placeholder="Adresse..."
+              
+              @change="getPlace"
+              :error="handleError"
+            />         
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
             <el-button @click="handleCheckSiret" class="btn btn-validate" type="danger">Suivant</el-button>
@@ -65,39 +80,39 @@
         <div v-if="step2">
           <p><strong>Informations de votre société</strong></p>
           <div class="first-input">
-            <div>
-              <p>Nom:</p>
-              <el-input placeholder="Nom..." v-model="registerForm.societyName"></el-input>
-            </div>
+
             <div class="input-left">
-              <p>Site web:</p>
-              <el-input placeholder="Site web..." v-model="registerForm.societyWeb" ></el-input>
+              <p>Nom du gérant:</p>
+              <el-input placeholder="Nom..." v-model="orgaData.organizationChiefName" ></el-input>
             </div>
           </div>
           <div class="inputs">
             <div>
-              <p>Localisation:</p>
-              <el-input placeholder="Ville..." v-model="registerForm.societyCity"></el-input>
+              <p>Prénom du gérant:</p>
+              <el-input placeholder="Prénom..." v-model="orgaData.organizationChiefFirstname"></el-input>
             </div>
             <div class="input-left">
-              <p>Montant du capital social (€)</p>
-              <el-input v-model="registerForm.societyCapital" ></el-input>
+              <!-- <el-input v-model="registerForm.societyCapital" ></el-input> -->
             </div>
           </div>
           <div class="inputs">
             <div>
-              <p>Valeur nominale de l'action (€)</p>
+              <p>Votre adresse email</p>
               <!-- <el-input v-model="registerForm.societyValueAction" @change="onValueAction"></el-input> -->
-              <el-input v-model="registerForm.societyValueAction" @input="onValueAction"></el-input>
+              <el-input v-model="registerForm.email" @input="onValueAction"></el-input>
             </div>
             <div class="input-left">
-              <p>Nombre d'action (calculé)</p>
-              <el-input v-model="registerForm.societyNumberAction"  :disabled="true"></el-input>
+              <p>Numéro de téléphone</p>
+           <p><el-input v-model="orgaData.organizationPhoneNumber" ></el-input></p>
             </div>
+          </div>
+                    <div class="content">
+            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password />
+            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password />
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSiret" type="text">retour</el-button>
-            <el-button @click="handleValidate" class="btn btn-validate" type="danger">Valider</el-button>
+            <el-button @click="handleValidateOrganization" class="btn btn-validate" type="danger">Valider</el-button>
           </div>
         </div>
         <div v-if="step3">Success</div>
@@ -126,14 +141,41 @@ export default {
       particularPassword: '',
       particularPhonenumber: '',
       particularLocation: '',
+      organizationName :'',
+	organizationChiefName : '',
+	organizationChiefFirstname :'',
+	organizationPassword :'',
+	organizationLocation :'',
+	organizationMatricule :'',
+	organizationLogo :'',
+	organizationDescription :'',
+	organizationWebSite :'',
+	organizationPhoneNumber :'',
+	organizationEmail :'',
+	organizationCreationDate :'',
       userAddress:{},
+orgaAddress:{},
       userData: {
         particularName: '',
         particularFirstName: '',
         particularEmail: '',
         particularPassword: '',
         particularPhonenumber: '',
-        particularLocation: ''
+        particularLocation: '',
+      },
+orgaData: {
+  organizationName :'',
+	organizationChiefName : '',
+	organizationChiefFirstname :'',
+	organizationPassword :'',
+	organizationLocation :'',
+	organizationMatricule :'',
+	organizationLogo :'',
+	organizationDescription :'',
+	organizationWebSite :'',
+	organizationPhoneNumber :'',
+	organizationEmail :'',
+	organizationCreationDate :'',      
       },
       passwordType: 'password',
       loading: false,
@@ -248,6 +290,23 @@ export default {
       this.step2 = false
       this.step3 = false
     },
+    async handleValidateOrganization() {
+      this.orgaData.organizationEmail = this.registerForm.email
+      this.orgaData.organizationPassword = this.registerForm.pass
+      console.log('this.orgaData')
+      console.log(this.orgaData)
+      const res = await apiService.registerAssociation(this.orgaData).catch(error => console.log(error))
+      console.log('this.res')
+      console.log(res)
+      this.isRegister = false
+      this.step = false
+      this.step1 = false
+      this.step11 = false
+      this.step12 = false
+      this.step13 = true
+      this.step2 = false
+      this.step3 = false
+    },
     onValueAction(value) {
       console.log(value)
       if(!value || !this.registerForm.societyCapital) return
@@ -260,6 +319,7 @@ export default {
     getPlace(place) {
       if(!place) return
       this.userData.particularLocation = place
+      this.orgaData.organizationLocation = place
     },
   }
 }
