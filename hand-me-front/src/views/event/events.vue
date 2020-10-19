@@ -91,6 +91,8 @@ export default {
     getPlace(place) {
       // console.log(place)
       if(!place) return
+      this.filters.placeCriteria = place.split(',')[0]
+      console.log('ville', this.filters.placeCriteria)
       this.init()
     },
     handleError(error){
