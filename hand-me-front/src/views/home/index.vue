@@ -178,9 +178,9 @@ const france = require('@/icons/png/france.png')
 const linkedin = require('@/icons/png/linkedin.png')
 
 
-const img1 = require('@/icons/svg/feedback.svg')
-const img2 = require('@/icons/svg/feedback1.svg')
-const img3 = require('@/icons/svg/feedback.svg')
+const img1 = require('@/icons/jpg/feedback.jpg')
+const img2 = require('@/icons/jpg/feedback1.jpg')
+const img3 = require('@/icons/jpg/feedback.jpg')
 
 const bd_pic = require('@/assets/dx.jpeg')
 const ka_pic = require('@/assets/ab.jpg')
