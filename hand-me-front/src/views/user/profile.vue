@@ -1,25 +1,5 @@
 <template>
   <div>
-    <header class="header">
-      <nav class="header-nav">
-        <div class="header-nav-logo">
-          <span class="header-nav-logo__text">HAND</span>
-          <div class="header-nav-logo__point"></div>
-          <span class="header-nav-logo__text">ME</span>
-        </div>
-        <ul class="header-nav-menu">
-          <li class="header-nav-menu__item">
-            <a class="header-nav-menu__link" href>Accueil</a>
-          </li>
-          <li class="header-nav-menu__item">
-            <a class="header-nav-menu__link" href>Évènements</a>
-          </li>
-          <li class="header-nav-menu__item">
-            <a class="header-nav-menu__link" href>Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
     <section class="board">
       <!--left-->
       <div class="board-left">
@@ -53,7 +33,7 @@
       <!--middle-->
       <div class="board-middle">
         <div class="board-middle-banner">
-          <span class="board-middle-banner-text">Hello {{userName}}</span>
+          <span class="board-middle-banner-text">Hello {{user.particularFirstName}}</span>
           <h1 class="board-middle-banner-title">bienvenue sur ton dashboard</h1>
         </div>
         <div class="board-middle-content">
@@ -97,27 +77,23 @@
 
 <script>
 import Table from "../../components/table/table";
+// import apiService from '@/services/apiService'
 
 export default {
   name: "userBoard",
   data: function() {
     return {
       events: [],
-      userName: ""
+      user: {},
     };
   },
-  mounted: function() {
-    //console.log(this.$route.params);
-    this.loadUserData();
-    //return (this.todos = this.$route.params.data.events);
+  async mounted() {
+    const userData = await this.$localforage.getItem('userData')
+    this.events = userData && userData.events ? userData.events : []
+    this.user = (userData && userData.organizationDto) ? userData.organizationDto : userData.particularDto
+    console.log('userData', this.userData)
   },
-  methods: {
-    loadUserData() {
-      console.log("usr data:", this.$route.params);
-      this.userName = this.$route.params.dto.particularFirstName;
-      this.events = this.$route.params.events;
-    }
-  },
+  methods: {},
   components: {
     Table
   }
@@ -139,55 +115,8 @@ $brightGrey: #d8d8d8;
   border-radius: 5px;
   background-color: $color;
 }
-
-.header {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  background-color: $darkGrey;
-  &-nav {
-    width: 95%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &-logo {
-      display: flex;
-      align-items: center;
-      &__text {
-        color: $white;
-        font-weight: bold;
-        font-size: 18px;
-        @include text-uppercase();
-      }
-      &__point {
-        width: 8px;
-        height: 8px;
-        margin: 0 10px 0 10px;
-        border-radius: 50%;
-        background-color: $white;
-      }
-    }
-    &-menu {
-      width: 300px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      list-style: none;
-      &__item {
-        font-weight: 500;
-        color: $white;
-        &:hover {
-          @include text-uppercase();
-          @include bg-color-hover($blue);
-        }
-      }
-    }
-  }
-}
-
 .board {
+  margin-top:60px;
   width: 100%;
   height: 900px;
   display: flex;

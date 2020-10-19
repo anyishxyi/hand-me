@@ -1,10 +1,13 @@
 import axios from 'axios'
-import { authHeader } from './authHeader'
+// import { authHeader } from './authHeader'
 
 let apiClient = axios.create({
   baseURL: `https://backend.hand-me.fr:8443/gpe/`,
   withCredentials: false,
-  headers: authHeader()
+  headers: {
+    Accept: 'application/json',
+    'Content-type': 'application/json'
+  }
 })
 
 export default {
