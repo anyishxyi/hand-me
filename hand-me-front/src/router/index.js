@@ -57,6 +57,12 @@ export const constantRoutes = [
         hidden: true
       },
       {
+        path: '/community-blog',
+        component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/community-blog/blog'),
+        name: 'communityBlog',
+        hidden: true
+      },
+      {
         path: '/events',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/event/events'),
         name: 'events',

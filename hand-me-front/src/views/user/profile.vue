@@ -29,11 +29,18 @@
         </div>
         <div class="board-left-menu">
           <div class="board-left-menu-container">
-            <div class="board-left-menu-container-item">
+            <a class="board-left-menu-container-item" href>
+              <div style="background-image:url('~@/assets/Icon.png')">
+                <!-- <img src="../../assets/Icon.png" alt /> -->
+                <!-- background-repeat: no-repeat;
+                background-position: center center;-->
+              </div>
+            </a>
+            <!-- <div class="board-left-menu-container-item">
               <a href>
                 <img src="../../assets/Icon.png" alt />
               </a>
-            </div>
+            </div>-->
             <div class="board-left-menu-container-item"></div>
             <div class="board-left-menu-container-item"></div>
             <div class="board-left-menu-container-item"></div>
@@ -72,7 +79,18 @@
       </div>
 
       <!--right-->
-      <div class="board-right"></div>
+      <div class="board-right">
+        <div v-for="(item, index) in events" :key="index" class="board-right-container">
+          <el-col class="board-right-container-card">
+            <el-card shadow="hover" class="board-right-container-card-element">
+              <router-link
+                :to="{name:'communityBlog'}"
+                class="board-right-container-card-element-link"
+              >{{item.community.communityAdmin}}</router-link>
+            </el-card>
+          </el-col>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -307,6 +325,20 @@ $brightGrey: #d8d8d8;
     width: 25%;
     height: 100%;
     background-color: $blue;
+
+    &-container {
+      padding: 10px 10px 0 10px;
+
+      &-card {
+        padding-bottom: 10px;
+
+        &-element {
+          &-link {
+            color: black;
+          }
+        }
+      }
+    }
   }
 }
 </style>
