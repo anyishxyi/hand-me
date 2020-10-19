@@ -57,7 +57,6 @@
         </div>
         <div></div>
       </div>
-
       <!--right-->
       <div class="board-right">
         <div v-for="(item, index) in events" :key="index" class="board-right-container">
