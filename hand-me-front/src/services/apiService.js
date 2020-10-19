@@ -6,7 +6,8 @@ let apiClient = axios.create({
   withCredentials: false,
   headers: {
     Accept: 'application/json',
-    'Content-type': 'application/json'
+    'Content-type': 'application/json',
+    'Access-Control-Allow-Origin' : '*',
   }
 })
 
@@ -18,7 +19,8 @@ export default {
       headers: {
         Authorization: 'Bearer ' + token,
         Accept: 'application/json',
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'Access-Control-Allow-Origin' : '*'
       }
     })
   },

@@ -58,7 +58,7 @@
     </div>
     <div class="maps w3-display-container">
       <div class="title w3-display-topleft w3-black w3-padding">Vos évènements à proximité</div>
-      <Maps :isHome="true" style="width:100%" />
+      <Maps :isHome="true" :events="events" style="width:100%" />
     </div>
     <div v-if="events.length" class="events_overview">
       <div class="events_list">
@@ -259,7 +259,13 @@ export default {
         return
       }
 
-      this.events = repEvents.data.events
+      // this.events = repEvents.data.events
+      this.events =  {
+        "eventId": 0,
+        "lat": 48.8534,
+        "lng": 2.3488
+      },
+      console.log('this.events', this.events)
       const repHome = await apiService.getHomeData()
                                   .catch(error => {
                                     this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});

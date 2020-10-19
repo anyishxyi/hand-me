@@ -109,9 +109,8 @@ export default {
     },
     async validate() {
       this.eventData.eventMakerEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
-
-      console.log('eventData')
-      console.log(this.eventData)
+      // console.log('eventData')
+      // console.log(this.eventData)
       const res = await apiService.createEvent(this.eventData, this.userData.token)
                                   .catch(error => {
                                     this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
@@ -130,7 +129,7 @@ export default {
     getPlace(place) {
       if(!place) return
       this.eventData.eventPlace = place
-      console.log('this.eventData.eventPlace', this.eventData.eventPlace)
+      // console.log('this.eventData.eventPlace', this.eventData.eventPlace)
     }
   }
 }
