@@ -40,7 +40,16 @@
           <div class="heading">Créer un évènement (Etape 3 sur 3)</div>
           <div class="title">Quelques informations utiles</div>
           <div class="content">
-            <el-input class="address" placeholder="Lieu de l'évènement..." v-model="eventData.eventPlace"></el-input>
+            <Places
+              class="address"
+              id="userAddressCreate"
+              classname="form-control"
+              type="address"
+              placeholder="Adresse..."
+              @change="getPlace"
+              :error="handleError"
+            />
+            <!-- <el-input class="address" placeholder="Lieu de l'évènement..." v-model="eventData.eventPlace"></el-input> -->
             <el-date-picker class="date" v-model="eventData.eventDate" type="date" placeholder="date de l'évènement..."></el-date-picker>
           </div>
           <div class="actions">
@@ -56,9 +65,11 @@
 
 <script>
 import apiService from '@/services/apiService'
+import Places from '@/components/places/Places'
 
 export default {
   name: "CREATEEVENTPAGE",
+  components: { Places },
   data(){
     return {
       userData: {},
@@ -112,6 +123,14 @@ export default {
         // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
         return
       }
+    },
+    handleError(error){
+      alert(error)
+    },
+    getPlace(place) {
+      if(!place) return
+      this.eventData.eventPlace = place
+      console.log('this.eventData.eventPlace', this.eventData.eventPlace)
     }
   }
 }
