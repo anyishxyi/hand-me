@@ -70,7 +70,6 @@
 
 <script>
 import GeneralModal from '@/components/GeneralModal'
-// import apiService from '@/services/apiService'
 
 export default {
   name: "Login",
@@ -98,16 +97,11 @@ export default {
     async onSubmit() {
       if(!this.loginForm.email || !this.loginForm.password) return
       if(!this.loginForm.type) {
-        this.$store.dispatch('login_particular', this.loginForm).then(() => {})
+        this.$store.dispatch('login_particular', this.loginForm)
       } else {
-        this.$store.dispatch('login_association', this.loginForm).then(() => {})
+        this.$store.dispatch('login_association', this.loginForm)
       }
-      // if(!res || !res.data || res.status !== 200) {
-      //   this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
-      //   return
-      // }
-      // await this.$localforage.setItem('userData', res.data).catch(error => console.error(error))
-      // window.location.reload()
+      this.beforeClose(true)
     },
     beforeClose(newVal) {
       console.log('beforeclose')

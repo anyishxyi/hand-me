@@ -15,7 +15,6 @@ export const constantRoutes = [
   {
     path: '/redirect',
     component: Layout,
-    hidden: true,
     children: [
       {
         path: '/redirect/:path(.*)',
@@ -25,13 +24,11 @@ export const constantRoutes = [
   },
   {
     path: '/404',
-    component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/error-page/404'),
-    hidden: true
+    component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/error-page/404')
   },
   {
     path: '/401',
-    component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/error-page/401'),
-    hidden: true
+    component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/error-page/401')
   },
   {
     path: '',
@@ -47,32 +44,30 @@ export const constantRoutes = [
       {
         path: '/register',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/auth/register'),
-        name: 'registerForm',
-        hidden: true
+        name: 'registerForm'
       },
       {
         path: '/profile',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/user/profile'),
         name: 'userBoard',
-        hidden: true
+        meta: { requiresAuth: true }
       },
       {
         path: '/community-blog',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/community-blog/blog'),
         name: 'communityBlog',
-        hidden: true
+        meta: { requiresAuth: true }
       },
       {
         path: '/events',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/event/events'),
-        name: 'events',
-        hidden: true
+        name: 'events'
       },
       {
         path: '/event/create',
         component: () => import(/* webpackChunkName: "hand-me-routes" */ '@/views/event/createEvent'),
         name: 'create_event',
-        hidden: true
+        meta: { requiresAuth: true }
       }
     ]
   }
@@ -100,5 +95,14 @@ export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('userData')
+
+  if(to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+    next('/')
+  }
+  next()
+})
 
 export default router

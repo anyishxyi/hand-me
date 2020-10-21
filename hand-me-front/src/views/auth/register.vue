@@ -271,6 +271,8 @@ export default {
       // console.log('this.userData')
       // console.log(this.userData)
       this.$store.dispatch('register_particular', this.userData)
+                  .then(({ data }) => { console.log('user data is:', data ) })
+                  .catch(error => { console.log(error) })
       // console.log('res', res)
       this.isRegister = false
       this.step = false
@@ -285,6 +287,8 @@ export default {
       this.orgaData.organizationEmail = this.registerForm.email
       this.orgaData.organizationPassword = this.registerForm.pass
       this.$store.dispatch('register_association', this.userData)
+                  .then(({ data }) => { console.log('orga data is:', data ) })
+                  .catch(error => { console.log(error) })
       // console.log('res', res)
       this.isRegister = false
       this.step = false

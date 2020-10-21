@@ -58,7 +58,7 @@
     </div>
     <div class="maps w3-display-container">
       <div class="title w3-display-topleft w3-black w3-padding">Vos évènements à proximité</div>
-      <!-- <Maps :isHome="true" :events="events" style="width:100%" /> -->
+      <Maps :isHome="true" :events="events" style="width:100%" />
     </div>
     <div v-if="events.length" class="events_overview">
       <div class="events_list">
@@ -168,7 +168,7 @@
 <script>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
-// import Maps from '@/components/maps/Maps'
+import Maps from '@/components/maps/Maps'
 import ListEvents from '@/components/Event/ListEvents'
 
 const twitter = require('@/icons/png/twitter.png')
@@ -196,8 +196,7 @@ const event3 = require('@/icons/png/event3.png')
 
 export default {
   name: 'HOMEPAGE',
-  // components: { countTo, Places, Maps, ListEvents },
-  components: { countTo, Places, ListEvents },
+  components: { countTo, Places, Maps, ListEvents },
   data(){
     return {
       search: '',
@@ -249,7 +248,7 @@ export default {
   methods: {
     async init() {
       this.$store.dispatch('getEvents', this.filters)
-                  .then(events => { this.events = events.data.events })
+                  .then(events => { this.events = events.data.events.slice(0, 3) })
                   .catch(error => {
                     this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'})
                     console.error(error)

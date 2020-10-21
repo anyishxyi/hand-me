@@ -62,8 +62,6 @@ export default {
     viewportMeta.name = 'viewport'
     viewportMeta.content = 'width=device-width, initial-scale=1'
     document.head.appendChild(viewportMeta)
-    // this.userData = await this.$localforage.getItem('userData')
-    // console.log('this.userData', this.userData)
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)
@@ -97,8 +95,9 @@ export default {
         type: 'warning',
         showClose: false
       }).then( async () => {
-        await this.$localforage.removeItem('userData').catch(error => console.log('error', error))
-        this.userData = null
+        // await this.$localforage.removeItem('userData').catch(error => console.log('error', error))
+        // this.userData = null
+        this.$store.dispatch('logout')
         await this.$router.replace(`/home?redirect=${this.$route.fullPath}`)
       })
     },

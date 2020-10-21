@@ -32,22 +32,20 @@
         </div>
       </div>
       <div class="right">
-        <!-- <Maps :isHome="false" /> -->
+        <Maps :isHome="false" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Maps from '@/components/maps/Maps'
+import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
 import ListEvents from '@/components/Event/ListEvents'
-// import apiService from '@/services/apiService'
 
 export default {
   name: "EVENTSPAGE",
-  // components: { Places, Maps, ListEvents },
-  components: { Places, ListEvents },
+  components: { Places, Maps, ListEvents },
   data(){
     return {
       dates: '',

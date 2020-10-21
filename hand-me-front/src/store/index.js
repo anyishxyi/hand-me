@@ -29,22 +29,20 @@ export default new Vuex.Store({
     SET_USER_DATA(state, data) {
       state.userData = data
       console.log('state.userData :', state.userData)
-      localStorage.setItem('userData', data)
-      axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.token
+      localStorage.setItem('userData', JSON.stringify(state.userData))
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + state.userData.token
+    },
+    CLEAR_USER_DATA() {
+      localStorage.removeItem('userData')
+      location.reload()
     }
   },
   actions: {
     register_particular({ commit }, credentials) {
       return axios.post('https://backend.hand-me.fr:8443/gpe/particular/create_particular', credentials)
-                  .then(({ data }) => {
-                    console.log('user data is:', data )
-                  })
     },
     register_association({ commit }, credentials) {
       return axios.post('https://backend.hand-me.fr:8443/gpe/particular/create_organization', credentials)
-                  .then(({ data }) => {
-                    console.log('orga data is:', data )
-                  })
     },
     login_particular({ commit }, credentials) {
       return axios.post('https://backend.hand-me.fr:8443/gpe/authen/login_particular', credentials)
@@ -52,6 +50,9 @@ export default new Vuex.Store({
                     console.log('data: ', data )
                     commit('SET_USER_DATA', data)
                   })
+    },
+    logout({ commit }) {
+      commit('CLEAR_USER_DATA')
     },
     login_association({ commit }, credentials) {
       return axios.post('https://backend.hand-me.fr:8443/gpe/authen/login_organization', credentials)
