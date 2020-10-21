@@ -170,7 +170,6 @@ import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
 // import Maps from '@/components/maps/Maps'
 import ListEvents from '@/components/Event/ListEvents'
-import apiService from '@/services/apiService'
 
 const twitter = require('@/icons/png/twitter.png')
 const facebook = require('@/icons/png/facebook.png')
@@ -242,43 +241,25 @@ export default {
   },
   async created() {
     await this.init()
-    await this.getCoordinates()
+    // await this.getCoordinates()
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll);
   },
   methods: {
     async init() {
-      // const repEvents = await apiService.getEvents(this.filters)
-      //                             .catch(error => {
-      //                               this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-      //                               console.error(error)
-      //                               return
-      //                             })
-      // if(!repEvents || !repEvents.data || repEvents.status !== 200) {
-      //   this.events = []
-      //   return
-      // }
-
-      // this.events = repEvents.data.events
-      this.events =  {
-        "eventId": 0,
-        "lat": 48.8534,
-        "lng": 2.3488
-      },
-      console.log('this.events', this.events)
-      const repHome = await apiService.getHomeData()
-                                  .catch(error => {
-                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                    console.error(error)
-                                    return
-                                  })
-      if(!repHome || !repHome.data || repHome.status !== 200) {
-        this.events = []
-        return
-      }
-
-      this.homeData = repHome.data
+      this.$store.dispatch('getEvents', this.filters)
+                  .then(events => { this.events = events.data.events })
+                  .catch(error => {
+                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'})
+                    console.error(error)
+                  })
+      this.$store.dispatch('homeData')
+                  .then(events => { this.homeData = events.data })
+                  .catch(error => {
+                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'})
+                    console.error(error)
+                  })
     },
     updateScroll() {
       this.navColorOnScroll = ( !window || !window.scrollY > 0 ) ? 'transparent !important' : (window.scrollY > 100) ? '#222020' : 'transparent !important'

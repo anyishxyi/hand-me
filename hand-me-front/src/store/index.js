@@ -61,6 +61,9 @@ export default new Vuex.Store({
     },
     getEvents({ commit }, filters) {
       return axios.get(`https://backend.hand-me.fr:8443/gpe/event/search_events?placeCriteria=${filters.placeCriteria}&titleCriteria=${filters.titleCriteria}&categoryCriteria=${filters.categoryCriteria}&descriptionCriteria=${filters.descriptionCriteria}&eventMakerCriteria=${filters.eventMakerCriteria}&pageRequested=${filters.pageRequested}`)
+    },
+    homeData({ commit }) {
+      return axios.get(`https://backend.hand-me.fr:8443/gpe/authen/home`)
     }
   }
 })

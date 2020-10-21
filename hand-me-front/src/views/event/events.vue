@@ -78,18 +78,6 @@ export default {
                     this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'})
                     console.error(error)
                   })
-
-      // const res = await apiService.getEvents(this.filters)
-      //                             .catch(error => {
-      //                               this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-      //                               console.error(error)
-      //                               return
-      //                             })
-      // if(!res || !res.data || res.status !== 200) return
-
-      // this.events = res.data.events
-      // console.log('this.events')
-      // console.log(this.events)
     },
     getAddress(address) {
       this.address = address;
