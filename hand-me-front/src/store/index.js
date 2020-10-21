@@ -1,7 +1,7 @@
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
 import Vue from 'vue'
 import Vuex from 'vuex'
-import getters from './getters'
+// import getters from './getters'
 import axios from "axios"
 
 Vue.use(Vuex)
@@ -21,7 +21,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 export default new Vuex.Store({
   modules,
-  getters,
+  // getters,
   state: {
     userData: null
   },
@@ -65,6 +65,11 @@ export default new Vuex.Store({
     },
     homeData({ commit }) {
       return axios.get(`https://backend.hand-me.fr:8443/gpe/authen/home`)
+    }
+  },
+  getters: {
+    loggedIn(state) {
+      return !!state.userData
     }
   }
 })
