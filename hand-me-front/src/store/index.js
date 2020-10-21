@@ -1,6 +1,8 @@
+/*eslint no-unused-vars: ["error", { "args": "none" }]*/
 import Vue from 'vue'
 import Vuex from 'vuex'
 import getters from './getters'
+import axios from "axios"
 
 Vue.use(Vuex)
 
@@ -17,9 +19,48 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   return modules
 }, {})
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   modules,
-  getters
+  getters,
+  state: {
+    userData: null
+  },
+  mutations: {
+    SET_USER_DATA(state, data) {
+      state.userData = data
+      console.log('state.userData :', state.userData)
+      localStorage.setItem('userData', data)
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.token
+    }
+  },
+  actions: {
+    register_particular({ commit }, credentials) {
+      return axios.post('https://backend.hand-me.fr:8443/gpe/particular/create_particular', credentials)
+                  .then(({ data }) => {
+                    console.log('user data is:', data )
+                  })
+    },
+    register_association({ commit }, credentials) {
+      return axios.post('https://backend.hand-me.fr:8443/gpe/particular/create_organization', credentials)
+                  .then(({ data }) => {
+                    console.log('orga data is:', data )
+                  })
+    },
+    login_particular({ commit }, credentials) {
+      return axios.post('https://backend.hand-me.fr:8443/gpe/authen/login_particular', credentials)
+                  .then(({ data }) => {
+                    console.log('data: ', data )
+                    commit('SET_USER_DATA', data)
+                  })
+    },
+    login_association({ commit }, credentials) {
+      return axios.post('https://backend.hand-me.fr:8443/gpe/authen/login_organization', credentials)
+                  .then(({ data }) => {
+                    console.log('orga data is:', data )
+                  })
+    },
+    getEvents({ commit }, filters) {
+      return axios.get(`https://backend.hand-me.fr:8443/gpe/event/search_events?placeCriteria=${filters.placeCriteria}&titleCriteria=${filters.titleCriteria}&categoryCriteria=${filters.categoryCriteria}&descriptionCriteria=${filters.descriptionCriteria}&eventMakerCriteria=${filters.eventMakerCriteria}&pageRequested=${filters.pageRequested}`)
+    }
+  }
 })
-
-export default store

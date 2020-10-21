@@ -70,7 +70,7 @@
 
 <script>
 import GeneralModal from '@/components/GeneralModal'
-import apiService from '@/services/apiService'
+// import apiService from '@/services/apiService'
 
 export default {
   name: "Login",
@@ -97,28 +97,17 @@ export default {
   methods: {
     async onSubmit() {
       if(!this.loginForm.email || !this.loginForm.password) return
-      let res = null
-      if(this.loginForm.type) {
-        res = await apiService.orgaLogin(this.loginForm)
-                              .catch(error => {
-                                this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                console.error(error)
-                              })
+      if(!this.loginForm.type) {
+        this.$store.dispatch('login_particular', this.loginForm).then(() => {})
       } else {
-        res = await apiService.userLogin(this.loginForm)
-                              .catch(error => {
-                                this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                console.error(error)
-                              })
+        this.$store.dispatch('login_association', this.loginForm).then(() => {})
       }
-      console.log('res')
-      console.log(res)
-      if(!res || !res.data || res.status !== 200) {
-        this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
-        return
-      }
-      await this.$localforage.setItem('userData', res.data).catch(error => console.error(error))
-      window.location.reload()
+      // if(!res || !res.data || res.status !== 200) {
+      //   this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
+      //   return
+      // }
+      // await this.$localforage.setItem('userData', res.data).catch(error => console.error(error))
+      // window.location.reload()
     },
     beforeClose(newVal) {
       console.log('beforeclose')

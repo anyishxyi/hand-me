@@ -55,40 +55,35 @@
         </div>
         <!-- Steps for Association registion -->
         <div v-if="step1">
-          <p><strong>Quel est le SIRET de votre société ?</strong></p>
+          <p><strong>Quelques informations sur votre association</strong></p>
           <p><el-input placeholder="SIRET..." v-model="orgaData.organizationMatricule" class="marginInput"></el-input></p>
             <div>
-              <p>Nom de l'association:</p>
               <el-input placeholder="Nom de votre association..." v-model="orgaData.organizationName"></el-input>
             </div>
-               <p>Siège social de l'association</p>
-              <Places
+            <Places
               class="input"
               id="userAddress"
               classname="form-control"
               type="address"
-              placeholder="Adresse..."
-              
+              placeholder="Siège social de l'association..."
+
               @change="getPlace"
               :error="handleError"
-            />         
+            />
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
             <el-button @click="handleCheckSiret" class="btn btn-validate" type="danger">Suivant</el-button>
           </div>
         </div>
         <div v-if="step2">
-          <p><strong>Informations de votre société</strong></p>
+          <p><strong>Quelques informations sur le gérant de cette société</strong></p>
           <div class="first-input">
-
             <div class="input-left">
-              <p>Nom du gérant:</p>
               <el-input placeholder="Nom..." v-model="orgaData.organizationChiefName" ></el-input>
             </div>
           </div>
           <div class="inputs">
             <div>
-              <p>Prénom du gérant:</p>
               <el-input placeholder="Prénom..." v-model="orgaData.organizationChiefFirstname"></el-input>
             </div>
             <div class="input-left">
@@ -97,16 +92,14 @@
           </div>
           <div class="inputs">
             <div>
-              <p>Votre adresse email</p>
               <!-- <el-input v-model="registerForm.societyValueAction" @change="onValueAction"></el-input> -->
-              <el-input v-model="registerForm.email" @input="onValueAction"></el-input>
+              <el-input placeholder="Email..." v-model="registerForm.email" @input="onValueAction"></el-input>
             </div>
             <div class="input-left">
-              <p>Numéro de téléphone</p>
-           <p><el-input v-model="orgaData.organizationPhoneNumber" ></el-input></p>
+              <p><el-input placeholder="Téléphone..." v-model="orgaData.organizationPhoneNumber" ></el-input></p>
             </div>
           </div>
-                    <div class="content">
+          <div class="content">
             <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password />
             <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password />
           </div>
@@ -123,7 +116,6 @@
 </template>
 
 <script>
-import apiService from '@/services/apiService'
 import Places from '@/components/places/Places'
 
 export default {
@@ -142,19 +134,19 @@ export default {
       particularPhonenumber: '',
       particularLocation: '',
       organizationName :'',
-	organizationChiefName : '',
-	organizationChiefFirstname :'',
-	organizationPassword :'',
-	organizationLocation :'',
-	organizationMatricule :'',
-	organizationLogo :'',
-	organizationDescription :'',
-	organizationWebSite :'',
-	organizationPhoneNumber :'',
-	organizationEmail :'',
-	organizationCreationDate :'',
+      organizationChiefName : '',
+      organizationChiefFirstname :'',
+      organizationPassword :'',
+      organizationLocation :'',
+      organizationMatricule :'',
+      organizationLogo :'',
+      organizationDescription :'',
+      organizationWebSite :'',
+      organizationPhoneNumber :'',
+      organizationEmail :'',
+      organizationCreationDate :'',
       userAddress:{},
-orgaAddress:{},
+      orgaAddress:{},
       userData: {
         particularName: '',
         particularFirstName: '',
@@ -163,19 +155,19 @@ orgaAddress:{},
         particularPhonenumber: '',
         particularLocation: '',
       },
-orgaData: {
-  organizationName :'',
-	organizationChiefName : '',
-	organizationChiefFirstname :'',
-	organizationPassword :'',
-	organizationLocation :'',
-	organizationMatricule :'',
-	organizationLogo :'',
-	organizationDescription :'',
-	organizationWebSite :'',
-	organizationPhoneNumber :'',
-	organizationEmail :'',
-	organizationCreationDate :'',      
+      orgaData: {
+        organizationName :'',
+        organizationChiefName : '',
+        organizationChiefFirstname :'',
+        organizationPassword :'',
+        organizationLocation :'',
+        organizationMatricule :'',
+        organizationLogo :'',
+        organizationDescription :'',
+        organizationWebSite :'',
+        organizationPhoneNumber :'',
+        organizationEmail :'',
+        organizationCreationDate :'',
       },
       passwordType: 'password',
       loading: false,
@@ -276,11 +268,10 @@ orgaData: {
     async handleValidateParticular() {
       this.userData.particularEmail = this.registerForm.email
       this.userData.particularPassword = this.registerForm.pass
-      console.log('this.userData')
-      console.log(this.userData)
-      const res = await apiService.registerParticular(this.userData).catch(error => console.log(error))
-      console.log('this.res')
-      console.log(res)
+      // console.log('this.userData')
+      // console.log(this.userData)
+      this.$store.dispatch('register_particular', this.userData)
+      // console.log('res', res)
       this.isRegister = false
       this.step = false
       this.step1 = false
@@ -293,11 +284,8 @@ orgaData: {
     async handleValidateOrganization() {
       this.orgaData.organizationEmail = this.registerForm.email
       this.orgaData.organizationPassword = this.registerForm.pass
-      console.log('this.orgaData')
-      console.log(this.orgaData)
-      const res = await apiService.registerAssociation(this.orgaData).catch(error => console.log(error))
-      console.log('this.res')
-      console.log(res)
+      this.$store.dispatch('register_association', this.userData)
+      // console.log('res', res)
       this.isRegister = false
       this.step = false
       this.step1 = false

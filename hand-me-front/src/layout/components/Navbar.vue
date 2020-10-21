@@ -15,13 +15,13 @@
             Evenements
           </router-link>
         </el-button>
-        <el-button v-if="userData" type="success" class="pad" plain>
+        <el-button v-if="this.$store.state.userData" type="success" class="pad" plain>
           <router-link :to="{path: '/event/create'}">
             Créer Evenement
           </router-link>
         </el-button>
-        <el-button v-if="!userData" type="success" class="pad" @click="loginClicked" round>Connexion</el-button>
-        <el-dropdown v-if="userData" class="right-menu-item hover-effect pad" trigger="click">
+        <el-button v-if="!this.$store.state.userData" type="success" class="pad" @click="loginClicked" round>Connexion</el-button>
+        <el-dropdown v-if="this.$store.state.userData" class="right-menu-item hover-effect pad" trigger="click">
           <i class="el-icon-s-tools" />
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="goToProfile">Profil</el-dropdown-item>
@@ -52,8 +52,7 @@ export default {
       lastScrollPosition: 0,
       scrollValue: 0,
       showLoginPage: false,
-      logo,
-      userData: null
+      logo
     }
   },
   async beforeMount () {
@@ -63,8 +62,8 @@ export default {
     viewportMeta.name = 'viewport'
     viewportMeta.content = 'width=device-width, initial-scale=1'
     document.head.appendChild(viewportMeta)
-    this.userData = await this.$localforage.getItem('userData')
-    console.log('this.userData', this.userData)
+    // this.userData = await this.$localforage.getItem('userData')
+    // console.log('this.userData', this.userData)
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)

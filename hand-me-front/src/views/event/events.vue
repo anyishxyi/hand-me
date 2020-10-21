@@ -32,21 +32,22 @@
         </div>
       </div>
       <div class="right">
-        <Maps :isHome="false" />
+        <!-- <Maps :isHome="false" /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Maps from '@/components/maps/Maps'
+// import Maps from '@/components/maps/Maps'
 import Places from '@/components/places/Places'
 import ListEvents from '@/components/Event/ListEvents'
-import apiService from '@/services/apiService'
+// import apiService from '@/services/apiService'
 
 export default {
   name: "EVENTSPAGE",
-  components: { Places, Maps, ListEvents },
+  // components: { Places, Maps, ListEvents },
+  components: { Places, ListEvents },
   data(){
     return {
       dates: '',
@@ -71,15 +72,22 @@ export default {
   },
   methods: {
     async init() {
-      const res = await apiService.getEvents(this.filters)
-                                  .catch(error => {
-                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                    console.error(error)
-                                    return
-                                  })
-      if(!res || !res.data || res.status !== 200) return
+      this.$store.dispatch('getEvents', this.filters)
+                  .then(events => { this.events = events.data.events })
+                  .catch(error => {
+                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'})
+                    console.error(error)
+                  })
 
-      this.events = res.data.events
+      // const res = await apiService.getEvents(this.filters)
+      //                             .catch(error => {
+      //                               this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+      //                               console.error(error)
+      //                               return
+      //                             })
+      // if(!res || !res.data || res.status !== 200) return
+
+      // this.events = res.data.events
       // console.log('this.events')
       // console.log(this.events)
     },

@@ -58,7 +58,7 @@
     </div>
     <div class="maps w3-display-container">
       <div class="title w3-display-topleft w3-black w3-padding">Vos évènements à proximité</div>
-      <Maps :isHome="true" :events="events" style="width:100%" />
+      <!-- <Maps :isHome="true" :events="events" style="width:100%" /> -->
     </div>
     <div v-if="events.length" class="events_overview">
       <div class="events_list">
@@ -168,7 +168,7 @@
 <script>
 import countTo from 'vue-count-to'
 import Places from '@/components/places/Places'
-import Maps from '@/components/maps/Maps'
+// import Maps from '@/components/maps/Maps'
 import ListEvents from '@/components/Event/ListEvents'
 import apiService from '@/services/apiService'
 
@@ -197,7 +197,8 @@ const event3 = require('@/icons/png/event3.png')
 
 export default {
   name: 'HOMEPAGE',
-  components: { countTo, Places, Maps, ListEvents },
+  // components: { countTo, Places, Maps, ListEvents },
+  components: { countTo, Places, ListEvents },
   data(){
     return {
       search: '',
@@ -248,16 +249,16 @@ export default {
   },
   methods: {
     async init() {
-      const repEvents = await apiService.getEvents(this.filters)
-                                  .catch(error => {
-                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                    console.error(error)
-                                    return
-                                  })
-      if(!repEvents || !repEvents.data || repEvents.status !== 200) {
-        this.events = []
-        return
-      }
+      // const repEvents = await apiService.getEvents(this.filters)
+      //                             .catch(error => {
+      //                               this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
+      //                               console.error(error)
+      //                               return
+      //                             })
+      // if(!repEvents || !repEvents.data || repEvents.status !== 200) {
+      //   this.events = []
+      //   return
+      // }
 
       // this.events = repEvents.data.events
       this.events =  {
@@ -298,7 +299,7 @@ export default {
                 .then( coordinates => this.coordinates = coordinates )
                 .catch( err => console.error(err))
 
-      this.coordToCity()
+      // this.coordToCity()
     },
     coordToCity() {
       // console.log('this.coordinates')
