@@ -101,7 +101,7 @@ export default {
       } else {
         this.$store.dispatch('login_association', this.loginForm)
       }
-      this.beforeClose(true)
+      this.beforeClose(false)
     },
     beforeClose(newVal) {
       console.log('beforeclose')
