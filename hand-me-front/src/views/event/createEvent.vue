@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import apiService from '@/services/apiService'
 import Places from '@/components/places/Places'
+import { authComputed } from '@/store/helpers'
 
 export default {
   name: "CREATEEVENTPAGE",
@@ -86,8 +86,8 @@ export default {
       step3: false
     }
   },
-  async mounted() {
-    this.userData = await this.$localforage.getItem('userData')
+  computed: {
+    ...authComputed
   },
   methods: {
     nextToStep1() {
@@ -108,19 +108,17 @@ export default {
       this.step3 = true
     },
     async validate() {
-      this.eventData.eventMakerEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
-      // console.log('eventData')
-      // console.log(this.eventData)
-      const res = await apiService.createEvent(this.eventData, this.userData.token)
-                                  .catch(error => {
-                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                    console.error(error)
-                                    return
-                                  })
-      console.log('res', res)
-      if(!res || !res.data || res.status !== 200) {
-        // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
-        return
+      this.userData = this.$store.state.userData
+      if(this.userData.particularDto) {
+        this.eventData.eventMakerEmail = this.userData.particularDto.particularEmail
+        this.$store.dispatch('addEventParticular', this.filters)
+                    .then((data) => { console.log('data', data) })
+                    .catch(() => this.$notify.error({title: 'Error', message: "Erreur lors de la création d'évènement"}))
+      } else {
+        this.eventData.eventMakerEmail = this.userData.organizationDto.organizationEmail
+        this.$store.dispatch('addEventOrga', this.filters)
+                    .then(() => { console.log('done') })
+                    .catch(() => this.$notify.error({title: 'Error', message: "Erreur lors de la création d'évènement"}))
       }
     },
     handleError(error){
