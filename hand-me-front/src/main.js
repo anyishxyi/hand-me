@@ -36,4 +36,11 @@ new Vue({
   render: h => h(App),
   store,
   router,
+  created () {
+    const userString = localStorage.getItem('userData')
+    if (userString) {
+      const userData = JSON.parse(userString)
+      this.$store.commit('SET_USER_DATA', userData)
+    }
+  }
 }).$mount('#app')
