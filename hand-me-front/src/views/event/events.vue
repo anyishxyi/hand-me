@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="right">
-        <Maps :isHome="false" />
+        <Maps :isHome="false" :events="events" />
       </div>
     </div>
   </div>

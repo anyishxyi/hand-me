@@ -35,7 +35,7 @@ export default {
     },
     events: {
       type: Array,
-      default: () => []
+      required: true
     }
   },
   data: function() {
@@ -53,6 +53,9 @@ export default {
     }
   },
   methods: {},
+  created() {
+    console.log('events', this.events)
+  },
   computed: {
     mapConfig() {
       return {
@@ -60,7 +63,6 @@ export default {
         center: this.mapCenter
       };
     },
-
     mapCenter() {
       return this.markers[0];
     }
