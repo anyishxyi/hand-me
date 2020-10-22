@@ -110,7 +110,7 @@ export default {
     };
   },
   async mounted() {
-    const userData = await this.$localforage.getItem("userData");
+    const userData = this.$store.state.userData
     //this.events = userData && userData.events ? userData.events : [];
     console.log("userData", userData);
     this.events = userData.events;
