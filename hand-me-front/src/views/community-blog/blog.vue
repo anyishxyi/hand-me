@@ -30,16 +30,24 @@
             class="blog-content-scrollbar-wrapper"
           >
             <el-card class="blog-content-scrollbar-card">
-              <div class="blog-content-scrollbar-card-text">{{ item.content }}</div>
+              <div class="blog-content-scrollbar-card-text">
+                {{ item.messageValue }}
+              </div>
             </el-card>
           </div>
         </div>
         <div class="blog-content-input">
           <div>
-            <el-input placeholder="Please input" v-model="inputMessage" clearable></el-input>
+            <el-input
+              placeholder="Please input"
+              v-model="inputMessage"
+              clearable
+            ></el-input>
           </div>
           <div>
-            <el-button type="primary" v-on:click="sendMessage">envoyez</el-button>
+            <el-button type="primary" v-on:click="sendMessage"
+              >envoyez</el-button
+            >
           </div>
         </div>
       </div>
@@ -49,25 +57,70 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "communityBlog",
   data: function() {
     return {
       inputMessage: "",
-      messages: [
-        {
-          author: "thomas",
-          content: "Salut je cherche le chemin du monastère"
-        },
-        { author: "michael", content: "Tu le verra sur le sentier de la vie" },
-        { author: "allain", content: "C'est exactement ça" }
-      ]
+      test: [],
+      messages: []
     };
+  },
+  mounted: async function() {
+    console.log("route data: ", this.$route.params);
+
+    var commId = this.$route.params.communityId;
+
+    await axios
+      .get(
+        "https://backend.hand-me.fr:8443/gpe/messaging?communityId=" + commId,
+        {
+          headers: {
+            Authorization: "Bearer " + this.$route.params.token,
+            Accept: "application/json",
+            "Content-type": "application/json"
+          }
+        }
+      )
+      .then(response => {
+        this.messages = response.data;
+        console.log("res from:", this.messages);
+      })
+      .catch(error => {
+        console.log("error " + error);
+      });
   },
   methods: {
     sendMessage() {
-      this.messages.push({ author: "john", content: this.inputMessage });
-      console.log("contenue: ", this.inputMessage);
+      //this.messages.push({ author: "john", content: this.inputMessage });
+      //console.log("contenue: ", this.inputMessage);
+      axios
+        .post(
+          "https://backend.hand-me.fr:8443/gpe/messaging",
+          {
+            messageValue: this.inputMessage,
+            messageSender: this.$route.params.communityData.usrEmail,
+            messageIsReceived: 1,
+            messageIsDeleted: false,
+            communityId: this.$route.params.communityId
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + this.$route.params.communityData.token,
+              Accept: "application/json",
+              "Content-type": "application/json"
+            }
+          }
+        )
+        .then(response => {
+          this.messages = response.data;
+          console.log("res from:", this.messages);
+        })
+        .catch(error => {
+          console.log("error " + error);
+        });
     }
   }
 };

@@ -33,39 +33,61 @@
       <!--middle-->
       <div class="board-middle">
         <div class="board-middle-banner">
-          <span class="board-middle-banner-text">Hello {{user.particularFirstName}}</span>
+          <span class="board-middle-banner-text"
+            >Hello {{ user.particularFirstName }}</span
+          >
           <h1 class="board-middle-banner-title">bienvenue sur ton dashboard</h1>
         </div>
         <div class="board-middle-content">
           <div class="board-middle-content-cards">
             <div class="board-middle-content-cards-card">
               <h2 class="text-uppercase">évènements créer:</h2>
-              <span class="board-middle-content-cards-card-txt">{{events.length}}</span>
+              <span class="board-middle-content-cards-card-txt">{{
+                events.length
+              }}</span>
             </div>
             <div class="board-middle-content-cards-card">
               <h2 class="text-uppercase">évènements</h2>
-              <span class="board-middle-content-cards-card-txt">All the Lorem Ipsum generators</span>
+              <span class="board-middle-content-cards-card-txt"
+                >All the Lorem Ipsum generators</span
+              >
             </div>
             <div class="board-middle-content-cards-card">
               <h2 class="text-uppercase">évènements</h2>
-              <span class="board-middle-content-cards-card-txt">All the Lorem Ipsum generators</span>
+              <span class="board-middle-content-cards-card-txt"
+                >All the Lorem Ipsum generators</span
+              >
             </div>
           </div>
           <div class="board-middle-content-table">
-            <Table :heads="['id', 'title', 'date', 'description']" :body="events" />
+            <Table
+              :heads="['id', 'title', 'date', 'description']"
+              :body="events"
+            />
           </div>
         </div>
         <div></div>
       </div>
       <!--right-->
       <div class="board-right">
-        <div v-for="(item, index) in events" :key="index" class="board-right-container">
+        <div
+          v-for="(item, index) in events"
+          :key="index"
+          class="board-right-container"
+        >
           <el-col class="board-right-container-card">
             <el-card shadow="hover" class="board-right-container-card-element">
               <router-link
-                :to="{name:'communityBlog'}"
+                :to="{
+                  name: 'communityBlog',
+                  params: {
+                    communityId: item.community.communityId,
+                    communityData: communityData
+                  }
+                }"
                 class="board-right-container-card-element-link"
-              >{{item.community.communityAdmin}}</router-link>
+                >{{ item.eventTitle }}</router-link
+              >
             </el-card>
           </el-col>
         </div>
@@ -76,21 +98,28 @@
 
 <script>
 import Table from "../../components/table/table";
-// import apiService from '@/services/apiService'
 
 export default {
   name: "userBoard",
   data: function() {
     return {
+      token: "",
       events: [],
       user: {},
+      communityData: {}
     };
   },
   async mounted() {
-    const userData = await this.$localforage.getItem('userData')
-    this.events = userData && userData.events ? userData.events : []
-    this.user = (userData && userData.organizationDto) ? userData.organizationDto : userData.particularDto
-    console.log('userData', this.userData)
+    const userData = await this.$localforage.getItem("userData");
+    //this.events = userData && userData.events ? userData.events : [];
+    console.log("userData", userData);
+    this.events = userData.events;
+    this.user = userData.particularDto;
+
+    this.communityData = {
+      token: userData.token,
+      usrEmail: userData.particularDto.particularEmail
+    };
   },
   methods: {},
   components: {
@@ -115,7 +144,7 @@ $brightGrey: #d8d8d8;
   background-color: $color;
 }
 .board {
-  margin-top:60px;
+  margin-top: 60px;
   width: 100%;
   height: 900px;
   display: flex;
@@ -262,7 +291,7 @@ $brightGrey: #d8d8d8;
 
         &-element {
           &-link {
-            color: black;
+            background-color: black;
           }
         }
       }
