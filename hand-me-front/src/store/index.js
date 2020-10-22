@@ -64,7 +64,7 @@ export default new Vuex.Store({
       return axios.get(`https://backend.hand-me.fr:8443/gpe/event/search_events?placeCriteria=${filters.placeCriteria}&titleCriteria=${filters.titleCriteria}&categoryCriteria=${filters.categoryCriteria}&descriptionCriteria=${filters.descriptionCriteria}&eventMakerCriteria=${filters.eventMakerCriteria}&pageRequested=${filters.pageRequested}`)
     },
     addEventParticular({ commit }, eventData ) {
-      return axios.post('https://backend.hand-me.fr:8443/gpe/event/add_participant_event', eventData)
+      return axios.post('https://backend.hand-me.fr:8443/gpe/event/create_event', eventData)
     },
     addEventOrga({ commit }, eventData ) {
       return axios.post('https://backend.hand-me.fr:8443/gpe/event/add_participant_event', eventData)
