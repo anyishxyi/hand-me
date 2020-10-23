@@ -1,51 +1,6 @@
 <template>
   <div>
-    <div class="ownest-table-style reserve-content">
-      <el-table
-        v-if="events"
-        v-loading="loading"
-        :data="events"
-        stripe
-        size="mini"
-      >
-        <el-table-column label="Titre">
-          <template slot-scope="scope">{{scope.row.eventTitle}}</template>
-        </el-table-column>
-        <el-table-column label="Date">
-          <template slot-scope="scope">
-            <Datetime :value="scope.row" :options="['eventDate']" />
-          </template>
-        </el-table-column>
-        <el-table-column label="Lieu">
-          <template slot-scope="scope">{{scope.row.eventPlace}}</template>
-        </el-table-column>
-        <el-table-column label="Nombre des participants">
-          <template slot-scope="scope">{{scope.row.participants? scope.row.participants.length : []}}</template>
-        </el-table-column>
-
-        <el-table-column label="Actions" align="right" width="100">
-          <template slot-scope="scope">
-            <el-badge class="btn-details">
-              <el-button circle @click="readMessageClicked(scope.row)"><svg-icon icon-class="reserve-icon" /></el-button>
-            </el-badge>
-          </template>
-        </el-table-column>
-      </el-table>
-
-      <!-- <el-pagination
-        v-if="pagination.active"
-        :current-page.sync="pagination.currentPage"
-        :page-sizes="[10, 25, 50, 100, 250]"
-        :page-size="pagination.perPage"
-        :hide-on-single-page="true"
-        :total="pagination.totalItems"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      /> -->
-
-    </div>
-    <!-- <section class="board">
+    <section class="board">
       <div class="board-left">
         <div class="board-left-profile">
           <span class="board-left-profile__name"></span>
@@ -54,9 +9,7 @@
         <div class="board-left-menu">
           <div class="board-left-menu-container">
             <a class="board-left-menu-container-item" href>
-              <div style="background-image:url('~@/assets/Icon.png')">
-
-              </div>
+              <div style="background-image:url('~@/assets/Icon.png')"></div>
             </a>
             <div class="board-left-menu-container-item"></div>
             <div class="board-left-menu-container-item"></div>
@@ -75,37 +28,46 @@
           <h1 class="board-middle-banner-title">bienvenue sur ton dashboard</h1>
         </div>
         <div class="board-middle-content">
-          <div class="board-middle-content-cards">
-            <div class="board-middle-content-cards-card">
-              <h2 class="text-uppercase">évènements créer:</h2>
-              <span class="board-middle-content-cards-card-txt">{{
-                events.length
-              }}</span>
-            </div>
-            <div class="board-middle-content-cards-card">
-              <h2 class="text-uppercase">évènements</h2>
-              <span class="board-middle-content-cards-card-txt"
-                >All the Lorem Ipsum generators</span
+            <div class="ownest-table-style reserve-content">
+              <el-table
+                v-if="events"
+                v-loading="loading"
+                :data="events"
+                stripe
+                size="mini"
               >
+                <el-table-column label="Titre">
+                  <template slot-scope="scope">{{scope.row.eventTitle}}</template>
+                </el-table-column>
+                <el-table-column label="Date">
+                  <template slot-scope="scope">
+                    <div class="datetime">
+                      <div class="date">{{ displayDate(scope.row.eventDate) }}</div>
+                      <div class="time">{{ displayTime(scope.row.eventDate) }}</div>
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column label="Lieu">
+                  <template slot-scope="scope">{{scope.row.eventPlace}}</template>
+                </el-table-column>
+                <el-table-column label="Nombre des participants">
+                  <template slot-scope="scope">{{scope.row.participants? scope.row.participants.length : []}}</template>
+                </el-table-column>
+
+                <el-table-column label="Actions" align="right" width="100">
+                  <template slot-scope="scope">
+                    <el-badge class="btn-details">
+                      <el-button circle @click="handleShowEvent(scope.row)"><i class="el-icon-view"></i></el-button>
+                      <el-button circle @click="readMessageClicked(scope.row)"><i class="el-icon-message"></i></el-button>
+                    </el-badge>
+                  </template>
+                </el-table-column>
+              </el-table>
             </div>
-            <div class="board-middle-content-cards-card">
-              <h2 class="text-uppercase">évènements</h2>
-              <span class="board-middle-content-cards-card-txt"
-                >All the Lorem Ipsum generators</span
-              >
-            </div>
-          </div>
-          <div class="board-middle-content-table">
-            <Table
-              :heads="['id', 'title', 'date', 'description']"
-              :body="events"
-            />
-          </div>
         </div>
-        <div></div>
       </div>
 
-      <div class="board-right">
+      <!-- <div class="board-right">
         <div
           v-for="(item, index) in events"
           :key="index"
@@ -127,23 +89,40 @@
             </el-card>
           </el-col>
         </div>
-      </div>
-    </section> -->
+      </div> -->
+    </section>
+
+    <ShowEvent
+      :event="eventClicked"
+      :visibility="dialogEventVisible"
+      @eventToggleDisplayEvent="toggleDisplayEventVisibility"
+    />
+    <Message
+      :showdrawer="drawerMessageReserveVisible"
+      :event="eventClicked"
+      @eventMessageReserveSent="handleMessageReserveSent"
+      @eventReserveClosed="closeDrawerAndReloadReserves"
+      @eventOpenItemHistory="openDialogMessage"
+    />
   </div>
 </template>
 
 <script>
-import Datetime from '~@/components/Widget/Datetime'
+import ShowEvent from '@/components/Event/ShowEvent'
+import Message from '@/components/Community/Message'
 
 export default {
   name: "userBoard",
-  components: { Datetime },
+  components: { ShowEvent, Message },
   data: function() {
     return {
       token: "",
       events: [],
       user: {},
       communityData: {},
+      eventClicked: {},
+      dialogEventVisible: false,
+      drawerMessageReserveVisible: false,
       loading: true
     };
   },
@@ -161,9 +140,45 @@ export default {
     this.loading = false
   },
   methods: {
-    readMessageClicked(text) {
-      console.log(text)
-    }
+    readMessageClicked(event) {
+      this.drawerMessageReserveVisible = true
+      this.eventClicked = event
+    },
+    displayDate(date) {
+      return this.$moment(date).format('DD MMMM YYYY')
+    },
+    displayTime(value) {
+      const format = 'HH:mm'
+      let date = value.eventDate
+
+      return this.$moment(date).format(format)
+    },
+    async handleShowEvent(event) {
+      if (event) {
+        this.eventClicked = event
+        this.dialogEventVisible = true
+      }
+    },
+    toggleDisplayEventVisibility(value) {
+      if(!value) this.eventClicked = {}
+      this.dialogEventVisible = value
+    },
+    handleMessageReserveSent(value) {
+      this.drawerMessageReserveVisible = value
+    },
+    closeDrawerAndReloadReserves() {
+      this.drawerMessageReserveVisible = false
+      // this.getReserves()
+    },
+    openDialogMessage(event) {
+      this.eventClicked = event
+      this.toggleItemHistoryVisibility(true)
+    },
+    toggleItemHistoryVisibility(val) {
+      this.dialogItemHistoryVisibility = val
+
+      if (val === false) { this.selectedItem = {} }
+    },
   }
 };
 </script>
@@ -224,7 +239,7 @@ $brightGrey: #d8d8d8;
     }
   }
   &-middle {
-    width: 70%;
+    width: 100%;
     height: 700px;
     &-banner {
       width: 100%;
@@ -250,7 +265,7 @@ $brightGrey: #d8d8d8;
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      // align-items: center;
 
       &-cards {
         width: 90%;
@@ -338,4 +353,22 @@ $brightGrey: #d8d8d8;
     }
   }
 }
+
+.datetime {
+  .date {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .time {
+    font-size: 12px;
+  }
+}
+
+
+.btn-details {
+  display: flex;
+  margin: 0px 2px 4px 2px;
+}
+
 </style>
