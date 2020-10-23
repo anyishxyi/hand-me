@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <!-- <div class="board-right">
+      <div class="board-right">
         <div
           v-for="(item, index) in events"
           :key="index"
@@ -89,7 +89,7 @@
             </el-card>
           </el-col>
         </div>
-      </div> -->
+      </div>
     </section>
 
     <ShowEvent
@@ -98,9 +98,9 @@
       @eventToggleDisplayEvent="toggleDisplayEventVisibility"
     />
     <Message
-      :showdrawer="drawerMessageReserveVisible"
+      :showdrawer="drawerMessageVisible"
       :event="eventClicked"
-      @eventMessageReserveSent="handleMessageReserveSent"
+      @eventMessageSent="handleMessageSent"
       @eventReserveClosed="closeDrawerAndReloadReserves"
       @eventOpenItemHistory="openDialogMessage"
     />
@@ -122,7 +122,7 @@ export default {
       communityData: {},
       eventClicked: {},
       dialogEventVisible: false,
-      drawerMessageReserveVisible: false,
+      drawerMessageVisible: false,
       loading: true
     };
   },
@@ -141,7 +141,7 @@ export default {
   },
   methods: {
     readMessageClicked(event) {
-      this.drawerMessageReserveVisible = true
+      this.drawerMessageVisible = true
       this.eventClicked = event
     },
     displayDate(date) {
@@ -163,11 +163,11 @@ export default {
       if(!value) this.eventClicked = {}
       this.dialogEventVisible = value
     },
-    handleMessageReserveSent(value) {
-      this.drawerMessageReserveVisible = value
+    handleMessageSent(value) {
+      this.drawerMessageVisible = value
     },
     closeDrawerAndReloadReserves() {
-      this.drawerMessageReserveVisible = false
+      this.drawerMessageVisible = false
       // this.getReserves()
     },
     openDialogMessage(event) {
@@ -239,7 +239,7 @@ $brightGrey: #d8d8d8;
     }
   }
   &-middle {
-    width: 100%;
+    width: 70%;
     height: 700px;
     &-banner {
       width: 100%;

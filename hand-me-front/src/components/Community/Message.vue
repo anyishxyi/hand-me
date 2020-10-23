@@ -15,8 +15,46 @@
             </div>
           </div>
         </div>
+        <div class="reserve_block middle-block">
+          <div class="title">Messagerie</div>
+          <div class="content reserve-discuss reserve-message messenging">
+            <div class="day-separator">
+              <span class="date">{{ format_date(event.eventDate) }}</span>
+            </div>
+
+            <div class="block-left">
+              <div class="user-avatar">
+                <span class="initials">{{ getInitials(userDoingReserve) }}</span>
+              </div>
+              <!-- <div class="group-messages">
+                <div class="msg-left">
+                  <div class="msg-username">{{ reserve.userTo && reserve.userTo.employerDetails && reserve.userTo.employerDetails[0] ? reserve.userTo.employerDetails[0].name : reserve.orgaTo ? reserve.orgaTo.name : 'Inconnu' }}</div>
+                  <div class="msg-content">
+                    {{ reserve.reasonsTo }}
+                  </div>
+                  <span class="msg-time">{{ format_hour(reserve.createdAt) }}</span>
+                </div>
+              </div> -->
+            </div>
+
+            <!-- <div v-if="reserve.reasonsOrgaFrom" class="day-separator">
+              <span class="date">{{ format_date(reserve.updatedAt) }}</span>
+            </div> -->
+
+            <!-- <div v-if="reserve.reasonsOrgaFrom" class="block-right">
+              <div class="group-messages">
+                <div class="msg-right">
+                  <div class="msg-content">
+                    {{ reserve.reasonsOrgaFrom }}
+                  </div>
+                  <span class="msg-time">{{ format_hour(reserve.updatedAt) }}</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
         <div v-if="!isPushMessageClicked" class="bottom-buttons">
-          <span class="close-reserve-btn" plain @click="isPushMessageClicked = true">Clôturer la réserve</span>
+          <span class="close-reserve-btn" plain @click="isPushMessageClicked = true">Envoyez un Message</span>
         </div>
         <div v-if="isPushMessageClicked" class="bottom-buttons no-top-border">
           <div class="close-reserve-actions">
@@ -42,7 +80,7 @@ export default {
       type: Boolean,
       default: () => false
     },
-    reserve: {
+    event: {
       type: Object,
       default: () => {}
     }
@@ -62,8 +100,9 @@ export default {
   watch: {
     showdrawer: function(value) {
       this.showMessage = value
-      this.$emit('eventMessageReserveSent', value)
-      this.userDoingReserve = this.reserve.userTo && this.reserve.userTo.employerDetails && this.reserve.userTo.employerDetails[0] ? this.reserve.userTo.employerDetails[0].name : this.reserve.orgaTo ? this.reserve.orgaTo.name : 'Inconnu'
+      // console.log('events', this.event)
+      this.$emit('eventMessageSent', value)
+      // this.userDoingReserve = this.reserve.userTo && this.reserve.userTo.employerDetails && this.reserve.userTo.employerDetails[0] ? this.reserve.userTo.employerDetails[0].name : this.reserve.orgaTo ? this.reserve.orgaTo.name : 'Inconnu'
     }
   },
   methods: {
@@ -74,7 +113,7 @@ export default {
     closeDiscussion() {
       this.review = ''
       this.isPushMessageClicked = false
-      this.$emit('eventMessageReserveSent', false)
+      this.$emit('eventMessageSent', false)
     },
     cancel() {
       this.review = ''
