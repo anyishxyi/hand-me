@@ -9,17 +9,20 @@
         <div class="card-profile_visual"></div>
 
         <div class="card-profile_user-infos">
-          <span class="infos_name">Emma Watson</span>
-          <span class="infos_nick">@EmWatson</span>
-
+          <span class="infos_name">{{event.eventTitle}}</span>
+          <span class="infos_nick">@{{event.eventMakerEmail}}</span>
           <a v-if="loggedIn" href="#" @click="participate"></a>
         </div>
+
+        <div class="desc">{{event.eventDescription}}</div>
+        <div class="place"><i class="el-icon-location-information"></i> {{event.eventPlace}}</div>
+        <div class="date"><i class="el-icon-date"></i> {{formatDate(event.eventDate)}}</div>
 
         <div class="card-profile_user-stats">
           <div class="stats-holder">
             <div class="user-stats">
               <strong>Participants</strong>
-              <span>718</span>
+              <span>{{event.participants.length}}</span>
             </div>
           </div>
         </div>
@@ -32,6 +35,7 @@
 
 <script>
 import GeneralModal from '@/components/GeneralModal'
+import { authComputed } from '@/store/helpers'
 
 export default {
   name: 'ShowEvent',
@@ -45,6 +49,9 @@ export default {
       type: Object,
       required: true
     },
+  },
+  computed: {
+    ...authComputed
   },
   data() {
     return {
@@ -62,7 +69,9 @@ export default {
     confirm() {
       this.$emit('confirm')
     },
-
+    formatDate(date){
+      return `${this.$moment(date).format('DD/MM/YYYY')} à ${this.$moment(date).format('HH:mm')}`
+    },
     async participate() {
       this.userData = this.$store.state.userData
       this.eventData.participantEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
@@ -300,10 +309,19 @@ $datas-height: calc(100% - #{$visual-height} + 2px);
     }
   }
 }
-.card .desc {
+.desc {
+  margin-left: 10px;
+  margin-right: 10px;
   text-align: justify;
-  padding: 0 2rem 2.5rem;
+  padding-top: 20px;
+  padding-bottom: 10px;
   order: 100;
+}
+
+.place {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
 }
 
 </style>
