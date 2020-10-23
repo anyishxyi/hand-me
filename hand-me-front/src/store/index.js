@@ -63,15 +63,19 @@ export default new Vuex.Store({
     getEvents({ commit }, filters) {
       return axios.get(`https://backend.hand-me.fr:8443/gpe/event/search_events?placeCriteria=${filters.placeCriteria}&titleCriteria=${filters.titleCriteria}&categoryCriteria=${filters.categoryCriteria}&descriptionCriteria=${filters.descriptionCriteria}&eventMakerCriteria=${filters.eventMakerCriteria}&pageRequested=${filters.pageRequested}`)
     },
-    addEventParticular({ commit }, eventData ) {
+    createEvent({ commit }, eventData ) {
       return axios.post('https://backend.hand-me.fr:8443/gpe/event/create_event', eventData)
     },
-    addEventOrga({ commit }, eventData ) {
-      return axios.post('https://backend.hand-me.fr:8443/gpe/event/add_participant_event', eventData)
-    },
+    // addEventOrga({ commit }, eventData ) {
+    //   return axios.post('https://backend.hand-me.fr:8443/gpe/event/add_participant_event', eventData)
+    // },
     homeData({ commit }) {
       return axios.get(`https://backend.hand-me.fr:8443/gpe/authen/home`)
+    },
+    addEventToUser({ commit }, eventData) {
+      return axios.post('https://backend.hand-me.fr:8443/gpe/event/add_participant_event', eventData)
     }
+    // apiClient.post('/event/add_participant_event', eventData)
   },
   getters: {
     loggedIn(state) {

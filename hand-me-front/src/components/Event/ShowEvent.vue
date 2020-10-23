@@ -12,7 +12,7 @@
           <span class="infos_name">Emma Watson</span>
           <span class="infos_nick">@EmWatson</span>
 
-          <a href="#"></a>
+          <a href="#" @click="participate"></a>
         </div>
 
         <div class="card-profile_user-stats">
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import apiService from '@/services/apiService'
 import GeneralModal from '@/components/GeneralModal'
 
 export default {
@@ -64,9 +63,6 @@ export default {
       }
     }
   },
-   async mounted() {
-    this.userData = await this.$localforage.getItem('userData')
-  },
   methods: {
     beforeClose(newVal) {
       this.$emit('eventToggleDisplayEvent', newVal)
@@ -75,24 +71,21 @@ export default {
       this.$emit('confirm')
     },
 
-        async add() {
-
- this.eventData.participantEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
- this.eventData.eventId = this.event.eventId
+    async participate() {
+      this.userData = this.$store.state.userData
+      this.eventData.participantEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
+      this.eventData.eventId = this.event.eventId
       console.log('eventData')
       console.log(this.eventData)
-      const res = await apiService.addevent(this.eventData, this.userData.token)
-                                  .catch(error => {
-                                    this.$notify.error({title: 'Error', message: 'Erreur lors de la connexion au serveur'});
-                                    console.error(error)
-                                    return
-                                  })
-      console.log('res')
-      console.log(res)
-      if(!res || !res.data || res.status !== 200) {
-        // this.$notify.error({title: 'Error', message: 'Erreur de connexion'});
-        return
-      }
+      this.$store.dispatch('addEventToUser', this.eventData)
+                  .then(() => {
+                    this.$notify({
+                      title: 'Interessé',
+                      message: 'Participation prise en compte avec succès',
+                      type: 'success'
+                    });
+                  })
+                  .catch(() => this.$notify.error({title: 'Error', message: "Erreur lors de la création d'évènement"}))
     }
   }
 }
@@ -109,7 +102,7 @@ export default {
 
 $gradient: #F96B4C, #F23182;
 $radius: 10px;
-$visual-height: 68%;
+$visual-height: 45%;
 $datas-height: calc(100% - #{$visual-height} + 2px);
 
 

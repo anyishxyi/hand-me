@@ -109,17 +109,10 @@ export default {
     },
     async validate() {
       this.userData = this.$store.state.userData
-      if(this.userData.particularDto) {
-        this.eventData.eventMakerEmail = this.userData.particularDto.particularEmail
-        this.$store.dispatch('addEventParticular', this.eventData)
-                    .then((data) => { console.log('data', data) })
-                    .catch(() => this.$notify.error({title: 'Error', message: "Erreur lors de la création d'évènement"}))
-      } else {
-        this.eventData.eventMakerEmail = this.userData.organizationDto.organizationEmail
-        this.$store.dispatch('addEventOrga', this.eventData)
-                    .then(() => { console.log('done') })
-                    .catch(() => this.$notify.error({title: 'Error', message: "Erreur lors de la création d'évènement"}))
-      }
+      this.eventData.eventMakerEmail = this.userData.particularDto ? this.userData.particularDto.particularEmail : this.userData.organizationDto.organizationEmail
+      this.$store.dispatch('createEvent', this.eventData)
+                  .then((data) => { console.log('data', data) })
+                  .catch(() => this.$notify.error({title: 'Error', message: "Erreur lors de la création d'évènement"}))
     },
     handleError(error){
       alert(error)
