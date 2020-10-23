@@ -274,17 +274,19 @@ export default {
       this.orgaData.organizationEmail = this.registerForm.email
       this.orgaData.organizationPassword = this.registerForm.pass
       this.$store.dispatch('register_association', this.orgaData)
-                  .then(({ data }) => { console.log('orga data is:', data ) })
+                  .then(() => {
+                    // console.log('orga data is:', data )
+                    this.isRegister = false
+                    this.step = false
+                    this.step1 = false
+                    this.step11 = false
+                    this.step12 = false
+                    this.step13 = true
+                    this.step2 = false
+                    this.step3 = false
+                  })
                   .catch(error => { console.log(error) })
       // console.log('res', res)
-      this.isRegister = false
-      this.step = false
-      this.step1 = false
-      this.step11 = false
-      this.step12 = false
-      this.step13 = true
-      this.step2 = false
-      this.step3 = false
     },
     onValueAction(value) {
       console.log(value)
