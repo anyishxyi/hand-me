@@ -61,12 +61,11 @@
           <div class="message">Votre compte a été créé avec succès !</div>
           <router-link :to="{path: '/events'}"><el-button class="success">continuer</el-button></router-link>
         </div>
-        <div v-if="step1">
-          <p><strong>Quelques informations sur votre association</strong></p>
+        <div v-if="step1" class="step1">
+          <p class="steping">Créer votre compte(Etape 2 sur 3)</p>
+          <h1 class="title">Quelques informations sur votre association</h1>
           <p><el-input placeholder="SIRET..." v-model="orgaData.organizationMatricule" class="marginInput"></el-input></p>
-            <div>
-              <el-input placeholder="Nom de votre association..." v-model="orgaData.organizationName"></el-input>
-            </div>
+          <p><el-input placeholder="Nom de votre association..." v-model="orgaData.organizationName"></el-input></p>
             <Places
               class="input"
               id="userAddress"
@@ -79,40 +78,21 @@
             />
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
-            <el-button @click="handleCheckSiret" class="btn btn-validate" type="danger">Suivant</el-button>
+            <el-button @click="handleCheckSiret" class="btn btn-validate" type="succes" round>Suivant</el-button>
           </div>
         </div>
-        <div v-if="step2">
-          <p><strong>Quelques informations sur le gérant de cette société</strong></p>
-          <div class="first-input">
-            <div class="input-left">
-              <el-input placeholder="Nom..." v-model="orgaData.organizationChiefName" ></el-input>
-            </div>
-          </div>
-          <div class="inputs">
-            <div>
-              <el-input placeholder="Prénom..." v-model="orgaData.organizationChiefFirstname"></el-input>
-            </div>
-            <div class="input-left">
-              <!-- <el-input v-model="registerForm.societyCapital" ></el-input> -->
-            </div>
-          </div>
-          <div class="inputs">
-            <div>
-              <!-- <el-input v-model="registerForm.societyValueAction" @change="onValueAction"></el-input> -->
-              <el-input placeholder="Email..." v-model="registerForm.email" @input="onValueAction"></el-input>
-            </div>
-            <div class="input-left">
-              <p><el-input placeholder="Téléphone..." v-model="orgaData.organizationPhoneNumber" ></el-input></p>
-            </div>
-          </div>
-          <div class="content">
-            <el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password />
-            <el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password />
-          </div>
+        <div v-if="step2" class="step2">
+          <p class="steping">Créer votre compte(Etape 3 sur 3)</p>
+          <h1 class="title">Quelques informations sur le gérant de cette société</h1>
+          <p><el-input placeholder="Nom..." v-model="orgaData.organizationChiefName" ></el-input></p>
+          <p><el-input placeholder="Prénom..." v-model="orgaData.organizationChiefFirstname"></el-input></p>
+          <p><el-input placeholder="Email..." v-model="registerForm.email" @input="onValueAction"></el-input></p>
+          <p><el-input placeholder="Téléphone..." v-model="orgaData.organizationPhoneNumber" ></el-input></p>
+          <p><el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password /></p>
+          <p><el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password /></p>
           <div class="buttons">
             <el-button @click="backToCheckSiret" type="text">retour</el-button>
-            <el-button @click="handleValidateOrganization" class="btn btn-validate" type="danger">Valider</el-button>
+            <el-button @click="handleValidateOrganization" class="btn btn-validate" type="succes" round>Valider</el-button>
           </div>
         </div>
         <div v-if="step3">Success</div>
@@ -393,6 +373,54 @@ export default {
 
     .step12 {
       padding-top: 50px;
+      padding-left: 50px;
+
+      .steping {
+        color: #7E829B;
+      }
+      .title {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        letter-spacing: 0.14px;
+      }
+      .content {
+        letter-spacing: 0.14px;
+        .input {
+          width: 400px;
+          padding-bottom: 10px;
+        }
+      }
+      .buttons {
+        padding-top: 40px;
+      }
+    }
+
+    .step1 {
+      padding-top: 50px;
+      padding-left: 50px;
+
+      .steping {
+        color: #7E829B;
+      }
+      .title {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        letter-spacing: 0.14px;
+      }
+      .content {
+        letter-spacing: 0.14px;
+        .input {
+          width: 400px;
+          padding-bottom: 10px;
+        }
+      }
+      .buttons {
+        padding-top: 40px;
+      }
+    }
+
+    .step2 {
+      padding-top: 30px;
       padding-left: 50px;
 
       .steping {
