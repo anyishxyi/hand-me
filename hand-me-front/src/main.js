@@ -38,6 +38,7 @@ new Vue({
   router,
   created () {
     const userString = localStorage.getItem('userData')
+    console.log('userString', userString)
     if (userString) {
       const userData = JSON.parse(userString)
       this.$store.commit('SET_USER_DATA', userData)

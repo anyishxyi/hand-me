@@ -42,7 +42,7 @@
               :error="handleError"
             />
             <!-- <el-input placeholder="Adresse..." class="input" v-model="userData.particularLocation"></el-input> -->
-            <el-input placeholder="Téléphone..." class="input" v-model="userData.phonenumber"></el-input>
+            <el-input placeholder="Téléphone..." class="input" v-model="registerForm.phonenumber"></el-input>
           </div>
           <div class="buttons">
             <el-button @click="backToCheckSociety" type="text">retour</el-button>
@@ -255,20 +255,22 @@ export default {
     async handleValidateParticular() {
       this.userData.particularEmail = this.registerForm.email
       this.userData.particularPassword = this.registerForm.pass
+      this.userData.particularPhonenumber = this.registerForm.phonenumber
       // console.log('this.userData')
       // console.log(this.userData)
       this.$store.dispatch('register_particular', this.userData)
-                  .then(({ data }) => { console.log('user data is:', data ) })
+                  .then(({ data }) => {
+                    console.log('user data is:', data )
+                    this.isRegister = false
+                    this.step = false
+                    this.step1 = false
+                    this.step11 = false
+                    this.step12 = false
+                    this.step13 = true
+                    this.step2 = false
+                    this.step3 = false
+                  })
                   .catch(error => { console.log(error) })
-      // console.log('res', res)
-      this.isRegister = false
-      this.step = false
-      this.step1 = false
-      this.step11 = false
-      this.step12 = false
-      this.step13 = true
-      this.step2 = false
-      this.step3 = false
     },
     async handleValidateOrganization() {
       this.orgaData.organizationEmail = this.registerForm.email
