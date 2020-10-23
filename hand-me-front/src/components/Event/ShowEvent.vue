@@ -22,7 +22,7 @@
           <div class="stats-holder">
             <div class="user-stats">
               <strong>Participants</strong>
-              <span>{{event.participants.length}}</span>
+              <span>{{event? (event.participants ? event.participants.length : []) : []}}</span>
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ $datas-height: calc(100% - #{$visual-height} + 2px);
     content: '';
     display: block;
     position: absolute;
-    width: 100%;
+    // width: 100%;
     height: 100px;
     bottom: 0;
     box-shadow: 0 36px 64px -34px rgba(black, 1),
@@ -273,7 +273,7 @@ $datas-height: calc(100% - #{$visual-height} + 2px);
     background: #fff;
     float: left;
     width: 100%;
-    height: $datas-height;
+    // height: $datas-height;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
 
@@ -313,12 +313,18 @@ $datas-height: calc(100% - #{$visual-height} + 2px);
   margin-left: 10px;
   margin-right: 10px;
   text-align: justify;
-  padding-top: 20px;
+  padding-top: 50px;
   padding-bottom: 10px;
   order: 100;
 }
 
 .place {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+}
+
+.date {
   margin-left: 10px;
   margin-right: 10px;
   padding-top: 10px;

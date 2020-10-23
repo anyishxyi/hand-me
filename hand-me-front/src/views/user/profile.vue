@@ -1,7 +1,51 @@
 <template>
   <div>
-    <section class="board">
-      <!--left-->
+    <div class="ownest-table-style reserve-content">
+      <el-table
+        v-if="events"
+        v-loading="loading"
+        :data="events"
+        stripe
+        size="mini"
+      >
+        <el-table-column label="Titre">
+          <template slot-scope="scope">{{scope.row.eventTitle}}</template>
+        </el-table-column>
+        <el-table-column label="Date">
+          <template slot-scope="scope">
+            <Datetime :value="scope.row" :options="['eventDate']" />
+          </template>
+        </el-table-column>
+        <el-table-column label="Lieu">
+          <template slot-scope="scope">{{scope.row.eventPlace}}</template>
+        </el-table-column>
+        <el-table-column label="Nombre des participants">
+          <template slot-scope="scope">{{scope.row.participants? scope.row.participants.length : []}}</template>
+        </el-table-column>
+
+        <el-table-column label="Actions" align="right" width="100">
+          <template slot-scope="scope">
+            <el-badge class="btn-details">
+              <el-button circle @click="readMessageClicked(scope.row)"><svg-icon icon-class="reserve-icon" /></el-button>
+            </el-badge>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <!-- <el-pagination
+        v-if="pagination.active"
+        :current-page.sync="pagination.currentPage"
+        :page-sizes="[10, 25, 50, 100, 250]"
+        :page-size="pagination.perPage"
+        :hide-on-single-page="true"
+        :total="pagination.totalItems"
+        layout="total, sizes, prev, pager, next, jumper"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      /> -->
+
+    </div>
+    <!-- <section class="board">
       <div class="board-left">
         <div class="board-left-profile">
           <span class="board-left-profile__name"></span>
@@ -11,16 +55,9 @@
           <div class="board-left-menu-container">
             <a class="board-left-menu-container-item" href>
               <div style="background-image:url('~@/assets/Icon.png')">
-                <!-- <img src="../../assets/Icon.png" alt /> -->
-                <!-- background-repeat: no-repeat;
-                background-position: center center;-->
+
               </div>
             </a>
-            <!-- <div class="board-left-menu-container-item">
-              <a href>
-                <img src="../../assets/Icon.png" alt />
-              </a>
-            </div>-->
             <div class="board-left-menu-container-item"></div>
             <div class="board-left-menu-container-item"></div>
             <div class="board-left-menu-container-item"></div>
@@ -30,7 +67,6 @@
         </div>
       </div>
 
-      <!--middle-->
       <div class="board-middle">
         <div class="board-middle-banner">
           <span class="board-middle-banner-text"
@@ -68,7 +104,7 @@
         </div>
         <div></div>
       </div>
-      <!--right-->
+
       <div class="board-right">
         <div
           v-for="(item, index) in events"
@@ -92,21 +128,23 @@
           </el-col>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
-import Table from "../../components/table/table";
+import Datetime from '~@/components/Widget/Datetime'
 
 export default {
   name: "userBoard",
+  components: { Datetime },
   data: function() {
     return {
       token: "",
       events: [],
       user: {},
-      communityData: {}
+      communityData: {},
+      loading: true
     };
   },
   async mounted() {
@@ -120,10 +158,12 @@ export default {
       token: userData.token,
       usrEmail: userData.particularDto.particularEmail
     };
+    this.loading = false
   },
-  methods: {},
-  components: {
-    Table
+  methods: {
+    readMessageClicked(text) {
+      console.log(text)
+    }
   }
 };
 </script>
