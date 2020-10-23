@@ -86,7 +86,7 @@
           <h1 class="title">Quelques informations sur le gérant de cette société</h1>
           <p><el-input placeholder="Nom..." v-model="orgaData.organizationChiefName" ></el-input></p>
           <p><el-input placeholder="Prénom..." v-model="orgaData.organizationChiefFirstname"></el-input></p>
-          <p><el-input placeholder="Email..." v-model="registerForm.email" @input="onValueAction"></el-input></p>
+          <p><el-input placeholder="Email..." v-model="registerForm.email"></el-input></p>
           <p><el-input placeholder="Téléphone..." v-model="orgaData.organizationPhoneNumber" ></el-input></p>
           <p><el-input placeholder="Mot de passe..." class="input" v-model="registerForm.pass" show-password /></p>
           <p><el-input placeholder="Confirmation mot de passe..." class="input" v-model="registerForm.pass1" show-password /></p>
